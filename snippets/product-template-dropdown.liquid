@@ -1,0 +1,828 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+  unless thumbnail_position
+    assign thumbnail_position = 'beside'
+  endunless
+
+  unless description_style
+    assign description_style = 'full'
+  endunless
+
+  assign product_zoom_size = '1800x1800'
+  assign product_image_size = '620x'
+
+  case image_container_width
+    when 'small'
+      assign product_image_width = 'medium-up--two-fifths'
+      assign product_description_width = 'medium-up--three-fifths'
+      assign product_image_size = '480x'
+    when 'medium'
+      assign product_image_width = 'medium-up--one-half'
+      assign product_description_width = 'medium-up--one-half'
+      assign product_image_size = '620x'
+    when 'large'
+      assign product_image_width = 'medium-up--one-half'
+      assign product_description_width = 'medium-up--one-half'
+      assign product_image_size = '740x'
+  endcase
+
+  assign product_img_structure = product.featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+-%}
+
+<style>
+  .btn.add-to-cart{margin-top:20px;}
+</style>
+<div id="ProductSection-{{ section_id }}"class="product-section"data-section-id="{{ section_id }}"data-section-type="product-template"data-product-handle="{{ product.handle }}"data-product-url="{{ product.url | within: collection }}"data-aspect-ratio="{{ 100 | divided_by: product.featured_media.aspect_ratio }}"data-img-url="{{ product_img_structure }}"{% if settings.product_zoom_enable %}data-image-zoom="true"{% endif %}{% if settings.inventory_enable %}data-inventory="true"{% endif %}{% if settings.inventory_transfers_enable %}data-incoming-inventory="true"{% endif %}{% unless isModal %}data-enable-history-state="true"{% endunless %}>
+
+  {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
+
+  <div class="page-content page-content--product">
+    <div class="page-width">
+
+      <div class="mobile_only">
+        {% comment %} <h2 class="h2 product-single__title">
+          {{ product.title }}
+        </h2>
+
+        {%- if product.metafields.reviews.rating.value -%}
+          <div class="judge-me-fetch--reviews mobile_only hide">
+            <span class="ratings"></span>
+            &nbsp;<a
+              style="margin-left: -10px;"
+              href="javascript:void(0);"
+              class="review-scroller-link">
+              <span>{{ product.metafields.reviews.rating_count }} Reviews</span>
+            </a>
+          </div>
+        {%- endif -%}
+
+        {%- assign hide_sale_price = true -%}
+        {%- if product.compare_at_price_max > product.price -%}
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            {%- assign hide_sale_price = false -%}
+          {%- endif -%}
+
+          <span
+            id="PriceA11y-{{ section_id }}"
+            class="visually-hidden"
+            aria-hidden="{{ hide_sale_price }}">
+            {{ 'products.general.regular_price' | t }}
+          </span>
+          <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
+            <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
+              {%- if current_variant.compare_at_price > current_variant.price -%}
+                {{ current_variant.compare_at_price | money }}
+              {%- endif -%}
+            </span>
+          </span>
+          <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+        {%- else -%}
+          <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+        {%- endif -%}
+
+        <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
+          {{ current_variant.price | money }}
+        </span>
+
+        {%- if settings.product_save_amount -%}
+          {%- if settings.product_save_type == 'dollar' -%}
+            {%- capture saved_amount -%}
+              {{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
+          {%- else -%}
+            {%- capture saved_amount -%}
+              {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+          {%- endif -%}
+          <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+            {%- unless hide_sale_price -%}
+              {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+            {%- endunless -%}
+          </span>
+        {%- endif -%}
+
+        <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+          {%- capture unit_price_base_unit -%}
+            <span class="product__unit-base--{{ section_id }}">
+              {%- if current_variant.unit_price_measurement -%}
+                {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                  {{ current_variant.unit_price_measurement.reference_value }}
+                {%- endif -%}
+                {{ current_variant.unit_price_measurement.reference_unit }}
+              {%- endif -%}
+            </span>
+          {%- endcapture -%}
+
+          <span class="product__unit-price--{{ section_id }}">{{ current_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+        </div> {% endcomment %}
+      </div>
+
+
+
+      <div class="grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}">
+        {%- if image_position == 'left' -%}
+          <div class="grid__item {{ product_image_width }}">
+            {%- render 'product-images' 
+              , section_id: section_id,
+              product: product,
+              isModal: isModal,
+              image_position: image_position,
+              product_zoom_size: product_zoom_size,
+              product_image_size: product_image_size,
+              thumbnail_arrows: thumbnail_arrows,
+              thumbnail_position: thumbnail_position,
+              video_looping: video_looping,
+              video_style: video_style -%}
+          </div>
+        {%- endif -%}
+
+        <div class="grid__item {{ product_description_width }}">
+
+          <div class="product-single__meta">
+            {%- if settings.show_breadcrumbs and isModal != true -%}
+              {%- render 'breadcrumbs' -%}
+            {%- endif -%}
+
+            {%- if settings.vendor_enable -%}
+              <div class="product-single__vendor">
+                {%- assign vendor_handle = product.vendor | handleize -%}
+                {%- if collections[vendor_handle] != empty -%}
+                  <a href="{{ routes.collections_url }}/{{ collections[vendor_handle].handle }}">
+                    {{ collections[vendor_handle].title }}
+                  </a>
+                {%- else -%}
+                  {{ product.vendor | link_to_vendor }}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if isModal -%}
+              <p class="h2 product-single__title">
+                {{ product.title }}
+              </p>
+            {%- else -%}
+
+
+            <div class="title_review_wrapper">
+
+              <h1 class="h2 product-single__title">
+                {{ product.title }}
+              </h1>
+
+              {%- if product.metafields.reviews.rating.value -%}
+                <div class="jm_review_preview_wrapper">
+                  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+                  <a
+                    style="margin-left: 5px;"
+                    href="javascript:void(0);"
+                    class="review-scroller-link">
+                    <span>({{ product.metafields.reviews.rating_count }})</span>
+                  </a>
+                  </div>
+                <br/>
+              {%- endif -%}
+
+            </div>
+
+
+            {%- endif -%}
+
+            {%- if settings.enable_product_reviews and settings.reviews_layout == 'full' -%}
+              {%- liquid
+                if isModal
+                  assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id
+                else
+                  assign review_link = '#Reviews-' | append: product.id
+                endif
+              -%}
+              <a href="{{ review_link }}" class="product-single__review-link">
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              </a>
+
+            {%- endif -%}
+
+
+            {%- if settings.sku_enable -%}
+              <p id="Sku-{{ section_id }}" class="product-single__sku">
+                {%- if current_variant.sku -%}
+                  {{ current_variant.sku }}
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+
+            {%- assign hide_sale_price = true -%}
+            {%- if product.compare_at_price_max > product.price -%}
+              {%- if current_variant.compare_at_price > current_variant.price -%}
+                {%- assign hide_sale_price = false -%}
+              {%- endif -%}
+
+              <span
+                id="PriceA11y-{{ section_id }}"
+                class="visually-hidden"
+                aria-hidden="{{ hide_sale_price }}">
+                {{ 'products.general.regular_price' | t }}
+              </span>
+              <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
+                <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
+                  {%- if current_variant.compare_at_price > current_variant.price -%}
+                    {{ current_variant.compare_at_price | money }}
+                  {%- endif -%}
+                </span>
+              </span>
+              <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+            {%- else -%}
+              <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+            {%- endif -%}
+
+            <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %} desktop_only">
+              {{ current_variant.price | money }}
+            </span>
+
+            {%- if settings.product_save_amount -%}
+              {%- if settings.product_save_type == 'dollar' -%}
+                {%- capture saved_amount -%}
+                  {{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
+              {%- else -%}
+                {%- capture saved_amount -%}
+                  {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+              {%- endif -%}
+              <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+                {%- unless hide_sale_price -%}
+                  {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                {%- endunless -%}
+              </span>
+            {%- endif -%}
+
+            <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+              {%- capture unit_price_base_unit -%}
+                <span class="product__unit-base--{{ section_id }}">
+                  {%- if current_variant.unit_price_measurement -%}
+                    {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                      {{ current_variant.unit_price_measurement.reference_value }}
+                    {%- endif -%}
+                    {{ current_variant.unit_price_measurement.reference_unit }}
+                  {%- endif -%}
+                </span>
+              {%- endcapture -%}
+
+              <span class="product__unit-price--{{ section_id }}">{{ current_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+            </div>
+
+            {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+              <div class="product__policies rte small--text-center">
+                <small>
+                  {%- if shop.taxes_included -%}
+                    {{ 'products.product.include_taxes' | t }}
+                  {%- endif -%}
+                  {%- if shop.shipping_policy.body != blank -%}
+                    {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                  {%- endif -%}
+                </small>
+              </div>
+            {%- endif -%}
+
+            {%- if settings.inventory_enable or settings.inventory_transfers_enable -%}
+              {%- assign variants_with_inventory_tracking = product.variants | where: 'inventory_management', 'shopify' -%}
+
+              <script>
+                // Store inventory quantities in JS because they're no longer
+            // available directly in JS when a variant changes.
+            // Have an object that holds all potential products so it works
+            // with quick view or with multiple featured products.
+                window.inventories = window.inventories || {};
+                window.inventories['{{section_id}}'] = {};{% for variant in variants_with_inventory_tracking %}window.inventories['{{section_id}}'][{{variant.id}}] = {
+                    'quantity': {{ variant.inventory_quantity | default: 0 }},
+                    'incoming': {{ variant.incoming | default: false | json }},
+                    'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
+                  };{% endfor %}
+              </script>
+
+              {% comment %}
+              If loaded in quick view, it might be from a JS-loaded function
+              that loads recommended products. If that's the case, the above
+              JS will not set the variant inventory. Add it to an accessible
+              data div to read later instead.
+              {% endcomment %}
+              {%- if isModal -%}
+                <div
+                  data-section-id="{{ section_id }}"
+                  class="hide js-product-inventory-data"
+                  aria-hidden="true">
+                  {%- for variant in variants_with_inventory_tracking -%}
+                    <div
+                      class="js-variant-inventory-data"
+                      data-id="{{ variant.id }}"
+                      data-quantity="{{ variant.inventory_quantity | default: 0 }}"
+                      data-incoming="{{ variant.incoming | default: false | json }}"
+                      data-date="{{ variant.next_incoming_date | date: format: 'date' | json }}"></div>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+
+            {% comment %} <hr class="hr--medium"> {% endcomment %}
+
+            {%- unless isModal -%}
+              {% comment %}
+              Shopify's product form attaches a number of tracking
+              scripts that cause slower load times and false statistics.
+              Quick view modals request these on-demand.
+              {% endcomment %}
+              <div class="bundle_wc"></div>
+              {% unless product.tags contains "wc_combo_bundle_cta" %}
+                {%- render 'product-form-dropdown' 
+                  , section_id: section_id,
+                  product: product,
+                  current_variant: current_variant -%}
+              {% endunless %}
+                <div class="th_pb_section" id="th_product_bundle" data-id="{{ product.id }}"></div>
+			          <div id="th_pb_qty_bundle" class="th_pb_qty_bundle_cls" data-pid="{{ product.id }}"></div>
+
+              {% comment %} <div class="shipbox">
+
+                <img src="{{ 'truck.png' | asset_img_url }}" class="shipbox-img" />
+
+                <b class="shipbox-bold">Arrives By</b>
+                <span id="shipping-date"></span>
+                If You Order Today.
+              </div> {% endcomment %}
+
+
+              <style>
+                .shipbox {
+                  margin-bottom: 10px;
+                  font-size: 15px;
+                }
+
+                .shipbox-img {
+                  width: 50px;
+                  position: absolute;
+                  top: 15;
+                }
+
+                .shipbox-bold {
+                  margin-left: 60px;
+                }
+
+                #shipping-date {
+                  font-weight: bold;
+                  border-bottom: dashed 2px black;
+                }
+
+
+
+                @media only screen and (max-width: 768px) {
+                  .shipbox-img {
+                    width: 30px;
+                  }
+
+                  .shipbox {
+                    font-size: 12px;
+                  }
+
+                  .shipbox-bold {
+                    margin-left: 35px;
+                  }
+                }
+                   {% comment %} webcss {% endcomment %}
+                    span.product__price.desktop_only {
+                      padding-bottom: 20px;
+                    }
+                    div#th_pb_qty_bundle {
+                      display: none;
+                    }
+                    div#th_product_bundle {
+                      display: none;
+                    }
+                    .product-single__description {
+                      margin-bottom: 0px;
+                    }
+                    div#th_pb_qty_bundle {
+                      display: none !important;
+                    }
+                    .th_pb_qty_bundle_cls {
+                      display: none !important;
+                    }
+                    label.variant__label {
+                      padding-bottom: 10px !important;
+                  }
+          
+              </style>
+
+
+
+            {%- else -%}
+              <div
+                id="ProductFormHolder-{{ section_id }}"
+                class="product-form-holder"
+                data-url="{{ product.url }}"
+                data-template="{{ product.template_suffix }}"></div>
+            {%- endunless -%}
+
+
+            {%- if settings.trust_image != blank -%}
+              <div class="aos-animate trust-image" style="max-width: {{ settings.trust_image.width }}px;">
+                <div class="image-wrap " style="height: 0; padding-bottom: {{ 100 | divided_by: settings.trust_image.aspect_ratio }}%;">
+                  {%- assign img_url = settings.trust_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540]"
+                    data-aspectratio="{{ settings.trust_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ settings.trust_image.alt }}">
+                  <noscript>
+                    <img
+                      class="lazyloaded"
+                      src="{{ settings.trust_image | img_url: '540x' }}"
+                      alt="{{ settings.trust_image.alt }}">
+                  </noscript>
+                </div>
+              </div>
+            {%- endif -%}
+
+            
+
+            {%- unless description_style == 'full' -%}
+              <div class="product-single__description rte">{% comment %}{% render 'product-description-slider', product: product %}{% endcomment %}
+              </div>
+
+              {%- render 'product-additional-content', product: product, section_id: section_id -%}
+            {%- endunless -%}
+
+            {%- if social -%}
+              {%- render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product -%}
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- unless image_position == 'left' -%}
+          <div class="grid__item {{ product_image_width }}">
+            {%- render 'product-images' 
+              , section_id: section_id,
+              product: product,
+              isModal: isModal,
+              image_position: image_position,
+              product_zoom_size: product_zoom_size,
+              product_image_size: product_image_size,
+              thumbnail_arrows: thumbnail_arrows,
+              thumbnail_position: thumbnail_position,
+              video_looping: video_looping,
+              video_style: video_style -%}
+          </div>
+        {%- endunless -%}
+      </div>
+
+      {%- if description_style == 'full' -%}
+        <div class="product-single__description-full rte">
+          {% render 'product-description-slider', product: product %}
+        </div>
+
+        {%- render 'product-additional-content', product: product, section_id: section_id -%}
+      {%- endif -%}
+      <div class="th_pb_fbt_section" data-thpid="{{ product.id }}"></div>
+      {% comment %}Start automatically added Judge.me widget{% endcomment %}
+      {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+      {% comment %}End automatically added Judge.me widget{% endcomment %}
+    </div>
+  </div>
+</div>
+
+<style>
+  a.jdgm-link {
+    display: none;
+  }
+</style>
+
+<style>
+  .tee-variants {
+    position: relative;
+    min-height: 50px;
+  }
+  
+  .tee-variants .tee_additional_info {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+
+  }
+  .tee_additional_info .bx_in {
+    background: #ffa88a;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 17px;
+    justify-content: center;
+    max-width: 227px;
+    text-align: center;
+    margin-top: 31px;
+    font-size: 14px;
+  }
+  .tee_additional_info .bx_in p {
+    margin: 15px 0 0;
+  }
+  .mobile_only {
+    display: none;
+  }
+  .tee-radio{
+    margin: 0px 3px 10px 0;
+  }
+  .tee-option{
+    margin-bottom: 0;
+  }
+  .teeinblue-enabled .tee-radio > label, .teeinblue-enabled .tee-option__title{
+    font-size:12px !important;
+  }
+  .tee-radio-label{
+    padding: 3px 8px!important;
+    min-width: 35px!important;
+    height: 33px!important;
+  }
+  
+  {% if product.metafields.custom.textbanner == true %}
+    @media screen and (min-width: 769px){
+      .variant-wrapper{
+        min-height: 200px;
+      }
+    }
+  {% endif %}
+
+  @media screen and (max-width: 767px) {
+    .mobile_only {
+      display: block;
+    }
+    .desktop_only {
+      display: none;
+    }
+    .product-single__title {
+      padding-top: 20px;
+      font-size: 1.125rem;
+      font-weight: 500;
+      padding: 0;
+      margin: 0;
+    }
+    .teeinblue-enabled .product__price {
+      display: block !important;
+      padding-bottom: 10px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .teeinblue-enabled .product__price.desktop_only {
+      display: none !important;
+    }
+    {% comment %} .tee-block.tee-product-price {
+      display: none;
+    } {% endcomment %}
+    .judge-me-fetch--reviews {
+      padding-bottom: 8px;
+    }
+    .tee_additional_info {
+      position: unset;
+      margin-bottom: 30px;
+    }
+    
+  }
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+{% if product.metafields.Image.override_image %}
+  <script>  
+    setTimeout(function() { 
+      var original_img_url = $('.tee-slide--active .tee-mockup-image').attr('src');
+      var original_img = $('.tee-slide--active .tee-mockup-image');
+      var original_printarea = $('.tee-slide--active .tee-printarea-wrapper');
+      original_img.attr('src', "{{ product.metafields.Image.override_image }}");
+      
+      original_printarea.css('display', "none");
+      
+      original_img.css('width', '100% !important');
+      original_img.css('height', '100% !important');
+      original_img.css('object-fit', 'cover');
+      $('.tee-slide--active .tee-mockup').css('width', '100% !important');
+      $('.tee-slide--active .tee-mockup').css('height', '100% !important');
+      $('.tee-slide--active .tee-mockup').css('object-fit', 'cover');
+
+      $('.tee-radio').click(function(){
+        original_img.attr('src', original_img_url);
+        original_printarea.css('display', 'block');
+      });
+      
+      }, 4000);
+
+      
+</script>
+{% endif %}
+
+{% if product.metafields.custom.textbanner == true %}
+  <style>
+    .tee-variants .tee-option {
+      max-width: calc(100% - 247px);
+    }
+    .tee-option.tee-available-products{
+      max-width: calc(100% - 247px);
+    }
+    @media screen and (max-width: 767px) {
+    .tee_additional_info .bx_in {
+      max-width: unset;
+      padding: 20px 10px;
+    }
+    .tee-variants .tee-option {
+      max-width: unset;
+    }
+    .tee-option.tee-available-products{
+      max-width: unset;
+    }
+  }
+  </style>
+
+  <script>
+
+    function addBannerText() {
+      
+      let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
+    if (isMobile) {
+      console.log("The device is mobile");
+      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+      if (document.getElementsByClassName('tee_additional_info').length == 1) 
+        document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
+      
+
+    } else {
+      console.log("The device is desktop");
+      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+      if (document.getElementsByClassName('tee_additional_info').length == 1) {
+        document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
+      }
+      
+      }
+
+    }
+    setTimeout(addBannerText, 1000);
+  </script>
+
+
+
+
+
+
+
+  
+{% endif %}
+
+
+
+
+
+
+<script>  
+$(document).ready(function(){  
+  let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
+  
+  
+    
+ setTimeout(function() { 
+  if(!isMobile){
+    $('.tee-thumbnails__track').slick({
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      infinite: false,
+      vertical: true,
+      draggable: true,
+      prevArrow: '<span class="cont-btn button-prev-slider"></span>',
+      nextArrow: '<span class="cont-btn button-next-slider"></span>',
+      responsive: [
+          {
+            breakpoint: 500,
+            settings: {
+              arrows: false,
+              vertical: false,
+            }
+          }
+        ]
+    });
+  }
+   var init_price = $('span.money.theme-money.price.tee-price--current').text();
+   $('.tee-btn.tee-btn--atc span').text('Add to Cart' +"- "+  init_price );
+    var target = document.querySelector('div#tee-artwork-form')
+
+  // Create an observer instance.
+  var observer = new MutationObserver(function(mutations) {
+    console.log(target.firstChild.children[0].innerText);  
+    {% if product.metafields.custom.textbanner == true %}
+    let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
+    if (isMobile) {
+      console.log("The device is mobile");
+      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+      if (document.getElementsByClassName('tee_additional_info').length == 1) 
+        document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
+      
+
+    } else {
+      console.log("The device is desktop");
+      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+      if (document.getElementsByClassName('tee_additional_info').length == 1) {
+        document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
+      }
+     
+      }
+    {% endif %}
+
+  $('.tee-btn.tee-btn--atc span').text('Add to Cart'+" - " + target.firstChild.children[0].innerText );
+  if(!isMobile){
+    setTimeout(function() { 
+      $('.tee-thumbnails__track').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        infinite: false,
+        vertical: true,
+        draggable: true,
+        prevArrow: '<span class="cont-btn button-prev-slider"></span>',
+        nextArrow: '<span class="cont-btn button-next-slider"></span>',
+        responsive: [
+            {
+              breakpoint: 500,
+              settings: {
+                arrows: false,
+                vertical: false,
+              }
+            }
+          ]
+      });
+    }, 500);
+  }
+  
+  
+});
+
+// Pass in the target node, as well as the observer options.
+observer.observe(target, {
+    attributes:    true,
+    childList:     true,
+    characterData: true
+});
+
+
+
+   var target1 = document.querySelector('span.money.theme-money.price.tee-price--current')
+
+// Create an observer instance.
+var observer1 = new MutationObserver(function(mutations) {
+  $('.tee-btn.tee-btn--atc span').text('Add to Cart'+"- " +target.firstChild.children[0].innerText );
+});
+
+// Pass in the target node, as well as the observer options.
+observer1.observe(target1, {
+    attributes:    true,
+    childList:     true,
+    characterData: true
+});
+
+
+
+
+
+ 
+
+   }, 5000);
+ 
+ 
+});  
+
+ 
+
+
+
+</script>
+
+
+
+
+
+<script>
+
+  var date = new Date();
+  var date2 = new Date();
+
+  date.setDate(date.getDate() + 10);
+  date2.setDate(date2.getDate() + 18);
+
+
+  date = date.toDateString();
+  date2 = date2.toDateString();
+
+
+
+  var d1 = date.split(' ')[1];
+  var d2 = date.split(' ')[2];
+
+  var d3 = date2.split(' ')[1];
+  var d4 = date2.split(' ')[2];
+
+  document.getElementById('shipping-date').innerHTML = " " + d1 + " " + d2 + " - " + d3 + " " + d4;
+</script>

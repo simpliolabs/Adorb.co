@@ -1,0 +1,47 @@
+<div class="currency-form hidden">
+    {% form 'currency' %}
+        {{ form | currency_selector }}
+        <button id="currency-form__submit" type="submit">Update</button>
+    {% endform %}
+</div>
+<script defer>
+    const locale_currency_allias = {
+        'AUD': 'AU',
+        'CAD': 'CA',
+        'DKK': 'DK',
+        'EUR': 'DE',
+        'HKD': 'HK',
+        'JPY': 'JP',
+        'NZD': 'NZ', 
+        'GBP': 'GB',
+        'SGD': 'SG',
+        'USD': 'US',
+        'UAH': 'UA',
+        'RUB': 'RU'
+    }
+    //Until locale form loaded
+    let interval_count = 0;
+    const localeInit = setInterval(function(){
+        if(interval_count > 5)
+        {
+            clearInterval(localeInit);
+        }
+        if($('form[action="/localization"]').length > 0)
+        {
+            $(`select.so-currency-selector option[value=${$('.currency-form select option[selected]').val()}]`).attr('selected', 'selected');
+            $('.select-currency').removeClass('hidden');
+            $('.locale-selectors__container').addClass('hidden');
+            clearInterval(localeInit);
+        }
+        interval_count++;
+    }, 1000)
+    //Change currency on init
+    function submitCurrency(currency)
+    {
+        $(`.locale-selectors__selector option[value=${locale_currency_allias[currency]}]`).attr('selected', 'selected');
+        $('form[action="/localization"]').submit();
+    }
+    $('select.so-currency-selector').on('change', function(e){
+        submitCurrency($(this).val());
+    });
+</script>

@@ -1,0 +1,181 @@
+{%- paginate customer.orders by 20 -%}
+<div class="page-width page-content">
+	<header class="section-header{% unless settings.type_headers_align_text %} section-header--with-link{% endunless %}" style="display:none">
+		<h1 class="section-header__title">{{ 'customer.account.title' | t }}</h1> <a href="{{ routes.account_logout_url }}" class="btn btn--secondary btn--small section-header__link">{{ 'layout.customer.log_out'| t }}</a> </header>
+	<div class="grid" style="display:none;">
+		<div class="grid__item medium-up--two-thirds">
+			<h2>{{ 'customer.orders.title' | t }}</h2> {%- if customer.orders.size != 0 -%}
+			<table class="table--responsive table--small-text">
+				<thead>
+					<tr>
+						<th>{{ 'customer.orders.order_number' | t }}</th>
+						<th>{{ 'customer.orders.date' | t }}</th>
+						<th>{{ 'customer.orders.payment_status' | t }}</th>
+						<th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+						<th>{{ 'customer.orders.total' | t }}</th>
+					</tr>
+				</thead>
+				<tbody> {%- for order in customer.orders -%}
+					<tr class="table__section">
+						<td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+						<td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+						<td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+						<td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+						<td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+					</tr> {%- endfor -%} </tbody>
+			</table>
+			<hr class="hr--clear"> {%- else -%}
+			<p>{{ 'customer.orders.none' | t }}</p> {%- endif -%} </div>
+		<div class="grid__item medium-up--one-third">
+			<h3>{{ 'customer.account.details' | t }}</h3>
+			<p class="h5">{{ customer.name }}</p> {{ customer.default_address | format_address }}
+			<p><a href="{{ routes.account_addresses_url }}" class="text-link">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+		</div>
+	</div> {%- if paginate.pages > 1 -%} {%- render 'pagination', paginate: paginate -%} {%- endif -%}
+	<div class="grid">
+		<div class="grid__item ">
+			<h2>Hi, {{ customer.name }}</h2></div>
+		<div class="grid__item medium-up--one-fifth">
+			
+			<div class="tab">
+				<button class="tablinks" onclick="openTab(event, 'acc_details')" id="defaultOpen">
+					<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M8.18848 27.2724C8.18848 24.5451 9.55211 19.0906 15.0067 19.0906C20.4612 19.0906 21.8248 24.5451 21.8248 27.2724" stroke="#ffa88a" stroke-width="3"></path>
+						<circle cx="15.0049" cy="12.9999" r="4.5" fill="#ffa88a" stroke="#ffa88a"></circle>
+						<circle cx="15" cy="15" r="14" stroke="#ffa88a" stroke-width="2"></circle>
+						<ellipse cx="15.0036" cy="24.3442" rx="6.63934" ry="5.16393" fill="#ffa88a" class="active_tab"></ellipse>
+					</svg> Account details </button>
+				<button class="tablinks" onclick="openTab(event, 'order_history')">
+					<svg width="30" height="24" viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="active_tab">
+						<path d="M4 7.63833C4 5.42556 5.138 1 9.69 1C14.242 1 15.38 5.42556 15.38 7.63833" stroke="#ffa88a" stroke-width="2"></path>
+						<path d="M1 7.68997H17.9667V22.76H1V7.68997Z" stroke="#ffa88a" stroke-width="2"></path>
+					</svg> Order History </button>
+				<button class="tablinks" onclick="openTab(event, 'track_order')">
+					<svg width="30" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.790199 0.760305C0.359836 0.804086 -0.00206103 1.19632 0.000195972 1.61622V10.4602C-0.00636508 10.9123 0.416004 11.3282 0.882054 11.3282C1.34789 11.3282 1.77047 10.9123 1.76391 10.4602V8.46321H7.64261C8.10845 8.46958 8.53696 8.05963 8.53696 7.60729C8.53696 7.15516 8.10844 6.74501 7.64261 6.75137H1.76391V2.47204H17.0485V14.4898C16.83 14.8262 16.6692 15.1989 16.5708 15.5953H9.88378C9.48007 13.9686 7.96733 12.7424 6.1729 12.7424C4.37848 12.7424 2.86572 13.9686 2.46203 15.5953H1.76388V13.3129C1.77372 12.856 1.34377 12.4343 0.872784 12.4393C0.407973 12.4439 -0.00949353 12.862 0.000164336 13.3129V16.4512C0.000164336 16.8994 0.420276 17.3071 0.882022 17.3071H2.45279C2.8524 18.9391 4.37455 20.16 6.1729 20.16C7.97126 20.16 9.49322 18.9391 9.89302 17.3071H16.5617C16.9613 18.9391 18.4834 20.16 20.2818 20.16C22.0801 20.16 23.6021 18.9391 24.0019 17.3071H25.5727C26.0344 17.3071 26.4545 16.8994 26.4545 16.4512V10.1748C26.4553 10.0556 26.4301 9.93644 26.3811 9.82719L24.3236 5.26246C24.1856 4.96137 23.8549 4.75341 23.5154 4.75421H18.8126V1.61593C18.8126 1.16777 18.3925 0.76001 17.9307 0.76001H0.790619L0.790199 0.760305ZM3.43551 4.18372C2.97377 4.20701 2.57538 4.63605 2.59937 5.08422C2.62336 5.53237 3.06541 5.91884 3.52736 5.89556H4.11518C4.58102 5.90193 5.00953 5.49198 5.00953 5.03964C5.00953 4.58751 4.58101 4.17735 4.11518 4.18372C3.89211 4.18352 3.6514 4.18372 3.43551 4.18372ZM6.37486 4.18372C5.91312 4.20701 5.51473 4.63605 5.53872 5.08422C5.56271 5.53237 6.00476 5.91884 6.46671 5.89556H9.11202C9.57786 5.90193 10.0064 5.49198 10.0064 5.03964C10.0064 4.58751 9.57785 4.17735 9.11202 4.18372H6.37486ZM18.812 6.46609H22.9362L24.2222 9.31897H18.8122L18.812 6.46609ZM3.43551 9.31897C2.97377 9.34226 2.57538 9.77131 2.59937 10.2195C2.62336 10.6676 3.06541 11.0541 3.52736 11.0308H10.5818C11.0476 11.0372 11.4762 10.6272 11.4762 10.1749C11.4762 9.72276 11.0476 9.31261 10.5818 9.31897H3.43551ZM18.812 11.0308H24.6907V15.5955H23.9925C23.5888 13.9689 22.0761 12.7426 20.2817 12.7426C19.7596 12.7426 19.2665 12.8505 18.812 13.0368V11.0308ZM6.17278 14.4542C7.31955 14.4542 8.23027 15.3382 8.23027 16.4512C8.23027 17.5642 7.31949 18.4482 6.17278 18.4482C5.02601 18.4482 4.11529 17.5642 4.11529 16.4512C4.11529 15.3382 5.02607 14.4542 6.17278 14.4542ZM20.2817 14.4542C21.4284 14.4542 22.3392 15.3382 22.3392 16.4512C22.3392 17.5642 21.4284 18.4482 20.2817 18.4482C19.1349 18.4482 18.2242 17.5642 18.2242 16.4512C18.2242 15.3382 19.1349 14.4542 20.2817 14.4542Z" fill="#ffa88a"></path>
+					</svg> Track Your Order</button>
+				<button class="tablinks" onclick="location.href='/pages/bon-loyalty-page'">
+					<svg width="30" height="23" viewBox="0 0 27 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M25.8792 8.13563C26.042 8.13563 26.1366 7.95144 26.0417 7.8191L21.4099 1.35754C21.3159 1.22644 21.1134 1.2548 21.059 1.40668L18.7468 7.86824C18.7002 7.99851 18.7968 8.13563 18.9351 8.13563H25.8792Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+						<path d="M20.6487 1.02725C20.6951 0.897008 20.5986 0.76001 20.4603 0.76001H13.8027C13.6423 0.76001 13.5472 0.939432 13.6372 1.07223L17.9982 7.50534C18.0901 7.6409 18.297 7.61459 18.3521 7.46036L20.6487 1.02725Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+						<path d="M12.2887 1.06662C12.3726 0.933438 12.2769 0.76001 12.1194 0.76001H5.80441C5.66614 0.76001 5.56959 0.896954 5.61603 1.02719L7.89851 7.42776C7.95456 7.58495 8.16714 7.60839 8.2561 7.46719L12.2887 1.06662Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+						<path d="M17.4315 8.13568C17.592 8.13568 17.6871 7.95618 17.597 7.82339L13.121 1.22647C13.04 1.1071 12.8632 1.11012 12.7863 1.23218L8.63156 7.82909C8.54768 7.96228 8.6434 8.13568 8.8008 8.13568H17.4315Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+						<path d="M5.20588 1.4105C5.15151 1.25865 4.94898 1.23031 4.85502 1.36141L0.226851 7.81878C0.131999 7.95113 0.226588 8.1353 0.38941 8.1353H7.32953C7.4679 8.1353 7.56447 7.99815 7.51782 7.86788L5.20588 1.4105Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+						<path d="M0.554494 8.64459C0.379065 8.64459 0.288637 8.85435 0.409077 8.9819L12.072 21.3336C12.2215 21.4919 12.4805 21.3312 12.4051 21.127L7.84295 8.7753C7.81394 8.69675 7.73907 8.64459 7.65534 8.64459H0.554494Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+						<path d="M8.61981 8.64459C8.48148 8.64459 8.38492 8.78165 8.43147 8.9119L12.9457 21.5428C13.0089 21.7198 13.2592 21.7197 13.3224 21.5428L17.8326 8.91185C17.8791 8.7816 17.7826 8.64459 17.6443 8.64459H8.61981Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+						<path d="M13.8595 21.1269C13.784 21.3311 14.043 21.4918 14.1925 21.3335L25.8596 8.98149C25.9801 8.85395 25.8897 8.64416 25.7142 8.64416H18.6098C18.526 8.64416 18.4512 8.69632 18.4221 8.77486L13.8595 21.1269Z" fill="#ffa88a" stroke="white" stroke-width="0.3"></path>
+					</svg> My Reward</button>
+				<button class="tablinks" onclick="location.href='/pages/contact-us-2'">
+					<svg width="30" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M17.1213 18.0732C16.9581 17.9788 16.7263 17.85 16.4256 17.6868C16.1251 17.5236 15.8524 17.3732 15.6076 17.2359C15.3627 17.0985 15.1329 16.9653 14.9182 16.8366C14.8839 16.8108 14.7766 16.7357 14.5961 16.6111L14.5964 16.611C14.451 16.5075 14.2981 16.415 14.139 16.334C14.025 16.2765 13.8994 16.2456 13.7718 16.2439C13.6001 16.2439 13.3853 16.3663 13.1276 16.6111V16.611C12.8692 16.8566 12.6323 17.1239 12.419 17.4098C12.2098 17.6911 11.9817 17.958 11.7362 18.2085C11.4958 18.4534 11.2983 18.5758 11.1437 18.5756C11.0441 18.5709 10.9461 18.5492 10.8539 18.5112C10.7641 18.4793 10.6758 18.4427 10.5897 18.4017C10.5296 18.3716 10.4265 18.3115 10.2805 18.2212C10.1345 18.1311 10.0529 18.0818 10.0356 18.0731L10.0358 18.0732C8.92689 17.4709 7.90793 16.7163 7.0082 15.8317C6.12354 14.9319 5.36898 13.913 4.76662 12.8041C4.75792 12.7868 4.70859 12.7052 4.61845 12.5592C4.52831 12.4132 4.46811 12.3102 4.43818 12.25V12.2502C4.39721 12.1641 4.36058 12.0759 4.32864 11.9861C4.29068 11.8938 4.26894 11.7958 4.26426 11.6961C4.26426 11.5416 4.38667 11.3439 4.6315 11.1035V11.1036C4.88185 10.8581 5.14875 10.63 5.43019 10.4208C5.716 10.2078 5.98323 9.97061 6.22889 9.71225C6.47372 9.45454 6.59596 9.23982 6.59596 9.06806C6.59429 8.94046 6.56335 8.81487 6.50582 8.70098C6.42505 8.54177 6.3324 8.38892 6.22888 8.24358C6.10429 8.06331 6.02921 7.95594 6.00345 7.92149C5.87469 7.70677 5.74157 7.47698 5.6041 7.23231C5.46664 6.98748 5.31629 6.71489 5.15325 6.41422C4.99003 6.11354 4.86126 5.88173 4.76678 5.71853C4.46609 5.11733 4.23848 4.79106 4.08398 4.73939H4.08381C3.99702 4.70945 3.9052 4.69624 3.81339 4.70075C3.50685 4.71079 3.20234 4.75394 2.90514 4.82952C2.60345 4.89307 2.30796 4.98355 2.02266 5.10011C1.59322 5.28038 1.138 5.80432 0.657057 6.67177C0.113391 7.59808 -0.102166 8.68058 0.0451492 9.74436C0.0819407 9.99471 0.13579 10.2422 0.206194 10.4852C0.283456 10.76 0.345666 10.964 0.392994 11.0971C0.440323 11.2302 0.528288 11.4686 0.657057 11.812C0.785993 12.1555 0.863255 12.3659 0.889011 12.4433C1.16378 13.231 1.52215 13.9867 1.95815 14.6978C2.74948 15.9367 3.68115 17.0802 4.73457 18.1054C5.75987 19.1587 6.90324 20.0904 8.14213 20.8818C8.85318 21.3178 9.60894 21.6762 10.3966 21.9511C10.4739 21.9768 10.6842 22.0541 11.0279 22.183C11.3714 22.3118 11.6099 22.3999 11.743 22.4471C11.8761 22.4943 12.0801 22.5566 12.3549 22.6339L12.3547 22.6337C12.5977 22.7043 12.8452 22.758 13.0956 22.7948C14.1594 22.9421 15.2419 22.7265 16.1682 22.1829C17.0356 21.7019 17.5595 21.2467 17.7398 20.8173C17.8564 20.532 17.947 20.2367 18.0104 19.935C18.086 19.6376 18.1291 19.3331 18.1392 19.0265C18.1437 18.9347 18.1305 18.8429 18.1005 18.7561C18.049 18.6014 17.7228 18.3738 17.1214 18.0733L17.1213 18.0732Z" fill="#ffa88a"></path>
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M22.0797 6.55564C22.0514 4.49297 21.0569 2.56328 19.3936 1.34332C17.7302 0.123356 15.5909 -0.245381 13.6149 0.347261C11.6392 0.939946 10.056 2.42547 9.33872 4.35936C8.62146 6.29342 8.85324 8.45207 9.96484 10.1895C9.43638 10.8907 8.7671 11.4735 8 11.9009C8.16606 12.3292 8.77695 12.4601 9.19774 12.5016C10.1095 12.5913 11.0124 12.4118 11.8995 12.1581V12.158C13.2381 13.0354 14.8507 13.3945 16.435 13.1681C18.0196 12.9416 19.4669 12.145 20.506 10.9276C21.5452 9.71034 22.1046 8.15576 22.0795 6.55571L22.0797 6.55564ZM12.6085 7.76507C12.338 7.76507 12.0787 7.65771 11.8875 7.46639C11.6964 7.27525 11.589 7.01601 11.589 6.74561C11.589 6.47521 11.6964 6.21582 11.8875 6.02466C12.0788 5.83352 12.338 5.72615 12.6085 5.72615C12.8789 5.72615 13.1381 5.83352 13.3294 6.02466C13.5206 6.21581 13.6279 6.47517 13.6279 6.74561C13.6279 7.01606 13.5206 7.27524 13.3294 7.46656C13.1381 7.65771 12.8789 7.76508 12.6085 7.76508V7.76507ZM15.5968 7.76507H15.5966C15.3263 7.76507 15.067 7.65771 14.8758 7.46639C14.6847 7.27525 14.5771 7.01601 14.5771 6.74561C14.5771 6.47521 14.6847 6.21582 14.8758 6.02466C15.067 5.83352 15.3263 5.72615 15.5968 5.72615C15.867 5.72615 16.1264 5.83352 16.3175 6.02466C16.5087 6.21581 16.6162 6.47517 16.6162 6.74561C16.6162 7.01606 16.5087 7.27524 16.3175 7.46656C16.1264 7.65771 15.867 7.76508 15.5966 7.76508L15.5968 7.76507ZM18.5849 7.76507C18.3145 7.76507 18.0553 7.65771 17.8639 7.46639C17.6728 7.27525 17.5654 7.01601 17.5654 6.74561C17.5654 6.47521 17.6728 6.21582 17.8639 6.02466C18.0553 5.83352 18.3145 5.72615 18.5849 5.72615C18.8553 5.72615 19.1145 5.83352 19.3058 6.02466C19.497 6.21581 19.6044 6.47517 19.6044 6.74561C19.6044 7.01606 19.497 7.27524 19.3058 7.46656C19.1145 7.65771 18.8553 7.76508 18.5849 7.76508V7.76507Z" fill="#ffa88a"></path>
+					</svg> Customer Care</button>
+			</div> <a href="{{ routes.account_logout_url }}" class="btn btn--primary btn--small section-header__link">{{ 'layout.customer.log_out'| t }}</a> </div>
+		<div class="grid__item medium-up--two-thirds">
+			<div id="acc_details" class="tabcontent">
+				<h2>My Account</h2> {{ customer.default_address | format_address }} <a href="{{ routes.account_addresses_url }}" class="btn btn--primary btn--small section-header__link address-new-toggle">{{ 'customer.addresses.add_new' | t }}</a> </div>
+			<div id="order_history" class="tabcontent">
+				<h2>Order History</h2> {%- if customer.orders.size != 0 -%}
+				<table class="table--responsive table--small-text">
+					<thead>
+						<tr>
+							<th>{{ 'customer.orders.order_number' | t }}</th>
+							<th>{{ 'customer.orders.date' | t }}</th>
+							<th>{{ 'customer.orders.payment_status' | t }}</th>
+							<th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+							<th>{{ 'customer.orders.total' | t }}</th>
+						</tr>
+					</thead>
+					<tbody> {%- for order in customer.orders -%}
+						<tr class="table__section">
+							<td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+							<td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+							<td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+							<td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+							<td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+						</tr> {%- endfor -%} </tbody>
+				</table>
+				<hr class="hr--clear"> {%- else -%}
+				<p>{{ 'customer.orders.none' | t }}</p> {%- endif -%} </div>
+		</div>
+	</div>
+</div> {%- endpaginate -%}
+<style>
+/* Style the tab */
+
+.tab {
+	height: auto;
+}
+
+
+/* Style the buttons inside the tab */
+
+.tab button {
+	display: block;
+	color: black;
+	padding: 10px 16px;
+	width: 100%;
+	border: none;
+	outline: none;
+	font-weight: 600;
+	text-align: left;
+	cursor: pointer;
+	transition: 0.3s;
+	font-size: 17px;
+	background: none;
+}
+
+.tab button {
+	display: flex;
+	align-items: center;
+}
+
+.tab button svg {
+	margin-right: 10px;
+}
+
+
+/* Change background color of buttons on hover */
+
+.tab button {
+	opacity: 0.7;
+}
+
+
+/* Create an active/current "tab button" class */
+
+.tab button.active {
+	opacity: 1;
+}
+
+
+/* Create an active/current "tab button" class */
+
+.tab button:hover {
+	opacity: 1;
+}
+
+
+/* Style the tab content */
+
+.tabcontent {
+	padding: 0px 12px;
+}
+</style>
+<script>
+function openTab(evt, cityName) {
+	var i, tabcontent, tablinks;
+	tabcontent = document.getElementsByClassName("tabcontent");
+	for(i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	}
+	tablinks = document.getElementsByClassName("tablinks");
+	for(i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	}
+	document.getElementById(cityName).style.display = "block";
+	evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>

@@ -1,0 +1,155 @@
+<script>
+  function start_observing_monster() {
+    let monster_upsell_cart = document.querySelector('#monster-upsell-cart');
+    let mu_cart_observer = new MutationObserver(() => {
+      mu_cart_observer.disconnect();
+      let checkout_container = document.querySelector('.mu-flex.mu-flex-col.mu-px-5.mu-pt-4 + .mu-px-5');
+      let fbt_section = document.querySelector("#mu-checkout-button ~ .mu-frequently-container");
+      // let fbt_top = document.querySelector("#mu-checkout-button ~ .mu-text-center.mu-my-3");
+
+      if (fbt_section) {
+        let dest_element = document.querySelector('.mu-flex.mu-flex-col.mu-px-5.mu-pt-4');
+        // dest_element.appendChild(fbt_top);
+        dest_element.appendChild(fbt_section);
+      }
+      if(checkout_container) {
+        let dest_element = document.querySelector('.mu-w-full.mu-h-full.mu-m-0.mu-p-0.mu-max-w-full');
+        dest_element.appendChild(checkout_container);
+      }
+      mu_cart_observer.observe(monster_upsell_cart, { childList: true, subtree: true });
+    });
+    mu_cart_observer.observe(monster_upsell_cart, { childList: true, subtree: true });
+  }
+  let mu_body_observer = new MutationObserver(() => {
+    let monster_upsell_cart = document.querySelector("#monster-upsell-cart");
+    if (monster_upsell_cart) {
+      mu_body_observer.disconnect();
+      start_observing_monster();
+    }
+  })
+  mu_body_observer.observe(document.querySelector('body'), { childList: true, subtree: false });
+</script>
+<script>
+  if (window.ShopifyAnalytics.meta.page.pageType == "product") {
+    function mu_atc() {
+      fetch(
+        window.location.origin + "/cart.js"
+      )
+        .then((res) => res.json())
+        .then((response) => {
+          let tee_response = document.querySelector(
+            ".tee-form-responses .tee-response a"
+          );
+          if (tee_response) {
+
+            window.location='https://adorb.co/cart';
+            return;
+            
+            window.mu_cart_items = response.items;
+            window.monster_setCartItems(response.items);
+            window.mu_productionAddToCartCallBack(response.items);
+            
+          }
+          start_observing_teeAtcButton_load();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    function start_observing_teeAtcButton_stop() {
+      let teeAtcButton = document.querySelector("#teeAtcButton");
+      var teeAtcButton_stop_observer = new MutationObserver((mutationsList) => {
+        let tee_disabled = teeAtcButton?.getAttribute("disabled") == "disabled";
+        if (!tee_disabled) {
+          teeAtcButton_stop_observer.disconnect();
+          mu_atc();
+        }
+      });
+      teeAtcButton_stop_observer.observe(teeAtcButton, {
+        subtree: false,
+        attributes: true,
+      });
+    }
+
+    function start_observing_teeAtcButton_load() {
+      let teeAtcButton = document.querySelector("#teeAtcButton");
+      var teeAtcButton_load_observer = new MutationObserver((mutationsList) => {
+        let tee_disabled = teeAtcButton?.getAttribute("disabled") == "disabled";
+        if (tee_disabled) {
+          teeAtcButton_load_observer.disconnect();
+          start_observing_teeAtcButton_stop();
+        }
+      });
+      teeAtcButton_load_observer.observe(teeAtcButton, {
+        subtree: false,
+        attributes: true,
+      });
+    }
+
+    var single__meta_observer = new MutationObserver((mutationsList) => {
+      let teeAtcButton = document.querySelector("#teeAtcButton");
+      if (teeAtcButton) {
+        single__meta_observer.disconnect();
+        start_observing_teeAtcButton_load();
+      }
+    });
+
+    single__meta_observer.observe(
+      document.querySelector(".product-single__meta"),
+      {
+        subtree: true,
+        childList: true,
+      }
+    );
+  }
+</script>
+<script>
+  function start_observing_monster2(monster_upsell_cart) {
+    let mu_cart_observer = new MutationObserver(() => {
+      mu_cart_observer.disconnect();
+      let frequently_boughts = document.querySelectorAll('.mu-frequently-container div .mu-border-b .mu-bg-cover + .mu-flex-1.mu-flex.mu-flex-col');
+      frequently_boughts.forEach((frequently_bought) => {
+        let product_url = frequently_bought.querySelector('b > a').getAttribute('href');
+        let mu_btn_links = frequently_bought.querySelectorAll('.mu-border-solid');
+        mu_btn_links.forEach((mu_btn_link, index) => {
+          if(index === 0) {
+            if (mu_btn_link.outerHTML.includes('<button')) {
+              mu_btn_link.setAttribute('href', product_url);
+              mu_btn_link.outerHTML = mu_btn_link.outerHTML.replace('<button', '<a');
+            }
+          } else {
+            mu_btn_link.remove();
+          }
+        })
+      });
+      mu_cart_observer.observe(monster_upsell_cart, { childList: true, subtree: true });
+    });
+    mu_cart_observer.observe(monster_upsell_cart, { childList: true, subtree: true });
+  }
+  let mu_body_observer2 = new MutationObserver(() => {
+    let monster_upsell_cart = document.querySelector("#monster-upsell-cart");
+    if (monster_upsell_cart) {
+      mu_body_observer2.disconnect();
+      start_observing_monster2(monster_upsell_cart);
+    }
+  })
+  mu_body_observer2.observe(document.querySelector('body'), { childList: true, subtree: false });
+</script>
+<style>
+  .mu-w-full.mu-h-full.mu-m-0.mu-p-0.mu-max-w-full > .mu-px-5 {
+    background-color: #ffffff !important;
+    border-width: 1px 0 0 0 !important;
+    border-color: #e5e5e5 !important;
+    padding-top: 20px !important;
+    /* padding-bottom: 20px !important; */
+  }
+  .custom_scrollbar___2sb__ {
+    margin-bottom: 0 !important;
+  }
+  @media screen and (min-width: 550px) {
+    .monster_upsell_cart___25Ft7[data-curved="true"] {
+      width: 400px !important;
+    }
+  }
+</style>

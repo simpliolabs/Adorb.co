@@ -1,0 +1,138 @@
+{% assign addons = product.metafields.shineon.addons.value | default: product.metafields.shineon.addons %}
+
+{% if placement == addons.placement %}
+    {% assign addon_items = addons.items %}
+    {% if addon_items.size > 0 %}
+
+        <div class="tailwind">
+            <div class="tw-font-sans tw-mt-6 tw-font-sans tw-bg-white tw-rounded-md tw-shadow-sm tw-border tw-border-solid tw-border-[#c0cbd3] tw-overflow-hidden">
+                <div class="tw-px-6 tw-py-3 tw-bg-[#bac2d2]">
+                    <p class="tw-text-gray-700 tw-font-bold tw-mb-0">Premium Add-Ons</p>
+                </div>
+                <div class="so-product-page-addons tw-divide-y tw-divide-[#c0cbd3]">
+                    {% assign sorted_addon_items = addon_items | sort: 'order' %}
+                    {% for addon in sorted_addon_items %}
+                        {% assign addon_product = all_products[addon.handle] %}
+                        {% if addon_product %}
+
+                            <label for="{{ addon_product.handle }}__addon" class="addon_product-label tw-px-6 tw-py-4 tw-mb-0 tw-flex tw-items-center tw-space-x-8 hover:tw-bg-gray-50{% if show_quantity and addon.singular != true %} addon__quantity-label{% endif %}">
+                                <input id="{{ addon_product.handle }}__addon"
+                                       name="{{ addon_product.handle }}__addon"
+                                       type="checkbox"
+                                       class="form-checkbox focus:tw-ring-gray-500 tw-h-6 tw-w-6 tw-text-gray-700 tw-border tw-border-gray-400 tw-rounded checked:tw-border-transparent"
+                                       data-addon-price="{{ addon_product.price }}"
+                                       data-variant-id="{{ addon_product.variants.first.id }}"
+                                       data-singular="{{ addon.singular }}"
+                                       autocomplete="off"
+                                >
+                                <span class="tw-block tw-w-16 tw-h-16 tw-relative tw-flex-shrink-0">
+                                {% if show_quantity and addon.singular != true %}
+                                    <span class="tw-invisible tw-flex tw-items-center tw-justify-center tw-h-6 tw-w-6 tw-absolute tw-bg-gray-800/75 tw--top-2.5 tw--right-2.5 tw-rounded-full">
+                                        <span class="tw-font-bold tw-text-white tw-text-sm addon__quantity">1</span>
+                                    </span>
+                                {% endif %}
+                                    <img class="tw-block tw-rounded-md tw-w-16 tw-h-16 tw-object-cover" src="{{ addon_product | img_url: '96x96' }}" alt="{{ addon_product.title | escape }}">
+                                </span>
+                                <span class="tw-block">
+                                    <button onclick="showAddonModal('{{ addon_product.handle }}')" type="button" class="tw-block tw-text-gray-700 hover:tw-text-gray-900 hover:tw-underline tw-font-semibold">
+                                        {{ addon_product.title }}
+                                        {% if addon.display_price %}
+                                            - {{ addon_product.price | money }}
+                                        {% endif %}
+                                    </button>
+                                    <span class="tw-block tw-text-sm tw-text-gray-400">
+                                        {{ addon_product.description }}
+                                    </span>
+                                </span>
+                            </label>
+                            {% include 'info-modal', product_handle: addon_product.handle %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="product-additions-subtotal" data-product-price="{{ product.selected_or_first_available_variant.price }}" style="display: none;">
+            <div>Subtotal:</div>
+            <div>
+                <strong class="price-with-additions">{{ product.selected_or_first_available_variant.price | money }}</strong>
+                <span class="product-price" style="display: none;">{{ product.selected_or_first_available_variant.price }}</span>
+            </div>
+        </div>
+
+        <script>
+            function showAddonModal(product_handle) {
+                var $modal = $('#modal-info-' + product_handle)
+                $modal.insertAfter($('div.page-container').length ? 'div.page-container' : 'body');
+                $modal.so_modal('show')
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                jQuery(document).ready(function($)
+                {
+                    var $form = $('form.so-product-form')
+
+                    var $quantity_change_selector = $('.so-quantity-change')
+                    var $quantity_selector = $('.so-cart-qty-input')
+
+                    applyAddonQuantity()
+
+                    $quantity_change_selector.on('click', function () {
+                        setTimeout(function () {
+                            applyAddonQuantity()
+                            syncProductPageAddons()
+                        }, 1)
+                    })
+
+                    $quantity_selector.change(function (e) {
+                        setTimeout(function () {
+                            applyAddonQuantity()
+                            syncProductPageAddons()
+                        }, 1)
+                    })
+
+                    function applyAddonQuantity() {
+                        var quantity = parseInt($quantity_selector.val())
+                        var $addon_quantity = $('.addon__quantity')
+                        var $addon_quantity_parent = $addon_quantity.parent()
+
+                        $addon_quantity.text(quantity)
+
+                        if (quantity > 1 && $addon_quantity_parent.hasClass('tw-invisible')) {
+                            $addon_quantity_parent.removeClass('tw-invisible')
+                        } else if (quantity <= 1) {
+                            $addon_quantity_parent.addClass('tw-invisible')
+                        }
+                    }
+
+                    function syncProductPageAddons() {
+                        $('.addon__selection').remove()
+                        $('.so-product-page-addons input:checked').each(function (index, el) {
+                            var variant_id = $(el).data('variant-id')
+                            var is_checked = $(el).is(':checked')
+                            var singular = $(el).data('singular')
+
+                            var base_name = 'items' + '[' + variant_id + ']'
+                            var id_input_name = base_name + '[id]'
+                            var quantity_input_name = base_name + '[quantity]'
+
+                            if (is_checked) {
+                                var quantity = singular ? 1 : (parseInt($('.so-cart-qty-input').val()) || 1)
+
+                                var $base_input = $('<input class="addon__selection" type="hidden" />').data('variant-id', variant_id)
+
+                                var $id_input = $base_input.clone().attr('name', id_input_name).val(variant_id)
+                                var $quantity_input = $base_input.clone().attr('name', quantity_input_name).val(quantity)
+
+                                $form.append($id_input)
+                                $form.append($quantity_input)
+                            }
+                        })
+                    }
+
+                    $('.so-product-page-addons input[type="checkbox"]').change(syncProductPageAddons)
+                })
+            })
+        </script>
+    {% endif %}
+{% endif %}

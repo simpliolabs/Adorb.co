@@ -1,0 +1,111 @@
+{%- if section.blocks.size > 0 -%}
+
+<div id="shopify-section-collection-block-mobile" class="shopify-section link_block">
+    <div class="cb_wrapper">
+        <div class="cb_slide">
+            {% for block in section.blocks %}
+                {%- assign collection = collections[block.settings.collection] -%}
+                <div class="item">
+                    <div class="cb_data">
+                        <a href="{{ collection.url }}">
+                            <div class="cb_img"><img src="{{ block.settings.img | img_url : '80x' }}" alt="adorb"/></div>
+                            <div class="cb_txt"><p>{{ block.settings.title }}</p></div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Collection Block Mobile",
+    "class": "index-section--flush",
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "name": "Collection Block",
+        "type" : "slide",
+        "settings": [
+            {
+                "type": "collection",
+                "id": "collection",
+                "label": "Collection"
+            },
+            {
+                "type": "image_picker",
+                "id": "img",
+                "label": "Choose the circle image for the collection"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading"
+            }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Block Mobile",
+        "category": "Collection",
+        "blocks" : [
+            {
+                "type" : "slide"
+            }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+    #shopify-section-collection-block-mobile{
+        display: none;
+    }
+    .cb_wrapper{
+        overflow-y: scroll;
+    }
+    .cb_slide{
+        display: flex;
+        width: 110%;
+        background-color: #ffa88a ;
+        justify-content: space-between;
+    }
+    .cb_slide .item{
+        width: 15%;
+        text-align: center;
+    }
+    .cb_slide .item .cb_data{
+        width: 100%;
+        {% comment %} padding: 0 8px; {% endcomment %}
+    }
+    .cb_slide .item .cb_data .cb_txt p{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        letter-spacing: .2px;
+        line-height: 14px;
+        text-align: center;
+        color: #000000;
+        margin-top: -5px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+    .cb_slide .item .cb_data img{
+        width: auto !important;
+        margin: auto;
+    }
+    @media screen and (max-width: 768px) {
+        #shopify-section-collection-block-mobile{
+            display: block;
+        }
+        .header-sticky-wrapper{
+            margin-bottom: 0;
+        }
+    }
+</style>

@@ -1,0 +1,29 @@
+
+{% assign block_version_number = '1.10.0' %}
+<!-- Begin uncomplicated category icons v{{ block_version_number }}tw - PLEASE DO NOT CHANGE as this is auto-generated in an embed -->
+{%- comment -%} initialise local variables {%- endcomment -%}
+{% assign bucket_source = 'https://themeassets.aws-dns.uncomplicatedapps.com/shopify' %}
+{% assign category_hierarchy_iteration = shop.metafields.uncomptcat.cathiter.value %}
+
+<div id="uncomplicated-icons" style="display: none;" class="category-icons show-styled show-embed {% if show_class %}{{ show_class }}{% else %}show-downdirect show-large-4up show-medium-3up show-small-2up{% endif %}">
+    <div class="subcat-grid-item">
+        <a class="subcat-grid-link" href="#">
+            <span class="subcat-grid-link__image">
+                <span class="subcat-grid-link__image-centered">
+                    <img
+                        src="https://themeassets.aws-dns.uncomplicatedapps.com/shopify/img/loading-image-for-this-collection.png"
+                        alt="subcategory" class="subcat-grid-link__image-img"
+                    />
+                </span>
+            </span>
+            <p class="subcat-grid-link__title">Sub-category</p>
+        </a>
+    </div>
+    <div class="subcat-terminator">&nbsp;</div>
+</div>
+
+{%- comment -%} attach scripts (async) and styles from remote assets folder using shop permanent name, cachebust on iteration number (if set) {%- endcomment -%}
+<script src="{{ bucket_source | append: "/" | append: shop.permanent_domain | append: "-catlist.min.js?cbi=" | append: block_version_number | append: category_hierarchy_iteration }}" async></script>
+{{ bucket_source | append: "/" | append: shop.permanent_domain | append: "-catlist.css?cbi=" | append: block_version_number  | append: category_hierarchy_iteration | stylesheet_tag }}
+<!-- End uncomplicated category icons (embed) -->
+

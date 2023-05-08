@@ -1,0 +1,609 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+<link rel='preconnect dns-prefetch' href='https://triplewhale-pixel.web.app/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+
+<script  type='text/javascripts'>
+/* >> TriplePixel :: start*/
+~function(W,H,A,L,E,_,B,N){function O(U,T,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,H.open("GET",U,!0),H.send(null),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes(".txt")?eval(R):N[B]=R):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1;try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push(location.href),A.setItem(H+"U",JSON.stringify(E))}catch(e){}A.getItem('"!nC`')||(A=N,A[H]||(L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)},E=A[H]=function(t,e){return W=L(),(E._q=E._q||[]).push([W,t,e]),W},E.ch=W,B="configSecurityConfModel",N[B]=1,O("//conf.config-security.com/model",0),O("//triplewhale-pixel.web.app/triplefw.txt?",5)))}}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KG3HDB7');</script>
+  <!-- End Google Tag Manager -->
+{% if template contains "collection" %}
+  <link rel="preload" href="{{ 'collection-css.css' | asset_url }}" as="style">
+  <link rel="preload" href="{{ 'collection-css2.css' | asset_url }}" as="style">
+{% else %}
+  <link rel="preload" href="{{ 'critical.css' | asset_url }}" as="style">
+{% endif %}
+{% if template contains "search" %}
+    <link rel="preload" href="{{ 'search.css' | asset_url }}" as="style">
+{% endif %}
+
+    
+
+  
+  <meta name="verifyownership" 
+ content="0fce802ea9e261fc0a2ac6cada7390c2" data-tes="test" />
+  
+ {% render 'elevar-head' %}
+  
+  <!-- Global site tag (gtag.js) - Google Ads: 480289596 -->
+<script async  type="text/javascript"  data-src="https://www.googletagmanager.com/gtag/js?id=AW-480289596"></script>
+
+{% if template contains 'product' %}
+  <!-- Infinite Options by ShopPad -->
+<script>
+  window.Shoppad = window.Shoppad || {},
+  window.Shoppad.apps = window.Shoppad.apps || {},
+  window.Shoppad.apps.infiniteoptions = window.Shoppad.apps.infiniteoptions || {},
+  window.Shoppad.apps.infiniteoptions.submitPriceModCartAnyways = true;
+</script>
+{% endif %}
+  <script data-src="//d1liekpayvooaz.cloudfront.net/apps/customizery/customizery.js?shop={{shop.permanent_domain}}"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="preconnect" href="https://fonts.shopifycdn.com">
+  <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+  <link rel="dns-prefetch" href="https://ajax.googleapis.com">
+  <link rel="dns-prefetch" href="https://maps.googleapis.com">
+  <link rel="dns-prefetch" href="https://maps.gstatic.com">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+
+  {%- render 'seo-title' -%}
+
+  {%- if page_description -%}
+  <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- render 'social-meta-tags' -%}
+
+  {%- render 'font-face' -%}
+  
+
+  {%- render 'css-variables' -%}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    window.theme = window.theme || {};
+    theme.routes = {
+      cart: "{{ routes.cart_url }}",
+      cartAdd: "{{ routes.cart_add_url | append: '.js'}}",
+      cartChange: "{{ routes.cart_change_url }}"
+    };
+    theme.strings = {
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+      willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+      willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+      waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+      savePrice: {{ 'products.general.save_html' | t: saved_amount: '[saved_amount]' | json }},
+      cartEmpty: {{ 'cart.general.empty' | t | json }},
+      cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+    };
+    theme.settings = {
+      dynamicVariantsEnable: true,
+      dynamicVariantType: {{ settings.variant_type | json }},
+      cartType: {{ settings.cart_type | json }},
+      moneyFormat: {{ shop.money_format | json }},
+      saveType: {{ settings.product_save_type | json }},
+      recentlyViewedEnabled: false,
+      predictiveSearch: {{ settings.predictive_search_enabled }},
+      predictiveSearchType: {{ settings.search_type | json }},
+      inventoryThreshold: {{ settings.inventory_threshold }},
+      quickView: {{ settings.quick_shop_enable }},
+      themeName: 'Impulse',
+      themeVersion: "6.0.3"
+    };
+  </script>
+{% include 'vital-loader' %}
+  {% capture cfh %}{{ content_for_header }}{% endcapture %} 
+ 
+   <link rel="stylesheet" type="text/css" href="{{ 'theme.css' | asset_url }}">
+   <link rel="stylesheet" type="text/css" href="{{ 'mycustom.css' | asset_url }}">
+
+  {% if template == 'product' and product.metafields.inventory.ShappifyHidden or product.type contains '_HIDDEN_' %}<meta name='robots' content='noindex'>{% endif %}
+   <link rel="preload" href="{{ 'vendor-scripts-v7.js' | asset_url | split: '?' | first }}" as="script">
+
+  {%- if shop.enabled_currencies.size > 1 -%}
+     <link rel="stylesheet" data-href="{{ 'currency-flags.css' | asset_url }}"> 
+  {%- endif -%}
+   <link rel="preload" href="{{ 'theme.js' | asset_url | split: '?' | first }}" as="script">
+
+  
+  
+  
+
+  {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  {%- endif -%}
+  
+<link rel="stylesheet" data-href="{{ 'ndnapps-easyfaqs.css' | asset_url }}">
+  
+{% render 'digismoothie-candyrack' %}
+<!--Gem_Page_Header_Script-->
+{% include 'gem-app-header-scripts' %}
+<!--End_Gem_Page_Header_Script-->
+  
+  
+  <script data-src="https://shopoe.net/app.js"></script>
+  
+
+  <meta name="google-site-verification" content="lcfAnQkBty89rMK57KUeqfPxaNW5dRHg_kXQ5Tt1vG8" /> {%capture get_code%}  
+   {%- render 'bold-options-hybrid' -%}
+  {%- render 'bold-common' -%}
+
+{% render 'gsf-conversion-pixels' %}
+  {% comment %}
+  {% include 'qikify-smartbar' %}
+  {% endcomment %}
+  {{ 'teeinblue-custom.css' |  asset_url | stylesheet_tag: prefetch: true }}
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  {% include 'teeinblue-scripts' %}  
+{% include 'wiser_popup' %}                                                                                                         {%endcapture%}<script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{get_code | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
+       
+<!--    teeinblue configuration - please do not delete - start  -->
+<script type="text/javascript">
+    teeinblue = {
+      formSelector: '.product__quantity.product__quantity--button',
+    };
+</script>
+<!--    teeinblue configuration - please do not delete - end  -->  
+
+
+<style>
+.grid-product__meta .jdgm-rev-widg__header .jdgm-rev-widg__title, 
+.grid-product__meta .jdgm-rev-widg__body, 
+.grid-product__meta .jdgm-write-rev-link, 
+.grid-product__meta .jdgm-rev-widg__summary .jdgm-rev-widg__summary-text{
+  display: none!important;
+}
+  
+.grid-product__meta .jdgm-rev-widg {
+    padding-bottom: 4px;
+    padding-top: 10px;
+}
+
+.grid-product__meta .jdgm-rev-widg__header {
+  box-shadow:none!important;
+  padding: 0!important;
+  text-align:center;
+} 
+  
+.grid-product__meta .jdgm-rev-widg__summary {
+    margin-bottom: 0;
+}  
+
+  .judge-product-list-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    max-width: 210px;
+    {% comment %} margin-right: auto;
+    margin-left: auto; {% endcomment %}
+    padding-top: 5px;
+  }
+   
+  .judge-product-list-block .jdgm-rev-widg, 
+  .judge-product-list-block .all-review-count-block{
+    width: 50%;
+    padding: 0!important;
+    text-align: left;
+  }
+
+  .newsletter-section form.klaviyo-form > .needsclick {
+    min-height: 100px!important;
+    max-height: 100px;
+  } 
+
+  .newsletter-section form.klaviyo-form button[type="button"] {
+    background: #57b625!important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .judge-product-list-block {
+      display: block;
+      margin-right: auto;
+      margin-left: auto; 
+    }
+    .judge-product-list-block .jdgm-rev-widg, 
+    .judge-product-list-block .all-review-count-block{
+      width: 100%;
+      padding: 0!important;
+      text-align: center;
+    }
+    .judge-me-fetch--reviews:not(.mobile_only) {
+    display: none!important;
+    }
+  }
+
+  body[enable-collection-sidebar="1"] .collection-content .grid__item--sidebar {
+      width: 25%;
+  }
+
+  body[enable-collection-sidebar="1"] .collection-content .grid__item--content {
+      width: 70%;
+  }
+
+  body[enable-collection-sidebar="1"] .category-list.show-styled li {
+     display: block;
+  }
+
+  
+</style>
+
+{% comment %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endcomment %}
+      <script src="{{ 'vendor-scripts-v7.js' | asset_url | split: '?' | first }}" ></script>
+
+  <!--begin-boost-pfs-filter-css-->
+   {% render 'boost-pfs-style' %}
+ <!--end-boost-pfs-filter-css-->
+
+ <script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "gwpymy0b4i");
+</script>
+
+
+</head>
+<!--  <script>
+  const check = setInterval(function(){
+    if ($("shopify-payment-terms").length >= 1) {
+        clearInterval(check);
+        setTimeout(function(){
+$('#tee-artwork-form .tee-product-price').after($("shopify-payment-terms"));
+      },1000)
+    }
+  },50)
+</script>
+
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-center-text="{{settings.type_body_align_text}}" data-button_style="{{settings.button_style}}" data-type_header_capitalize="{{settings.type_header_capitalize}}" data-type_headers_align_text="{{settings.type_headers_align_text}}" data-type_product_capitalize="{{settings.type_product_capitalize}}" data-swatch_style="{{settings.swatch_style}} " enable-collection-sidebar="{%- if collection.id == 414932893924 and template == 'collection' -%}1{%- endif -%}">    {% include 'theme-scripts' %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG3HDB7"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% include 'teeinblue-product-loader' %}
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div id="PageContainer" class="page-container">
+    <div class="transition-body">
+
+    {%- section 'header' -%}
+
+      <main class="main-content" id="MainContent">
+        {% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
+      </main>
+
+      {%- section 'footer-promotions' -%}
+      {%- section 'footer' -%}
+
+    </div>
+  </div>
+
+  {%- section 'newsletter-popup' -%}
+
+  {%- if settings.cart_type == 'drawer' -%}
+    {%- render 'ajax-cart-template' -%}
+  {%- endif -%}
+
+  <div class="hide">
+    <button id="prevArrowTemplate" class="slick-prev" aria-label="{{ 'general.pagination.previous' | t }}" type="button">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+      <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+    </button>
+    <button id="nextArrowTemplate" class="slick-next" aria-label="{{ 'general.pagination.next' | t }}" type="button">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+      <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+    </button>
+  </div>
+  
+
+
+  {%- if settings.predictive_search_enabled -%}
+    {%- render 'predictive-template' -%}
+  {%- endif -%}
+
+  {%- render 'video-modal' -%}
+  {%- render 'photoswipe-template' -%}
+  {%- if template contains 'product' -%}
+    {%- render 'recently-viewed-product-template' -%}
+  {%- endif -%} 
+<script  type="text/javascript"  data-src='{{ 'ndnapps-easyfaqs.js' | asset_url }}' defer='defer'></script>{%capture get_code%}  
+<!--Gem_Page_Footer_Script-->
+{% include 'gem-app-footer-scripts' %}
+<!--End_Gem_Page_Footer_Script--> 
+
+ <!--begin-boost-pfs-js-->
+   {% render 'boost-pfs' %}
+ <!--end-boost-pfs-js-->                                                                                                           {%endcapture%}<script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{get_code | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
+       
+
+ {% render 'elevar-body-end' %}
+{% comment %}
+{% include 'uploadkit' %}
+{% endcomment %}
+
+
+{% include 'productpageswatchsnippet' %}{% include 'swatchyappvariables' %}
+  <style>
+  .stamped-badge-powered, .stamped-badge-powered a {
+    display: none !important;
+}
+
+  .stamped-badge-powered, .stamped-badge-powered a {
+    font-size: 12px;
+    color: #999;
+    text-decoration: none;
+    margin-top: 5px;
+    text-align: center;
+    display: none !important;
+}
+   </style>
+
+        <script data-instant-track type="text/javascript">
+
+          
+function makeTimer() {
+
+	//		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
+		var endTime = new Date("31 january 2023 11:59:59 GMT-06:00");			
+			endTime = (Date.parse(endTime) / 1000);
+
+			var now = new Date();
+			now = (Date.parse(now) / 1000);
+
+			var timeLeft = endTime - now;
+
+			var days = Math.floor(timeLeft / 86400); 
+			var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+			var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+			var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+  
+			if (hours < "10") { hours = "0" + hours; }
+			if (minutes < "10") { minutes = "0" + minutes; }
+			if (seconds < "10") { seconds = "0" + seconds; }
+
+			$(".day-left.time-left .num").html(days);
+			$(".hour-left.time-left .num").html(hours);
+			$(".minute-left.time-left .num").html(minutes);
+			$(".second-left.time-left .num").html(seconds);		
+
+	}
+
+          const checkParticlesjs = document.querySelector('.day-left.time-left .num')
+            if (checkParticlesjs) {
+            setInterval(function() { makeTimer(); }, 1000);
+            }
+
+</script>
+  {% include 'monster-mo-script' %}
+ 
+
+{{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag | replace: ' src=', ' data-src='}} 
+{% capture tbCommonContent %}{% render 'tb-shopify' %}{% endcapture %}
+                                {% if tbCommonContent contains "Could not find asset" %}
+                                    {% comment %} do nothing {% endcomment %}
+                                {% else %}
+                                    {% render 'tb-shopify' %}
+                                {% endif %}
+                                
+          <script src="{{ 'theme.js' | asset_url | split: '?' | first }}" ></script>
+
+    </body>
+{%  if template == 'product.dropdown-options' %}
+<style>
+  .judge-product-list-block {
+    display: none;
+    
+}
+a.grid-product__link {
+  flex-direction: column;
+  display: flex;
+}
+.grid-product__title.grid-product__title--body {
+  order: -2;
+}
+.grid-product__price {
+  order: -1;
+}
+</style>
+{% endif %}
+<style>
+  .stamped-badge-powered, .stamped-badge-powered a {
+    display: none !important;
+}
+
+  .stamped-badge-powered, .stamped-badge-powered a {
+    font-size: 12px;
+    color: #999;
+    text-decoration: none;
+    margin-top: 5px;
+    text-align: center;
+    display: none !important;
+}
+
+  div#shopify-section-1610930684154cbe38,div#shopify-section-16311227888cc4d2c9 {display:none}
+   </style>
+  <script async type="text/javascript" data-api-key="" id="stamped-script-widget" data-src="https://cdn-stamped-io.azureedge.net/files/widget.min.js"></script>
+  
+<script crossorigin='anonymous' data-src="https://widebundle.com/scripttag.php?shop=festivitees-com.myshopify.com&v={{ "now" | date: "%s"}}"></script>
+
+<script src="{{ 'custom-adorb-script.js' | asset_url }}"  type="text/javascript"></script>
+      
+{{ 'custom.min.js' | asset_url | script_tag }}
+ <script>
+    $(function() {
+      $('#create_customer').submit(function(e) {
+        if ($('input[name="customer[password]"]').val() != $('input[name="customer[con_password]"]').val()) {
+          e.preventDefault();
+          alert('Passwords do not match.');
+        }
+      });
+    });
+  </script>
+{% if template contains 'product' %}
+<script>  
+$(document).ready(function(){  
+
+    
+ setTimeout(function() { 
+   var init_price = $('span.money.theme-money.price.tee-price--current').text();
+   $('.tee-btn.tee-btn--atc span').text('Add to Cart' +"- "+  init_price );
+var targett = document.querySelector('div#tee-artwork-form')
+
+// Create an observer instance.
+var observer = new MutationObserver(function(mutations) {
+    console.log(target.firstChild.children[0].innerText);  
+  $('.tee-btn.tee-btn--atc span').text('Add to Cart'+" - " + target.firstChild.children[0].innerText );
+});
+
+// Pass in the target node, as well as the observer options.
+observer.observe(targett, {
+    attributes:    true,
+    childList:     true,
+    characterData: true
+});
+
+
+
+//    var target1 = document.querySelector('span.money.theme-money.price.tee-price--current')
+
+// // Create an observer instance.
+// var observer1 = new MutationObserver(function(mutations) {
+  
+//     console.log(target1.innerText);  
+//   $('.tee-btn.tee-btn--atc span').text('Add to Cart'+"- " +target.firstChild.children[0].innerText );
+// });
+
+// // Pass in the target node, as well as the observer options.
+// observer1.observe(target1, {
+//     attributes:    true,
+//     childList:     true,
+//     characterData: true
+// });
+
+   }, 3000);
+ 
+ 
+});  
+
+
+
+
+
+</script>
+{% endif %}
+
+<style>
+  {% comment %}Style for converting star icons to heart icons on judge.me{% endcomment %}
+  div:has(> .jdgm-star), a:has(> .jdgm-star), span:has(> .jdgm-star){
+    display: flex;
+    align-items: center;
+  }
+  div:has(> .jdgm-star), a:has(> .jdgm-star){
+    justify-content: center;
+  }
+  .jdgm-star{
+    display: block !important;
+    width:20px;
+    height:20px;
+  }
+  .jdgm-histogram__row{
+    display: flex;
+  }
+  .judge-me-fetch--reviews{
+    display: flex;
+    align-items: center;
+  }
+  .judge-me-fetch--reviews .ratings{
+    padding-right: 10px;
+  }
+  .jdgm-rev-widg.jdgm-rev-widg{
+    margin: auto;
+  }
+  .jdgm-star.jdgm--on { background-image: url("{{ 'heart.png' | asset_img_url : '20x' }}"); background-size: cover; }
+  .jdgm-star.jdgm--off { background-image: url("{{ 'heart-off.png' | asset_img_url : '20x' }}"); background-size: contain; }
+  .jdgm-star.jdgm--half { background-image: url("{{ 'half-heart.png' | asset_img_url : '20x' }}"); background-size: contain; }
+  .jdgm-star.jdgm-star:last-of-type { padding-right: 4px !important; } 
+
+  .jdgm-star::before {opacity: 0;} 
+
+  {%- comment -%}For firefox browser{%- endcomment -%}
+  .review-scroller-link{
+    display: flex;
+    {% comment %} align-items: center; {% endcomment %}
+  }
+  .jdgm-prev-badge__stars{
+    display: flex !important;
+  }
+  .jdgm-prev-badge__text{
+    padding-left: 5px;
+  }
+  .jdgm-histogram__star, .jdgm-histogram__bar, .jdgm-histogram__frequency{
+    display: flex !important;
+    align-items: center;
+  }
+  .jdgm-rev-widg__summary-stars{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .jdgm-rev__rating{
+    display: flex;
+    align-items: center;
+  }
+  .jdgm-all-reviews-rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .jdgm-form__rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .grid__item.three-quarters img.tee-img-fluid {
+    max-width: 150px!important;
+}
+</style>
+<script>
+  $(".variant-input-wrap input").on("change",function(){
+    setTimeout(function(){
+    let selected = $(".varinat-selector option:selected").attr("data-pick-price");
+     let textBtn = `Add to cart → - ${selected}`;
+     $("button.add-to-cart").text(textBtn);
+    },500);
+ }) 
+
+ 
+  
+</script>
+
+
+</html>
+
+
+

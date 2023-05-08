@@ -1,0 +1,10 @@
+<div class="select-currency hidden" style="margin:{% if position == 'above'%}0 0 10px 0{% else %}10px 0 0 0{% endif %}">
+    {%- assign currencies_list = section.settings.currency_list | split: ', ' -%}
+    <div class="selector-wrap-triangle-down">
+        <select class="so-currency-selector">
+        {% for currency in currencies_list %}
+            <option data-index="{{ forloop.index }}" value="{{ currency | escape }}">{{ currency | escape }}</option>
+        {% endfor %}
+        </select>
+    </div>
+</div>

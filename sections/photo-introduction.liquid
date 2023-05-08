@@ -1,0 +1,123 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" as="style">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" as="style">
+
+<section
+    data-section-id="{{ section.id }}"
+    data-section-type="photo-introduction"
+    class="section"
+  >
+    <div class = "photo-introduction_wrapper page-width">
+      <div class = "photo-introduction_header">
+        {% if section.settings.title != blank %}
+          <h4 class = "photo-introduction_heading_text">{{ section.settings.title }}</h4>
+        {% endif %}
+      </div>
+      <div class = "photo-introduction_contents">
+        {% for block in section.blocks %}
+          <div class="photo-introduction_contents_column">
+            <div class = "photo-introduction_image_wrapper">
+              {% if block.settings.photo_intro_img %}
+                <img data-src="{{ block.settings.photo_intro_img | img_url: '500x500'}}" class="lazyload">
+              {% endif %}
+            </div>
+            <h3 class="type-heading-1">{{ block.settings.photo_intro_heading }}</h3>
+            <div class="photo_intro_main_contents">{{ block.settings.photo_intro_content }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+  </section>
+  
+  <style>
+    .slick-arrow{
+        z-index: 1;
+    }
+  
+    .slick-next:before {
+        position: relative;
+        top: -150px;
+        content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1552126/right-carousel-arrow.png");
+      }
+      
+      .slick-prev:before {
+        position: relative;
+        top: -150px;
+        content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1552126/left-carousel-arrow.png");
+      }
+  
+  </style>
+  
+  {% schema %}
+    {
+      "name": "Photo Introduction",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "How Does It Work"
+        },
+        {
+          "type": "header",
+          "content": "Section style"
+        },
+        {
+          "type": "checkbox",
+          "id": "outline",
+          "label": "Outline section",
+          "default": false
+        }
+      ],
+       "blocks":[
+          {
+            "type":"text",
+            "name":"Photo Introduction",
+            "settings":[
+                {
+                  "type": "image_picker",
+                  "id": "photo_intro_img",
+                  "label": "Introduction Image"
+                },
+                {
+                    "type": "text",
+                    "id": "photo_intro_heading",
+                    "label": "Heading"
+                },
+                {
+                "type": "richtext",
+                "id": "photo_intro_content",
+                "label": "Content"
+                }
+            ]
+          }
+      ]
+    }
+  {% endschema %}
+
+<script>
+    $('.photo-introduction_contents').slick({
+        dots: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: true,
+        responsive: [{
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+           breakpoint: 400,
+           settings: {
+              arrows: true,
+              slidesToShow: 1,
+              slidesToScroll: 1
+           }
+        }]
+    });
+</script>
+  

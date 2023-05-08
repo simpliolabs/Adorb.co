@@ -1,0 +1,49 @@
+.teeinblue-enabled .tee-field__heading,
+.teeinblue-enabled .tee-radio > label,
+.teeinblue-enabled .tee-option__title,
+.teeinblue-enabled .tee-field__input input {
+  font-family: Poppins, sans-serif !important;
+  font-size: 14px !important;
+  letter-spacing: inherit !important;
+}
+
+.teeinblue-enabled #teeAtcButton,
+.teeinblue-enabled .tee-btn--preview,
+.teeinblue-enabled .tee-text-muted {
+  font-family: Poppins, sans-serif !important;
+  letter-spacing: inherit !important;
+}
+
+.teeinblue-enabled #stamped-reviews-widget,
+.teeinblue-enabled .product-single__title,
+.teeinblue-enabled .tee-field__heading,
+.teeinblue-enabled #teeFormInputs,
+.teeinblue-enabled .tee-block {
+  text-align: left;
+}
+
+#shopify-section-collection-header .page-width.page-content.page-content--top {
+  padding-top: 35px !important;
+  margin-bottom: -25px;
+}
+
+#shopify-section-collection-header
+  .page-width.page-content.page-content--top
+  .section-header__title {
+  font-size: 25px !important;
+}
+
+/* hiding duplicated contents on tib pages */
+.teeinblue-enabled .variant-input-wrap,
+.teeinblue-enabled .variant__label,
+.teeinblue-enabled .btn.btn--full.add-to-cart {
+  display: none !important;
+}
+/* .tee-checkbox-wrapper {
+  display: none !important;
+  visibility: hidden !important;
+} */
+/* .tee-error {
+  display: none !important;
+  visibility: hidden !important;
+} */
