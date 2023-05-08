@@ -10,6 +10,8 @@
   data-section-id="{{ section.id }}"
   data-section-type="collection-template">
 
+  <h1 class="collection_title">{{ collection.title }}</h1>
+
   {%- if section.settings.description_position == 'top' -%}
     {% if collection.description != blank %}
       <div class="rte">
