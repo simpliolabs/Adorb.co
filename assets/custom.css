@@ -246,6 +246,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .collection_title {
+    margin-bottom: 20px;
+  }
   .photo-info_wrapper {
     overflow-y: scroll;
     margin: 20px auto;
