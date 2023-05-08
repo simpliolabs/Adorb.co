@@ -14,9 +14,9 @@
 
   {%- if section.settings.description_position == 'top' -%}
     {% if collection.description != blank %}
-      <div class="rte">
+      <h3 class="rte">
         {{ collection.description }}
-      </div>
+      </h3>
       <hr class="hr--clear hr--small">
     {% endif %}
   {%- endif -%}
@@ -103,9 +103,9 @@
   {%- if section.settings.description_position == 'bottom' -%}
     {% if collection.description != blank %}
       <hr class="hr--clear hr--small">
-      <div class="rte">
+      <h3 class="rte">
         {{ collection.description }}
-      </div>
+      </h3>
       <hr class="hr--clear hr--small">
     {% endif %}
   {%- endif -%}
