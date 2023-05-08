@@ -241,6 +241,10 @@
   line-height: 24px;
 }
 
+.title_review_wrapper .product-single__title {
+  width: 80%;
+}
+
 @media only screen and (max-width: 768px) {
   .photo-info_wrapper {
     overflow-y: scroll;
