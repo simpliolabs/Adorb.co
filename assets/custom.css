@@ -244,10 +244,19 @@
 .title_review_wrapper .product-single__title {
   width: 80%;
 }
+.icart-pg {
+  margin-top: 20px !important;
+}
 
 @media only screen and (max-width: 768px) {
+  .tee_additional_info.default-product {
+    display: none;
+  }
   .collection_title {
     margin-bottom: 20px;
+  }
+  .icart-pg {
+    margin-top: 10px !important;
   }
   .photo-info_wrapper {
     overflow-y: scroll;
