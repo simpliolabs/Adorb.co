@@ -25,6 +25,18 @@
   border: 1px solid #cc3d3a;
 }
 
+.teeinblue-enabled #teeAtcButton {
+  height: 60px;
+}
+
+.tee-quantity-handle {
+  height: 60px !important;
+}
+
+.tee-quantity-group .tee-quantity-input {
+  height: 60px !important;
+}
+
 .tee-quantity-handle svg {
   pointer-events: unset !important;
 }
