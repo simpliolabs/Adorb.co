@@ -14,6 +14,30 @@
   letter-spacing: inherit !important;
 }
 
+.teeinblue-enabled #teeAtcButton {
+  text-transform: uppercase;
+  font-size: 1.13rem;
+}
+
+.teeinblue-enabled #teeAtcButton:hover {
+  background-color: #f6f5f2;
+  color: #cc3d3a;
+  border: 1px solid #cc3d3a;
+}
+
+.tee-quantity-handle svg {
+  pointer-events: unset !important;
+}
+
+.tee-quantity-handle:hover {
+  background-color: #cc3d3a;
+  color: white;
+}
+
+.tee-quantity-input {
+  font-size: 1.13rem !important;
+}
+
 .teeinblue-enabled #stamped-reviews-widget,
 .teeinblue-enabled .product-single__title,
 .teeinblue-enabled .tee-field__heading,
