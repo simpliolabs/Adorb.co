@@ -17,6 +17,8 @@
 .tee-btn--atc {
   text-transform: uppercase;
   font-size: 1.13rem !important;
+  background-color: #cc3d3a !important;
+  color: #f6f5f2 !important;
 }
 
 .tee-btn--atc:hover {
