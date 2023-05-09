@@ -14,19 +14,19 @@
   letter-spacing: inherit !important;
 }
 
-.teeinblue-enabled #teeAtcButton {
+.tee-btn--atc {
   text-transform: uppercase;
-  font-size: 1.13rem;
+  font-size: 1.13rem !important;
 }
 
-.teeinblue-enabled #teeAtcButton:hover {
+.tee-btn--atc:hover {
   background-color: #f6f5f2;
-  color: #cc3d3a;
-  border: 1px solid #cc3d3a;
+  color: #cc3d3a !important;
+  border: 1px solid #cc3d3a !important;
 }
 
-.teeinblue-enabled #teeAtcButton {
-  height: 60px;
+.tee-btn--atc {
+  height: 60px !important;
 }
 
 .tee-quantity-handle {
