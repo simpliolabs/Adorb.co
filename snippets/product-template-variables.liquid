@@ -68,7 +68,7 @@
         "@type": "AggregateRating",
         "ratingValue": "{{ product.metafields.reviews.rating.value.scale_max }}",
         "bestRating": "100",
-        "ratingCount": "{{ product.metafields.reviews.rating_count }}"
+        "ratingCount": "{% if product.metafields.reviews.rating_count %}{{ product.metafields.reviews.rating_count }}{% else %}0{% endif %}"
       } 
   }
 </script>
