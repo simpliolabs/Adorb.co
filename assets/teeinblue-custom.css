@@ -7,7 +7,7 @@
   letter-spacing: inherit !important;
 }
 
-.teeinblue-enabled #teeAtcButton,
+.teeinblue-enabled .tee-btn--atc,
 .teeinblue-enabled .tee-btn--preview,
 .teeinblue-enabled .tee-text-muted {
   font-family: Poppins, sans-serif !important;
