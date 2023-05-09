@@ -22,7 +22,7 @@
 }
 
 .tee-btn--atc:hover {
-  background-color: #f6f5f2;
+  background-color: #f6f5f2 !important;
   color: #cc3d3a !important;
   border: 1px solid #cc3d3a !important;
 }
