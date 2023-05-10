@@ -270,6 +270,10 @@
   padding: 0;
 }
 
+#CollectionSection .rte {
+  font-size: 18px;
+}
+
 .btn.add-to-cart:hover {
   background-color: #f6f5f2;
   color: #cc3d3a;

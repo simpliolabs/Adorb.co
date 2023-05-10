@@ -5,7 +5,6 @@
 {% paginate collection.products by paginate_by %}
 
 <div
-  test
   id="CollectionSection"
   data-section-id="{{ section.id }}"
   data-section-type="collection-template">
@@ -14,9 +13,9 @@
 
   {%- if section.settings.description_position == 'top' -%}
     {% if collection.description != blank %}
-      <h3 class="rte">
+      <h2 class="rte">
         {{ collection.description }}
-      </h3>
+      </h2>
       <hr class="hr--clear hr--small">
     {% endif %}
   {%- endif -%}
@@ -103,9 +102,9 @@
   {%- if section.settings.description_position == 'bottom' -%}
     {% if collection.description != blank %}
       <hr class="hr--clear hr--small">
-      <h3 class="rte">
+      <h2 class="rte">
         {{ collection.description }}
-      </h3>
+      </h2>
       <hr class="hr--clear hr--small">
     {% endif %}
   {%- endif -%}
@@ -242,12 +241,14 @@
 
 <script>
   $(document).ready(function() {
-    $(".boost-pfs-filter-bottom-pagination span a").click(function() {
-      if (window.location.href.includes("page=")) {
-        console.log("The URL contains 'page='");
-      } else {
-        console.log("The URL does not contain 'page='");
-      }      
+      $("body").on('click', '.boost-pfs-filter-bottom-pagination span a', function() {
+        if (window.location.href.includes("page=")) {
+          console.log("The URL contains 'page='");
+          $('#CollectionSection .rte').css('display', 'none');
+        } else {
+          console.log("The URL does not contain 'page='");
+          $('#CollectionSection .rte').css('display', 'block');
+        }      
     });
     
   });
