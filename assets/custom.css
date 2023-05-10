@@ -484,6 +484,10 @@
 .quantity_atc_wrapper .product__quantity {
   margin-bottom: 0;
 }
+
+.teeinblue-enabled .quantity_atc_wrapper {
+  display: block;
+}
 @media only screen and (max-width: 768px) {
   .js-qty__wrapper {
     max-width: 110px;
