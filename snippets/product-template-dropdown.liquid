@@ -30,9 +30,7 @@
   assign product_img_structure = product.featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
 -%}
 
-<style>
-  .btn.add-to-cart{margin-top:20px;}
-</style>
+
 <div id="ProductSection-{{ section_id }}"class="product-section"data-section-id="{{ section_id }}"data-section-type="product-template"data-product-handle="{{ product.handle }}"data-product-url="{{ product.url | within: collection }}"data-aspect-ratio="{{ 100 | divided_by: product.featured_media.aspect_ratio }}"data-img-url="{{ product_img_structure }}"{% if settings.product_zoom_enable %}data-image-zoom="true"{% endif %}{% if settings.inventory_enable %}data-inventory="true"{% endif %}{% if settings.inventory_transfers_enable %}data-incoming-inventory="true"{% endif %}{% unless isModal %}data-enable-history-state="true"{% endunless %}>
 
   {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
@@ -632,7 +630,7 @@
     .tee-option.tee-available-products{
       max-width: calc(100% - 247px);
     }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
     .tee_additional_info .bx_in {
       max-width: unset;
       padding: 20px 10px;

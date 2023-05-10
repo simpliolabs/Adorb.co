@@ -128,16 +128,24 @@
 <div class="bold_options" data-product-id="{{ product.id }}"></div>
 
 
-    <button
-      {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
-      name="add"
-      id="AddToCart-{{ section_id }}"
-      class="btn btn--full add-to-cart{% if enable_dynamic_buttons %} btn--secondary{% endif %}"
-      {% unless current_variant.available %} disabled="disabled"{% endunless %}>
-      <span id="AddToCartText-{{ section_id }}" data-default-text="{{ default_text }}">
-        {{ button_text }}- {{ product.price | money }}
-      </span>
-    </button>
+<div class="quantity_atc_wrapper">
+  
+  {%- if settings.quantity_enable -%}
+    <div class="product__quantity product__quantity--{{ settings.variant_type }}" style="margin-right: 8px;">
+      {% comment %} <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label> {% endcomment %}
+      {%- render 'quantity-input', id: section_id, qty: 1, min: 1 -%}
+    </div>
+  {%- endif -%}
+
+  <button
+    {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
+    name="add"
+    id="AddToCart-{{ section_id }}"
+    class="btn btn--full add-to-cart{% if enable_dynamic_buttons %} btn--secondary{% endif %}"
+    {% unless current_variant.available %} disabled="disabled"{% endunless %}>
+    {{ button_text }}- {{ product.selected_or_first_available_variant.price  | money  }}
+  </button>
+</div>
       
     {%- if enable_dynamic_buttons -%}
       {{ form | payment_button }}
@@ -178,7 +186,7 @@
   .variant-wrapper{
     max-width:calc(100% - 247px);
   }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     .product-single__form .tee_additional_info{
       position: unset !important;
       margin-bottom: 30px;
