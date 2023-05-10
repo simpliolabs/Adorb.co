@@ -232,7 +232,7 @@
             "settings": {
               "show_footer_title": true,
               "title": "",
-              "text": "<p><a href=\"http:\/\/ADORBS.CO\" target=\"_blank\" title=\"ADORBS\"><strong>ADORBS.CO<\/strong><\/a><strong> SMS OPT-IN<\/strong><br\/>*I AGREE TO RECEIVE RECURRING AUTOMATED MARKETING TEXT MESSAGES (E.G. CART\/BALANCE\/MEMBERSHIP REMINDERS) AT THE PHONE NUMBER PROVIDED. CONSENT IS NOT A CONDITION TO PURCHASE. MSG & DATA RATES MAY APPLY. MSG FREQUENCY VARIES. REPLY HELP FOR HELP AND STOP TO CANCEL. VIEW OUR TERMS OF SERVICE AND PRIVACY POLICY.<\/p>",
+              "text": "<p><a href=\"http:\/\/adorb.co\" target=\"_blank\" title=\"http:\/\/adorb.co\"><strong>ADORB.CO<\/strong><\/a><strong> SMS OPT-IN<\/strong><br\/>*I AGREE TO RECEIVE RECURRING AUTOMATED MARKETING TEXT MESSAGES (E.G. CART\/BALANCE\/MEMBERSHIP REMINDERS) AT THE PHONE NUMBER PROVIDED. CONSENT IS NOT A CONDITION TO PURCHASE. MSG & DATA RATES MAY APPLY. MSG FREQUENCY VARIES. REPLY HELP FOR HELP AND STOP TO CANCEL. VIEW OUR TERMS OF SERVICE AND PRIVACY POLICY.<\/p>",
               "container_width": 60
             }
           },
