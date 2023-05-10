@@ -276,6 +276,41 @@
   border: 1px solid #cc3d3a;
 }
 
+.thpb_combo_inner_start .thpb_combo_atc_cta_btn {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+  height: 60px !important;
+}
+
+.thpb_combo_inner_start
+  .thpb_combo_cta_btn_section
+  .thpb_combo_atc_cta_btn:hover {
+  background-color: #f6f5f2 !important;
+  color: #cc3d3a !important;
+  border: 1px solid #cc3d3a !important;
+}
+
+.thpb_combo_inner_start .thpb_combo_qty_btn_cls {
+  height: 60px;
+  border: 1px solid #d6d6d6;
+}
+
+.thpb_combo_inner_start .thpb_combo_qty_btn_cls .thpb_combo_add_qty_btn {
+  width: 45px;
+}
+
+.thpb_combo_inner_start .thpb_combo_qty_btn_cls .thpb_combo_add_qty_btn:hover {
+  background-color: #cc3d3a;
+}
+
+.thpb_combo_inner_start
+  .thpb_combo_qty_btn_cls
+  .thpb_combo_add_qty_btn:hover
+  svg {
+  fill: #fff;
+}
+
 @media only screen and (max-width: 768px) {
   .tee_additional_info.default-product {
     display: none;
