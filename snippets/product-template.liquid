@@ -796,7 +796,7 @@
     } else {
       console.log("The device is desktop");
       var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-      if (document.getElementsByClassName('tee_additional_info').length == 1) {
+      if (document.getElementsByClassName('tee_additional_info').length == 1 && document.getElementsByClassName('tee-variants')[0]) {
         document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
       }
       
