@@ -17977,8 +17977,8 @@ object-assign
                 isConfirmed() {
                     return new Promise(t=>{
                         if (!this.confirmed)
-                            // throw this.error = new Error(this.confirmationMessage),
-                            // this.error;
+                            throw this.error = new Error(this.confirmationMessage),
+                            this.error;
                         t(!0)
                     }
                     )
@@ -27183,8 +27183,8 @@ object-assign
                     return new Promise(t=>{
                         const e = Lt["default"].getConfirmed();
                         if (!e)
-                            // throw this.error = new Error(this.confirmationMessage),
-                            // this.error;
+                            throw this.error = new Error(this.confirmationMessage),
+                            this.error;
                         t(!0)
                     }
                     )
