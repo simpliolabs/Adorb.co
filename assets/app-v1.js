@@ -221,8 +221,8 @@
                 if (!t.ok || t.status >= 300)
                     throw new Error("HTTP error! status: ".concat(t.status));
                 
-              console.log(t.url);
-                return t.json()
+              if(t.url != 'https://adorb.co/cart/add.js') 
+                  return t.json()
             }
             )
         }
