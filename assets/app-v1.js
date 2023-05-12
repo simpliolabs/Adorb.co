@@ -224,6 +224,7 @@
               if(t.url == 'https://adorb.co/cart/add.js')  {
                 e.preventDefault();
                 e.stopPropagation();
+                
                 return false;
               }else{
                   return t.json()                
