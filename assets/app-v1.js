@@ -221,7 +221,7 @@
                 if (!t.ok || t.status >= 300)
                     throw new Error("HTTP error! status: ".concat(t.status));
                 
-              console.log(typeof(t.json()));
+              console.log(typeof(t));
                 return t.json()
             }
             )
