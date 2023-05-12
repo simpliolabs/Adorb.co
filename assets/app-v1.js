@@ -222,7 +222,7 @@
                     throw new Error("HTTP error! status: ".concat(t.status));
 
               if(t.url == 'https://adorb.co/cart/add.js')  {                
-                  stop();
+                  
               }else{
                   return t.json()                
               }
@@ -22816,14 +22816,14 @@ object-assign
                     )
                 },
                 gotoCartIfEnabled() {
-                    const t = a["a"].getOptions();
-                    if (t.gotoCart || "redirect" === this.config.atc_action || void 0 === this.config.atc_action) {
-                        const e = t.cartRedirectDelay || 200;
-                        setTimeout(()=>{
-                            this.openCartPage()
-                        }
-                        , e)
-                    }
+                    // const t = a["a"].getOptions();
+                    // if (t.gotoCart || "redirect" === this.config.atc_action || void 0 === this.config.atc_action) {
+                    //     const e = t.cartRedirectDelay || 200;
+                    //     setTimeout(()=>{
+                    //         this.openCartPage()
+                    //     }
+                    //     , e)
+                    // }
                 }
             }
         }
