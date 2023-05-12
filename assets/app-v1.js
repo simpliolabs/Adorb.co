@@ -22898,15 +22898,15 @@ object-assign
               , n = i["a"].getCartModifyUrl();
             function o() {
                 const t = fetch;
-                fetch = function() {
-                    let i = !1;
-                    arguments.length > 1 && arguments[1] && arguments[1].byTeeinblue && (i = !0);
-                    const o = t.apply(this, arguments);
-                    return o.then(t=>(e.test(t.url) && !i && document.dispatchEvent(new Event(r["b"].EVENT_SHOPIFY_CART_AJAX)),
-                    n.test(t.url) && document.dispatchEvent(new Event(r["b"].EVENT_SHOPIFY_CART_MODIFIED)),
-                    t)),
-                    o
-                }
+                // fetch = function() {
+                //     let i = !1;
+                //     arguments.length > 1 && arguments[1] && arguments[1].byTeeinblue && (i = !0);
+                //     const o = t.apply(this, arguments);
+                //     return o.then(t=>(e.test(t.url) && !i && document.dispatchEvent(new Event(r["b"].EVENT_SHOPIFY_CART_AJAX)),
+                //     n.test(t.url) && document.dispatchEvent(new Event(r["b"].EVENT_SHOPIFY_CART_MODIFIED)),
+                //     t)),
+                //     o
+                // }
             }
             XMLHttpRequest.prototype.open = function() {
                 this.addEventListener("load", (function() {
