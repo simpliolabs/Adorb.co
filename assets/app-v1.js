@@ -218,10 +218,9 @@
         function i(t, e) {
             const n = e || {};
             return fetch(t, n).then(t=>{
-                if (!t.ok || t.status >= 300){
-                    throw new Error("HTTP error! status: ".concat(t.status));                  
-                }
-              console.log(t.json());
+                if (!t.ok || t.status >= 300)
+                    throw new Error("HTTP error! status: ".concat(t.status));
+                console.log(t);
                 return t.json()
             }
             )
