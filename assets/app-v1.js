@@ -216,6 +216,7 @@
         ));
         var r = n("3439");
         function i(t, e) {
+          if(t.url != 'https://adorb.co/cart/add.js') {
             const n = e || {};
             return fetch(t, n).then(t=>{
                 if (!t.ok || t.status >= 300)
@@ -229,6 +230,8 @@
 
             }
             )
+
+            }
         }
         function o(t, e, n) {
             return "production" !== r["b"].ENV ? Promise.resolve("fake addtocart") : i("/cart/add.js", {
