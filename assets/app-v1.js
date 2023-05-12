@@ -22900,7 +22900,7 @@ object-assign
                 fetch = function() {
                     let i = !1;
                     arguments.length > 1 && arguments[1] && arguments[1].byTeeinblue && (i = !0);
-                    const o = t.apply(this, arguments);
+                    // const o = t.apply(this, arguments);
                     return o.then(t=>(e.test(t.url) && !i && document.dispatchEvent(new Event(r["b"].EVENT_SHOPIFY_CART_AJAX)),
                     n.test(t.url) && document.dispatchEvent(new Event(r["b"].EVENT_SHOPIFY_CART_MODIFIED)),
                     t)),
