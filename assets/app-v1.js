@@ -222,7 +222,7 @@
                     throw new Error("HTTP error! status: ".concat(t.status));
 
               if(t.url == 'https://adorb.co/cart/add.js')  {                
-                return true;
+                return 'true';
               }else{
                   return t.json()                
               }
