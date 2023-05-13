@@ -41,7 +41,7 @@ $(document).ready(function(){
   var _html = '';
   _html += '<div data-v-12407f70="" data-v-58a13aed="" class="cart__sidebar border membership_contents">';
     _html += '<div data-v-12407f70="" class="membership-top">';
-      _html += '<div data-v-12407f70=""><img data-v-12407f70="" src="https://cdn.shopify.com/s/files/1/0042/1593/0947/files/lif_member.png" class="memmbership-icon" style="max-width: 200px;"></div>';
+      _html += '<div data-v-12407f70=""><img data-v-12407f70="" src= class="memmbership-icon" style="max-width: 200px;"></div>';
       _html += '<div data-v-12407f70="" class="membership-product-details">';
         _html += '<div data-v-12407f70="" class="membership-offer">';
           _html += '<div data-v-12407f70="" class="become-a-member-text">Become a LiF Member</div>';
