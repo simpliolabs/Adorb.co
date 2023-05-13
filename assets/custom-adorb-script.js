@@ -68,6 +68,5 @@ $(document).ready(function(){
   _html += '</div>';
   console.log(_html);
 
-  alert('hello');
   $("#icartMainContent .icartContain").before(_html);
 });
