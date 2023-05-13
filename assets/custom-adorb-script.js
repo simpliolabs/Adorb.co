@@ -38,35 +38,34 @@ $(window).click(function (e) {
 
 
 $(document).ready(function(){
-  var _html += '<div data-v-12407f70="" data-v-58a13aed="" class="cart__sidebar border membership_contents">';
-    var _html += '<div data-v-12407f70="" class="membership-top">';
-      var _html += '<div data-v-12407f70=""><img data-v-12407f70="" src="https://cdn.shopify.com/s/files/1/0042/1593/0947/files/lif_member.png" class="memmbership-icon" style="max-width: 200px;"></div>';
-      var _html += '<div data-v-12407f70="" class="membership-product-details">';
-        var _html += '<div data-v-12407f70="" class="membership-offer">';
-          var _html += '<div data-v-12407f70="" class="become-a-member-text">Become a LiF Member</div>';
-          var _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving">Save $20.00 (50.00%)</strong> off todays order</div>';
-          var _html += '</div>';
-        var _html += '</div>';
-      var _html += '</div>';
-    var _html += '</div>';
-  var _html += '</div>';
+  var _html = '';
+  _html += '<div data-v-12407f70="" data-v-58a13aed="" class="cart__sidebar border membership_contents">';
+    _html += '<div data-v-12407f70="" class="membership-top">';
+      _html += '<div data-v-12407f70=""><img data-v-12407f70="" src="https://cdn.shopify.com/s/files/1/0042/1593/0947/files/lif_member.png" class="memmbership-icon" style="max-width: 200px;"></div>';
+      _html += '<div data-v-12407f70="" class="membership-product-details">';
+        _html += '<div data-v-12407f70="" class="membership-offer">';
+          _html += '<div data-v-12407f70="" class="become-a-member-text">Become a LiF Member</div>';
+          _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving">Save $20.00 (50.00%)</strong> off todays order</div>';
+          _html += '</div>';
+        _html += '</div>';
+      _html += '</div>';
+    _html += '</div>';
+  _html += '</div>';
   
-  var _html += '<div data-v-12407f70="" class="membership-middle">';
-    var _html += '<ul data-v-12407f70="" class="membership-detail-points">';
-       var _html += '<li data-v-12407f70="" class="membership-detail-point">Save 50-80% on every order</li>';
-       var _html += '<li data-v-12407f70="" class="membership-detail-point">Shirts as low as $5.98 daily</li>';
-       var _html += '<li data-v-12407f70="" class="membership-detail-point">Free shipping orders over $39</li>';
-       var _html += '<li data-v-12407f70="" class="membership-detail-point">Cancel easily any time</li>';
-    var _html += '</ul>';
-  var _html += '</div>';
-  var _html += '<div data-v-12407f70="" class="membership-bottom">';
-    var _html += '<div data-v-12407f70=""><a data-v-12407f70="" href="javascript:void(0)" class="add_membership btn btn--full button button--primary">Add Membership</a></div>';
-       var _html += '<div data-v-12407f70="" style="margin: auto; text-align: center;">';
-       var _html += '</div>';
-    var _html += '</div>';
-  var _html += '</div>';
+  _html += '<div data-v-12407f70="" class="membership-middle">';
+    _html += '<ul data-v-12407f70="" class="membership-detail-points">';
+       _html += '<li data-v-12407f70="" class="membership-detail-point">Save 50-80% on every order</li>';
+       _html += '<li data-v-12407f70="" class="membership-detail-point">Shirts as low as $5.98 daily</li>';
+       _html += '<li data-v-12407f70="" class="membership-detail-point">Free shipping orders over $39</li>';
+       _html += '<li data-v-12407f70="" class="membership-detail-point">Cancel easily any time</li>';
+    _html += '</ul>';
+  _html += '</div>';
+  _html += '<div data-v-12407f70="" class="membership-bottom">';
+    _html += '<div data-v-12407f70=""><a data-v-12407f70="" href="javascript:void(0)" class="add_membership btn btn--full button button--primary">Add Membership</a></div>';
+       _html += '<div data-v-12407f70="" style="margin: auto; text-align: center;">';
+       _html += '</div>';
+    _html += '</div>';
+  _html += '</div>';
   
   $("#monster-cart-wrapper .mu-slider").before(_html);
-
-  alert('sdsds');
 });
