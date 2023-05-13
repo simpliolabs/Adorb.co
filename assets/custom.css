@@ -594,3 +594,22 @@
     padding: 7.5px 10px;
   }
 }
+
+.membership-top[data-v-12407f70] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.memmbership-icon[data-v-12407f70] {
+    width: 70px;
+}
+
+.membership-product-details[data-v-12407f70] {
+    padding-left: 15px;
+}
+
+.membership-offer[data-v-12407f70] {
+    font-size: 18px;
+    max-width: 450px;
+}
