@@ -67,4 +67,6 @@ $(document).ready(function(){
   var _html += '</div>';
   
   $("#monster-cart-wrapper .mu-slider").before(_html);
+
+  alert('sdsds');
 });
