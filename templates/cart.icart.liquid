@@ -4,7 +4,7 @@
 {
 "cart_data": {{cart | json}}
 {%- if cart -%}
-
+hhhhhhhhhhhhhhhhhhhhhhhhhhhh
 {%- for item in cart.items -%}
 ,"{{item.id}}": {{item.product | json}}
 ,"prod_tag_{{ forloop.index | minus: 1 }}": {{ item.product.tags | json }}
