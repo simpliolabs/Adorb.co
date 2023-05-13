@@ -67,5 +67,5 @@ $(document).ready(function(){
     _html += '</div>';
   _html += '</div>';
   
-  $("#monster-cart-wrapper .mu-slider").before(_html);
+  $("#icartMainContent .icartContain").before(_html);
 });
