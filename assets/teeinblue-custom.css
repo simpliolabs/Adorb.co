@@ -71,6 +71,11 @@
   font-size: 25px !important;
 }
 
+
+.tee-swatch--circle, .tee-swatch--circle .tee-swatch--color{
+  border-radius:0% !important;
+}
+
 /* hiding duplicated contents on tib pages */
 .teeinblue-enabled .variant-input-wrap,
 .teeinblue-enabled .variant__label,
