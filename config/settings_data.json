@@ -406,7 +406,6 @@
         "blocks": {
           "6fbea325-07ba-4dde-8f88-69c01a503ec7": {
             "type": "featured-collection",
-            "disabled": true,
             "settings": {
               "title": "Customize Your Own:",
               "collection": "personalized",
@@ -1297,22 +1296,6 @@
         "disabled": true,
         "settings": {
           "position": "left"
-        }
-      },
-      "6810535121229352664": {
-        "type": "shopify:\/\/apps\/cart-upsell-free-gifts-monster\/blocks\/app-embed\/a1b8e58a-bf1d-4e0f-8768-a387c3f643c0",
-        "disabled": true,
-        "settings": {
-          "markets_rounding": false,
-          "send_gtag_atc": false,
-          "disable_tiktok_tracking": false,
-          "disable_klaviyo_tracking": false,
-          "stop_cart_page": false,
-          "apply_discount_before_checkout": false,
-          "bag_selector": "",
-          "hide_when_opened": "",
-          "dev_mode": false,
-          "custom_code": "<script>\n    \/\/ custom code here\n<\/script>"
         }
       },
       "16304872806d79912c": {
