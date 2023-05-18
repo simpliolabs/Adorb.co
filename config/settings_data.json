@@ -407,38 +407,22 @@
           "6fbea325-07ba-4dde-8f88-69c01a503ec7": {
             "type": "featured-collection",
             "settings": {
-              "title": "Customize Your Own:",
+              "title": "Others to Customize:",
               "collection": "personalized",
               "per_row": 5,
-              "rows": 2,
+              "rows": 1,
               "mobile_scrollable": true,
-              "view_all": false
+              "view_all": true
             }
           },
           "b61caae6-2b34-47f5-bae1-8947defbb673": {
             "type": "rich-text",
-            "disabled": true,
             "settings": {
               "title": "We 💘  Our Customers!",
               "text": "",
               "align_text": "center",
               "narrow_column": true,
               "enlarge_text": false
-            }
-          },
-          "186365ca-b8e3-46fd-8161-8004a63f8936": {
-            "type": "image-row",
-            "disabled": true,
-            "settings": {
-              "image_1": "shopify:\/\/shop_images\/ashleyandmegan__-2021-03-23-CMwrEMFlK7N-15ab-post.jpg",
-              "image_1_link": "",
-              "image_2_link": "",
-              "image_3": "shopify:\/\/shop_images\/I_YAM_UGC_4.jpg",
-              "image_3_link": "",
-              "image_4": "shopify:\/\/shop_images\/IMG_3303.jpg",
-              "image_4_link": "",
-              "enable_gutter": true,
-              "enable_zoom": true
             }
           },
           "f63e8cc0-71e0-48bb-8a37-540a3c3155e9": {
@@ -458,7 +442,6 @@
           },
           "13f5b9b8-a05f-4867-97ea-6a26840b5182": {
             "type": "image-row",
-            "disabled": true,
             "settings": {
               "image_1": "shopify:\/\/shop_images\/thelucylouxo-2021-03-02-CL7CWT0lSSk-1430-post_1.jpg",
               "image_1_link": "",
@@ -470,14 +453,29 @@
               "enable_gutter": true,
               "enable_zoom": true
             }
+          },
+          "186365ca-b8e3-46fd-8161-8004a63f8936": {
+            "type": "image-row",
+            "disabled": true,
+            "settings": {
+              "image_1": "shopify:\/\/shop_images\/ashleyandmegan__-2021-03-23-CMwrEMFlK7N-15ab-post.jpg",
+              "image_1_link": "",
+              "image_2_link": "",
+              "image_3": "shopify:\/\/shop_images\/I_YAM_UGC_4.jpg",
+              "image_3_link": "",
+              "image_4": "shopify:\/\/shop_images\/IMG_3303.jpg",
+              "image_4_link": "",
+              "enable_gutter": true,
+              "enable_zoom": true
+            }
           }
         },
         "block_order": [
           "6fbea325-07ba-4dde-8f88-69c01a503ec7",
           "b61caae6-2b34-47f5-bae1-8947defbb673",
-          "186365ca-b8e3-46fd-8161-8004a63f8936",
           "f63e8cc0-71e0-48bb-8a37-540a3c3155e9",
-          "13f5b9b8-a05f-4867-97ea-6a26840b5182"
+          "13f5b9b8-a05f-4867-97ea-6a26840b5182",
+          "186365ca-b8e3-46fd-8161-8004a63f8936"
         ],
         "settings": {
         }
@@ -667,6 +665,9 @@
       },
       "product-recommendations": {
         "type": "product-recommendations",
+        "custom_css": [
+
+        ],
         "settings": {
           "show_product_recommendations": true,
           "product_recommendations_heading": "You may also like",
