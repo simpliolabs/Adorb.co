@@ -669,7 +669,7 @@
 
         ],
         "settings": {
-          "show_product_recommendations": true,
+          "show_product_recommendations": false,
           "product_recommendations_heading": "You may also like",
           "related_count": 6
         }
