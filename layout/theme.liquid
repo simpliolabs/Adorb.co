@@ -415,7 +415,9 @@ function makeTimer() {
                                 {% endif %}
                                 
           <script src="{{ 'theme.js' | asset_url | split: '?' | first }}" ></script>
-        <div data-rebuy-id="88632" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+        {% if product %} 
+<div data-rebuy-id="88632" data-rebuy-shopify-product-ids="{{ product.id }}"></div> 
+{% endif %}
 
 </body>
 {%  if template == 'product.dropdown-options' %}
