@@ -218,7 +218,7 @@
         function i(t, e) {
             const n = e || {};
             return fetch(t, n).then(t=>{
-                if (!t.ok || t.status >= 300){
+                if (!t.ok || t.status >= 300)
                     throw new Error("HTTP error! status: ".concat(t.status));
         
               if(t.url == 'https://adorb.co/cart/add.js')  {                
@@ -228,7 +228,7 @@
               }
 
             }
-            
+            )
         }
         function o(t, e, n) {
             return "production" !== r["b"].ENV ? Promise.resolve("fake addtocart") : i("/cart/add.js", {
