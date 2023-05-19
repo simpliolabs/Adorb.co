@@ -222,11 +222,11 @@
                   if(t.status != '422')
                     throw new Error("HTTP error! status: ".concat(t.status));
                 }
-              if(t.url == 'https://adorb.co/cart/add.js')  {                
+              //if(t.url == 'https://adorb.co/cart/add.js')  {                
                   
-              }else{
+             // }else{
                   return t.json()                
-              }
+              //}
 
             }
             )
