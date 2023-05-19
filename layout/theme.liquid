@@ -297,7 +297,7 @@ $('#tee-artwork-form .tee-product-price').after($("shopify-payment-terms"));
     {%- section 'header' -%}
 
       <main class="main-content" id="MainContent">
-        {% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}
+        {% capture ICART_FULL_PAGE_LAYOUT %}{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
 <limespot></limespot>{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
       </main>
 
