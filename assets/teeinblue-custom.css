@@ -76,6 +76,11 @@
   border-radius:0% !important;
 }
 
+.tee-swatch--color{
+  width: 50px !important;
+  height: 50px !important;
+}
+
 /* hiding duplicated contents on tib pages */
 .teeinblue-enabled .variant-input-wrap,
 .teeinblue-enabled .variant__label,
@@ -90,3 +95,12 @@
   display: none !important;
   visibility: hidden !important;
 } */
+
+
+@media only screen and (max-width: 768px) {
+  .tee-swatch--color{
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+}
