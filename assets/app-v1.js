@@ -218,9 +218,12 @@
         function i(t, e) {
             const n = e || {};
             return fetch(t, n).then(t=>{
-                if (!t.ok || t.status >= 300)
-                    throw new Error("HTTP error! status: ".concat(t.status));
-
+                if (!t.ok || t.status >= 300){
+                  console.log(t.url);
+                  
+                  throw new Error("HTTP error! status: ".concat(t.status));
+                
+                }
               if(t.url == 'https://adorb.co/cart/add.js')  {                
                   
               }else{
