@@ -145,7 +145,7 @@
             "type": "announcement",
             "settings": {
               "text": "",
-              "link_text": "FREE shipping on orders over $49",
+              "link_text": "FREE shipping on orders over $55",
               "link": ""
             }
           },
@@ -1313,12 +1313,6 @@
       },
       "16304872806d79912c": {
         "type": "shopify:\/\/apps\/icart-cart-drawer-cart-upsell\/blocks\/icart-block\/e651bbc2-5760-47d8-a513-2aa6ee3a9aa7",
-        "disabled": false,
-        "settings": {
-        }
-      },
-      "17241042572096232183": {
-        "type": "shopify:\/\/apps\/rich-snippets-seo-schema\/blocks\/app-embed\/9c6f8e28-6a66-4590-8618-7e583e0b32ed",
         "disabled": false,
         "settings": {
         }
