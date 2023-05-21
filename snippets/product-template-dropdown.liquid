@@ -38,79 +38,78 @@
   <div class="page-content page-content--product">
     <div class="page-width">
 
-      <div class="mobile_only">
-        {% comment %} <h2 class="h2 product-single__title">
-          {{ product.title }}
+      <div class="mobile_only">{% comment %} <h2 class="h2 product-single__title">
+        {{ product.title }}
         </h2>
 
         {%- if product.metafields.reviews.rating.value -%}
-          <div class="judge-me-fetch--reviews mobile_only hide">
-            <span class="ratings"></span>
-            &nbsp;<a
-              style="margin-left: -10px;"
-              href="javascript:void(0);"
-              class="review-scroller-link">
-              <span>{{ product.metafields.reviews.rating_count }} Reviews</span>
-            </a>
-          </div>
+        <div class="judge-me-fetch--reviews mobile_only hide">
+        <span class="ratings"></span>
+        &nbsp;<a
+        style="margin-left: -10px;"
+        href="javascript:void(0);"
+        class="review-scroller-link">
+        <span>{{ product.metafields.reviews.rating_count }} Reviews</span>
+        </a>
+        </div>
         {%- endif -%}
 
         {%- assign hide_sale_price = true -%}
         {%- if product.compare_at_price_max > product.price -%}
-          {%- if current_variant.compare_at_price > current_variant.price -%}
-            {%- assign hide_sale_price = false -%}
-          {%- endif -%}
+        {%- if current_variant.compare_at_price > current_variant.price -%}
+        {%- assign hide_sale_price = false -%}
+        {%- endif -%}
 
-          <span
-            id="PriceA11y-{{ section_id }}"
-            class="visually-hidden"
-            aria-hidden="{{ hide_sale_price }}">
-            {{ 'products.general.regular_price' | t }}
-          </span>
-          <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
-            <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
-              {%- if current_variant.compare_at_price > current_variant.price -%}
-                {{ current_variant.compare_at_price | money }}
-              {%- endif -%}
-            </span>
-          </span>
-          <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+        <span
+        id="PriceA11y-{{ section_id }}"
+        class="visually-hidden"
+        aria-hidden="{{ hide_sale_price }}">
+        {{ 'products.general.regular_price' | t }}
+        </span>
+        <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
+        <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
+        {%- if current_variant.compare_at_price > current_variant.price -%}
+        {{ current_variant.compare_at_price | money }}
+        {%- endif -%}
+        </span>
+        </span>
+        <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
         {%- else -%}
-          <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+        <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
         {%- endif -%}
 
         <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
-          {{ current_variant.price | money }}
+        {{ current_variant.price | money }}
         </span>
 
         {%- if settings.product_save_amount -%}
-          {%- if settings.product_save_type == 'dollar' -%}
-            {%- capture saved_amount -%}
-              {{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
-          {%- else -%}
-            {%- capture saved_amount -%}
-              {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
-          {%- endif -%}
-          <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
-            {%- unless hide_sale_price -%}
-              {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
-            {%- endunless -%}
-          </span>
+        {%- if settings.product_save_type == 'dollar' -%}
+        {%- capture saved_amount -%}
+        {{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
+        {%- else -%}
+        {%- capture saved_amount -%}
+        {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+        {%- endif -%}
+        <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+        {%- unless hide_sale_price -%}
+        {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+        {%- endunless -%}
+        </span>
         {%- endif -%}
 
         <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
-          {%- capture unit_price_base_unit -%}
-            <span class="product__unit-base--{{ section_id }}">
-              {%- if current_variant.unit_price_measurement -%}
-                {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
-                  {{ current_variant.unit_price_measurement.reference_value }}
-                {%- endif -%}
-                {{ current_variant.unit_price_measurement.reference_unit }}
-              {%- endif -%}
-            </span>
-          {%- endcapture -%}
+        {%- capture unit_price_base_unit -%}
+        <span class="product__unit-base--{{ section_id }}">
+        {%- if current_variant.unit_price_measurement -%}
+        {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+        {{ current_variant.unit_price_measurement.reference_value }}
+        {%- endif -%}
+        {{ current_variant.unit_price_measurement.reference_unit }}
+        {%- endif -%}
+        </span>
+        {%- endcapture -%}
 
-          <span class="product__unit-price--{{ section_id }}">{{ current_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+        <span class="product__unit-price--{{ section_id }}">{{ current_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
         </div> {% endcomment %}
       </div>
 
@@ -159,27 +158,30 @@
               </p>
             {%- else -%}
 
+              <div class="icons_img_wrapper">
+                <img data-src="{{ 'adorb_icons.png' | asset_url}}" class="lazyload">
+              </div>
 
-            <div class="title_review_wrapper">
+              <div class="title_review_wrapper">
 
-              <h1 class="h2 product-single__title">
-                {{ product.title }}
-              </h1>
+                <h1 class="h2 product-single__title">
+                  {{ product.title }}
+                </h1>
 
-              {%- if product.metafields.reviews.rating.value -%}
-                <div class="jm_review_preview_wrapper">
-                  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
-                  <a
-                    style="margin-left: 5px;"
-                    href="javascript:void(0);"
-                    class="review-scroller-link">
-                    <span>({{ product.metafields.reviews.rating_count }})</span>
-                  </a>
+                {%- if product.metafields.reviews.rating.value -%}
+                  <div class="jm_review_preview_wrapper">
+                    {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+                    <a
+                      style="margin-left: 5px;"
+                      href="javascript:void(0);"
+                      class="review-scroller-link">
+                      <span>({{ product.metafields.reviews.rating_count }})</span>
+                    </a>
                   </div>
-                <br/>
-              {%- endif -%}
+                  <br/>
+                {%- endif -%}
 
-            </div>
+              </div>
 
 
             {%- endif -%}
@@ -283,9 +285,9 @@
 
               <script>
                 // Store inventory quantities in JS because they're no longer
-            // available directly in JS when a variant changes.
-            // Have an object that holds all potential products so it works
-            // with quick view or with multiple featured products.
+// available directly in JS when a variant changes.
+// Have an object that holds all potential products so it works
+// with quick view or with multiple featured products.
                 window.inventories = window.inventories || {};
                 window.inventories['{{section_id}}'] = {};{% for variant in variants_with_inventory_tracking %}window.inventories['{{section_id}}'][{{variant.id}}] = {
                     'quantity': {{ variant.inventory_quantity | default: 0 }},
@@ -332,16 +334,22 @@
                   product: product,
                   current_variant: current_variant -%}
               {% endunless %}
-                <div class="th_pb_section" id="th_product_bundle" data-id="{{ product.id }}"></div>
-			          <div id="th_pb_qty_bundle" class="th_pb_qty_bundle_cls" data-pid="{{ product.id }}"></div>
+              <div
+                class="th_pb_section"
+                id="th_product_bundle"
+                data-id="{{ product.id }}"></div>
+              <div
+                id="th_pb_qty_bundle"
+                class="th_pb_qty_bundle_cls"
+                data-pid="{{ product.id }}"></div>
 
               {% comment %} <div class="shipbox">
 
-                <img src="{{ 'truck.png' | asset_img_url }}" class="shipbox-img" />
+              <img src="{{ 'truck.png' | asset_img_url }}" class="shipbox-img" />
 
-                <b class="shipbox-bold">Arrives By</b>
-                <span id="shipping-date"></span>
-                If You Order Today.
+              <b class="shipbox-bold">Arrives By</b>
+              <span id="shipping-date"></span>
+              If You Order Today.
               </div> {% endcomment %}
 
 
@@ -349,10 +357,10 @@
                 .jdgm-prev-badge__text {
                   display: none;
                 }
-                .jdgm-preview-badge[data-template="product"]{
+                .jdgm-preview-badge[data-template="product"] {
                   display: block !important;
                 }
-                .jdgm-prev-badge{
+                .jdgm-prev-badge {
                   display: block !important;
                 }
                 .shipbox {
@@ -390,29 +398,29 @@
                     margin-left: 35px;
                   }
                 }
-                   {% comment %} webcss {% endcomment %}
-                    span.product__price.desktop_only {
-                      padding-bottom: 20px;
-                    }
-                    div#th_pb_qty_bundle {
-                      display: none;
-                    }
-                    div#th_product_bundle {
-                      display: none;
-                    }
-                    .product-single__description {
-                      margin-bottom: 0px;
-                    }
-                    div#th_pb_qty_bundle {
-                      display: none !important;
-                    }
-                    .th_pb_qty_bundle_cls {
-                      display: none !important;
-                    }
-                    label.variant__label {
-                      padding-bottom: 10px !important;
-                  }
-          
+                {% comment %}
+                  webcss{% endcomment %}
+                span.product__price.desktop_only {
+                  padding-bottom: 20px;
+                }
+                div#th_pb_qty_bundle {
+                  display: none;
+                }
+                div#th_product_bundle {
+                  display: none;
+                }
+                .product-single__description {
+                  margin-bottom: 0;
+                }
+                div#th_pb_qty_bundle {
+                  display: none !important;
+                }
+                .th_pb_qty_bundle_cls {
+                  display: none !important;
+                }
+                label.variant__label {
+                  padding-bottom: 10px !important;
+                }
               </style>
 
 
@@ -447,7 +455,7 @@
               </div>
             {%- endif -%}
 
-            
+
 
             {%- unless description_style == 'full' -%}
               <div class="product-single__description rte">{% comment %}{% render 'product-description-slider', product: product %}{% endcomment %}
@@ -505,7 +513,7 @@
     position: relative;
     min-height: 50px;
   }
-  
+
   .tee-variants .tee_additional_info {
     position: absolute;
     bottom: 0;
@@ -530,24 +538,25 @@
   .mobile_only {
     display: none;
   }
-  .tee-radio{
-    margin: 0px 3px 10px 0;
+  .tee-radio {
+    margin: 0 3px 10px 0;
   }
-  .tee-option{
+  .tee-option {
     margin-bottom: 0;
   }
-  .teeinblue-enabled .tee-radio > label, .teeinblue-enabled .tee-option__title{
-    font-size:12px !important;
+  .teeinblue-enabled .tee-radio > label,
+  .teeinblue-enabled .tee-option__title {
+    font-size: 12px !important;
   }
-  .tee-radio-label{
-    padding: 3px 8px!important;
-    min-width: 35px!important;
-    height: 33px!important;
+  .tee-radio-label {
+    padding: 3px 8px !important;
+    min-width: 35px !important;
+    height: 33px !important;
   }
-  
+
   {% if product.metafields.custom.textbanner == true %}
-    @media screen and (min-width: 769px){
-      .variant-wrapper{
+    @media screen and (min-width: 769px) {
+      .variant-wrapper {
         min-height: 200px;
       }
     }
@@ -561,10 +570,9 @@
       display: none;
     }
     .product-single__title {
-      padding-top: 20px;
+      padding: 0;
       font-size: 1.125rem;
       font-weight: 500;
-      padding: 0;
       margin: 0;
     }
     .teeinblue-enabled .product__price {
@@ -577,9 +585,11 @@
     .teeinblue-enabled .product__price.desktop_only {
       display: none !important;
     }
-    {% comment %} .tee-block.tee-product-price {
-      display: none;
-    } {% endcomment %}
+    {% comment %}
+      .tee-block.tee-product-price {
+        display: none;
+      }
+    {% endcomment %}
     .judge-me-fetch--reviews {
       padding-bottom: 8px;
     }
@@ -587,23 +597,23 @@
       position: unset;
       margin-bottom: 30px;
     }
-    
+
   }
 </style>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
 {% if product.metafields.Image.override_image %}
-  <script>  
-    setTimeout(function() { 
+  <script>
+    setTimeout(function() {
       var original_img_url = $('.tee-slide--active .tee-mockup-image').attr('src');
       var original_img = $('.tee-slide--active .tee-mockup-image');
       var original_printarea = $('.tee-slide--active .tee-printarea-wrapper');
       original_img.attr('src', "{{ product.metafields.Image.override_image }}");
-      
+
       original_printarea.css('display', "none");
-      
+
       original_img.css('width', '100% !important');
       original_img.css('height', '100% !important');
       original_img.css('object-fit', 'cover');
@@ -611,15 +621,13 @@
       $('.tee-slide--active .tee-mockup').css('height', '100% !important');
       $('.tee-slide--active .tee-mockup').css('object-fit', 'cover');
 
-      $('.tee-radio').click(function(){
+      $('.tee-radio').click(function() {
         original_img.attr('src', original_img_url);
         original_printarea.css('display', 'block');
       });
-      
-      }, 4000);
 
-      
-</script>
+    }, 4000);
+  </script>
 {% endif %}
 
 {% if product.metafields.custom.textbanner == true %}
@@ -627,42 +635,43 @@
     .tee-variants .tee-option {
       max-width: calc(100% - 247px);
     }
-    .tee-option.tee-available-products{
+    .tee-option.tee-available-products {
       max-width: calc(100% - 247px);
     }
     @media screen and (max-width: 768px) {
-    .tee_additional_info .bx_in {
-      max-width: unset;
-      padding: 20px 10px;
+      .tee_additional_info .bx_in {
+        max-width: unset;
+        padding: 20px 10px;
+      }
+      .tee-variants .tee-option {
+        max-width: unset;
+      }
+      .tee-option.tee-available-products {
+        max-width: unset;
+      }
     }
-    .tee-variants .tee-option {
-      max-width: unset;
-    }
-    .tee-option.tee-available-products{
-      max-width: unset;
-    }
-  }
   </style>
 
   <script>
 
     function addBannerText() {
-      
-      let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-    if (isMobile) {
-      console.log("The device is mobile");
-      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-      if (document.getElementsByClassName('tee_additional_info').length == 1) 
-        document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
-      
 
-    } else {
-      console.log("The device is desktop");
-      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-      if (document.getElementsByClassName('tee_additional_info').length == 1) {
-        document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
-      }
-      
+      let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
+      if (isMobile) {
+        console.log("The device is mobile");
+        var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+        if (document.getElementsByClassName('tee_additional_info').length == 1) 
+          document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
+        
+
+
+      } else {
+        console.log("The device is desktop");
+        var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+        if (document.getElementsByClassName('tee_additional_info').length == 1) {
+          document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
+        }
+
       }
 
     }
@@ -671,143 +680,124 @@
 
 
 
-
-
-
-
-  
 {% endif %}
 
 
 
-
-
-
-<script>  
-$(document).ready(function(){  
-  let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-  
-  
-    
- setTimeout(function() { 
-  if(!isMobile){
-    $('.tee-thumbnails__track').slick({
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: false,
-      infinite: false,
-      vertical: true,
-      draggable: true,
-      prevArrow: '<span class="cont-btn button-prev-slider"></span>',
-      nextArrow: '<span class="cont-btn button-next-slider"></span>',
-      responsive: [
-          {
-            breakpoint: 500,
-            settings: {
-              arrows: false,
-              vertical: false,
-            }
-          }
-        ]
-    });
-  }
-   var init_price = $('span.money.theme-money.price.tee-price--current').text();
-   $('.tee-btn.tee-btn--atc span').text('Add to Cart' +"- "+  init_price );
-    var target = document.querySelector('div#tee-artwork-form')
-
-  // Create an observer instance.
-  var observer = new MutationObserver(function(mutations) {
-    console.log(target.firstChild.children[0].innerText);  
-    {% if product.metafields.custom.textbanner == true %}
+<script>
+  $(document).ready(function() {
     let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-    if (isMobile) {
-      console.log("The device is mobile");
-      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-      if (document.getElementsByClassName('tee_additional_info').length == 1) 
-        document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
-      
 
-    } else {
-      console.log("The device is desktop");
-      var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-      if (document.getElementsByClassName('tee_additional_info').length == 1) {
-        document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
-      }
-     
-      }
-    {% endif %}
 
-  $('.tee-btn.tee-btn--atc span').text('Add to Cart'+" - " + target.firstChild.children[0].innerText );
-  if(!isMobile){
-    setTimeout(function() { 
-      $('.tee-thumbnails__track').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        arrows: true,
-        dots: false,
-        infinite: false,
-        vertical: true,
-        draggable: true,
-        prevArrow: '<span class="cont-btn button-prev-slider"></span>',
-        nextArrow: '<span class="cont-btn button-next-slider"></span>',
-        responsive: [
+
+    setTimeout(function() {
+      if (! isMobile) {
+        $('.tee-thumbnails__track').slick({
+          slidesToShow: 5,
+          slidesToScroll: 1,
+          arrows: true,
+          dots: false,
+          infinite: false,
+          vertical: true,
+          draggable: true,
+          prevArrow: '<span class="cont-btn button-prev-slider"></span>',
+          nextArrow: '<span class="cont-btn button-next-slider"></span>',
+          responsive: [
             {
               breakpoint: 500,
               settings: {
                 arrows: false,
-                vertical: false,
+                vertical: false
               }
             }
           ]
-      });
-    }, 500);
-  }
-  
-  
-});
-
-// Pass in the target node, as well as the observer options.
-observer.observe(target, {
-    attributes:    true,
-    childList:     true,
-    characterData: true
-});
-
-
-
-   var target1 = document.querySelector('span.money.theme-money.price.tee-price--current')
+        });
+      }
+      var init_price = $('span.money.theme-money.price.tee-price--current').text();
+      $('.tee-btn.tee-btn--atc span').text('Add to Cart' + "- " + init_price);
+      var target = document.querySelector('div#tee-artwork-form')
 
 // Create an observer instance.
-var observer1 = new MutationObserver(function(mutations) {
-  $('.tee-btn.tee-btn--atc span').text('Add to Cart'+"- " +target.firstChild.children[0].innerText );
-});
+      var observer = new MutationObserver(function(mutations) {
+        console.log(target.firstChild.children[0].innerText);{% if product.metafields.custom.textbanner == true %}
+          let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
+          if (isMobile) {
+            console.log("The device is mobile");
+            var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+            if (document.getElementsByClassName('tee_additional_info').length == 1) 
+              document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
+            
+
+
+          } else {
+            console.log("The device is desktop");
+            var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
+            if (document.getElementsByClassName('tee_additional_info').length == 1) {
+              document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
+            }
+
+          }
+        {% endif %}
+
+        $('.tee-btn.tee-btn--atc span').text('Add to Cart' + " - " + target.firstChild.children[0].innerText);
+        if (! isMobile) {
+          setTimeout(function() {
+            $('.tee-thumbnails__track').slick({
+              slidesToShow: 5,
+              slidesToScroll: 1,
+              arrows: true,
+              dots: false,
+              infinite: false,
+              vertical: true,
+              draggable: true,
+              prevArrow: '<span class="cont-btn button-prev-slider"></span>',
+              nextArrow: '<span class="cont-btn button-next-slider"></span>',
+              responsive: [
+                {
+                  breakpoint: 500,
+                  settings: {
+                    arrows: false,
+                    vertical: false
+                  }
+                }
+              ]
+            });
+          }, 500);
+        }
+
+
+      });
 
 // Pass in the target node, as well as the observer options.
-observer1.observe(target1, {
-    attributes:    true,
-    childList:     true,
-    characterData: true
-});
+      observer.observe(target, {
+        attributes: true,
+        childList: true,
+        characterData: true
+      });
 
 
 
+      var target1 = document.querySelector('span.money.theme-money.price.tee-price--current')
+
+// Create an observer instance.
+      var observer1 = new MutationObserver(function(mutations) {
+        $('.tee-btn.tee-btn--atc span').text('Add to Cart' + "- " + target.firstChild.children[0].innerText);
+      });
+
+// Pass in the target node, as well as the observer options.
+      observer1.observe(target1, {
+        attributes: true,
+        childList: true,
+        characterData: true
+      });
 
 
- 
 
-   }, 5000);
- 
- 
-});  
-
- 
+    }, 5000);
 
 
-
+  });
 </script>
-
-
 
 
 
