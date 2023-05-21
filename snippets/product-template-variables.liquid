@@ -16,21 +16,21 @@
 <script type="application/ld+json">
   {
   "@context": "http://schema.org",
-      "@type": "Product",
-      "offers": {
-        "@type": "Offer",
-        "availability":"https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "@type": "Product",
+        "offers": {
+          "@type": "Offer",
+          "availability":"https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
   "price": "{{ current_variant.price | divided_by: 100.00 }}",
   "priceCurrency": "{{ cart.currency.iso_code }}",
   "priceValidUntil": "2035-12-31",
-        "url": "{{ shop.url }}{{ product.url }}"
+          "url": "{{ shop.url }}{{ product.url }}"
   },
-      "brand": {{ product.vendor | json }},
+        "brand": {{ product.vendor | json }},
   "sku": {{ current_variant.sku | json }},
   "name": {{ product.title | json }},
   "description": {{ product.description | strip_html | json }},
   "category": "",
-      "url": "{{ shop.url }}{{ product.url }}",
+        "url": "{{ shop.url }}{{ product.url }}",
   {%- if is_barcode_available and is_valid_gtin_length %}
     "{{ gtin_option }}": {{ current_variant.barcode | json }},
     "productId": {{ current_variant.barcode | json }},
@@ -40,36 +40,36 @@
   {%- endif -%}
   "image": {
   "@type": "ImageObject",
-        "url": "https:{{ product.featured_media.preview_image | img_url: '1024x1024' }}",
+          "url": "https:{{ product.featured_media.preview_image | img_url: '1024x1024' }}",
   "image": "https:{{ product.featured_media.preview_image | img_url: '1024x1024' }}",
   "name": {{ product.title | json }},
   "width": 1024,
-        "height": 1024
-      }, 
-      "review": {
-      "@type": "Review",
-  	    "reviewRating": {
-  	      "@type": "Rating",
-  	      "ratingValue": "4.8"
-  	    },
-  	    "name": "{{ product.title }}",
+          "height": 1024
+        }, 
+        "review": {
+        "@type": "Review",
+    	    "reviewRating": {
+    	      "@type": "Rating",
+    	      "ratingValue": "4.8"
+    	    },
+    	    "name": "{{ product.title }}",
   "author": {
-  	      "@type": "Person",
-  	      "name": "Alicia Gibbs"
-  	    },
-  	    "datePublished": "2021-05-18",
-  	    "reviewBody": "It was a Mother’s Day gift to my daughter in law, and she loved it! Perfect fit, great quality and the colors popped! Thank you!",
-  	    "publisher": {
-  	      "@type": "Organization",
-  	      "name": "adorb.co"
-  	    }
-  	},
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "{% if product.metafields.reviews.rating.value.scale_max %}
+    	      "@type": "Person",
+    	      "name": "Alicia Gibbs"
+    	    },
+    	    "datePublished": "2021-05-18",
+    	    "reviewBody": "It was a Mother’s Day gift to my daughter in law, and she loved it! Perfect fit, great quality and the colors popped! Thank you!",
+    	    "publisher": {
+    	      "@type": "Organization",
+    	      "name": "adorb.co"
+    	    }
+    	},
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{% if product.metafields.reviews.rating.value.scale_max %}
     {{ product.metafields.reviews.rating.value.scale_max }}{% else %}4.8{% endif %}",
   "bestRating": "5",
-          "ratingCount": "{% if product.metafields.reviews.rating_count %}
+            "ratingCount": "{% if product.metafields.reviews.rating_count %}
     {{ product.metafields.reviews.rating_count }}{% else %}1{% endif %}"
   } 
-    }</script>
+      }</script>
