@@ -493,6 +493,21 @@
 .teeinblue-enabled .quantity_atc_wrapper {
   display: block;
 }
+.collapsible-trigger-btn--borders{
+  padding: 15px;
+  background-color: rgba(255, 173, 143, 0.5);
+  border-radius: 7px;
+  margin-bottom: 20px;
+  padding-left: 50px;
+  color: #000000;
+  border: none;
+}
+.collapsibles-wrapper--border-bottom{
+  border: none;
+}
+.product-single__form{
+margin-bottom: 0;
+}
 @media only screen and (max-width: 768px) {
   .js-qty__wrapper {
     max-width: 110px;
