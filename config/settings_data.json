@@ -1271,20 +1271,6 @@
         "settings": {
         }
       },
-      "15885745614559378752": {
-        "type": "shopify:\/\/apps\/accessibly\/blocks\/app-embed\/4b59303e-1141-4c8a-945f-bf4adb516864",
-        "disabled": false,
-        "settings": {
-          "themeColor": "#574cd5",
-          "iconColor": "#574cd5",
-          "showLogo": true,
-          "topBottomPosition": 10,
-          "rightLeftPosition": 10,
-          "iconSize": "extra-small",
-          "iconCustomSize": 64,
-          "position": "middle-right"
-        }
-      },
       "2369874457889669609": {
         "type": "shopify:\/\/apps\/rebolt-bundle-upsell\/blocks\/app-embed\/0a9e67ff-0413-4374-921d-e70fb17c7dbc",
         "disabled": false,
@@ -1316,10 +1302,18 @@
         "settings": {
         }
       },
-      "11432920177897217407": {
-        "type": "shopify:\/\/apps\/easy-product-addons\/blocks\/speedup_link\/0099190e-a0cb-49e7-8d26-026c9d26f337",
-        "disabled": true,
+      "15885745614559378752": {
+        "type": "shopify:\/\/apps\/accessibly\/blocks\/app-embed\/4b59303e-1141-4c8a-945f-bf4adb516864",
+        "disabled": false,
         "settings": {
+          "themeColor": "#574cd5",
+          "iconColor": "#574cd5",
+          "showLogo": true,
+          "topBottomPosition": 50,
+          "rightLeftPosition": 10,
+          "iconSize": "extra-small",
+          "iconCustomSize": 57,
+          "position": "bottom-right"
         }
       }
     }
