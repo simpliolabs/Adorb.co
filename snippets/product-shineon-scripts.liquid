@@ -1832,7 +1832,7 @@
              */
             saveRenderedImageToLocalStorage: function (key) {
                 try {
-                    var variant_id = this.$form.find('input[name="id"]').val(),
+                    var variant_id = this.$form.find('input[name="id" data-productid="{{ product.id }}"]').val(),
                         thumbCarousel = $('#so-slick-thumbnail-carousel-' + this.productId),
                         is_bu_image_uniq = 0;
                         current_variant = {};

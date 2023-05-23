@@ -171,7 +171,7 @@ Sided Stick -> display_option1_metal = true
   <div class="so-product-form">
 
     <form class="so-product-form"
-          action="/cart/add"
+          action="/cart/add" data-productid="{{ product.id }}"
           method="post"
           enctype="multipart/form-data"
           id="{{ product_form_id }}"
@@ -182,7 +182,7 @@ Sided Stick -> display_option1_metal = true
           data-express_checkout="{{ section.settings.express_checkout }}"
           data-google_analytics_id="{{ shop.metafields.shineon.google_analytics_id }}">
 
-      <input type="hidden" name="id" value="{{ so_current_variant.id }}" />
+      <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ so_current_variant.id }}" />
 
       {% include 'product-info-shineon' with 'product-title-with-rating' %}
     
