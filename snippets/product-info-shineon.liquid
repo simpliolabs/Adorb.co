@@ -1250,7 +1250,7 @@
        role="dialog">
       <div class="so-modal-dialog so-modal-lg so-modal-box" role="document">
       <form class="so-product-form"
-          action="/cart/add"
+          action="/cart/add" data-productid="{{ product.id }}"
           method="post"
           enctype="multipart/form-data"
           id="{{ product_form_id }}"
@@ -1529,7 +1529,7 @@
                 {% endif %}
 
                 <div class="so-modal-btn-add-to-cart-wrap">
-                  <input type="hidden" name="id" value="{{ so_current_variant.id }}" />
+                  <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ so_current_variant.id }}" />
                   <input type="hidden" name="quantity" value="1" required />
                   {% if is_roman_numeral_date == true %}
                   <input type="hidden" id="roman-numbers" value="" name="properties[Roman-numbers]" />

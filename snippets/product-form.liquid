@@ -1,5 +1,5 @@
 {%- capture form_id -%}AddToCartForm-{{ section_id }}{%- endcapture -%}
-{%- form 'product', product, id: form_id, class: 'product-single__form' -%}
+{%- form 'product', product, data-productid: product.id, id: form_id, class: 'product-single__form' -%}
   {% if product.metafields.custom.textbanner == true %}
     <div class='tee_additional_info default-product'>
       <div class='bx_in'>
@@ -44,7 +44,7 @@
     {%- endfor -%}
   {%- endunless -%}
 
-  <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js varinat-selector">
+  <select name="id" data-productid="{{ product.id }}" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js varinat-selector">
     {%- for variant in product.variants -%}
       {%- if variant.available -%}
         <option data-pick-price="{{ variant.price | money }}" {% if variant == product.selected_or_first_available_variant %}
