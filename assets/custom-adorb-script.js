@@ -67,7 +67,7 @@ $(document).ready(function(){
     _html += '</div>';
   _html += '</div>';
   
-  // setTimeout(function(){
-  //   $("#icartMainContent .icartContain").before(_html);  
-  // }, 2000);
+  setTimeout(function(){
+    $("#icartMainContent .icartContain").before(_html);  
+  }, 2000);
 });
