@@ -1049,6 +1049,7 @@
         "blocks": {
           "1e095fe3-58da-4e09-bf9f-30659a8797ce-16755256919afa4adb-0": {
             "type": "slide",
+            "disabled": true,
             "settings": {
               "collection": "cinco-de-mayo",
               "img": "shopify:\/\/shop_images\/St._Paddys_9a9a7e0b-e8d5-420c-80f4-f99bd898a241.png",
@@ -1066,6 +1067,7 @@
           },
           "6f7af262-16cb-416f-907b-2934442d3246": {
             "type": "slide",
+            "disabled": true,
             "settings": {
               "collection": "easter",
               "img": "shopify:\/\/shop_images\/Easter_ae685327-3ec7-4694-8f8b-26e5e664d137.png",
