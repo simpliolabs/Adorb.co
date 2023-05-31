@@ -115,7 +115,7 @@
     "show_breadcrumbs": false,
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/IMG_2210.PNG",
-    "checkout_logo_position": "center",
+    "checkout_logo_position": "left",
     "checkout_logo_size": "large",
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#ffffff",
