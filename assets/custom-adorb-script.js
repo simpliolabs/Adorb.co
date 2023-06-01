@@ -91,6 +91,7 @@ $(document).ready(function(){
 
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
+    alert('ss');
     $('.icartCheckoutBtnGroup button[name="icartCheckout"]').click(function(e){
       e.preventDefault();
       var new_url = 'https://adorb.co/checkout?discount=MEMBERSDISCOUNT';
