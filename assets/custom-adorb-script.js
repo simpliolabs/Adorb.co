@@ -75,7 +75,7 @@ $(document).ready(function(){
 $(document).on('click', '#add-membership-product-in-cart', function(){
   jQuery.post('/cart/add.js', {
     quantity: 1,
-    id: 794864229,
+    id: 43961055150308,
     properties: {
       'First name': 'Caroline'
     }
