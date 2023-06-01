@@ -81,6 +81,6 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
     }
   });
   
-  var actual_order_total = parseInt($(".icart-cart-price label[data-gift-price]").text());
+  var actual_order_total = $(".icart-cart-price label[data-gift-price]").text();
   alert(actual_order_total);
 });
