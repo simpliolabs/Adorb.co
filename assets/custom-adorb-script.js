@@ -82,9 +82,7 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   });
   
   setTimeout(function(){
-    var actual_order_total = parseFloat($(".icart-cart-price label[data-gift-price]").text().replace('$',''));
-    actual_order_total = actual_order_total/2;
-    $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);    
+    regenerateCartProductPrices()
   }, 2000);  
 });
 
@@ -93,8 +91,16 @@ $(document).ready(function(){
 });
 
 function regenerateCartProductPrices(){
-   var items_price = 0;
-   $('.icart-items .icart-bottom-new-checkout').each(function(){
-      items_price += parseFloat($(this).find('.icart-item-price .icart-product-price').text().replace('$',''));
-   });  
+  var items_price = 0;
+  $('.icart-items .icart-bottom-new-checkout').each(function(){
+      var price_container = $(this).find('.icart-item-price .icart-product-price');
+      var item_price = parseFloat(price_container.text().replace('$',''));
+      item_price = (item_price/2).toFixed(2);
+      price_container.text('$'+item_price);
+      items_price += item_price;
+    });  
+  
+    var actual_order_total = parseFloat($(".icart-cart-price label[data-gift-price]").text().replace('$',''));
+    actual_order_total = (actual_order_total/2).toFixed(2);
+    $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);    
 }
