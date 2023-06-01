@@ -61,7 +61,7 @@ $(document).ready(function(){
     _html += '</ul>';
   _html += '</div>';
   _html += '<div data-v-12407f70="" class="membership-bottom">';
-    _html += '<div data-v-12407f70=""><a data-v-12407f70="" href="javascript:void(0)" class="add_membership btn btn--full button button--primary">Add Membership</a></div>';
+    _html += '<div data-v-12407f70=""><a data-v-12407f70="" href="javascript:void(0)" class="add_membership btn btn--full button button--primary" id="add-membership-product-in-cart">Add Membership</a></div>';
        _html += '<div data-v-12407f70="" style="margin: auto; text-align: center;">';
        _html += '</div>';
     _html += '</div>';
@@ -70,4 +70,14 @@ $(document).ready(function(){
   setTimeout(function(){
     $("#icartMainContent .icartContain").before(_html);  
   }, 2000);
+});
+
+$(document).on('click', '#add-membership-product-in-cart', function(){
+  jQuery.post('/cart/add.js', {
+    quantity: 1,
+    id: 794864229,
+    properties: {
+      'First name': 'Caroline'
+    }
+  });  
 });
