@@ -93,8 +93,8 @@ $(document).ready(function(){
 });
 
 function regenerateCartProductPrices(){
+   var items_price = 0;
    $('.icart-items .icart-bottom-new-checkout').each(function(){
-      var item_price = parseFloat($(this).find('.icart-item-price .icart-product-price').text().replace('$',''));
-     alert(item_price);
+      items_price += parseFloat($(this).find('.icart-item-price .icart-product-price').text().replace('$',''));
    });  
 }
