@@ -115,7 +115,7 @@
     "show_breadcrumbs": false,
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/IMG_2210.PNG",
-    "checkout_logo_position": "center",
+    "checkout_logo_position": "left",
     "checkout_logo_size": "large",
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#ffffff",
@@ -266,7 +266,7 @@
         "type": "collection-template",
         "settings": {
           "description_position": "bottom",
-          "subcollection_style": "above",
+          "subcollection_style": "below",
           "subcollections_per_row": 5,
           "enable_collection_count": true,
           "per_row": 4,
@@ -1047,8 +1047,25 @@
       "1e095fe3-58da-4e09-bf9f-30659a8797ce": {
         "type": "collection-block-mobile",
         "blocks": {
+          "cce5b379-0438-4979-ada1-68e9a5372534": {
+            "type": "slide",
+            "settings": {
+              "collection": "fathers-day-merch",
+              "img": "shopify:\/\/shop_images\/fathers-day_category_2.png",
+              "title": "FATHERS DAY"
+            }
+          },
+          "d85c9b00-4d22-4a26-9eaa-d5ebca81d564": {
+            "type": "slide",
+            "settings": {
+              "collection": "married-couples",
+              "img": "shopify:\/\/shop_images\/Married_Couples_31e6e06f-21fb-4860-beac-db8d3a6f84b1.png",
+              "title": "ANNIVERSARY"
+            }
+          },
           "1e095fe3-58da-4e09-bf9f-30659a8797ce-16755256919afa4adb-0": {
             "type": "slide",
+            "disabled": true,
             "settings": {
               "collection": "cinco-de-mayo",
               "img": "shopify:\/\/shop_images\/St._Paddys_9a9a7e0b-e8d5-420c-80f4-f99bd898a241.png",
@@ -1066,6 +1083,7 @@
           },
           "6f7af262-16cb-416f-907b-2934442d3246": {
             "type": "slide",
+            "disabled": true,
             "settings": {
               "collection": "easter",
               "img": "shopify:\/\/shop_images\/Easter_ae685327-3ec7-4694-8f8b-26e5e664d137.png",
@@ -1085,25 +1103,18 @@
             "settings": {
               "collection": "mom-merch",
               "img": "shopify:\/\/shop_images\/Mommy_and_Me_57f72bfb-0309-4730-8167-15cd0ebbd019.png",
-              "title": "MOMMY & ME"
-            }
-          },
-          "d85c9b00-4d22-4a26-9eaa-d5ebca81d564": {
-            "type": "slide",
-            "settings": {
-              "collection": "married-couples",
-              "img": "shopify:\/\/shop_images\/Married_Couples_31e6e06f-21fb-4860-beac-db8d3a6f84b1.png",
-              "title": "ANNIVERSARY"
+              "title": "FOR MOM"
             }
           }
         },
         "block_order": [
+          "cce5b379-0438-4979-ada1-68e9a5372534",
+          "d85c9b00-4d22-4a26-9eaa-d5ebca81d564",
           "1e095fe3-58da-4e09-bf9f-30659a8797ce-16755256919afa4adb-0",
           "dc4396d8-feb9-45ff-99d2-b213615e6c07",
           "6f7af262-16cb-416f-907b-2934442d3246",
           "43479939-25da-4a87-8ffa-1f9ff3866136",
-          "8fe1803e-6e3b-47a9-940a-f559cf1d525d",
-          "d85c9b00-4d22-4a26-9eaa-d5ebca81d564"
+          "8fe1803e-6e3b-47a9-940a-f559cf1d525d"
         ],
         "settings": {
         }

@@ -614,8 +614,9 @@
 
   var d3 = date2.split(' ')[1];
   var d4 = date2.split(' ')[2];
-
-  document.getElementById('shipping-date').innerHTML = " " + d1 + " " + d2 + " - " + d3 + " " + d4;
+  if (document.getElementById('shipping-date')) {
+    document.getElementById('shipping-date').innerHTML = " " + d1 + " " + d2 + " - " + d3 + " " + d4;
+  }
 </script>
 
 <style>
