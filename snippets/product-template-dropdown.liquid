@@ -117,7 +117,7 @@
 
       <div class="grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}">
         {%- if image_position == 'left' -%}
-          <div class="grid__item {{ product_image_width }}">
+          <div class="grid__item {{ product_image_width }}" style="width:60%;">
             {%- render 'product-images' 
               , section_id: section_id,
               product: product,
@@ -157,10 +157,6 @@
                 {{ product.title }}
               </p>
             {%- else -%}
-
-              <div class="icons_img_wrapper">
-                <img data-src="{{ 'adorb_icons.png' | asset_url}}" class="lazyload">
-              </div>
 
               <div class="title_review_wrapper">
 
@@ -455,7 +451,9 @@
               </div>
             {%- endif -%}
 
-
+            <div class="icons_img_wrapper">
+              <img data-src="{{ 'adorb_icons.png' | asset_url}}" class="lazyload">
+            </div>
 
             {%- unless description_style == 'full' -%}
               <div class="product-single__description rte">{% comment %}{% render 'product-description-slider', product: product %}{% endcomment %}
@@ -509,32 +507,6 @@
 </style>
 
 <style>
-  .tee-variants {
-    position: relative;
-    min-height: 50px;
-  }
-
-  .tee-variants .tee_additional_info {
-    position: absolute;
-    bottom: 0;
-    right: 20px;
-
-  }
-  .tee_additional_info .bx_in {
-    background: #ffa88a;
-    border-radius: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 17px;
-    justify-content: center;
-    max-width: 227px;
-    text-align: center;
-    margin-top: 31px;
-    font-size: 14px;
-  }
-  .tee_additional_info .bx_in p {
-    margin: 15px 0 0;
-  }
   .mobile_only {
     display: none;
   }
@@ -554,13 +526,6 @@
     height: 33px !important;
   }
 
-  {% if product.metafields.custom.textbanner == true %}
-    @media screen and (min-width: 769px) {
-      .variant-wrapper {
-        min-height: 200px;
-      }
-    }
-  {% endif %}
 
   @media screen and (max-width: 767px) {
     .mobile_only {
@@ -575,16 +540,20 @@
       font-weight: 500;
       margin: 0;
     }
-    .teeinblue-enabled .product__price {
-      display: block !important;
-      padding-bottom: 10px;
-      font-size: 17px;
-      font-weight: bold;
-    }
+    {% comment %}
+      .teeinblue-enabled .product__price {
+        display: block !important;
+        padding-bottom: 10px;
+        font-size: 17px;
+        font-weight: bold;
+      }
+    {% endcomment %}
 
-    .teeinblue-enabled .product__price.desktop_only {
-      display: none !important;
-    }
+    {% comment %}
+      .teeinblue-enabled .product__price.desktop_only {
+        display: none !important;
+      }
+    {% endcomment %}
     {% comment %}
       .tee-block.tee-product-price {
         display: none;
@@ -592,10 +561,6 @@
     {% endcomment %}
     .judge-me-fetch--reviews {
       padding-bottom: 8px;
-    }
-    .tee_additional_info {
-      position: unset;
-      margin-bottom: 30px;
     }
 
   }
@@ -630,177 +595,6 @@
   </script>
 {% endif %}
 
-{% if product.metafields.custom.textbanner == true %}
-  <style>
-    .tee-variants .tee-option {
-      max-width: calc(100% - 247px);
-    }
-    .tee-option.tee-available-products {
-      max-width: calc(100% - 247px);
-    }
-    @media screen and (max-width: 768px) {
-      .tee_additional_info .bx_in {
-        max-width: unset;
-        padding: 20px 10px;
-      }
-      .tee-variants .tee-option {
-        max-width: unset;
-      }
-      .tee-option.tee-available-products {
-        max-width: unset;
-      }
-    }
-  </style>
-
-  <script>
-
-    function addBannerText() {
-
-      let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-      if (isMobile) {
-        console.log("The device is mobile");
-        var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-        if (document.getElementsByClassName('tee_additional_info').length == 1) 
-          document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
-        
-
-
-      } else {
-        console.log("The device is desktop");
-        var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-        if (document.getElementsByClassName('tee_additional_info').length == 1) {
-          document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
-        }
-
-      }
-
-    }
-    setTimeout(addBannerText, 1000);
-  </script>
-
-
-
-{% endif %}
-
-
-
-<script>
-  $(document).ready(function() {
-    let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-
-
-
-    setTimeout(function() {
-      if (! isMobile) {
-        $('.tee-thumbnails__track').slick({
-          slidesToShow: 5,
-          slidesToScroll: 1,
-          arrows: true,
-          dots: false,
-          infinite: false,
-          vertical: true,
-          draggable: true,
-          prevArrow: '<span class="cont-btn button-prev-slider"></span>',
-          nextArrow: '<span class="cont-btn button-next-slider"></span>',
-          responsive: [
-            {
-              breakpoint: 500,
-              settings: {
-                arrows: false,
-                vertical: false
-              }
-            }
-          ]
-        });
-      }
-      var init_price = $('span.money.theme-money.price.tee-price--current').text();
-      $('.tee-btn.tee-btn--atc span').text('Add to Cart' + "- " + init_price);
-      var target = document.querySelector('div#tee-artwork-form')
-
-// Create an observer instance.
-      var observer = new MutationObserver(function(mutations) {
-        console.log(target.firstChild.children[0].innerText);{% if product.metafields.custom.textbanner == true %}
-          let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-          if (isMobile) {
-            console.log("The device is mobile");
-            var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-            if (document.getElementsByClassName('tee_additional_info').length == 1) 
-              document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
-            
-
-
-          } else {
-            console.log("The device is desktop");
-            var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-            if (document.getElementsByClassName('tee_additional_info').length == 1) {
-              document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
-            }
-
-          }
-        {% endif %}
-
-        $('.tee-btn.tee-btn--atc span').text('Add to Cart' + " - " + target.firstChild.children[0].innerText);
-        if (! isMobile) {
-          setTimeout(function() {
-            $('.tee-thumbnails__track').slick({
-              slidesToShow: 5,
-              slidesToScroll: 1,
-              arrows: true,
-              dots: false,
-              infinite: false,
-              vertical: true,
-              draggable: true,
-              prevArrow: '<span class="cont-btn button-prev-slider"></span>',
-              nextArrow: '<span class="cont-btn button-next-slider"></span>',
-              responsive: [
-                {
-                  breakpoint: 500,
-                  settings: {
-                    arrows: false,
-                    vertical: false
-                  }
-                }
-              ]
-            });
-          }, 500);
-        }
-
-
-      });
-
-// Pass in the target node, as well as the observer options.
-      observer.observe(target, {
-        attributes: true,
-        childList: true,
-        characterData: true
-      });
-
-
-
-      var target1 = document.querySelector('span.money.theme-money.price.tee-price--current')
-
-// Create an observer instance.
-      var observer1 = new MutationObserver(function(mutations) {
-        $('.tee-btn.tee-btn--atc span').text('Add to Cart' + "- " + target.firstChild.children[0].innerText);
-      });
-
-// Pass in the target node, as well as the observer options.
-      observer1.observe(target1, {
-        attributes: true,
-        childList: true,
-        characterData: true
-      });
-
-
-
-    }, 5000);
-
-
-  });
-</script>
-
-
-
 <script>
 
   var date = new Date();
@@ -823,3 +617,28 @@
 
   document.getElementById('shipping-date').innerHTML = " " + d1 + " " + d2 + " - " + d3 + " " + d4;
 </script>
+
+<style>
+  .page-blocks {
+    background-color: #F7F1F3;
+    padding-top: 30px;
+  }
+  .page-blocks .page-width > * {
+    background: #fff;
+  }
+  .page-blocks .page-width .section-header {
+    margin-bottom: 0;
+    padding: 10px 10px 20px;
+  }
+  @media only screen and (max-width: 768px) {
+    .jdgm-rev-widg.jdgm-rev-widg {
+      padding: 0 !important;
+    }
+    .more_similar_products.mobile_only {
+      margin-top: -10px;
+    }
+    #judgeme_product_reviews {
+      padding-top: 50px;
+    }
+  }
+</style>

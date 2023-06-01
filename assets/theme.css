@@ -1551,7 +1551,7 @@ html {
 
 @media only screen and (max-width: 768px) {
   .page-width--flush-small {
-    padding: 0;
+    padding: 0 17px;
   }
 }
 

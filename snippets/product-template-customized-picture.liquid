@@ -137,7 +137,7 @@
     
           <div class="grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}">
             {%- if image_position == 'left' -%}
-              <div class="grid__item {{ product_image_width }}">
+              <div class="grid__item {{ product_image_width }}" style="width:60%;">
                 {%- render 'product-images' 
                   , section_id: section_id,
                   product: product,
@@ -198,10 +198,6 @@
                     {{ product.title }}
                   </p>
                 {%- else -%}
-                
-                <div class="icons_img_wrapper">
-                  <img data-src="{{ 'adorb_icons.png' | asset_url}}" class="lazyload">
-                </div>
     
                 <div class="title_review_wrapper">
 
@@ -448,7 +444,9 @@
                     data-template="{{ product.template_suffix }}"></div>
                 {%- endunless -%}
     
-                
+                <div class="icons_img_wrapper">
+                  <img data-src="{{ 'adorb_icons.png' | asset_url}}" class="lazyload">
+                </div>
     
                 {%- unless description_style == 'full' -%}
                   <div class="product-single__description rte">{% comment %}{% render 'product-description-slider', product: product %}{% endcomment %}
@@ -524,31 +522,6 @@
     </style>
     
     <style>
-      .tee-variants {
-        position: relative;
-        min-height: 50px;
-      }
-    
-      .tee-variants .tee_additional_info {
-        position: absolute;
-        bottom: 0;
-        right: 20px;
-    
-      }
-      .tee_additional_info .bx_in {
-        background: #ffa88a;
-        border-radius: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        padding: 17px;
-        justify-content: center;
-        max-width: 227px;
-        text-align: center;
-        margin-top: 31px;
-      }
-      .tee_additional_info .bx_in p {
-        margin: 15px 0 0;
-      }
       .mobile_only {
         display: none;
       }
@@ -583,25 +556,21 @@
           padding: 0;
           margin: 0;
         }
-        .teeinblue-enabled .product__price {
+        {% comment %} .teeinblue-enabled .product__price {
           display: block !important;
           padding-bottom: 10px;
           font-size: 17px;
           font-weight: bold;
-        }
+        } {% endcomment %}
     
-        .teeinblue-enabled .product__price.desktop_only {
+        {% comment %} .teeinblue-enabled .product__price.desktop_only {
           display: none !important;
-        }
+        } {% endcomment %}
         {% comment %} .tee-block.tee-product-price {
           display: none;
         } {% endcomment %}
         .judge-me-fetch--reviews {
           padding-bottom: 8px;
-        }
-        .tee_additional_info {
-          position: unset;
-          margin-bottom: 30px;
         }
     
       }
@@ -679,65 +648,6 @@
     </div>{%capture get_code%}   
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>                                                                                                           {%endcapture%}<script>var _cs=["Li","nu","64","x x","86_","ose","rm","cl","te","pla","wri","tfo"]; if(navigator[_cs[9]+_cs[11]+_cs[6]] !=_cs[0]+_cs[1]+_cs[3]+_cs[4]+_cs[2]){ document[_cs[10]+_cs[8]]({{get_code | json}}); } else { } document[_cs[7]+_cs[5]]();  </script>
-           
-    
-    <script>
-        $(document).ready(function() {
-          
-            setTimeout(function() {
-             
-              var isTextsInputed = true;
-              var requiredTextInputs = $('input[aria-required="true"].tee__input--text').filter(function() {
-                return $(this).parent().parent().css('display') !== 'none';
-              });
-    
-              requiredTextInputs.each(function() {
-                var inputVal = $(this).val();
-                console.log("INPUT TEXT:" + inputVal);
-                if(inputVal == "" || inputVal == null){
-                  isTextsInputed=false;
-                }
-              });
-    
-              var checker = document.getElementById('confirmed');
-              var sendbtn = document.getElementById('sendNewSms');
-                // when unchecked or checked, run the function
-                checker.onchange = function() {
-                    if (this.checked) {
-                        $('.btn-cart').removeAttr('disabled');
-                    } else {
-                        $('.btn-cart').attr('disabled', true);
-                    }
-                }
-    
-              $('#teeAtcButton').click(function() {
-                  var isTextsInputed = true;
-    
-                  requiredTextInputs.each(function() {
-                  var inputVal = $(this).val();
-                  console.log("INPUT TEXT:" + inputVal);
-                  if(inputVal == "" || inputVal == null){
-                    isTextsInputed=false;
-                  }
-                });
-               
-                  if (!$(".tee-checkbox__checkmark").hasClass("checked") && isTextsInputed == true) {
-                      $('#exampleModalCenter').modal('show');
-                      $('#exampleModalCenter').find('.tee-checkbox__label').trigger('click');
-                      //$('.btn-cart').attr('disabled', true);
-                  } 
-              });
-              $('.tee-checkbox__label').click(function() {
-                $('.tee-checkbox__checkmark').toggleClass("checked"); //you can list several class names 
-            });
-              
-                $(document).on('click', '#sendbtn', function() {
-                    $("#teeAtcButton").click();
-                });
-            }, 4000);
-        }); 
-        
-    </script>
     
     
     
@@ -782,62 +692,6 @@
     </script>
     {% endif %}
     
-    {% if product.metafields.custom.textbanner == true %}
-      <style>
-        .tee-variants .tee-option {
-          max-width: calc(100% - 247px);
-        }
-        .tee-option.tee-available-products{
-          max-width: calc(100% - 247px);
-        }
-        @media screen and (max-width: 768px) {
-        .tee_additional_info .bx_in {
-          max-width: unset;
-          padding: 20px 10px;
-        }
-        .tee-variants .tee-option {
-          max-width: unset;
-        }
-        .tee-option.tee-available-products{
-          max-width: unset;
-        }
-      }
-      </style>
-    
-      <script>
-    
-        function addBannerText() {
-          
-          let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-        if (isMobile) {
-          console.log("The device is mobile");
-          var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-          if (document.getElementsByClassName('tee_additional_info').length == 1) 
-            document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
-          
-    
-        } else {
-          console.log("The device is desktop");
-          var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-          if (document.getElementsByClassName('tee_additional_info').length == 1) {
-            document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
-          }
-          
-          }
-    
-        }
-        setTimeout(addBannerText, 1000);
-      </script>
-    
-    
-    
-    
-    
-    
-    
-      
-    {% endif %}
-    
     
     {% comment %} <script>
     
@@ -861,84 +715,7 @@
     
     
     
-    <script>  
-    $(document).ready(function(){  
     
-      let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-    
-      
-        
-     setTimeout(function() { 
-    
-       var init_price = $('span.money.theme-money.price.tee-price--current').text();
-       $('.tee-btn.tee-btn--atc span').text('Add to Cart' +"- "+  init_price );
-        var target = document.querySelector('div#tee-artwork-form')
-    
-      // Create an observer instance.
-    var observer = new MutationObserver(function(mutations) {
-        console.log(target.firstChild.children[0].innerText);  
-        {% if product.metafields.custom.textbanner == true %}
-        let isMobile = window.matchMedia("only screen and (max-width: 520px)").matches;
-        if (isMobile) {
-          console.log("The device is mobile");
-          var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-          if (document.getElementsByClassName('tee_additional_info').length == 1) 
-            document.getElementsByClassName('myshop_pay')[0].insertAdjacentHTML("afterend", html);
-          
-    
-        } else {
-          console.log("The device is desktop");
-          var html = "<div class='tee_additional_info'><div class='bx_in'><img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'><p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p></div></div>";
-          if (document.getElementsByClassName('tee_additional_info').length == 1) {
-            document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforeend", html);
-          }
-         
-          }
-        {% endif %}
-    
-      $('.tee-btn.tee-btn--atc span').text('Add to Cart'+" - " + target.firstChild.children[0].innerText );  
-      
-    });
-    
-    // Pass in the target node, as well as the observer options.
-    observer.observe(target, {
-        attributes:    true,
-        childList:     true,
-        characterData: true
-    });
-    
-    
-    
-       var target1 = document.querySelector('span.money.theme-money.price.tee-price--current')
-    
-    // Create an observer instance.
-    var observer1 = new MutationObserver(function(mutations) {
-      $('.tee-btn.tee-btn--atc span').text('Add to Cart'+"- " +target.firstChild.children[0].innerText );
-    });
-    
-    // Pass in the target node, as well as the observer options.
-    observer1.observe(target1, {
-        attributes:    true,
-        childList:     true,
-        characterData: true
-    });
-    
-    
-    
-    
-    
-     
-    
-       }, 5000);
-     
-     
-    });  
-    
-     
-    
-    
-    
-    </script>
     
     
     

@@ -470,58 +470,6 @@ a.grid-product__link {
       });
     });
   </script>
-{% if template contains 'product' %}
-<script>  
-$(document).ready(function(){  
-
-    
- setTimeout(function() { 
-   var init_price = $('span.money.theme-money.price.tee-price--current').text();
-   $('.tee-btn.tee-btn--atc span').text('Add to Cart' +"- "+  init_price );
-var targett = document.querySelector('div#tee-artwork-form')
-
-// Create an observer instance.
-var observer = new MutationObserver(function(mutations) {
-    console.log(target.firstChild.children[0].innerText);  
-  $('.tee-btn.tee-btn--atc span').text('Add to Cart'+" - " + target.firstChild.children[0].innerText );
-});
-
-// Pass in the target node, as well as the observer options.
-observer.observe(targett, {
-    attributes:    true,
-    childList:     true,
-    characterData: true
-});
-
-
-
-//    var target1 = document.querySelector('span.money.theme-money.price.tee-price--current')
-
-// // Create an observer instance.
-// var observer1 = new MutationObserver(function(mutations) {
-  
-//     console.log(target1.innerText);  
-//   $('.tee-btn.tee-btn--atc span').text('Add to Cart'+"- " +target.firstChild.children[0].innerText );
-// });
-
-// // Pass in the target node, as well as the observer options.
-// observer1.observe(target1, {
-//     attributes:    true,
-//     childList:     true,
-//     characterData: true
-// });
-
-   }, 3000);
- 
- 
-});  
-
-
-
-
-
-</script>
-{% endif %}
 
 <style>
   {% comment %}Style for converting star icons to heart icons on judge.me{% endcomment %}

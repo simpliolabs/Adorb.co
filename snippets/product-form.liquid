@@ -1,13 +1,5 @@
 {%- capture form_id -%}AddToCartForm-{{ section_id }}{%- endcapture -%}
 {%- form 'product', product, data-productid: product.id, id: form_id, class: 'product-single__form' -%}
-  {% if product.metafields.custom.textbanner == true %}
-    <div class='tee_additional_info default-product'>
-      <div class='bx_in'>
-        <img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'>
-        <p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately! </p>
-      </div>
-    </div>
-  {% endif %}
 
   {%- unless product.has_only_default_variant -%}
     {%- for option in product.options_with_values -%}
@@ -27,29 +19,29 @@
       -%}
 
       {%- if settings.variant_type == 'button' -%}
-        {%- render 'variant-button',
-          section_id: section_id,
+        {%- render 'variant-button' 
+          , section_id: section_id,
           option: option,
           forloop: forloop,
           is_color: is_color,
-          color_option_index: color_option_index
-        -%}
+          color_option_index: color_option_index -%}
       {%- else -%}
-        {%- render 'variant-dropdown',
-          section_id: section_id,
+        {%- render 'variant-dropdown' 
+          , section_id: section_id,
           option: option,
-          forloop: forloop
-        -%}
+          forloop: forloop -%}
       {%- endif -%}
     {%- endfor -%}
   {%- endunless -%}
 
-  <select name="id" data-productid="{{ product.id }}" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js varinat-selector">
+  <select
+    name="id"
+    data-productid="{{ product.id }}"
+    id="ProductSelect-{{ section_id }}"
+    class="product-single__variants no-js varinat-selector">
     {%- for variant in product.variants -%}
       {%- if variant.available -%}
-        <option data-pick-price="{{ variant.price | money }}" {% if variant == product.selected_or_first_available_variant %}
-          selected="selected"{% endif %}
-          value="{{ variant.id }}">
+        <option data-pick-price="{{ variant.price | money }}" {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}value="{{ variant.id }}">
           {{ variant.title }} - {{ variant.price | money_with_currency }}
         </option>
       {%- else -%}
@@ -58,11 +50,11 @@
         </option>
       {%- endif -%}
     {%- endfor -%}
-    
+
   </select>
 
-	<div id="infiniteoptions-container"></div>
-  
+  <div id="infiniteoptions-container"></div>
+
 
   {%- liquid
     assign inventory_visible = false
@@ -77,10 +69,7 @@
   -%}
 
   {%- if settings.inventory_enable -%}
-    <div
-      id="ProductInventory-{{ section_id }}"
-      class="product__inventory{% unless inventory_visible %} hide{% endunless %}"
-      >
+    <div id="ProductInventory-{{ section_id }}" class="product__inventory{% unless inventory_visible %} hide{% endunless %}">
       {%- if current_variant.available -%}
         {{ 'products.product.stock_label' | t: count: current_variant.inventory_quantity }}
       {%- endif -%}
@@ -88,9 +77,7 @@
   {%- endif -%}
 
   {%- if settings.inventory_transfers_enable -%}
-    <div
-      id="ProductIncomingInventory-{{ section_id }}"
-      class="product__inventory{% if inventory_visible %} hide{% endif %}">
+    <div id="ProductIncomingInventory-{{ section_id }}" class="product__inventory{% if inventory_visible %} hide{% endif %}">
       {%- if current_variant.incoming and inventory_visible == false -%}
         {%- if current_variant.next_incoming_date -%}
           {%- assign date = current_variant.next_incoming_date | date: format: 'date' -%}
@@ -115,7 +102,7 @@
 
   {%- if enable_dynamic_buttons -%}
     <div class="payment-buttons">
-  {%- endif -%}
+    {%- endif -%}
 
     {%- liquid
       assign default_text = 'products.product.add_to_cart' | t
@@ -128,49 +115,57 @@
         assign button_text = 'products.product.sold_out' | t
       endunless
     -%}
-<div class="bold_options" data-product-id="{{ product.id }}"></div>
+    <div class="bold_options" data-product-id="{{ product.id }}"></div>
 
-  <div class="quantity_atc_wrapper">
-  
-    {%- if settings.quantity_enable -%}
-      <div class="product__quantity product__quantity--{{ settings.variant_type }}" style="margin-right: 8px;">
-        {% comment %} <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label> {% endcomment %}
-        {%- render 'quantity-input', id: section_id, qty: 1, min: 1 -%}
+    <div class="quantity_atc_wrapper">
+
+      {%- if settings.quantity_enable -%}
+        <div class="product__quantity product__quantity--{{ settings.variant_type }}" style="margin-right: 8px;">
+          {% comment %} <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label> {% endcomment %}
+          {%- render 'quantity-input', id: section_id, qty: 1, min: 1 -%}
+        </div>
+      {%- endif -%}
+
+      <button {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}name="add"id="AddToCart-{{ section_id }}"class="btn btn--full add-to-cart{% if enable_dynamic_buttons %} btn--secondary{% endif %}"{% unless current_variant.available %}disabled="disabled"{% endunless %}>
+        {{ button_text }}
+      </button>
+    </div>
+
+    {% if product.metafields.custom.textbanner == true %}
+      <div class='tee_additional_info'>
+        <div class='bx_in'>
+          <img src='https://cdn.shopify.com/s/files/1/0407/8285/files/Vector_96a6f005-d405-45ff-ac3e-ebb8219de337.png?v=1668405319' alt='adorb'>
+          <p>Add all desired styles/sizes to your bag. Styles/sizes are sold separately!
+          </p>
+        </div>
       </div>
-    {%- endif -%}
+    {% endif %}
 
-    <button
-      {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
-      name="add"
-      id="AddToCart-{{ section_id }}"
-      class="btn btn--full add-to-cart{% if enable_dynamic_buttons %} btn--secondary{% endif %}"
-      {% unless current_variant.available %} disabled="disabled"{% endunless %}>
-      {{ button_text }}- {{ product.selected_or_first_available_variant.price  | money  }}
-    </button>
-  </div>
- 
     <div class="myshop_pay">
       {{ form | payment_terms }}
-    </div> 
-    
+    </div>
+
     {%- if enable_dynamic_buttons -%}
       {{ form | payment_button }}
     {%- endif -%}
 
-  {%- if enable_dynamic_buttons -%}
+    {%- if enable_dynamic_buttons -%}
     </div>
   {%- endif -%}
 
 
 
- 
-
-
-  <textarea id="VariantsJson-{{ section_id }}" class="hide" aria-hidden="true">
+  <textarea
+    id="VariantsJson-{{ section_id }}"
+    class="hide"
+    aria-hidden="true">
     {{ product.variants | json }}
   </textarea>
   {%- if product.options.size > 1 -%}
-    <textarea id="CurrentVariantJson-{{ section_id }}" class="hide" aria-hidden="true">
+    <textarea
+      id="CurrentVariantJson-{{ section_id }}"
+      class="hide"
+      aria-hidden="true">
       {{ current_variant | json }}
     </textarea>
   {%- endif -%}
@@ -179,38 +174,3 @@
 
 
 <div id="infiniteoptions-container"></div>
-
-<style>
-  .product-single__form{
-    position: relative;
-  }
-  .product-single__form .tee_additional_info{
-    position: absolute;
-    bottom: 135px;
-    right: 20px;
-  }
-  .variant-wrapper{
-    max-width:calc(100% - 247px);
-  }
-  .teeinblue-enabled .default-product{
-    display: none !important;
-  }
-  @media screen and (max-width: 768px) {
-    .product-single__form .tee_additional_info{
-      position: unset !important;
-      margin-bottom: 30px;
-    }
-    .product-single__form .tee_additional_info img{
-      display: none;
-    }
-    .tee_additional_info .bx_in p{
-        margin-top: 0 !important;
-        font-size: 16px;
-        line-height: 30px;
-    }
-    .variant-wrapper{
-      max-width:unset;
-    }
-  }
-  
-</style>
