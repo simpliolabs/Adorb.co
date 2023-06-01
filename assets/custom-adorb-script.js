@@ -79,5 +79,7 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
     properties: {
       'First name': 'Caroline'
     }
-  });  
+  });
+  var = actual_order_total = parseInt($(".icart-cart-price label[data-gift-price]").text());
+  alert(actual_order_total);
 });
