@@ -87,3 +87,14 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
     $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);    
   }, 2000);  
 });
+
+$(document).ready(function(){
+  regenerateCartProductPrices();  
+});
+
+function regenerateCartProductPrices(){
+   $('.icart-items .icart-bottom-new-checkout').each(function(){
+      var item_price = parseFloat($(this).find('.icart-item-price .icart-product-price').text().replace('$',''));
+     alert(item_price);
+   });  
+}
