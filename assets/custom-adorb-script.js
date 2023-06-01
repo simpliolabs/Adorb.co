@@ -92,6 +92,7 @@ $(document).ready(function(){
 
 function regenerateCartProductPrices(){
   apply_discount = availabilityForMemberShipDiscount();
+  alert(apply_discount);
   if(apply_discount == true) {
     var items_price = 0;
     $('.icart-items .icart-bottom-new-checkout').each(function(){
