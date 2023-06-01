@@ -117,5 +117,5 @@ function availabilityForMemberShipDiscount(){
     }
   });  
 
-  alert(is_available);
+  return is_available;
 }
