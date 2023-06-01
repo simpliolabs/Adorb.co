@@ -93,9 +93,10 @@ $(document).ready(function(){
 function regenerateCartProductPrices(){
   var apply_discount = false
   $('.icart-items .icart-bottom-new-checkout').each(function(){
-    $(this).find('.icart-item-content p').attr('title') == 'Adorb Monthly Membership';
-    apply_discount = true;
-    return ;    
+    if($(this).find('.icart-item-content p').attr('title') == 'Adorb Monthly Membership'){
+      apply_discount = true;
+      return ;          
+    }
   });  
   
   if(apply_discount == true) {
