@@ -112,6 +112,7 @@ function regenerateCartProductPrices(){
 function availabilityForMemberShipDiscount(){
   $('.icart-items .icart-bottom-new-checkout').each(function(){
     if($(this).find('.icart-item-content p').attr('title') == 'Adorb Monthly Membership'){
+      alert('test');
       return true;
     }
   });  
