@@ -91,14 +91,7 @@ $(document).ready(function(){
 });
 
 function regenerateCartProductPrices(){
-  var apply_discount = false
-  $('.icart-items .icart-bottom-new-checkout').each(function(){
-    if($(this).find('.icart-item-content p').attr('title') == 'Adorb Monthly Membership'){
-      apply_discount = true;
-      return ;          
-    }
-  });  
-  
+  apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
     var items_price = 0;
     $('.icart-items .icart-bottom-new-checkout').each(function(){
@@ -113,4 +106,13 @@ function regenerateCartProductPrices(){
     actual_order_total = (actual_order_total/2).toFixed(2);
     $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);        
   }
+}
+
+function availabilityForMemberShipDiscount(){
+  $('.icart-items .icart-bottom-new-checkout').each(function(){
+    if($(this).find('.icart-item-content p').attr('title') == 'Adorb Monthly Membership'){
+      return true;
+    }
+  });  
+  return false;
 }
