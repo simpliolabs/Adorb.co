@@ -118,3 +118,14 @@ function availabilityForMemberShipDiscount(){
 
   return is_available;
 }
+
+$(document).ready(function(){
+  var apply_discount = availabilityForMemberShipDiscount();
+  if(apply_discount == true) {
+    $('.icartCheckoutBtnGroup button[name="icartCheckout"]').click(function(e){
+      e.preventDefault();
+      var new_url = 'https://adorb.co/checkout?discount=MEMBERSDISCOUNT';
+      alert(new_url);
+    });    
+  }
+})
