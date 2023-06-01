@@ -36,7 +36,7 @@ $(window).click(function (e) {
   }
 });
 
-
+/*
 $(document).ready(function(){
   var _html = '';
   _html += '<div data-v-12407f70="" data-v-58a13aed="" class="cart__sidebar border membership_contents">';
@@ -119,6 +119,7 @@ function regenerateCartProductPrices(){
   }
 }
 
+
 function availabilityForMemberShipDiscount(){
   var is_available = false
   $('.icart-items .icart-bottom-new-checkout').each(function(){
@@ -129,3 +130,4 @@ function availabilityForMemberShipDiscount(){
 
   return is_available;
 }
+*/
