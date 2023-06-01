@@ -81,7 +81,9 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
     }
   });
   
-  var actual_order_total = parseFloat($(".icart-cart-price label[data-gift-price]").text().replace('$',''));
-  actual_order_total = actual_order_total/2;
-  $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);
+  setTimeout(function(){
+    var actual_order_total = parseFloat($(".icart-cart-price label[data-gift-price]").text().replace('$',''));
+    actual_order_total = actual_order_total/2;
+    $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);    
+  }, 2000);  
 });
