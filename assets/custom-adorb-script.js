@@ -72,10 +72,6 @@ $(document).ready(function(){
 });
 
 
-var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
-  .then(response => response.json())
-  .then(data => { alert(data )});
-
 
 $(document).on('click', '#add-membership-product-in-cart', function(){
   jQuery.post('/cart/add.js', {
@@ -94,9 +90,13 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 $(document).ready(function(){
   regenerateCartProductPrices();  
 
-  Shopify.onCartUpdate = function(cart) {
-    alert('There are now ' + cart.item_count + ' items in the cart.');
-  }; 
+  $('.icart-items .icart-bottom-new-checkout').each(function(){
+      $(this).find('.icart-item-quantity .icart-delete-btn').click(function(){
+        if($(this).closest('.icart-item-content').find('p').attr('title') == 'Adorb Monthly Membership') {
+          alert('mem product deleted');
+        }
+      });
+  });  
   
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
