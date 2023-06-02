@@ -107,7 +107,7 @@ function reloadAdvertisementWidget() {
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();     
             
       if($('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]').length == 0) {
-        $('.icartCheckoutBtnGroup').append('<a href="https://adorb.co/checkout?discount=MEMBERONLY"  name="icartCheckoutDump" class="" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');
+        $('.icartCheckoutBtnGroup').append('<a href="/checkout?discount=MEMBERONLY"  name="icartCheckoutDump" class="" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');
       }
     }else{
       $("#icartMainContent .membership_html_block").removeClass('hide');      
