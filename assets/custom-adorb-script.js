@@ -87,7 +87,11 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 
 $(document).ready(function(){
   regenerateCartProductPrices();  
-  alert('test');
+
+  Shopify.onCartUpdate = function(cart) {
+    alert('There are now ' + cart.item_count + ' items in the cart.');
+  }; 
+  
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
     setTimeout(function(){
