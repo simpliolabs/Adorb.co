@@ -102,6 +102,8 @@ $(document).on('click', '.icart-delete-btn', function(){
 function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
   
+    $('.icartCheckoutBtnGroup .icartContinueShopping').addClass('hide');
+  
     if(apply_discount == true) {
       $("#icartMainContent .membership_html_block").addClass('hide');
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();     
