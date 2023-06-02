@@ -85,13 +85,9 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   }, 2000);  
 });
 
-Shopify.onCartUpdate = function(cart) {
-  alert('There are now ' + cart.item_count + ' items in the cart.');
-}; 
-
 $(document).ready(function(){
   regenerateCartProductPrices();  
-
+  alert('test');
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
     setTimeout(function(){
