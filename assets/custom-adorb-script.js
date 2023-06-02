@@ -142,6 +142,8 @@ function regenerateCartProductPrices(){
           price_container.text('$'+item_price);
         }
       
+        console.log(item_price);
+      
         items_price += item_price;
     });  
     
