@@ -58,3 +58,6 @@
 .rebuy-cart__flyout .rebuy-cart__continue-shopping-button{
   color: #ffffff !important;
 }
+.rebuy-cart__flyout-subtotal{
+  justify-content:center !important;
+}
