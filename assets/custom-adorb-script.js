@@ -116,16 +116,16 @@ $(document).ready(function(){
      regenerateCartProductPrices();  
   }, 2000); 
   
-  var apply_discount = availabilityForMemberShipDiscount();
-  if(apply_discount == true) {
+});
+
+$(document).on('click', '.icartCheckoutBtnGroup button[name="icartCheckout"]', function(){
+    e.preventDefault();
     setTimeout(function(){
-      $('.icartCheckoutBtnGroup button[name="icartCheckout"]').on('click', function(e){
-        e.preventDefault();
-        var new_url = 'https://adorb.co/checkout?discount=MEMBERSDISCOUNT';
-        window.location.href = new_url;
-      }, 2000);          
-    })
-  }
+      var apply_discount = availabilityForMemberShipDiscount();
+      if(apply_discount == true) {
+        alert('test0');
+      }
+    }); 
 });
 
 function regenerateCartProductPrices(){
