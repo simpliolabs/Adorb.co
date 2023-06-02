@@ -91,7 +91,8 @@ $(document).on('click', '.icart-delete-btn', function(){
   setTimeout(function(){
     var apply_discount = availabilityForMemberShipDiscount();
     if(apply_discount == false) {
-      $("#icartMainContent .icartContain").hide();
+      alert();
+      $("#icartMainContent").hide();
     }
   }, 1000);
 })
