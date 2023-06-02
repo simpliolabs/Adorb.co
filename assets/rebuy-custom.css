@@ -21,6 +21,7 @@
 .is-visible .rebuy-cart__flyout{
   border-radius:0;
   margin:0;
+  font-family: poppins;
 }
 .rebuy-cart__flyout .rebuy-cart__flyout-title{
   font-size:16px;
