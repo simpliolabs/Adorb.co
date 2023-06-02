@@ -61,3 +61,7 @@
 .rebuy-cart__flyout-subtotal{
   justify-content:center !important;
 }
+.rebuy-cart__flyout-subtotal-amount{
+  color:red;
+  padding-left:5px;
+}
