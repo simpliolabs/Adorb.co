@@ -110,6 +110,11 @@ function reloadAdvertisementWidget() {
 }
 
 $(document).ready(function(){  
+  
+  setTimeout(function(){
+     reloadAdvertisementWidget();
+  }, 2000); 
+  
   regenerateCartProductPrices();  
 
   var apply_discount = availabilityForMemberShipDiscount();
@@ -125,7 +130,6 @@ $(document).ready(function(){
 });
 
 function regenerateCartProductPrices(){
-  reloadAdvertisementWidget();
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
     var items_price = 0;
