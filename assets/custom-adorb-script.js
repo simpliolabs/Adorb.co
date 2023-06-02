@@ -88,10 +88,13 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 });
 
 $(document).ready(function(){
-
-  $.each(cart.items, function(index, cartItem) {
-    alert('test');
+  
+  $.getJSON(_config.shopifyAjaxCartURL, function(cart) {
+    $.each(cart.items, function(index, cartItem) {
+      alert('test');
+    });
   });
+  
   
   regenerateCartProductPrices();  
 
