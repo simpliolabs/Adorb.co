@@ -100,7 +100,7 @@ $(document).on('click', '.icart-delete-btn', function(){
 
 fuction loanAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
-    if(apply_discount == false) {
+    if(apply_discount == true) {
       $("#icartMainContent .membership_html_block").addClass('hide');
     }else{
       $("#icartMainContent .membership_html_block").removeClass('hide');      
@@ -109,7 +109,7 @@ fuction loanAdvertisementWidget() {
 
 $(document).ready(function(){
   
-  //loanAdvertisementWidget();  
+  loanAdvertisementWidget();  
   regenerateCartProductPrices();  
   
   var apply_discount = availabilityForMemberShipDiscount();
