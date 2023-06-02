@@ -38,3 +38,10 @@
 .rebuy-cart__progress-bar-meter{
   order:2;
 }
+
+#rebuy-widget-91226 .rebuy-widget-content .primary-title{
+  font-size: 27px !important;
+    font-weight: 400;
+    color: #6FB341;
+    text-align: center;
+}
