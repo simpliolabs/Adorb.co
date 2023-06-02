@@ -110,6 +110,8 @@ function reloadAdvertisementWidget() {
     
     }else{
       $("#icartMainContent .membership_html_block").removeClass('hide');      
+      $('.icartCheckoutBtnGroup button[name="icartCheckout"]').show();
+      $('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]').remove();
     }  
 }
 
