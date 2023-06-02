@@ -64,4 +64,16 @@
 .rebuy-cart__flyout-subtotal-amount{
   color:red;
   padding-left:5px;
+  font-size:20px;
 }
+
+.rebuy-cart__flyout-subtotal-label{
+  font-size:18px;
+  text-transform: uppercase;
+}
+
+
+
+
+
+
