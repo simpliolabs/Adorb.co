@@ -90,7 +90,7 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 $(document).ready(function(){
 
   $.each(cart.items, function(index, cartItem) {
-     $("#dropdown-cart").append('<tr><td><a href="'+cartItem.url+'" class="dropdown-product-image"><img src="'+cartItem.image+'" alt="product image"/></a></td><td class="restrain-width"><a href="'+cartItem.url+'" class="small">'+cartItem.quantity+' '+cartItem.title+'</a></td><td class="text-right"><span class="small">'+(Shopify.formatMoney(cartItem.line_price, "{{ shop.money_format | remove: "'" | remove: '"' }}"))+'</span></td></tr>');
+    alert('test');
   });
   
   regenerateCartProductPrices();  
