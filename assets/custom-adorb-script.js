@@ -106,7 +106,7 @@ function reloadAdvertisementWidget() {
       $("#icartMainContent .membership_html_block").addClass('hide');
 
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();
-      
+      alert($('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]').lenght);
       if($('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]').lenght == 0) {
         $('.icartCheckoutBtnGroup').append('<a href="https://adorb.co/checkout?discount=MEMBERONLY" type="button" name="icartCheckoutDump" class="icart-button-radius icart-btn-large icart-chk-btn icart-btn-color icart-align-bottom" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');
       }
