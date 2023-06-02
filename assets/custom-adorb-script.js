@@ -105,8 +105,10 @@ function reloadAdvertisementWidget() {
     if(apply_discount == true) {
       $("#icartMainContent .membership_html_block").addClass('hide');
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();      
-      if(!$('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]')) {
-        $('.icartCheckoutBtnGroup').append('<a href="https://adorb.co/checkout?discount=MEMBERONLY" type="button" name="icartCheckoutDump" class="icart-button-radius icart-btn-large icart-chk-btn icart-btn-color icart-align-bottom" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');
+      if($('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]')) {
+        
+      }else{
+        $('.icartCheckoutBtnGroup').append('<a href="https://adorb.co/checkout?discount=MEMBERONLY" type="button" name="icartCheckoutDump" class="icart-button-radius icart-btn-large icart-chk-btn icart-btn-color icart-align-bottom" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');        
       }
     }else{
       $("#icartMainContent .membership_html_block").removeClass('hide');      
