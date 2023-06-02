@@ -144,7 +144,7 @@ function regenerateCartProductPrices(){
     });  
     
     var actual_order_total = parseFloat($(".icart-cart-price label[data-gift-price]").text().replace('$',''));
-    actual_order_total = (actual_order_total/2).toFixed(2);
+    actual_order_total = items_price.toFixed(2);
     $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);        
   }
 }
