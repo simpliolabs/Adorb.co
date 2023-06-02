@@ -88,8 +88,10 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 });
 
 $(document).on('click', '.icart-delete-btn', function(){
-  var apply_discount = availabilityForMemberShipDiscount();
-  alert(apply_discount);  
+  setTimeout(function(){
+    var apply_discount = availabilityForMemberShipDiscount();
+    alert(apply_discount);      
+  }, 2000);
 })
 
 $(document).ready(function(){
