@@ -88,8 +88,9 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   });
   
   setTimeout(function(){
+    loanAdvertisementWidget();  
     regenerateCartProductPrices()
-  }, 2000);  
+  }, 1000);  
 });
 
 $(document).on('click', '.icart-delete-btn', function(){
@@ -108,7 +109,6 @@ function loanAdvertisementWidget() {
 }
 
 $(document).ready(function(){
-  
   loanAdvertisementWidget();  
   regenerateCartProductPrices();  
   
