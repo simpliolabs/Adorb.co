@@ -51,7 +51,7 @@ $(document).ready(function(){
           _html += '</div>';
         _html += '</div>';
       _html += '</div>';
-    _html += '</div>';
+
     
     _html += '<div data-v-12407f70="" class="membership-middle">';
       _html += '<ul data-v-12407f70="" class="membership-detail-points">';
