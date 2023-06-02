@@ -94,13 +94,13 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 
 $(document).on('click', '.icart-delete-btn', function(){
   setTimeout(function(){
-    loanAdvertisementWidget();
+    reloadAdvertisementWidget();
   }, 1000);
 })
 
-function loanAdvertisementWidget() {
+function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
-    alert(apply_discount);
+  
     if(apply_discount == true) {
       $("#icartMainContent .membership_html_block").addClass('hide');
     }else{
@@ -124,6 +124,7 @@ $(document).ready(function(){
 });
 
 function regenerateCartProductPrices(){
+  reloadAdvertisementWidget();
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
     var items_price = 0;
