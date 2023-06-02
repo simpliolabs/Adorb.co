@@ -102,6 +102,7 @@ function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
   
     if(apply_discount == true) {
+      alert('test');
       $("#icartMainContent .membership_html_block").addClass('hide');
     }else{
       $("#icartMainContent .membership_html_block").removeClass('hide');      
