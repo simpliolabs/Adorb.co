@@ -36,7 +36,6 @@ $(window).click(function (e) {
   }
 });
 
-/*
 $(document).ready(function(){
   var _html = '';
   _html += '<div data-v-12407f70="" data-v-58a13aed="" class="cart__sidebar border membership_contents">';
