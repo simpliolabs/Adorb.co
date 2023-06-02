@@ -71,6 +71,12 @@ $(document).ready(function(){
   }, 2000);
 });
 
+
+var cartContents = fetch(window.Shopify.routes.root + 'cart.js')
+  .then(response => response.json())
+  .then(data => { alert(data )});
+
+
 $(document).on('click', '#add-membership-product-in-cart', function(){
   jQuery.post('/cart/add.js', {
     quantity: 1,
