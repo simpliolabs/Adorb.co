@@ -104,6 +104,9 @@ function reloadAdvertisementWidget() {
   
     if(apply_discount == true) {
       $("#icartMainContent .membership_html_block").addClass('hide');
+
+      $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();
+    
     }else{
       $("#icartMainContent .membership_html_block").removeClass('hide');      
     }  
@@ -116,16 +119,6 @@ $(document).ready(function(){
      regenerateCartProductPrices();  
   }, 2000); 
   
-});
-
-$(document).on('click', '.icartCheckoutBtnGroup button[name="icartCheckout"]', function(){
-    e.preventDefault();
-    setTimeout(function(){
-      var apply_discount = availabilityForMemberShipDiscount();
-      if(apply_discount == true) {
-        alert('test0');
-      }
-    }); 
 });
 
 function regenerateCartProductPrices(){
