@@ -134,13 +134,13 @@ function regenerateCartProductPrices(){
   if(apply_discount == true) {
     var items_price = 0;    
     $('.icart-items .icart-bottom-new-checkout').each(function(){
+        var price_container = $(this).find('.icart-item-price .icart-product-price');
+        var item_price = parseFloat(price_container.text().replace('$',''));
+        item_price = (item_price/2).toFixed(2);
         if($(this).find('.icart-item-content p').attr('title') != 'Adorb Monthly Membership'){
-          var price_container = $(this).find('.icart-item-price .icart-product-price');
-          var item_price = parseFloat(price_container.text().replace('$',''));
-          item_price = (item_price/2).toFixed(2);
           price_container.text('$'+item_price);
-          items_price += item_price;
         }
+        items_price += item_price;
     });  
     
     var actual_order_total = parseFloat($(".icart-cart-price label[data-gift-price]").text().replace('$',''));
