@@ -109,7 +109,7 @@ fuction loanAdvertisementWidget() {
 
 $(document).ready(function(){
   
-  loanAdvertisementWidget();  
+  //loanAdvertisementWidget();  
   regenerateCartProductPrices();  
   
   var apply_discount = availabilityForMemberShipDiscount();
