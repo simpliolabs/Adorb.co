@@ -87,17 +87,14 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   }, 2000);  
 });
 
+$(document).on('click', '.icart-items .icart-bottom-new-checkout .icart-delete-btn', function(){
+    if($(this).closest('.icart-item-content').find('p').attr('title') == 'Adorb Monthly Membership') {
+      alert('mem product deleted');
+    }  
+})
 $(document).ready(function(){
   
   regenerateCartProductPrices();  
-
-  $('.icart-items .icart-bottom-new-checkout').each(function(){
-      $(this).find('.icart-delete-btn').on('click', function(){
-        if($(this).closest('.icart-item-content').find('p').attr('title') == 'Adorb Monthly Membership') {
-          alert('mem product deleted');
-        }
-      });
-  });  
   
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
