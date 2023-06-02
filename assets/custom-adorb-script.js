@@ -96,7 +96,7 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 $(document).on('click', '.icart-delete-btn', function(){
   setTimeout(function(){
     reloadAdvertisementWidget();
-  }, 1000);
+  }, 2000);
 })
 
 function reloadAdvertisementWidget() {
