@@ -98,9 +98,8 @@ $(document).on('click', '.icart-delete-btn', function(){
   }, 1000);
 })
 
-fuction loanAdvertisementWidget() {
+function loanAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
-    alert(apply_discount);
     if(apply_discount == true) {
       $("#icartMainContent .membership_html_block").addClass('hide');
     }else{
