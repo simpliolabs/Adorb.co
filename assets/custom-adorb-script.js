@@ -88,10 +88,8 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 });
 
 $(document).on('click', '.icart-delete-btn', function(){
-    alert('test');
-    if($(this).closest('.icart-item-content').find('p').attr('title') == 'Adorb Monthly Membership') {
-      alert('mem product deleted');
-    }  
+    var title = $(this).closest('.icart-item-content').find('p').attr('title');
+    alert(title);
 })
 $(document).ready(function(){
   
