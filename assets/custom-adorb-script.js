@@ -92,6 +92,7 @@ $(document).ready(function(){
 
   $('.icart-items .icart-bottom-new-checkout').each(function(){
       $(this).find('.icart-item-quantity .icart-delete-btn').click(function(){
+        alert('test');
         if($(this).closest('.icart-item-content').find('p').attr('title') == 'Adorb Monthly Membership') {
           alert('mem product deleted');
         }
