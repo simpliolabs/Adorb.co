@@ -108,13 +108,9 @@ function loanAdvertisementWidget() {
     }  
 }
 
-$(document).ready(function(){
-  setTimeout(function(){
-    loanAdvertisementWidget();      
-  }, 1000);
-  
+$(document).ready(function(){  
   regenerateCartProductPrices();  
-  
+
   var apply_discount = availabilityForMemberShipDiscount();
   if(apply_discount == true) {
     setTimeout(function(){
