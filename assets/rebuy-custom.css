@@ -28,4 +28,13 @@
 }
 .rebuy-cart__progress-bar-prompt{
   font-weight: 700;
+  order:1;
+}
+.rebuy-cart__progress-bar-wrapper{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+.rebuy-cart__progress-bar-meter{
+  order:2;
 }
