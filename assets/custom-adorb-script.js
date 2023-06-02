@@ -88,9 +88,10 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 });
 
 $(document).on('click', '.icart-delete-btn', function(){
-    var title = $(this).closest('.icart-item-content').find('p').attr('title');
-    alert(title);
+  var apply_discount = availabilityForMemberShipDiscount();
+  alert(apply_discount);  
 })
+
 $(document).ready(function(){
   
   regenerateCartProductPrices();  
