@@ -90,8 +90,10 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 $(document).on('click', '.icart-delete-btn', function(){
   setTimeout(function(){
     var apply_discount = availabilityForMemberShipDiscount();
-    alert(apply_discount);      
-  }, 2000);
+    if(apply_discount == false) {
+      $("#icartMainContent .icartContain").hide();
+    }
+  }, 1000);
 })
 
 $(document).ready(function(){
