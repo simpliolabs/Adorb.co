@@ -36,7 +36,7 @@ $(window).click(function (e) {
   }
 });
 
-
+/*
 $(document).ready(function(){
   var _html = '';
   
@@ -162,3 +162,4 @@ function availabilityForMemberShipDiscount(){
 
   return is_available;
 }
+*/
