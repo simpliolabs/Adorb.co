@@ -95,9 +95,9 @@ $(document).on('click', '.icart-delete-btn', function(){
     var apply_discount = availabilityForMemberShipDiscount();
     if(apply_discount == false) {
       alert();
-      $("#icartMainContent custom-addv-block").addClass('force-hide');
+      $("#icartMainContent .custom-addv-block").addClass('force-hide');
     }else{
-      $("#icartMainContent custom-addv-block").removeClass('force-hide');      
+      $("#icartMainContent .custom-addv-block").removeClass('force-hide');      
     }
   }, 1000);
 })
