@@ -38,21 +38,21 @@ $(window).click(function (e) {
 
 $(document).ready(function(){
   var _html = '';
+  
   _html += '<div class="cart__sidebar border membership_html_block">';
 
     _html += '<div data-v-12407f70="" data-v-58a13aed="" class="cart__sidebar border membership_contents">';
       _html += '<div data-v-12407f70="" class="membership-top">';
-        _html += '<div data-v-12407f70=""><img data-v-12407f70="" src="https://cdn.shopify.com/s/files/1/0267/8603/7955/files/IMG_2199_210x.PNG?v=1615924214" class="memmbership-icon" style="max-width: 200px;"></div>';
+        _html += '<div data-v-12407f70=""><img data-v-12407f70="" src="https://cdn.shopify.com/s/files/1/0267/8603/7955/files/IMG_2199_210x.PNG?v=1615924214" class="memmbership-icon" style="max-width: 200px;"></div>';        
         _html += '<div data-v-12407f70="" class="membership-product-details">';
           _html += '<div data-v-12407f70="" class="membership-offer">';
             _html += '<div data-v-12407f70="" class="become-a-member-text">Become a Adorb Member</div>';
             _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving">Save $20.00 (50.00%)</strong> off todays order</div>';
-            _html += '</div>';
           _html += '</div>';
-        _html += '</div>';
+        _html += '</div>';  
       _html += '</div>';
-
-    
+    _html += '</div>';
+  
     _html += '<div data-v-12407f70="" class="membership-middle">';
       _html += '<ul data-v-12407f70="" class="membership-detail-points">';
          _html += '<li data-v-12407f70="" class="membership-detail-point">Save 50-80% on every order</li>';
@@ -61,6 +61,7 @@ $(document).ready(function(){
          _html += '<li data-v-12407f70="" class="membership-detail-point">Cancel easily any time</li>';
       _html += '</ul>';
     _html += '</div>';
+  
     _html += '<div data-v-12407f70="" class="membership-bottom">';
       _html += '<div data-v-12407f70=""><a data-v-12407f70="" href="javascript:void(0)" class="add_membership btn btn--full button button--primary" id="add-membership-product-in-cart">Add Membership</a></div>';
          _html += '<div data-v-12407f70="" style="margin: auto; text-align: center;">';
@@ -93,18 +94,22 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 
 $(document).on('click', '.icart-delete-btn', function(){
   setTimeout(function(){
-    var apply_discount = availabilityForMemberShipDiscount();
-    if(apply_discount == false) {
-      alert();
-      $("#icartMainContent custom-addv-block").addClass('force-hide');
-    }else{
-      $("#icartMainContent").removeClass('force-hide');      
-    }
+    loanAdvertisementWidget();
   }, 1000);
 })
 
+fuction loanAdvertisementWidget() {
+    var apply_discount = availabilityForMemberShipDiscount();
+    if(apply_discount == false) {
+      $("#icartMainContent .membership_html_block").addClass('hide');
+    }else{
+      $("#icartMainContent .membership_html_block").removeClass('hide');      
+    }  
+}
+
 $(document).ready(function(){
   
+  loanAdvertisementWidget();  
   regenerateCartProductPrices();  
   
   var apply_discount = availabilityForMemberShipDiscount();
