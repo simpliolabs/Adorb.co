@@ -296,7 +296,7 @@ $('#tee-artwork-form .tee-product-price').after($("shopify-payment-terms"));
 
     {%- section 'header' -%}
 
-      <main class="main-content {% if customer.tags contains 'pro-member' %} init-pro-member{% endif %}" id="MainContent">
+      <main class="main-content {% if customer.tags contains 'pro-member' %} init-pro-member-{{ template }}}{% endif %}" id="MainContent">
         {% capture ICART_FULL_PAGE_LAYOUT %}{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
 <limespot></limespot>{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
       </main>
