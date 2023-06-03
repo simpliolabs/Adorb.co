@@ -856,10 +856,6 @@ margin-bottom: 0;
     font-size: 12px;
     float: right;
 }
-  
-.membership-middle li {
-    font-size: 12px;
-}
 
 .membership-bottom {
     max-width: 32%;
@@ -903,6 +899,7 @@ margin-bottom: 0;
 }
 
 .membership-detail-points[data-v-12407f70] li {
+  font-size: 11px;
   flex-grow: 1;
   flex-basis: 50%;
 }
