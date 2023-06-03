@@ -897,6 +897,12 @@ margin-bottom: 0;
     width: 100%;
     padding: 10px;
     margin-left: 0;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
+}
+
+.membership-detail-points[data-v-12407f70] li {
+  flex-grow: 1;
+  flex-basis: 50%;
 }
