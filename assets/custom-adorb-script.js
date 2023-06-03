@@ -70,7 +70,7 @@ $(document).ready(function(){
     _html += '</div>';
   
     _html += '<div data-v-12407f70="" class="membership-bottom">';
-      _html += '<ul class="membership-footer-action-block"><li><a data-v-12407f70="" href="javascript:void(0)" class="add_membership btn btn--full button button--primary" id="add-membership-product-in-cart">Add Membership</a></li></ul>';
+      _html += '<ul class="membership-footer-action-block"><li><a data-v-12407f70="" href="javascript:void(0)" class="add_membership btn btn--full button button--primary" id="add-membership-product-in-cart">Add Membership</a></li><li><a href="">$9.95/month<br/><u>Learn more</u></a></li></ul>';
          _html += '<div data-v-12407f70="" style="margin: auto; text-align: center;">';
          _html += '</div>';
       _html += '</div>';
