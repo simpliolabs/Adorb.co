@@ -888,7 +888,8 @@ margin-bottom: 0;
     padding: 10px 0;
 }
 
-.membership-detail-points[data-v-12407f70] {
+.membership-detail-points[data-v-12407f70], 
+.membership-footer-action-block {
     width: 100%;
     padding: 10px;
     margin-left: 0;
@@ -897,7 +898,8 @@ margin-bottom: 0;
     list-style-type: none;
 }
 
-.membership-detail-points[data-v-12407f70] li {
+.membership-detail-points[data-v-12407f70] li, 
+.membership-footer-action-block li {
   font-size: 11px;
   flex-grow: 1;
   flex-basis: 50%;
