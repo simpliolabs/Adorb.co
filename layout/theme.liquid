@@ -282,7 +282,7 @@ $('#tee-artwork-form .tee-product-price').after($("shopify-payment-terms"));
     }
   },50)
 </script>
-
+{{ customer.tags }}}
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-center-text="{{settings.type_body_align_text}}" data-button_style="{{settings.button_style}}" {% if customer.tags contains 'pro-member' %} init-pro-member{% endif %} data-type_header_capitalize="{{settings.type_header_capitalize}}" data-type_headers_align_text="{{settings.type_headers_align_text}}" data-type_product_capitalize="{{settings.type_product_capitalize}}" data-swatch_style="{{settings.swatch_style}} " enable-collection-sidebar="{%- if collection.id == 414932893924 and template == 'collection' -%}1{%- endif -%}">    {% include 'theme-scripts' %}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG3HDB7"
