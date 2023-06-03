@@ -53,7 +53,7 @@ $(document).ready(function(){
         _html += '<div data-v-12407f70="" class="membership-product-details">';
           _html += '<div data-v-12407f70="" class="membership-offer">';
             _html += '<div data-v-12407f70="" class="become-a-member-text">Become a Adorb Member</div>';
-            _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving">Save $20.00 (50.00%)</strong> off todays order</div>';
+            _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving">Save $<span class="amount">20.00</span> (50.00%)</strong> off todays order</div>';
           _html += '</div>';
         _html += '</div>';  
       _html += '</div>';
@@ -152,8 +152,9 @@ function regenerateCartProductPrices(){
     });  
     
     var actual_order_total = parseFloat($(".icart-cart-price label[data-gift-price]").text().replace('$',''));
-    actual_order_total = items_price.toFixed(2);
-    $(".icart-cart-price label[data-gift-price]").text('$'+actual_order_total);        
+    savings_order_total = (actual_order_total-items_price).toFixed(2);
+    $(".icart-cart-price label[data-gift-price]").text('$'+items_price.toFixed(2));        
+    $('.offer-saving span.amount').text(savings_order_total);
   }
 }
 
