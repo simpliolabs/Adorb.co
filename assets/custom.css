@@ -851,6 +851,29 @@ margin-bottom: 0;
     padding-left: 15px;
 }
 
+.membership-middle {
+    width: 66%;
+    font-size: 12px;
+    float: right;
+}
+  
+.membership-middle li {
+    font-size: 12px;
+}
+
+.membership-bottom {
+    max-width: 32%;
+    float: left;
+    padding-top: 25px;
+    margin: 0 4px;
+}
+
+.membership-bottom a.add_membership {
+    font-size: 11px;
+    padding: 10px 0;
+}
+
+
 .membership-offer[data-v-12407f70] {
     font-size: 15px;
     max-width: 450px;
