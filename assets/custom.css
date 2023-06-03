@@ -905,3 +905,10 @@ margin-bottom: 0;
   flex-grow: 1;
   flex-basis: 50%;
 }
+
+.membership-footer-action-block li.big-f {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+}
