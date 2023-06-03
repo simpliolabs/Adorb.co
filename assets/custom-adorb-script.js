@@ -38,6 +38,7 @@ $(window).click(function (e) {
 
 $(document).ready(function(){
    if($("#MainContent").hasClass('init-pro-member')) {
+     
      alert('test');
    } 
 });
