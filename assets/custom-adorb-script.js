@@ -38,7 +38,8 @@ $(window).click(function (e) {
 
 $(document).ready(function(){
    if($("#MainContent").hasClass('init-pro-member')) {
-     $(".grid__item.medium-up--one-fifth tab").append('<a href="" class="tablinks"> Customer Care</a>');
+     alert('est');
+     $(".grid__item.medium-up--one-fifth tab").append('<a href="" class="tablinks"> Weekely Giveway</a>');
    } 
 });
 
