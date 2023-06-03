@@ -61,10 +61,11 @@ $(document).ready(function(){
   
     _html += '<div data-v-12407f70="" class="membership-middle">';
       _html += '<ul data-v-12407f70="" class="membership-detail-points">';
-         _html += '<li data-v-12407f70="" class="membership-detail-point">Save 50-80% on every order</li>';
-         _html += '<li data-v-12407f70="" class="membership-detail-point">Shirts as low as $5.98 daily</li>';
-         _html += '<li data-v-12407f70="" class="membership-detail-point">Free shipping orders over $39</li>';
-         _html += '<li data-v-12407f70="" class="membership-detail-point">Cancel easily any time</li>';
+         _html += '<li data-v-12407f70="" class="membership-detail-point">$9.95/MONTH</li>';
+         _html += '<li data-v-12407f70="" class="membership-detail-point">50% off order when you sign up</li>';
+         _html += '<li data-v-12407f70="" class="membership-detail-point">$9.99 daily t-shirt offers</li>';
+         _html += '<li data-v-12407f70="" class="membership-detail-point">Free shipping on order over 39.99</li>';
+         _html += '<li data-v-12407f70="" class="membership-detail-point">Entry into monthly giveaways (sweatshirts, tumblers, etc.)</li>';
       _html += '</ul>';
     _html += '</div>';
   
