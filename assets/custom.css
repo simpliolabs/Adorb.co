@@ -593,6 +593,7 @@ margin-bottom: 0;
 .more_similar_products, .more_similar_products_link{
   color: #cc3d3a;
   font-weight: 600;
+  cursor: pointer;
 }
 /* The Modal (background) */
 #similar_products_modal {
@@ -635,14 +636,33 @@ margin-bottom: 0;
   display:unset !important;
 }
 
+.page-content--product .grid__item .breadcrumb{
+  margin: 5px;
+  position: absolute;
+  z-index: 99;  
+}
+.similar_product_title p{
+  font-size:12px;
+}
+.similar_product_title .type_title{
+  font-size:14px;
+  line-height:24px;
+  font-weight: 600;
+  margin-bottom:5px;
+}
+
 .similar_products_modal-content li{
   list-style: none;
-  padding-left: 20px;
+  padding:8px;
+  padding-bottom: 0;
+  border-style: solid;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: #f2f2f6;
 }
 .similar_products_modal-content a{
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 .similar_products_modal-content .similar_product_content{
   display: flex;

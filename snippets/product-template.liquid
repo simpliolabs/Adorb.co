@@ -142,6 +142,9 @@
         </div> {% endcomment %}
         {%- if image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }}" style="width:60%;">
+            {%- if settings.show_breadcrumbs and isModal != true -%}
+              {%- render 'breadcrumbs' -%}
+            {%- endif -%}
             {%- render 'product-images' 
               , section_id: section_id,
               product: product,
@@ -186,9 +189,9 @@
         <div class="grid__item {{ product_description_width }}">
 
           <div class="product-single__meta">
-            {%- if settings.show_breadcrumbs and isModal != true -%}
+            {% comment %} {%- if settings.show_breadcrumbs and isModal != true -%}
               {%- render 'breadcrumbs' -%}
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
 
             {%- if settings.vendor_enable -%}
               <div class="product-single__vendor">
@@ -807,11 +810,18 @@ if (document.getElementById('shipping-date')) {
   }
 }
 </style>
-{% comment %} <script>
+
+{% for t in product.tags %}
+  {% if t contains 'similar-' %}
+    {% assign similar_tag = t %}
+  {% endif %}
+{% endfor %}
+{% if similar_tag %}
+<script>
 $(document).ready(function() {
       setTimeout(function() { 
         let isMobile = window.matchMedia("only screen and (max-width: 767px)").matches;
-        var desktop_html="<a class='more_similar_products desktop_only'>+ Explore More Styles</a>";
+        var desktop_html="<a class='more_similar_products desktop_only'>+ Explore More Styles</a><div class='best-fit-size-chart'></div>";
         var mobile_html="<a class='more_similar_products'>+ Explore More Styles</a>";
           if(document.getElementsByClassName('tee-variants')[0]){
             if(isMobile){
@@ -856,4 +866,5 @@ $(document).ready(function() {
           }
       },5000);
     });
-</script> {% endcomment %}
+</script>
+{% endif %}
