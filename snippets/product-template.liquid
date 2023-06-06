@@ -161,24 +161,28 @@
                 {% if t contains 'similar-' %}
                   {% assign similar_tag = t %}
                 {% endif %}
+              {% endfor %} {% endcomment %}
+
+              {% for similar_collections in product.collections %}
+                {% if similar_collections.handle contains 'similar' %}
+                  {% assign similar_collection = similar_collections %}
+                {% endif %}
               {% endfor %}
 
-              {% if similar_tag %}
+              {% if similar_collection %}
                 <div class="simliar_products_wrapper desktop_only">
                   <h2 class="similar_products_heading">Also Available On</h2>
                   <div class="similar_products_wrappers">
                     <div class="simliar_products">
 
-                    {% for similar_product in collections.all.products %}   
-                      {% if similar_product.tags contains similar_tag %} 
+                    {% for similar_product in similar_collection.products %}   
                         {%- render 'product-grid-item', product: similar_product, grid_item_width: 'small--one-half medium-up--one-quarter' -%}
-                      {% endif %}
                     {% endfor %}
     
                     </div>
                   </div>
                 </div>
-              {% endif %} {% endcomment %}
+              {% endif %}
             
 
 
