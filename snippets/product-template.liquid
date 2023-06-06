@@ -505,7 +505,7 @@
               {%- render 'product-additional-content', product: product, section_id: section_id -%}
             {%- endunless -%}
 
-            {% comment %} <div id="simliar_products_wrapper" class="simliar_products_wrapper mobile_only">
+            <div id="simliar_products_wrapper" class="simliar_products_wrapper mobile_only">
               <h2 class="similar_products_heading">Also Available On</h2>
               <div class="similar_products_wrappers">
                 <div class="simliar_products">
@@ -532,7 +532,7 @@
               </div>
 
               <a class="more_similar_products mobile_only">+ Explore More Styles</a>
-            </div> {% endcomment %}
+            </div>
 
             {%- if social -%}
               {%- render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product -%}
