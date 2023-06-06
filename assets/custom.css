@@ -595,6 +595,9 @@ margin-bottom: 0;
   font-weight: 600;
   cursor: pointer;
 }
+.more_similar_products.mobile_only{
+  text-align: center;
+}
 /* The Modal (background) */
 #similar_products_modal {
   
