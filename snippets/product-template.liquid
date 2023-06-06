@@ -183,7 +183,7 @@
                       {%- for similar_product in similar_collection.products -%}
 
                         {% unless similar_product.tags contains "bundle-builder-dummy" or similar_product.id == product.id %}
-                          {%- render 'product-grid-item', product: similar_product, grid_item_width: 'small--one-half medium-up--one-quarter' -%}
+                          {%- render 'product-grid-item-similar', product: similar_product, grid_item_width: 'small--one-half medium-up--one-quarter' -%}
                         {% endunless %}
 
                       {%- else -%}
@@ -532,7 +532,7 @@
                   {%- for similar_product in similar_collection.products -%}
 
                     {% unless similar_product.tags contains "bundle-builder-dummy" or similar_product.id == product.id %}
-                      {%- render 'product-grid-item', product: similar_product, grid_item_width: 'small--one-half medium-up--one-quarter' -%}
+                      {%- render 'product-grid-item-similar', product: similar_product, grid_item_width: 'small--one-half medium-up--one-quarter' -%}
                     {% endunless %}
 
                   {%- else -%}
