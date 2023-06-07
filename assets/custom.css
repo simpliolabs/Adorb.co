@@ -642,7 +642,7 @@ margin-bottom: 0;
 .page-content--product .grid__item .breadcrumb{
   margin: 5px;
   position: absolute;
-  z-index: 99;  
+  z-index: 29;  
 }
 .similar_product_title p{
   font-size:12px;
