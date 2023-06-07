@@ -839,16 +839,17 @@ if (document.getElementById('shipping-date')) {
 $(document).ready(function() {
       setTimeout(function() { 
         let isMobile = window.matchMedia("only screen and (max-width: 767px)").matches;
-        var desktop_html="<a class='more_similar_products desktop_only'>+ Explore More Styles</a><div class='best-fit-size-chart'></div>";
+        var desktop_html="<a class='more_similar_products desktop_only'>+ Explore More Styles</a><div class='best-fit-size-chart1'></div>";
         var mobile_html="<a class='more_similar_products'>+ Explore More Styles</a>";
           if(document.getElementsByClassName('tee-variants')[0]){0
             if(isMobile){
-              /*document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforebegin", mobile_html);*/
+              document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforebegin", mobile_html);
             }else{
-              /*document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforebegin", desktop_html);*/
+              document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforebegin", desktop_html);
             }
             
           }
+   
 
           // Get the modal
         var ebModal = document.getElementById('similar_products_modal');
