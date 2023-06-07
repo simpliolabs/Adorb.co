@@ -112,7 +112,7 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "predictive_image_size": "square",
-    "show_breadcrumbs": false,
+    "show_breadcrumbs": true,
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/IMG_2210.PNG",
     "checkout_logo_position": "left",
