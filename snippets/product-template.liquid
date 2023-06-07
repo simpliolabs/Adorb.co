@@ -519,6 +519,14 @@
               {%- render 'product-additional-content', product: product, section_id: section_id -%}
             {%- endunless -%}
 
+            {% for similar_collections in product.collections %}
+              {% if similar_collections.handle contains 'similar' %}
+                {% assign similar_collection = similar_collections %}
+              {% endif %}
+            {% endfor %}
+
+            {% if similar_collection %}
+
             <div id="simliar_products_wrapper" class="simliar_products_wrapper mobile_only">
               <h2 class="similar_products_heading">Also Available On</h2>
               <div class="similar_products_wrappers">
@@ -547,6 +555,8 @@
 
               <a class="more_similar_products mobile_only">+ Explore More Styles</a>
             </div>
+
+            {% endif %}
 
             {%- if social -%}
               {%- render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product -%}
@@ -841,7 +851,7 @@ $(document).ready(function() {
         let isMobile = window.matchMedia("only screen and (max-width: 767px)").matches;
         var desktop_html="<a class='more_similar_products desktop_only'>+ Explore More Styles</a><div class='best-fit-size-chart1'></div>";
         var mobile_html="<a class='more_similar_products'>+ Explore More Styles</a>";
-          if(document.getElementsByClassName('tee-variants')[0]){0
+          if(document.getElementsByClassName('tee-variants')[0]){
             if(isMobile){
               document.getElementsByClassName('tee-variants')[0].insertAdjacentHTML("beforebegin", mobile_html);
             }else{
