@@ -77,6 +77,11 @@
   font-weight:700;
 }
 
+@media only screen and (max-width: 768px) {
+  #rebuy-widget-89169 .rebuy-widget-content .super-title{
+    font-size:33px;
+  }
+}
 
 
 
