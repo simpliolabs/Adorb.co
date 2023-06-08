@@ -116,20 +116,21 @@ $(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
 function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
   
+    $('.icartCheckoutBtnGroup .icartContinueShopping').addClass('hide');
+  
     if(apply_discount == true) {
       $("#rebuy-cart .membership_html_block").addClass('hide');
-      $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').hide();     
+      $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();     
             
-      if($('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').length == 0) {
-        $('.rebuy-cart__flyout-actions').append('<a href="/checkout?discount=MEMBERONLY"  name="checkoutDump" class=""></a>');
+      if($('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]').length == 0) {
+        $('.icartCheckoutBtnGroup').append('<a href="/checkout?discount=MEMBERONLY"  name="icartCheckoutDump" class="" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');
       }
     }else{
       $("#rebuy-cart .membership_html_block").removeClass('hide');      
-      $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').show();
-      $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button[name="checkoutDump"]').remove();
+      $('.icartCheckoutBtnGroup button[name="icartCheckout"]').show();
+      $('.icartCheckoutBtnGroup a[name="icartCheckoutDump"]').remove();
     }  
 }
-
 
 $(document).ready(function(){  
   
