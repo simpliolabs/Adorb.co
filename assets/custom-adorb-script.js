@@ -167,8 +167,8 @@ function regenerateCartProductPrices(){
 
 function availabilityForMemberShipDiscount(){
   var is_available = false
-  $('.icart-items .icart-bottom-new-checkout').each(function(){
-    if($(this).find('.icart-item-content p').attr('title') == 'Adorb Monthly Membership'){
+  $('.rebuy-cart__flyout-items .rebuy-cart__flyout-item').each(function(){
+    if($(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() == 'Adorb Monthly Membership'){
       is_available = true;
     }
   });  
