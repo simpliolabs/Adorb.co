@@ -17,7 +17,7 @@
       };
 
 
-      appstleLoadScript("https://cdn.shopify.com/s/files/1/0267/8603/7955/t/50/assets/appstle-subscription.js?v=1685607343");
+      appstleLoadScript("https://cdn.shopify.com/s/files/1/0267/8603/7955/t/50/assets/appstle-subscription.js?v=1686201888");
 
 
       window.RS = Window.RS || {};
@@ -37,7 +37,7 @@
         },
         "enableCartWidgetFeature": "false",
         "useUrlWithCustomerId": "true",
-        "atcButtonSelector": "",
+        "atcButtonSelector": ".quantity_atc_wrapper",
         "moneyFormat": "{% raw %}${{amount}}{% endraw %}",
         "oneTimePurchaseText": "One Time Purchase",
         "shop": "festivitees-com.myshopify.com",
