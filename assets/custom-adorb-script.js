@@ -122,6 +122,7 @@ function reloadAdvertisementWidget() {
       if($('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button-dump').length == 0) {
         $('.rebuy-cart__flyout-actions').append('<a href="/checkout?discount=MEMBERONLY"  name="icartCheckoutDump" class="rebuy-cart__checkout-button-dump" >CHECKOUT  :   →</a>');
       }
+      
     }else{
       $("#rebuy-cart .membership_html_block").removeClass('hide');      
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').show();
