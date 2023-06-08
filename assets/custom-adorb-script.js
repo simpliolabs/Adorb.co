@@ -122,7 +122,7 @@ function reloadAdvertisementWidget() {
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').hide();     
             
       if($('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button-dump').length == 0) {
-        $('.rebuy-cart__flyout-actions').append('<a href="/checkout?discount=MEMBERONLY"  name="icartCheckoutDump" class="rebuy-button block rebuy-cart__checkout-button-dump" ><span><i class="rebuy-button-icon prefix fas fa-lock"></i> PROCEED TO CHECKOUT<i class=""></i></span></a>');
+        $('.rebuy-cart__flyout-actions').append('<a href="/checkout?discount=MEMBERONLY" class="rebuy-button block rebuy-cart__checkout-button-dump" ><span><i class="rebuy-button-icon prefix fas fa-lock"></i> PROCEED TO CHECKOUT<i class=""></i></span></a>');
       }
       
     }else{
