@@ -117,6 +117,7 @@ function reloadAdvertisementWidget() {
   
     if(apply_discount == true) {
       $("#rebuy-cart .membership_html_block").addClass('hide');
+      alert('test');
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').hide();     
             
       if($('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button-dump').length == 0) {
