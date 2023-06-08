@@ -130,6 +130,7 @@ function reloadAdvertisementWidget() {
     }  
 }
 
+
 $(document).ready(function(){  
   
   setTimeout(function(){
