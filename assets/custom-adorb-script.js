@@ -100,10 +100,9 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
     }
   });
   
-  setTimeout(function(){
-    reloadAdvertisementWidget();
-    regenerateCartProductPrices()
-  }, 2000);  
+  reloadAdvertisementWidget();
+  regenerateCartProductPrices()
+
 });
 
 $(document).on('click', '.icart-delete-btn', function(){
