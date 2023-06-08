@@ -84,9 +84,8 @@ $(document).ready(function(){
   _html += '</div>';
 
   setTimeout(function(){
-    console.log(_html);
-    $("#rebuy-cart .rebuy-cart__flyout-body").before(_html);  
-  }, 5000);
+    $("#icartMainContent .icartContain").before(_html);  
+  }, 2000);
 });
 
 
@@ -106,12 +105,11 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   }, 2000);  
 });
 
-$(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
+$(document).on('click', '.icart-delete-btn', function(){
   setTimeout(function(){
     reloadAdvertisementWidget();
   }, 2000);
 })
-
 
 function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
@@ -119,14 +117,14 @@ function reloadAdvertisementWidget() {
     $('.icartCheckoutBtnGroup .icartContinueShopping').addClass('hide');
   
     if(apply_discount == true) {
-      $("#rebuy-cart .membership_html_block").addClass('hide');
+      $("#icartMainContent .membership_html_block").addClass('hide');
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();     
             
       if($('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]').length == 0) {
         $('.icartCheckoutBtnGroup').append('<a href="/checkout?discount=MEMBERONLY"  name="icartCheckoutDump" class="" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');
       }
     }else{
-      $("#rebuy-cart .membership_html_block").removeClass('hide');      
+      $("#icartMainContent .membership_html_block").removeClass('hide');      
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').show();
       $('.icartCheckoutBtnGroup a[name="icartCheckoutDump"]').remove();
     }  
@@ -168,8 +166,8 @@ function regenerateCartProductPrices(){
 
 function availabilityForMemberShipDiscount(){
   var is_available = false
-  $('.rebuy-cart__flyout-items .rebuy-cart__flyout-item').each(function(){
-    if($(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() == 'Adorb Monthly Membership'){
+  $('.icart-items .icart-bottom-new-checkout').each(function(){
+    if($(this).find('.icart-item-content p').attr('title') == 'Adorb Monthly Membership'){
       is_available = true;
     }
   });  
