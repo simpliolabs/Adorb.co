@@ -85,7 +85,7 @@ $(document).ready(function(){
 
   setTimeout(function(){
     console.log(_html);
-    $("#rebuy-cart .rebuy-cart__flyout-body").before(_html);  
+    $("#rebuy-cart .rebuy-cart__flyout-body").before('test');  
   }, 2000);
 });
 
