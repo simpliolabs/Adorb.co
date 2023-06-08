@@ -118,14 +118,14 @@ function reloadAdvertisementWidget() {
     $('.icartCheckoutBtnGroup .icartContinueShopping').addClass('hide');
   
     if(apply_discount == true) {
-      $("#icartMainContent .membership_html_block").addClass('hide');
+      $("#rebuy-cart .membership_html_block").addClass('hide');
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').hide();     
             
       if($('.icartCheckoutBtnGroup button[name="icartCheckoutDump"]').length == 0) {
         $('.icartCheckoutBtnGroup').append('<a href="/checkout?discount=MEMBERONLY"  name="icartCheckoutDump" class="" style="color: rgb(255, 255, 255); background-color: rgb(79, 204, 58); border-color: rgb(79, 204, 58); border-radius: 0px;display: block; padding: 10px; text-align: center;">CHECKOUT  :   →</a>');
       }
     }else{
-      $("#icartMainContent .membership_html_block").removeClass('hide');      
+      $("#rebuy-cart .membership_html_block").removeClass('hide');      
       $('.icartCheckoutBtnGroup button[name="icartCheckout"]').show();
       $('.icartCheckoutBtnGroup a[name="icartCheckoutDump"]').remove();
     }  
