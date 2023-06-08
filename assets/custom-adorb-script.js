@@ -116,7 +116,7 @@ function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
   
     if(apply_discount == true) {
-      $("#rebuy-cart .membership_html_block").addClass('hide');
+      $("#rebuy-cart .membership_html_block").addClass('hide2');
       alert('test');
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').hide();     
             
