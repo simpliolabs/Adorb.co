@@ -84,6 +84,7 @@ $(document).ready(function(){
   _html += '</div>';
 
   setTimeout(function(){
+    console.log(_html);
     $("#rebuy-cart .rebuy-cart__flyout-body").before(_html);  
   }, 2000);
 });
