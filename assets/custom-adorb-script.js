@@ -112,7 +112,6 @@ $(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
   }, 2000);
 })
 
-
 function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
   
