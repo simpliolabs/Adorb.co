@@ -121,7 +121,7 @@ function reloadAdvertisementWidget() {
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').hide();     
             
       if($('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').length == 0) {
-        $('.rebuy-cart__flyout-actions').append('<a href="/checkout?discount=MEMBERONLY"  name="checkoutDump" class=""><span><i class="rebuy-button-icon prefix fas fa-lock"></i> PROCEED TO CHECKOUT<i class=""></i></span></a>');
+        $('.rebuy-cart__flyout-actions').append('<a href="/checkout?discount=MEMBERONLY"  name="checkoutDump" class=""></a>');
       }
     }else{
       $("#rebuy-cart .membership_html_block").removeClass('hide');      
