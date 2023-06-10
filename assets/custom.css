@@ -952,6 +952,6 @@ margin-bottom: 0;
     color: #000000;
 }
 
-.site-navigation li.site-nav__item {
+.site-navigation li.site-nav__item:last-child {
   display: none;
 }
