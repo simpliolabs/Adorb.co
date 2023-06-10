@@ -95,9 +95,9 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   jQuery.post('/cart/add.js', {
     quantity: 1,
     id: 43961055150308,
-    properties: {
-      'First name': 'Caroline'
-    }
+    form_type: 'product',
+    selling_plan: 3701244132, 
+    selling_plan_radio: 3701244132
   });
   
   setTimeout(function(){
