@@ -39,7 +39,7 @@ $(window).click(function (e) {
 $(document).ready(function(){
    $('.site-navigation li.site-nav__item:last-child').addClass('hide');
 
-  if($("body").hasClass('init-pro-member')){
+  if($("#PageContainer").hasClass('init-pro-member')){
      $('.site-navigation li.site-nav__item:last-child').removeClass('hide');     
    }
 
