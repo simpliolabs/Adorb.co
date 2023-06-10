@@ -945,6 +945,10 @@ margin-bottom: 0;
   flex-basis: 50%;
 }
 
+#PageContainer .init-pro-member .site-navigation > li > a {
+  padding: 7px 10px!important;
+}
+
 .membership-footer-action-block li.big-f {
     text-align: center;
     font-size: 14px;
