@@ -407,7 +407,7 @@
             "type": "featured-collection",
             "settings": {
               "title": "Others to Customize:",
-              "collection": "personalized",
+              "collection": "pets",
               "per_row": 5,
               "rows": 1,
               "mobile_scrollable": true,
@@ -426,7 +426,6 @@
           },
           "f63e8cc0-71e0-48bb-8a37-540a3c3155e9": {
             "type": "image-row",
-            "disabled": true,
             "settings": {
               "image_1": "shopify:\/\/shop_images\/D2E1E3CB-F3E2-4467-B945-50E43B575BA6.jpg",
               "image_1_link": "",
@@ -455,7 +454,6 @@
           },
           "186365ca-b8e3-46fd-8161-8004a63f8936": {
             "type": "image-row",
-            "disabled": true,
             "settings": {
               "image_1": "shopify:\/\/shop_images\/ashleyandmegan__-2021-03-23-CMwrEMFlK7N-15ab-post.jpg",
               "image_1_link": "",
