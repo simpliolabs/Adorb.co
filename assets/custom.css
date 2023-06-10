@@ -951,3 +951,7 @@ margin-bottom: 0;
     font-weight: 600;
     color: #000000;
 }
+
+.site-navigation li.site-nav__item {
+  display: none;
+}
