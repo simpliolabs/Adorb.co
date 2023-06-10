@@ -37,10 +37,10 @@ $(window).click(function (e) {
 });
 
 $(document).ready(function(){
-   $('.site-navigation li.site-nav__item:last-child').addClass('hide');
+   $('.site-navigation li.site-nav__item:nth-child(12),.site-navigation li.site-nav__item:nth-child(13)').addClass('hide');
 
   if($("#PageContainer").hasClass('init-pro-member')){
-     $('.site-navigation li.site-nav__item:last-child').removeClass('hide');     
+     $('.site-navigation li.site-nav__item:nth-child(12),.site-navigation li.site-nav__item:nth-child(13)').removeClass('hide');     
    }
 
    if($("#MainContent").hasClass('init-pro-member')) {
