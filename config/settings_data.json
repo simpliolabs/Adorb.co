@@ -144,7 +144,7 @@
             "type": "announcement",
             "settings": {
               "text": "",
-              "link_text": "FREE shipping on orders over $55",
+              "link_text": "Always FREE shipping within the USA",
               "link": ""
             }
           },
@@ -1333,9 +1333,9 @@
       },
       "2965712708760319418": {
         "type": "shopify:\/\/apps\/proof-bear-sales-popup\/blocks\/widget\/6e90b7fd-96ea-488b-9571-34f0c382838a",
+        "disabled": false,
         "settings": {
-        },
-        "disabled": false
+        }
       }
     }
   },
