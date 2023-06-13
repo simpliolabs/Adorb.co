@@ -112,7 +112,7 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   setTimeout(function(){
     reloadAdvertisementWidget();
     regenerateCartProductPrices()
-  }, 2000);  
+  }, 5000);  
 });
 
 $(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
