@@ -1,7 +1,7 @@
 .feature-row.aos-init.aos-animate {
   margin-top: 50px;
   margin-bottom: 50px;
-  padding: 2px 15px 0px 15px; 
+  
 }
 #shopify-section-collection-header {
   display: none;
@@ -917,8 +917,8 @@ margin-bottom: 0;
 }
 
 .membership_contents[data-v-12407f70] {
-    padding: 15px;
-    background-color: #FFF3E4;
+  background-color: #FFF3E4;
+  padding: 2px 15px 0px 15px;
 }
 .membership-detail-points[data-v-12407f70] {
     display: block;
