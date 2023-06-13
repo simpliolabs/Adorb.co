@@ -123,7 +123,7 @@ $(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
 
 function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
-    alert(apply_discount);
+  
     if(apply_discount == true) {
       
       $("#rebuy-cart .membership_html_block").addClass('hide');
@@ -159,7 +159,7 @@ function regenerateCartProductPrices(){
         var price_container = $(this).find('.icart-item-price .icart-product-price');
         var item_price = parseFloat(price_container.text().replace('$',''));
         
-        if($(this).find('.icart-item-content p').attr('title') != 'Adorb Monthly Membership'){
+        if($(this).find('.icart-item-content p').attr('title') != 'Adorb Membership - Unlock new pricing immediately!'){
           item_price = (item_price/2).toFixed(2);
           price_container.text('$'+item_price);
         }
@@ -178,7 +178,7 @@ function regenerateCartProductPrices(){
 function availabilityForMemberShipDiscount(){
   var is_available = false
   $('.rebuy-cart__flyout-items .rebuy-cart__flyout-item').each(function(){
-    if($(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() == 'Adorb Monthly Membership'){
+    if($(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() == 'Adorb Membership - Unlock new pricing immediately!'){
       is_available = true;
     }
   });  
