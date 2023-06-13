@@ -962,3 +962,10 @@ margin-bottom: 0;
     color: #000000;
     /* font-family: mr-eaves, mr-eaves-sans, sans-serif; */
 }
+
+strong.offer-saving {
+    /* color: green; */
+    font-weight: bold;
+    color: #009900;
+    font-size: 15px;
+}
