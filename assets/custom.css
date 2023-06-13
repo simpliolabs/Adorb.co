@@ -1,6 +1,7 @@
 .feature-row.aos-init.aos-animate {
   margin-top: 50px;
   margin-bottom: 50px;
+  padding: 2px 15px 15px 15px;
 }
 #shopify-section-collection-header {
   display: none;
