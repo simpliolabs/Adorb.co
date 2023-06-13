@@ -118,7 +118,7 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
 $(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
   setTimeout(function(){
     reloadAdvertisementWidget();
-  }, 2000);
+  }, 5000);
 })
 
 function reloadAdvertisementWidget() {
