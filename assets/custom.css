@@ -932,7 +932,7 @@ margin-bottom: 0;
 .membership-detail-points[data-v-12407f70], 
 .membership-footer-action-block {
     width: 100%;
-    padding: 10px;
+    padding: 10px 10px 10px 25px;
     margin-left: 0;
     display: flex;
     flex-wrap: wrap;
