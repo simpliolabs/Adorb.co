@@ -146,7 +146,7 @@ $(document).ready(function(){
   setTimeout(function(){
      reloadAdvertisementWidget();
      regenerateCartProductPrices();  
-  }, 5000); 
+  }, 8000); 
   
 });
 
