@@ -148,13 +148,9 @@ $(document).ready(function(){
     setInterval(function(){
       var is_loaded = $('body').find("#rebuy-cart").langth > 0;
       if(is_loaded) {
-        cart_strip_loaded = true;      
-      }
-
-      if(cart_strip_loaded == true) {
-        alert(cart_strip_loaded);        
-      }
-      
+        cart_strip_loaded = true;   
+        alert('loaded');
+      }      
     },1000);      
   }
 });
