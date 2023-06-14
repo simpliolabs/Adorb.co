@@ -157,6 +157,7 @@ function regenerateCartProductPrices(){
     var items_price = 0;    
     
     $('.rebuy-cart__flyout-items li.rebuy-cart__flyout-item').each(function(){
+       alert('dsdsdsd');
         var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money span:nth-child(2)');
         var item_price = parseFloat(price_container.text().replace('$',''));
       
