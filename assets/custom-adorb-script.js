@@ -149,7 +149,7 @@ $(document).ready(function(){
       var is_loaded = $('body').find("#rebuy-cart").length > 0;
       if(is_loaded) {
         cart_strip_loaded = true;   
-        alert('loaded');
+        alert(cart_strip_loaded);
       }      
     },1000);      
   }
