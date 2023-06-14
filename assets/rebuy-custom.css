@@ -1,95 +1,102 @@
-#rebuy-widget-89169 .rebuy-widget-content .super-title{
-  color: #6FB341 !important;
-    font-size: 55px;
-    letter-spacing: 0;
-    margin: 0 !important;
-    font-family: poppins;
+#rebuy-widget-89169 .rebuy-widget-content .super-title {
+  color: #6fb341 !important;
+  font-size: 55px;
+  letter-spacing: 0;
+  margin: 0 !important;
+  font-family: poppins;
 }
 #rebuy-widget-89169 .rebuy-widget-content .primary-title {
   font-size: 30px;
-    font-family: poppins;
-}
-#rebuy-widget-89169 .rebuy-widget-content .description{
-  background: #FDE667;
-    font-weight: bold;
-    margin: 0 !important;
-    font-size: 22px;
-    padding: 2px 10px !important;
-    color: black !important;
-    font-family: poppins;
-}
-.is-visible .rebuy-cart__flyout{
-  border-radius:0;
-  margin:0;
   font-family: poppins;
 }
-.rebuy-cart__flyout .rebuy-cart__flyout-title{
-  font-size:16px;
+#rebuy-widget-89169 .rebuy-widget-content .description {
+  background: #fde667;
+  font-weight: bold;
+  margin: 0 !important;
+  font-size: 22px;
+  padding: 2px 10px !important;
+  color: black !important;
+  font-family: poppins;
+}
+.is-visible .rebuy-cart__flyout {
+  border-radius: 0;
+  margin: 0;
+  font-family: poppins;
+}
+.rebuy-cart__flyout .rebuy-cart__flyout-title {
+  font-size: 16px;
   text-align: left;
 }
-.rebuy-cart__progress-bar-prompt{
+.rebuy-cart__progress-bar-prompt {
   font-weight: 700;
-  order:1;
+  order: 1;
 }
-.rebuy-cart__progress-bar-wrapper{
+.rebuy-cart__progress-bar-wrapper {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
 }
-.rebuy-cart__progress-bar-meter{
-  order:2;
+.rebuy-cart__progress-bar-meter {
+  order: 2;
 }
 
-#rebuy-widget-91226 .rebuy-widget-content .primary-title{
+#rebuy-widget-91226 .rebuy-widget-content .primary-title {
   font-size: 27px !important;
-    font-weight: 400;
-    color: #6FB341;
-    text-align: center;
+  font-weight: 400;
+  color: #6fb341;
+  text-align: center;
 }
 
-.rebuy-widget .rebuy-button{
-  background: #57B625 !important;
-    border-color: #57B625 !important;
+.rebuy-widget .rebuy-button {
+  background: #57b625 !important;
+  border-color: #57b625 !important;
 }
-.rebuy-cart__flyout .rebuy-button{
-  background: #57B625 !important;
-    border-color: #57B625 !important;
+.rebuy-cart__flyout .rebuy-button {
+  background: #57b625 !important;
+  border-color: #57b625 !important;
 }
-.rebuy-cart__flyout .rebuy-cart__continue-shopping-button{
+.rebuy-cart__flyout .rebuy-cart__continue-shopping-button {
   color: #ffffff !important;
 }
-.rebuy-cart__flyout-subtotal{
-  justify-content:center !important;
+.rebuy-cart__flyout-subtotal {
+  justify-content: center !important;
 }
-.rebuy-cart__flyout-subtotal-amount{
-  color:red;
-  padding-left:5px;
-  font-size:20px;
+.rebuy-cart__flyout-subtotal-amount {
+  color: red;
+  padding-left: 5px;
+  font-size: 20px;
 }
 
-.rebuy-cart__flyout-subtotal-label{
-  font-size:18px;
+.rebuy-cart__flyout-subtotal-label {
+  font-size: 18px;
   text-transform: uppercase;
 }
 
-.rebuy-cart__flyout-installments a{
+.rebuy-cart__flyout-installments a {
   color: #000000;
-  font-weight:700;
+  font-weight: 700;
+}
+#rebuy-widget-89169 .rebuy-product-info .rebuy-product-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+#rebuy-widget-89169 .rebuy-product-info .rebuy-product-price {
+  display: none;
+}
+#rebuy-widget-89169 .rebuy-product-actions button span {
+  font-weight: 700;
 }
 
 @media only screen and (max-width: 768px) {
-  #rebuy-widget-89169 .rebuy-widget-content .super-title{
-    font-size:33px;
+  #rebuy-widget-89169 .rebuy-widget-content .super-title {
+    font-size: 33px;
   }
-  #rebuy-widget-89169 .rebuy-widget-content .primary-title{
-    font-size:16px;
+  #rebuy-widget-89169 .rebuy-widget-content .primary-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 0;
   }
-  #rebuy-widget-89169 .rebuy-widget-content .description{
-    font-size:15px;
+  #rebuy-widget-89169 .rebuy-widget-content .description {
+    font-size: 12px;
   }
 }
-
-
-
-
-
