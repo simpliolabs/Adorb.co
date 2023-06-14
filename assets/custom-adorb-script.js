@@ -145,8 +145,8 @@ function reloadAdvertisementWidget() {
 $(document).ready(function(){     
   var cart_strip_loaded = false;
   if(cart_strip_loaded == false) {
+    alert(cart_strip_loaded);
     setInterval(function(){
-      alert(cart_strip_loaded);
       var is_loaded = $('body').find("#rebuy-cart").length > 0;
       if(is_loaded) {
         cart_strip_loaded = true;  
