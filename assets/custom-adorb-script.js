@@ -143,10 +143,11 @@ function reloadAdvertisementWidget() {
 }
 
 $(document).ready(function(){    
-  setTimeout(function(){
-     // reloadAdvertisementWidget();
-     // regenerateCartProductPrices();  
-  }, 6000); 
+ 
+  // setTimeout(function(){
+  //    // reloadAdvertisementWidget();
+  //    // regenerateCartProductPrices();  
+  // }, 6000); 
   
 });
 
