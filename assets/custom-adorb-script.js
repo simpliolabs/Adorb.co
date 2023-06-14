@@ -159,7 +159,9 @@ function regenerateCartProductPrices(){
     $('.rebuy-cart__flyout-items li.rebuy-cart__flyout-item').each(function(){
         var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money span:nth-child(2)');
         var item_price = parseFloat(price_container.text().replace('$',''));
+      
         alert(item_price);
+      
         if($(this).find('.icart-item-content p').attr('title') != 'Adorb Membership - Unlock new pricing immediately!'){
           item_price = (item_price/2).toFixed(2);
           price_container.text('$'+item_price);
