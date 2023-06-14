@@ -150,7 +150,12 @@ $(document).ready(function(){
         
         var cart_membership_html = getCartMembershiptSection();
         $("#rebuy-cart .rebuy-cart__flyout-body").before(cart_membership_html);  
-          
+
+        setTimeout(function(){
+          reloadAdvertisementWidget();
+          regenerateCartProductPrices()
+        }, 1000);  
+                
       }
     },1000);      
   }
