@@ -277,6 +277,10 @@
       "product-template": {
         "type": "product-template",
         "settings": {
+          "product_0": [
+            "mystery-shirt",
+            "mystery-tumbler"
+          ],
           "description_style": "default",
           "social_enable": false,
           "image_position": "left",
