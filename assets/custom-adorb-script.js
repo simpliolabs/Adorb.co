@@ -66,7 +66,7 @@ function getCartMembershiptSection(){
         _html += '<div data-v-12407f70="" class="membership-product-details">';
           _html += '<div data-v-12407f70="" class="membership-offer">';
             _html += '<div data-v-12407f70="" class="become-a-member-text">Become a Adorb Member</div>';
-            _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving">Save $<span class="amount">20.00</span> (50.00%)</strong> off todays order</div>';
+            _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving">Save $<span class="amount">0.00</span> (50.00%)</strong> off todays order</div>';
           _html += '</div>';
         _html += '</div>';  
       _html += '</div>';
