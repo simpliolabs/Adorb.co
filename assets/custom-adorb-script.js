@@ -92,7 +92,7 @@ function getCartMembershiptSection(){
   _html += '</div>';
   
   return _html;
-});
+}
 
 
 
