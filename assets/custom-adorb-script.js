@@ -144,13 +144,14 @@ function reloadAdvertisementWidget() {
 
 $(document).ready(function(){     
   var cart_strip_loaded = false;
-  setInterval(function(){
-    var is_loaded = $('body').find("#rebuy-cart").langth > 0;
-    if(is_loaded) {
-      cart_strip_loaded = true;      
-    }
-  },1000);  
-
+  if(cart_strip_loaded == false) {
+    setInterval(function(){
+      var is_loaded = $('body').find("#rebuy-cart").langth > 0;
+      if(is_loaded) {
+        cart_strip_loaded = true;      
+      }
+    },1000);      
+  }
   alert(cart_strip_loaded);
 });
 
