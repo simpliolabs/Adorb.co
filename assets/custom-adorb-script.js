@@ -145,8 +145,8 @@ function reloadAdvertisementWidget() {
 $(document).ready(function(){  
   
   setTimeout(function(){
-     //reloadAdvertisementWidget();
-     regenerateCartProductPrices();  
+     // reloadAdvertisementWidget();
+     // regenerateCartProductPrices();  
   }, 8000); 
   
 });
