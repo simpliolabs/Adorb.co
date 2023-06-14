@@ -143,8 +143,8 @@
           "1524770292306": {
             "type": "announcement",
             "settings": {
-              "text": "",
-              "link_text": "Always FREE shipping within the USA",
+              "text": "Always FREE shipping",
+              "link_text": "",
               "link": ""
             }
           },
