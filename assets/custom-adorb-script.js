@@ -144,10 +144,10 @@ function reloadAdvertisementWidget() {
 
 $(document).ready(function(){  
   
-  // setTimeout(function(){
-  //    reloadAdvertisementWidget();
-  //    regenerateCartProductPrices();  
-  // }, 8000); 
+  setTimeout(function(){
+     reloadAdvertisementWidget();
+     regenerateCartProductPrices();  
+  }, 8000); 
   
 });
 
