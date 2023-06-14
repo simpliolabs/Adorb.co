@@ -158,10 +158,6 @@ function regenerateCartProductPrices(){
     $('.icart-items .icart-bottom-new-checkout').each(function(){
         var price_container = $(this).find('.icart-item-price .icart-product-price');
         var item_price = parseFloat(price_container.text().replace('$',''));
-
-        // var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-mone.sale span:nth-child(2)');
-        // var item_price = parseFloat(price_container.text().replace('$',''));
-        // alert(item_price);
         
         if($(this).find('.icart-item-content p').attr('title') != 'Adorb Membership - Unlock new pricing immediately!'){
           item_price = (item_price/2).toFixed(2);
