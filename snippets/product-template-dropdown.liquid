@@ -569,32 +569,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
-{% if product.metafields.Image.override_image %}
-  <script>
-    setTimeout(function() {
-      var original_img_url = $('.tee-slide--active .tee-mockup-image').attr('src');
-      var original_img = $('.tee-slide--active .tee-mockup-image');
-      var original_printarea = $('.tee-slide--active .tee-printarea-wrapper');
-      original_img.attr('src', "{{ product.metafields.Image.override_image }}");
-
-      original_printarea.css('display', "none");
-
-      original_img.css('width', '100% !important');
-      original_img.css('height', '100% !important');
-      original_img.css('object-fit', 'cover');
-      $('.tee-slide--active .tee-mockup').css('width', '100% !important');
-      $('.tee-slide--active .tee-mockup').css('height', '100% !important');
-      $('.tee-slide--active .tee-mockup').css('object-fit', 'cover');
-
-      $('.tee-radio').click(function() {
-        original_img.attr('src', original_img_url);
-        original_printarea.css('display', 'block');
-      });
-
-    }, 4000);
-  </script>
-{% endif %}
-
 <script>
 
   var date = new Date();

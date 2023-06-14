@@ -627,6 +627,40 @@ margin-bottom: 0;
   width: 480px;
 }
 
+
+.new_atc_button_wrapper{
+  width:100%;
+}
+
+.new_atc_button{
+  text-transform: uppercase;
+  font-size: 1.13rem!important;
+  background-color: #cc3d3a!important;
+  color: #f6f5f2!important;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-weight: 600;
+
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.new_atc_button:hover{
+  background-color: #f6f5f2!important;
+  color: #cc3d3a!important;
+  border: 1px solid #cc3d3a!important;
+}
+
+.teeinblue-enabled .inputpass.default_product{
+  display:none;
+}
+
+.teeinblue-enabled .insert-addon.default_product{
+  display:none;
+}
+
 .similar_products_modal-content .grid-product__image{
   width: unset;
   margin: unset;

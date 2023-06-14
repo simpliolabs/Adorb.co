@@ -117,6 +117,9 @@
     -%}
     <div class="bold_options" data-product-id="{{ product.id }}"></div>
 
+    <div class='inputpass default_product'></div>
+    <div class='insert-addon default_product'></div>
+
     <div class="quantity_atc_wrapper">
 
       {%- if settings.quantity_enable -%}
@@ -174,3 +177,515 @@
 
 
 <div id="infiniteoptions-container"></div>
+<div class="popupcodeoutsideform"></div>
+
+<script>
+  $(document).ready(function() {
+    setTimeout(function() {
+      let isMobile = window.matchMedia("only screen and (max-width: 767px)").matches; 
+      var desktop_html = "<div class='inputpass teeinblue_product'></div><div class='insert-addon'></div>";
+      var mobile_html = "<div class='inputpass teeinblue_product'></div><div class='insert-addon'></div>";
+      var new_atc_btn_html="<div class='new_atc_button_wrapper'><a class='new_atc_button'>Add To Cart</a></div>"
+      if (document.getElementById('teeFormActions')) {
+        if (isMobile) {
+          document.getElementById('teeFormActions').insertAdjacentHTML("beforebegin", mobile_html);
+          document.getElementById('teeAtcButton').insertAdjacentHTML("beforebegin", new_atc_btn_html);
+        } else {
+          document.getElementById('teeFormActions').insertAdjacentHTML("beforebegin", desktop_html);
+          document.getElementById('teeAtcButton').insertAdjacentHTML("beforebegin", new_atc_btn_html);
+        }
+
+      }
+    }, 5000);
+  });
+</script>
+
+
+
+<style>
+  .selector-wrapper-pop {
+     display: none;
+ }
+.modall_upsell {
+  font-family: Poppins;
+ display: none;
+ position: fixed;
+ z-index: 99999;
+ padding-top: 150px;
+ padding-bottom: 30px;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ overflow: auto;
+ background-color: rgb(0, 0, 0);
+ background-color: rgba(0, 0, 0, 0.4);
+}
+.modall-content_upsell {
+ padding: 20px 40px;
+ position: relative;
+ background-color: #fff;
+ margin: auto;
+ width: 80%;
+ -webkit-animation-name: mymove;
+ -webkit-animation-duration: 1s;
+ animation-name: mymove;
+ animation-duration: 1s;
+ transition: 1s;
+ border-radius: 5px;
+}
+@-webkit-keyframes mymove {
+ 0% {
+     -webkit-transform: scale(0%);
+     transform: scale(0%);
+ }
+ 100% {
+     -webkit-transform: scale(100%);
+     transform: scale(100%);
+ }
+}
+.closel_upsell {
+ color: #000;
+ float: right;
+ font-size: 35px;
+ right: 22px;
+ top: 5px;
+ font-family: monospace;
+ position: absolute;
+ font-weight: bold;
+ cursor: pointer;
+}
+.upsell_row {
+ display: flex;
+}
+.upsell_column {
+ width: 50%;
+ padding: 20px;
+ text-align: center;
+}
+.upsell_column img {
+ max-width: 65%;
+ margin: 0 auto;
+ height: auto;
+}
+.upsell_img {
+ padding: 0px;
+}
+.upsell_column h3 {
+ margin-top: 20px;
+ font-size: 28px;
+}
+.upsell_column h4 {
+ font-size: 20px;
+ letter-spacing: 0px;
+ font-weight: 500;
+}
+.upsell_add_btn {
+ color: #fff;
+ background: #57b626;
+ display: block;
+ text-align: center;
+ font-weight: bold;
+ padding: 13px 15px;
+ cursor: pointer;
+ width:100%;
+}
+.selector-wrapper-pop {
+ position: relative;
+ max-width: 120px;
+ margin: 0 auto;
+ margin-bottom: 20px;
+}
+.description_area {
+ text-align: left;
+}
+.description_area span.show_desc {
+ position: absolute;
+ top: 50%;
+ right: 15px;
+ line-height: 0px;
+ font-size: 25px;
+ display: none;
+}
+.minus_desc {
+ position: absolute;
+ top: 50%;
+ right: 15px;
+ line-height: 0px;
+ font-size: 25px;
+}
+.description_area .desc_head {
+ position: relative;
+ cursor: pointer;
+ font-size: 16px;
+ letter-spacing: unset;
+ padding: 10px 0;
+ margin-top: 12px;
+}
+.description_content>* {
+ font-size: 14px;
+ letter-spacing: unset;
+}
+.variant_selection {
+ padding: 5px 0px 15px 0px;
+ display: none;
+ transition: 0.5s;
+}
+.popup_variant_selection {
+ padding: 5px 0px 15px 0px;
+}
+.variant_selection .my_variants {
+ width: 100%;
+ font-size: 14px;
+ font-family: Poppins;
+}
+.popup_variant_selection .my_variants {
+ width: 60%;
+}
+.variant_selection p {
+ font-size: 15px;
+ margin-bottom: 10px;
+ font-weight: bold;
+}
+.popup_variant_selection p {
+ font-size: 17px;
+ margin: 10px 0px;
+ font-weight: bold;
+}
+.hide_vars {
+ display: none !important;
+}
+@media screen and (max-width: 600px) {
+ .modall-content_upsell {
+     width: 95%;
+     padding: 20px 10px;
+ }
+ .upsell_row {
+     flex-direction: column;
+ }
+ .upsell_column {
+     width: 100%;
+     padding: 5px;
+ }
+ .upsell_img {
+     width: 50%;
+     margin: 0 auto;
+     padding: 0px;
+ }
+ .upsell_column h3 {
+     margin-top: 5px;
+     font-size: 18px;
+ }
+ .upsell_column h4 {
+     font-size: 16px;
+ }
+ .upsell_column img {
+     max-width: 100%;
+ }
+ .modall_upsell {
+     padding-top: 30px;
+ }
+ .popup_variant_selection p {
+     margin: 5px 0px;
+     font-size: 14px;
+ }
+ .popup_variant_selection .my_variants {
+     font-size: 13px !important;
+ }
+ .description_content {
+     display: none;
+ }
+}
+.upsell-product.up_1.active-addon .variant_selection.one {
+ display: block !important;
+}
+.blkprt {
+font-size: 15px!important;
+font-weight: 700!important;
+color: #000!important;
+}
+a#popup_link_1{
+    display: inline-block;
+vertical-align: top;
+margin: 0 5px;
+color: #0793ff;
+text-decoration: underline !important;
+font-weight: 700;
+font-size: 15px;
+}
+.upsell-product.up_1 .label-input {
+font-size: 0.8em;
+margin-bottom: 10px;
+font-family: Poppins;
+font-weight: 700;
+}
+</style>
+
+<div class="product-block upsell_block">
+{% for upsellproduct in  section.settings.product_0 %}
+<div class="upsell-product up_1">
+<div class="label-input">
+ <input type="checkbox" data-product="{{ upsellproduct.id }}" class="upsell-check-1 upsell-check-lid" data-idd="{{ upsellproduct.selected_or_first_available_variant.id }}">
+ <span data-product="{{upsellproduct.id}}" class="blkprt">Add a </span>
+ <a id="popup_link_1" data-product="{{ upsellproduct.id }}"  data-modal="modal-popup" data-block=".lid-popup" href="javascript:;">{{upsellproduct.title}} for  {{ upsellproduct.price | money_without_trailing_zeros }}</a>
+</div>
+<div class="variant_selection one" data-product="{{upsellproduct.id}}" style="display: none">
+ <div class="all_var">
+{% if upsellproduct.has_only_default_variant %}
+{% else %}
+ <p>Select Your Type</p>
+ <select class="my_variants var_1 ">
+       {% for variant in upsellproduct.variants %}
+     <option data-idd="{{ variant.title }}" data-var="{{variant.id}}"  {% if variant == upsellproduct.selected_or_first_available_variant %}selected="selected"{% endif %}>
+          {{ variant.title }}
+     </option>
+         {% endfor %}
+ </select>
+{% endif %}
+ </div>
+ </div>
+</div>
+{% endfor %}
+{% for upsellproduct in  section.settings.product_0 %}
+<div id="myModall_upsell" data-product="{{ upsellproduct.id }}"  class="modall_upsell myModall_main" style="display: none">
+<div class="modall-content_upsell">
+ <span class="closel_upsell">×</span>
+ <div class="upsell_row">
+     <div class="upsell_column upsell_img">
+           <img src="{{ upsellproduct.featured_image |  img_url : 'master' }}" />
+     </div>
+     <div class="upsell_column">
+         <h3>{{upsellproduct.title}}</h3>
+         <h4>{{upsellproduct.price | money }}</h4>
+         <div class="popup_variant_selection">
+             <div class="all_var" style="display: none">
+                     {% for variant in upsellproduct.variants %}
+                        {% if upsellproduct.has_only_default_variant %}
+                 <span data-idd="{{variant.title}}"
+                     data-name="{{variant.title}}">{{variant.id}}</span>
+                     {% endif %}
+                     {% endfor %}
+             </div>
+             <p>Select Your Type</p>
+             <select class="my_variants var_1 pop" id="mySelectpop">
+                     {% for variant in upsellproduct.variants %}
+                     {% if upsellproduct.has_only_default_variant %}
+                     {% else %}
+                 <option data-idd="{{ variant.title}}" data-varient-id={{variant.id}} {% if variant == upsellproduct.selected_or_first_available_variant %}selected="selected"{% endif %}>
+                     {{variant.title}}
+                     {% endif %}
+                 </option>
+                     {% endfor %}
+             </select>
+         </div>
+         {% comment %} <label>Quantity</label> {% endcomment %}
+         <div class="selector-wrapper-pop">
+             <input type="text" id="" name="updates[]" class="js-qty__num js-qty__adjust--minus"
+                 value="1" min="0" pattern="[0-9]*" data-idd="" />
+             <button type="button" onclick="minus(this)" class="js-qty__adjust js-qty__adjust--minus"
+                 aria-label="Reduce item quantity by one">
+                 <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus"
+                     viewBox="0 0 20 20">
+                     <path fill="#444"
+                         d="M17.543 11.029H2.1A1.032 1.032 0 0 1 1.071 10c0-.566.463-1.029 1.029-1.029h15.443c.566 0 1.029.463 1.029 1.029 0 .566-.463 1.029-1.029 1.029z">
+                     </path>
+                 </svg>
+                 <span class="icon__fallback-text" aria-hidden="true">−</span>
+             </button>
+             <button type="button" onclick="plus(this)" class="js-qty__adjust js-qty__adjust--plus"
+                 aria-label="Increase item quantity by one">
+                 <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus"
+                     viewBox="0 0 20 20">
+                     <path fill="#444"
+                         d="M17.409 8.929h-6.695V2.258c0-.566-.506-1.029-1.071-1.029s-1.071.463-1.071 1.029v6.671H1.967C1.401 8.929.938 9.435.938 10s.463 1.071 1.029 1.071h6.605V17.7c0 .566.506 1.029 1.071 1.029s1.071-.463 1.071-1.029v-6.629h6.695c.566 0 1.029-.506 1.029-1.071s-.463-1.071-1.029-1.071z">
+                     </path>
+                 </svg>
+                 <span class="icon__fallback-text" aria-hidden="true">+</span>
+             </button>
+         </div>
+           <button class="upsell_add_btn" data-var="{{ upsellproduct.selected_or_first_available_variant.id }}">
+    
+             ADD TO CART
+         
+         </button>
+         <div class="description_area">
+             <h5 class="desc_head">
+                 DESCRIPTION <span class="show_desc" style="display: none">+</span><span
+                     class="minus_desc" style="">—</span>
+             </h5>
+             <div class="description_content" style="">
+             {{ upsellproduct.description }}
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
+</div>
+{% endfor %}
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    setTimeout(function() {
+      let addonhtmlone = $("div#myModall_upsell");
+      let meinsidehtmlone = $(".popupcodeoutsideform");
+      $(meinsidehtmlone).html($(addonhtmlone)); 
+      let addonhtml = $(".product-block.upsell_block");
+      let meinsidehtml = $(".insert-addon");
+      $(meinsidehtml).html($(addonhtml));
+      function getids(){
+      let array = [];
+      if($(".active-addon").length === 1 ){
+      let selectedatt = $(".active-addon select.my_variants.var_1 option:selected").attr('data-var');
+      let insertInput = `<input name="items[0]id" value='${selectedatt}' type="hidden">`
+      $(".inputpass").html(insertInput);
+      }else{
+      $(".active-addon select.my_variants.var_1 option:selected").each(function(index1) {
+      let index = index1;
+      let selectedatt = $(this).attr('data-var');
+      let insertInput = `<input name="items[${index}]id" value='${selectedatt}' type="hidden">`
+      array.push(insertInput);
+      });
+      const output = array.join('');
+      $(".inputpass").html(output);
+      }
+      }
+      
+      let Newbtn = document.querySelectorAll("input.upsell-check-lid");
+      let labels = document.querySelectorAll(".blkprt");
+      let Downvar = document.querySelectorAll(".variant_selection.one");
+      let popUp = document.querySelectorAll("a#popup_link_1");
+      Newbtn.forEach((but) => {
+      but.addEventListener('change', function() {
+      let array = [];
+      let myattr = but.getAttribute("data-product");
+      const previousElement = but.previousElementSibling;
+      if ($(but).parents(".upsell-product.up_1").hasClass("active-addon")) {
+      $(but).parents(".upsell-product.up_1").removeClass("active-addon")
+      $(".inputpass").html("");
+      } else {
+      $(but).parents(".upsell-product.up_1").addClass("active-addon")
+          $(".active-addon select.my_variants.var_1 option:selected").each(function(index1) {
+      let index = index1;
+      let selectedatt = $(this).attr('data-var');
+      let insertInput = `<input name="items[${index}]id" value='${selectedatt}' type="hidden">`
+      array.push(insertInput);
+      });
+      const output = array.join('');
+      $(".inputpass").html(output);
+      
+      }
+      });
+      });
+      labels.forEach((label) => {
+      label.addEventListener('click', function() {
+      let myattr = label.getAttribute("data-product");
+      const previousElement = label.previousElementSibling;
+      if ($(label).parents(".upsell-product.up_1").hasClass("active-addon")) {
+      $(label).parents(".upsell-product.up_1").removeClass("active-addon");
+      } else {
+      $(label).parents(".upsell-product.up_1").addClass("active-addon");
+      
+      }
+      });
+      });
+      let popupbtn = document.querySelectorAll("a#popup_link_1");
+      let popupnew = document.querySelectorAll("div#myModall_upsell");
+      popupbtn.forEach((butnew) => {
+      butnew.addEventListener('click', function() {
+      let myattr = butnew.getAttribute("data-product");
+      popupnew.forEach((butmy) => {
+      let popnewme = butmy.getAttribute("data-product");
+      if (myattr === popnewme) {
+       butmy.style.display = "block";
+      } else {
+       butmy.style.display = "none";
+      }
+      });
+      });
+      });
+      let closebtnpop = document.querySelectorAll("span.closel_upsell");
+      let popups = document.querySelectorAll("div#myModall_upsell");
+      closebtnpop.forEach((closbt) => {
+      closbt.addEventListener('click', function() {
+      popups.forEach((newclosebtn) => {
+      newclosebtn.style.display = "none";
+      });
+      });
+      });
+      $("span.blkprt").click(function(){
+      getids();
+      });
+      $("select.my_variants.var_1").on("change",function(){
+      getids();
+      });
+      $(document).on('click','.desc_head',function(){
+      $(this).find('span').toggle()
+      $(this).next().toggle()
+      })
+
+
+      $("#mySelectpop").change(function(){
+      var selectedvaripop = $(this).find('option:selected'); 
+      var myTag = selectedvaripop.attr("data-varient-id"); 
+      $(this).parents(".modall-content_upsell").find("button.upsell_add_btn").attr("data-var", myTag);
+      });
+      $(document).on('click','.upsell_add_btn',function(){
+      $("select.my_variants.var_1.pop")
+      var vid = $(this).attr('data-var');
+      vid = parseInt(vid);
+      $.ajax({
+      async: false,
+      type: "POST",
+      url: "/cart/add.js",
+      data: {
+      'quantity':1,
+      'id': vid
+      },
+      dataType: 'json',
+      success: function () {
+      $('.modall_upsell').hide();
+      document.dispatchEvent(new CustomEvent('cart:build'));
+      setTimeout(function(){
+      $('.js-drawer-open-cart span').trigger('click')
+      },500)
+      }
+      })
+      })
+
+      $('body').on('click','.new_atc_button',function(e){
+
+        $('#teeAtcButton').trigger('click');
+
+        setTimeout(function(){
+          if($('.tee-error__message').length == 0){
+            if($('.inputpass.teeinblue_product input').length > 0){
+              $('.inputpass.teeinblue_product input').each(function(index) {
+                console.log($(this).val());
+                $.ajax({
+                async: false,
+                type: "POST",
+                url: "/cart/add.js",
+                data: {
+                'quantity':1,
+                'id': $(this).val()
+                },
+                dataType: 'json',
+                success: function () {
+                document.dispatchEvent(new CustomEvent('cart:build'));
+                }
+              })
+              });
+              
+            }
+          }else{
+          }
+        },500);
+      })
+      
+    },6000);
+    
+  });
+
+</script>
