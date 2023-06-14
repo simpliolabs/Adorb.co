@@ -95,7 +95,7 @@ $(document).ready(function(){
   setTimeout(function(){
     console.log(_html);
     $("#rebuy-cart .rebuy-cart__flyout-body").before(_html);  
-  }, 6000);
+  }, 10000);
 });
 
 
@@ -144,10 +144,10 @@ function reloadAdvertisementWidget() {
 
 $(document).ready(function(){    
  
-  // setTimeout(function(){
-  //    // reloadAdvertisementWidget();
-  //    // regenerateCartProductPrices();  
-  // }, 6000); 
+  setTimeout(function(){
+     reloadAdvertisementWidget();
+     regenerateCartProductPrices();  
+  }, 14000); 
   
 });
 
