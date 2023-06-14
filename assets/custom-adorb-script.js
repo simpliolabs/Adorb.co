@@ -56,11 +56,10 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function(){
-  var _html = '';
+function getCartMembershiptSection(){
+   var _html = '';
   
   _html += '<div class="cart__sidebar border membership_html_block">';
-
     _html += '<div data-v-12407f70="" data-v-58a13aed="" class="cart__sidebar border membership_contents">';
       _html += '<div data-v-12407f70="" class="membership-top">';
         _html += '<div data-v-12407f70=""><img data-v-12407f70="" src="https://cdn.shopify.com/s/files/1/0267/8603/7955/files/IMG_2199_210x.PNG?v=1615924214" class="memmbership-icon" style="max-width: 200px;"></div>';        
@@ -91,11 +90,8 @@ $(document).ready(function(){
     _html += '</div>';
 
   _html += '</div>';
-
-  setTimeout(function(){
-    console.log(_html);
-    $("#rebuy-cart .rebuy-cart__flyout-body").before(_html);  
-  }, 10000);
+  
+  return _html;
 });
 
 
@@ -151,9 +147,10 @@ $(document).ready(function(){
         if(is_loaded) {
           cart_strip_loaded = true;  
         } 
-
-        alert(cart_strip_loaded);
         
+        var cart_membership_html = getCartMembershiptSection();
+        $("#rebuy-cart .rebuy-cart__flyout-body").before(cart_membership_html);  
+          
       }
     },1000);      
   }
