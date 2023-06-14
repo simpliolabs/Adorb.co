@@ -150,9 +150,13 @@ $(document).ready(function(){
       if(is_loaded) {
         cart_strip_loaded = true;      
       }
+
+      if(cart_strip_loaded == true) {
+        alert(cart_strip_loaded);        
+      }
+      
     },1000);      
   }
-  alert(cart_strip_loaded);
 });
 
 function regenerateCartProductPrices(){
