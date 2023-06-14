@@ -143,8 +143,9 @@ function reloadAdvertisementWidget() {
 }
 
 $(document).ready(function(){     
+  var cart_strip_loaded = falde;
   setInterval(function(){
-    alert('dddd');
+
   },1000);  
 });
 
