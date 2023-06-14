@@ -122,6 +122,7 @@ $(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
 })
 
 function reloadAdvertisementWidget() {
+  setTimeout(function(){
     var apply_discount = availabilityForMemberShipDiscount();
     
     if(apply_discount == true) {
@@ -139,6 +140,7 @@ function reloadAdvertisementWidget() {
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').show();
       $('.rebuy-cart__flyout-actions a.rebuy-cart__checkout-button-dump').remove();
     }  
+  }, 2000);
 }
 
 $(document).ready(function(){  
