@@ -142,13 +142,10 @@ function reloadAdvertisementWidget() {
     }  
 }
 
-$(document).ready(function(){    
- 
-  setTimeout(function(){
-     reloadAdvertisementWidget();
-     regenerateCartProductPrices();  
-  }, 11000); 
-  
+$(document).ready(function(){     
+  setInterval(function(){
+    alert('dddd');
+  },1000);  
 });
 
 function regenerateCartProductPrices(){
@@ -179,7 +176,7 @@ function regenerateCartProductPrices(){
 
 
 function availabilityForMemberShipDiscount(){
-  var is_available = false
+  var is_available = false;
   $('.rebuy-cart__flyout-items .rebuy-cart__flyout-item').each(function(){
     if($(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() == 'Adorb Membership - Unlock new pricing immediately!'){
       is_available = true;
