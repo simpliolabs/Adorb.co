@@ -181,10 +181,10 @@ function regenerateCartProductPrices(){
 
   if(apply_discount == true) {
     $(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text('$'+items_price.toFixed(2));            
-  }
-  
-  $('.offer-saving span.amount').text(savings_order_total);
-
+    $('.offer-saving span.amount').text(savings_order_total);
+  }else{
+    $('.offer-saving span.amount').text((actual_order_total/2).toFixed(2));    
+  }  
 }
 
 
