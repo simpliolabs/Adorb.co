@@ -95,7 +95,7 @@ $(document).ready(function(){
   setTimeout(function(){
     console.log(_html);
     $("#rebuy-cart .rebuy-cart__flyout-body").before(_html);  
-  }, 4000);
+  }, 3000);
 });
 
 
@@ -135,7 +135,7 @@ function reloadAdvertisementWidget() {
       }
       
     }else{
-      alert('test');
+
       $("#rebuy-cart .membership_html_block").removeClass('hide');      
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').show();
       $('.rebuy-cart__flyout-actions a.rebuy-cart__checkout-button-dump').remove();
