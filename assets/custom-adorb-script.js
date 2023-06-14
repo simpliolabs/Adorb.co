@@ -142,12 +142,11 @@ function reloadAdvertisementWidget() {
     }  
 }
 
-$(document).ready(function(){  
-  
+$(document).ready(function(){    
   setTimeout(function(){
-     // reloadAdvertisementWidget();
+     reloadAdvertisementWidget();
      // regenerateCartProductPrices();  
-  }, 8000); 
+  }, 6000); 
   
 });
 
