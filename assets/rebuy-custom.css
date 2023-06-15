@@ -85,6 +85,9 @@
 #rebuy-widget-89169 .rebuy-product-info .rebuy-product-price {
   display: none;
 }
+#rebuy-widget-89169 .rebuy-product-info .rebuy-product-review {
+  display: none;
+}
 #rebuy-widget-89169 .rebuy-product-actions button span {
   font-weight: 700;
 }
