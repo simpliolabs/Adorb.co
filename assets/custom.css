@@ -1004,3 +1004,9 @@ strong.offer-saving {
   color: #009900;
   font-size: 15px;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .membership-detail-points[data-v-12407f70] li, .membership-footer-action-block li {
+      font-size: 11px;
+  }  
+}
