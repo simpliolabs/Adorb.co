@@ -1009,4 +1009,13 @@ strong.offer-saving {
   .membership-detail-points[data-v-12407f70] li, .membership-footer-action-block li {
       font-size: 11px!important;
   }  
+  
+  .membership-footer-action-block {
+    padding-left: 14px;
+  }
+  
+  .membership-bottom a.add_membership {
+    padding: 10px 5px;
+    font-size: 14px;
+  }
 }
