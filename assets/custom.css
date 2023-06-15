@@ -426,6 +426,7 @@
 }
 .variant-dropdown_wrapper .variant-wrapper {
   padding-right: 20px;
+  margin-bottom: 0;
 }
 .site-nav__dropdown {
   background-color: #ffa88a;
