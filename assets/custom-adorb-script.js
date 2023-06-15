@@ -55,7 +55,7 @@ $(document).ready(function(){
 
 });
 
-/*
+
 function getCartMembershiptSection(){
    var _html = '';
   
@@ -199,4 +199,3 @@ function availabilityForMemberShipDiscount(){
   return is_available;
 }
 
-*/
