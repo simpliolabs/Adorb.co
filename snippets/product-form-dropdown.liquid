@@ -3,6 +3,7 @@
 
   {% comment %} <a class='more_similar_products'>+ Explore More Styles</a> {% endcomment %}
   {%- unless product.has_only_default_variant -%}
+    <div class="variant-dropdown_wrapper">
     {%- for option in product.options_with_values -%}
       {%- liquid
         if settings.product_color_swatches
@@ -19,13 +20,14 @@
         endif
       -%}
 
-
+      
       {%- render 'variant-dropdown' 
         , section_id: section_id,
         option: option,
         forloop: forloop -%}
 
     {%- endfor -%}
+    </div>
   {%- endunless -%}
 
 
@@ -100,9 +102,9 @@
     endif
   -%}
 
-  {%- if enable_dynamic_buttons -%}
+  {% comment %} {%- if enable_dynamic_buttons -%}
     <div class="payment-buttons">
-    {%- endif -%}
+    {%- endif -%} {% endcomment %}
 
     {%- liquid
       assign default_text = 'products.product.add_to_cart' | t
@@ -144,17 +146,21 @@
       </div>
     {% endif %}
 
-    {%- if enable_dynamic_buttons -%}
-      {{ form | payment_button }}
-    {%- endif -%}
-
-    {%- if enable_dynamic_buttons -%}
+    <div class="myshop_pay">
+      {{ form | payment_terms }}
     </div>
-  {%- endif -%}
+
+    {% comment %} {%- if enable_dynamic_buttons -%}
+      {{ form | payment_button }}
+    {%- endif -%} {% endcomment %}
+
+    {% comment %} {%- if enable_dynamic_buttons -%}
+    </div>
+  {%- endif -%} 
 
   {{ form | payment_button }}
 
-
+{% endcomment %}
 
   <textarea
     id="VariantsJson-{{ section_id }}"

@@ -135,9 +135,9 @@
         <div class="grid__item {{ product_description_width }}">
 
           <div class="product-single__meta">
-            {%- if settings.show_breadcrumbs and isModal != true -%}
+            {% comment %} {%- if settings.show_breadcrumbs and isModal != true -%}
               {%- render 'breadcrumbs' -%}
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
 
             {%- if settings.vendor_enable -%}
               <div class="product-single__vendor">
@@ -229,7 +229,7 @@
               <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
             {%- endif -%}
 
-            <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %} desktop_only">
+            <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
               {{ current_variant.price | money }}
             </span>
 
@@ -394,11 +394,7 @@
                     margin-left: 35px;
                   }
                 }
-                {% comment %}
-                  webcss{% endcomment %}
-                span.product__price.desktop_only {
-                  padding-bottom: 20px;
-                }
+                
                 div#th_pb_qty_bundle {
                   display: none;
                 }
@@ -525,6 +521,16 @@
     min-width: 35px !important;
     height: 33px !important;
   }
+  .product__price {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: inherit;
+    font-size: 1.1em;
+  }
+  .product__price.on-sale{
+    color: #9b4a48;
+  }
 
 
   @media screen and (max-width: 767px) {
@@ -562,6 +568,8 @@
     .judge-me-fetch--reviews {
       padding-bottom: 8px;
     }
+    
+
 
   }
 </style>
