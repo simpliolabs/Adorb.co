@@ -1010,6 +1010,10 @@ strong.offer-saving {
       font-size: 11px!important;
   }  
   
+  .membership-bottom {
+      margin-bottom: 10px;
+  }  
+  
   .membership-footer-action-block {
     padding-left: 14px;
   }
