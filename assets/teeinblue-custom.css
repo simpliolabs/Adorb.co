@@ -17,14 +17,14 @@
 .tee-btn--atc {
   text-transform: uppercase;
   font-size: 1.13rem !important;
-  background-color: #cc3d3a !important;
+  background-color: #71bf54 !important;
   color: #f6f5f2 !important;
 }
 
 .tee-btn--atc:hover {
   background-color: #f6f5f2 !important;
-  color: #cc3d3a !important;
-  border: 1px solid #cc3d3a !important;
+  color: #71bf54 !important;
+  border: 1px solid #71bf54 !important;
 }
 
 .tee-btn--atc {
@@ -44,7 +44,7 @@
 }
 
 .tee-quantity-handle:hover {
-  background-color: #cc3d3a;
+  background-color: #71bf54;
   color: white;
 }
 
@@ -71,12 +71,12 @@
   font-size: 25px !important;
 }
 
-
-.tee-swatch--circle, .tee-swatch--circle .tee-swatch--color{
-  border-radius:0% !important;
+.tee-swatch--circle,
+.tee-swatch--circle .tee-swatch--color {
+  border-radius: 0% !important;
 }
 
-.tee-swatch--color{
+.tee-swatch--color {
   width: 40px !important;
   height: 40px !important;
 }
@@ -96,19 +96,17 @@
   visibility: hidden !important;
 } */
 
-.tee-form-atc-wrapper{
+.tee-form-atc-wrapper {
   flex-wrap: unset !important;
 }
 
-.teeinblue-enabled .tee-btn--atc#teeAtcButton{
+.teeinblue-enabled .tee-btn--atc#teeAtcButton {
   display: none;
 }
 
-
 @media only screen and (max-width: 768px) {
-  .tee-swatch--color{
+  .tee-swatch--color {
     width: 38px !important;
     height: 38px !important;
   }
-
 }
