@@ -170,7 +170,7 @@ function regenerateCartProductPrices(){
         var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money.sale span:nth-child(2)');
         var item_price = parseFloat(price_container.text().replace('$',''));
         
-        if(isNaN(item_price) && $(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() != 'Adorb Membership - Unlock new pricing immediately!'){
+        if(!isNaN(item_price) && $(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() != 'Adorb Membership - Unlock new pricing immediately!'){
           item_price = (item_price/2).toFixed(2);
           price_container.text('$'+item_price);
         }
