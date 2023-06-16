@@ -63,7 +63,7 @@
               <div class="similar_product_price">
                 {%- assign hide_sale_price = true -%}
                 {%- if product.compare_at_price_max > product.price -%}
-                  {%- if current_variant.compare_at_price > current_variant.price -%}
+                  {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
                     {%- assign hide_sale_price = false -%}
                   {%- endif -%}
 
@@ -75,8 +75,8 @@
                   </span>
                   <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
                     <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
-                      {%- if current_variant.compare_at_price > current_variant.price -%}
-                        {{ current_variant.compare_at_price | money }}
+                      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+                        {{ product.selected_or_first_available_variant.compare_at_price | money }}
                       {%- endif -%}
                     </span>
                   </span>
@@ -85,17 +85,17 @@
                   <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
                 {%- endif -%}
 
-                <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
-                  {{ current_variant.price | money }}
+                <span id="ProductPrice-{{ section_id }}"class="product__price{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %} on-sale{% endif %}">
+                  {{ product.selected_or_first_available_variant.price | money }}
                 </span>
 
                 {%- if settings.product_save_amount -%}
                   {%- if settings.product_save_type == 'dollar' -%}
                     {%- capture saved_amount -%}
-                      {{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
+                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
                   {%- else -%}
                     {%- capture saved_amount -%}
-                      {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round }}%{%- endcapture -%}
                   {%- endif -%}
                   <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
                     {%- unless hide_sale_price -%}
@@ -104,19 +104,19 @@
                   </span>
                 {%- endif -%}
 
-                <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+                <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless product.selected_or_first_available_variant.unit_price_measurement %} hide{% endunless %}">
                   {%- capture unit_price_base_unit -%}
                     <span class="product__unit-base--{{ section_id }}">
-                      {%- if current_variant.unit_price_measurement -%}
-                        {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
-                          {{ current_variant.unit_price_measurement.reference_value }}
+                      {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+                        {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                          {{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
                         {%- endif -%}
-                        {{ current_variant.unit_price_measurement.reference_unit }}
+                        {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
                       {%- endif -%}
                     </span>
                   {%- endcapture -%}
 
-                  <span class="product__unit-price--{{ section_id }}">{{ current_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+                  <span class="product__unit-price--{{ section_id }}">{{ product.selected_or_first_available_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@
               <div class="similar_product_price">
                 {%- assign hide_sale_price = true -%}
                 {%- if product.compare_at_price_max > product.price -%}
-                  {%- if current_variant.compare_at_price > current_variant.price -%}
+                  {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
                     {%- assign hide_sale_price = false -%}
                   {%- endif -%}
 
@@ -189,8 +189,8 @@
                   </span>
                   <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
                     <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
-                      {%- if current_variant.compare_at_price > current_variant.price -%}
-                        {{ current_variant.compare_at_price | money }}
+                      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+                        {{ product.selected_or_first_available_variant.compare_at_price | money }}
                       {%- endif -%}
                     </span>
                   </span>
@@ -199,17 +199,17 @@
                   <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
                 {%- endif -%}
 
-                <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
-                  {{ current_variant.price | money }}
+                <span id="ProductPrice-{{ section_id }}"class="product__price{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %} on-sale{% endif %}">
+                  {{ product.selected_or_first_available_variant.price | money }}
                 </span>
 
                 {%- if settings.product_save_amount -%}
                   {%- if settings.product_save_type == 'dollar' -%}
                     {%- capture saved_amount -%}
-                      {{ current_variant.compare_at_price | minus: current_variant.price | money }}{%- endcapture -%}
+                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
                   {%- else -%}
                     {%- capture saved_amount -%}
-                      {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round }}%{%- endcapture -%}
                   {%- endif -%}
                   <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
                     {%- unless hide_sale_price -%}
@@ -218,19 +218,19 @@
                   </span>
                 {%- endif -%}
 
-                <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+                <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless product.selected_or_first_available_variant.unit_price_measurement %} hide{% endunless %}">
                   {%- capture unit_price_base_unit -%}
                     <span class="product__unit-base--{{ section_id }}">
-                      {%- if current_variant.unit_price_measurement -%}
-                        {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
-                          {{ current_variant.unit_price_measurement.reference_value }}
+                      {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+                        {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                          {{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
                         {%- endif -%}
-                        {{ current_variant.unit_price_measurement.reference_unit }}
+                        {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
                       {%- endif -%}
                     </span>
                   {%- endcapture -%}
 
-                  <span class="product__unit-price--{{ section_id }}">{{ current_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+                  <span class="product__unit-price--{{ section_id }}">{{ product.selected_or_first_available_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
                 </div>
               </div>
             </div>
