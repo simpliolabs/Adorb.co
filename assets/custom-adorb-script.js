@@ -121,9 +121,7 @@ function reloadAdvertisementWidget() {
     var apply_discount = availabilityForMemberShipDiscount();
 
     if(apply_discount == true) {
-      
-      $('.offer-saving').removeClass('hide');
-      
+            
       $("#rebuy-cart .membership_html_block").addClass('hide');
 
       $('.rebuy-cart__flyout-actions button.rebuy-cart__checkout-button').hide();     
@@ -168,6 +166,8 @@ function regenerateCartProductPrices(){
   var items_price = 0;        
   var applied = false;
   $('.rebuy-cart__flyout-items li.rebuy-cart__flyout-item').each(function(){
+
+      $('.offer-saving').removeClass('hide');
       
       if(apply_discount == true) {        
         if($(this).find('.rebuy-cart__flyout-item-price .rebuy-money').hasClass('sale')){
