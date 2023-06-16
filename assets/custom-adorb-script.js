@@ -172,7 +172,7 @@ function regenerateCartProductPrices(){
           var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money.sale span:nth-child(2)');
           var item_price = parseFloat(price_container.text().replace('$',''));
           
-          if(!isNaN(item_price) && $(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() != 'Adorb Membership - Unlock new pricing immediately!'){
+          if(!isNaN(item_price)){
             item_price = (item_price/2).toFixed(2);
             price_container.text('$'+item_price);              
           }
@@ -183,7 +183,7 @@ function regenerateCartProductPrices(){
   });  
   
   var actual_order_total = parseFloat($(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text().replace('$',''));
-  savings_order_total = (actual_order_total).toFixed(2);
+  savings_order_total = (actual_order_total-items_price).toFixed(2);
   
   if(apply_discount == true) {
     $(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text('$'+items_price.toFixed(2));            
