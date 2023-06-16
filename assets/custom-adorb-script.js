@@ -166,16 +166,17 @@ function regenerateCartProductPrices(){
   var items_price = 0;        
   $('.rebuy-cart__flyout-items li.rebuy-cart__flyout-item').each(function(){
       if(apply_discount == true) {
-        
-        var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money.sale span:nth-child(2)');
-        var item_price = parseFloat(price_container.text().replace('$',''));
-        alert(price_container);
-        if(!isNaN(item_price) && $(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() != 'Adorb Membership - Unlock new pricing immediately!'){
-          item_price = (item_price/2).toFixed(2);
-          price_container.text('$'+item_price);
+        if($(this).find('.rebuy-cart__flyout-item-price .rebuy-money').hasClass('sale')){
+          var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money.sale span:nth-child(2)');
+          var item_price = parseFloat(price_container.text().replace('$',''));
+          
+          if(!isNaN(item_price) && $(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() != 'Adorb Membership - Unlock new pricing immediately!'){
+            item_price = (item_price/2).toFixed(2);
+            price_container.text('$'+item_price);
+          }
+          
+          items_price += parseFloat(item_price);                  
         }
-        
-        items_price += parseFloat(item_price);        
       }
   });  
   
