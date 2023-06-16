@@ -183,7 +183,7 @@ function regenerateCartProductPrices(){
   });  
   
   var actual_order_total = parseFloat($(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text().replace('$',''));
-  savings_order_total = (actual_order_total-items_price).toFixed(2);
+  savings_order_total = ((actual_order_total-items_price)+9.95).toFixed(2);
   
   if(apply_discount == true) {
     $(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text('$'+items_price.toFixed(2));            
