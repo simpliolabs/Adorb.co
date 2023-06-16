@@ -108,7 +108,7 @@ $(document).on('click', '#add-membership-product-in-cart', function(){
   setTimeout(function(){
     reloadAdvertisementWidget();
     regenerateCartProductPrices()
-  }, 4000);  
+  }, 2000);  
 });
 
 $(document).on('click', '.rebuy-cart__flyout-item-remove', function(){
@@ -169,8 +169,8 @@ function regenerateCartProductPrices(){
         
         var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money.sale span:nth-child(2)');
         var item_price = parseFloat(price_container.text().replace('$',''));
-        alert(item_price);
-        if($(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() != 'Adorb Membership - Unlock new pricing immediately!'){
+        
+        if(isNaN(item_price) && $(this).find('.rebuy-cart__flyout-item-info a[role="heading"]').text() != 'Adorb Membership - Unlock new pricing immediately!'){
           item_price = (item_price/2).toFixed(2);
           price_container.text('$'+item_price);
         }
