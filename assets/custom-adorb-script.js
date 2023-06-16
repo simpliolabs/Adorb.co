@@ -167,9 +167,7 @@ function regenerateCartProductPrices(){
   var applied = false;
   $('.rebuy-cart__flyout-items li.rebuy-cart__flyout-item').each(function(){
       
-      if(apply_discount == true) {
-        applied = true;
-        
+      if(apply_discount == true) {        
         if($(this).find('.rebuy-cart__flyout-item-price .rebuy-money').hasClass('sale')){
           var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money.sale span:nth-child(2)');
           var item_price = parseFloat(price_container.text().replace('$',''));
@@ -178,6 +176,7 @@ function regenerateCartProductPrices(){
             item_price = (item_price/2).toFixed(2);
             
             if(applied == false) {
+              applied = true;
               price_container.text('$'+item_price);              
             }
           }
