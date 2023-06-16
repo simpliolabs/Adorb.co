@@ -181,13 +181,12 @@ function regenerateCartProductPrices(){
         }
       }
   });  
-
   
   var actual_order_total = parseFloat($(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text().replace('$',''));
-  savings_order_total = ((actual_order_total-items_price)+9.95).toFixed(2);
-  alert(savings_order_total);
+  savings_order_total = (actual_order_total-items_price).toFixed(2);
+  
   if(apply_discount == true) {
-    $(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text('$'+items_price.toFixed(2));            
+    $(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text('$'+(parseFloat(items_price)+9.95).toFixed(2));            
     $('.offer-saving span.amount').text(savings_order_total);
   }else{
     $('.offer-saving span.amount').text((actual_order_total/2).toFixed(2));    
