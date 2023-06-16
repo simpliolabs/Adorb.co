@@ -164,8 +164,12 @@ $(document).ready(function(){
 function regenerateCartProductPrices(){
   var apply_discount = availabilityForMemberShipDiscount();
   var items_price = 0;        
+  var applied = false;
   $('.rebuy-cart__flyout-items li.rebuy-cart__flyout-item').each(function(){
-      if(apply_discount == true) {
+      
+      if(apply_discount == true && applied == false) {
+        applied = true;
+        
         if($(this).find('.rebuy-cart__flyout-item-price .rebuy-money').hasClass('sale')){
           var price_container = $(this).find('.rebuy-cart__flyout-item-price .rebuy-money.sale span:nth-child(2)');
           var item_price = parseFloat(price_container.text().replace('$',''));
