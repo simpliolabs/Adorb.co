@@ -410,8 +410,8 @@
           "6fbea325-07ba-4dde-8f88-69c01a503ec7": {
             "type": "featured-collection",
             "settings": {
-              "title": "You may also like:",
-              "collection": "pets",
+              "title": "Don't miss on these Favorites:",
+              "collection": "engagement-merch",
               "per_row": 5,
               "rows": 1,
               "mobile_scrollable": true,
