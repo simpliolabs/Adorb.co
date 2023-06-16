@@ -434,7 +434,12 @@ font-weight: 700;
  <div class="all_var">
 {% if upsellproduct.has_only_default_variant %}
 {% else %}
- <p>Select Your Type</p>
+{% if forloop.index == 1 %}
+  <p>Select Your Size</p>
+{% else %}
+  <p>Select Your Type</p>
+{% endif %}
+ 
  <select class="my_variants var_1 ">
        {% for variant in upsellproduct.variants %}
      <option data-idd="{{ variant.title }}" data-var="{{variant.id}}"  {% if variant == upsellproduct.selected_or_first_available_variant %}selected="selected"{% endif %}>
@@ -467,7 +472,11 @@ font-weight: 700;
                      {% endif %}
                      {% endfor %}
              </div>
-             <p>Select Your Type</p>
+             {% if forloop.index == 1 %}
+              <p>Select Your Size</p>
+            {% else %}
+              <p>Select Your Type</p>
+            {% endif %}
              <select class="my_variants var_1 pop" id="mySelectpop">
                      {% for variant in upsellproduct.variants %}
                      {% if upsellproduct.has_only_default_variant %}
