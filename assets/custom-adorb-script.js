@@ -172,7 +172,7 @@ function regenerateCartProductPrices(){
           item_price = (item_price/2).toFixed(2);
           price_container.text('$'+item_price);
         }
-      
+        
         items_price += parseFloat(item_price);        
       }
   });  
