@@ -65,7 +65,7 @@ function getCartMembershiptSection(){
         _html += '<div data-v-12407f70=""><img data-v-12407f70="" src="https://cdn.shopify.com/s/files/1/0267/8603/7955/files/IMG_2199_210x.PNG?v=1615924214" class="memmbership-icon" style="max-width: 200px;"></div>';        
         _html += '<div data-v-12407f70="" class="membership-product-details">';
           _html += '<div data-v-12407f70="" class="membership-offer">';
-            _html += '<div data-v-12407f70="" class="become-a-member-text">Become a Adorb Member</div>';
+            _html += '<div data-v-12407f70="" class="become-a-member-text">Become a Adorb Member</div>'; 
             _html += '<div data-v-12407f70=""><strong data-v-12407f70="" class="offer-saving hide">Save $<span class="amount">0.00</span> </strong><strong>(50.00%)</strong> off todays order</div>';
           _html += '</div>';
         _html += '</div>';  
