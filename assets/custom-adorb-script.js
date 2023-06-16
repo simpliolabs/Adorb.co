@@ -179,7 +179,8 @@ function regenerateCartProductPrices(){
   
   var actual_order_total = parseFloat($(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text().replace('$',''));
   savings_order_total = (actual_order_total-items_price).toFixed(2);
-  alert(savings_order_total);
+  alert(actual_order_total);
+  
   if(apply_discount == true) {
     $(".rebuy-cart__flyout-subtotal .rebuy-cart__flyout-subtotal-amount").text('$'+items_price.toFixed(2));            
     $('.offer-saving span.amount').text(savings_order_total);
