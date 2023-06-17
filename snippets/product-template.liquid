@@ -140,11 +140,12 @@
         {% comment %} <div class="icons_img_wrapper mobile_only">
           <img data-src="{{ 'adorb_icons.png' | asset_url}}" class="lazyload">
         </div> {% endcomment %}
+        {%- if settings.show_breadcrumbs and isModal != true -%}
+          {%- render 'breadcrumbs', product: product -%}
+        {%- endif -%}
         {%- if image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }}" style="width:60%;">
-            {%- if settings.show_breadcrumbs and isModal != true -%}
-              {%- render 'breadcrumbs' -%}
-            {%- endif -%}
+            
             {%- render 'product-images' 
               , section_id: section_id,
               product: product,

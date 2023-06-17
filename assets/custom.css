@@ -680,11 +680,16 @@
   display: unset !important;
 }
 
-.page-content--product .grid__item .breadcrumb {
-  margin: 5px;
-  position: absolute;
-  z-index: 29;
+.page-content--product .breadcrumb {
+  margin: 0;
+  padding-left: 22px;
+  margin-bottom: 10px;
 }
+
+.breadcrumb {
+  font-weight: bold;
+}
+
 .similar_product_title p {
   font-size: 12px;
 }

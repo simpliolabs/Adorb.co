@@ -7,22 +7,23 @@
     {%- if template.name == 'product' -%}
 
       {%- if collection -%}
-        <span class="divider" aria-hidden="true">/</span>
+        <span class="divider" aria-hidden="true">&nbsp/&nbsp</span>
         {%- if collection.handle -%}
           {%- capture url -%}{{ routes.collections_url }}/{{ collection.handle }}{%- endcapture -%}
           {{ collection.title | link_to: url }}
         {%- endif -%}
       {%- endif -%}
       <span class="divider" aria-hidden="true">/</span>
+      <a href="{{ product.url }}">{{ product.title }}</a>
 
     {%- elsif template.name == 'collection' and collection.handle -%}
 
-      <span class="divider" aria-hidden="true">/</span>
+      <span class="divider" aria-hidden="true">&nbsp/&nbsp</span>
+
+      {%- capture url -%}{{ routes.collections_url }}/{{ collection.handle }}{%- endcapture -%}
+        {{ collection.title | link_to: url }}
 
       {%- if current_tags -%}
-
-        {%- capture url -%}{{ routes.collections_url }}/{{ collection.handle }}{%- endcapture -%}
-        {{ collection.title | link_to: url }}
 
         <span class="divider" aria-hidden="true">/</span>
 
