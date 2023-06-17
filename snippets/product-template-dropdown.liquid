@@ -116,6 +116,9 @@
 
 
       <div class="grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}">
+        {%- if settings.show_breadcrumbs and isModal != true -%}
+          {%- render 'breadcrumbs', product: product -%}
+        {%- endif -%}
         {%- if image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }}" style="width:60%;">
             {%- render 'product-images' 
