@@ -46,9 +46,9 @@
               {% if forloop.index == 2 %}
                 <div class="cart-shipping__wrapper">
                   <span class="custom_price_text" style="display:none;">5000</span>
-                  <p class="custom_emtpy_cart">Spend $<span class="cart-shipping__num">50</span> Today and Get a FREE Gift!</p>
+                  <p class="custom_emtpy_cart">Spend <span>$</span><span class="cart-shipping__num">50</span> Today and Get a FREE Gift!</p>
                   <p class="cart-shipping__numOuter cart_counter" style="display: none;">
-                  🎁 You are $<span class="cart-shipping__num"></span> away from a FREE GIFT!</p>
+                  🎁 You are <span>$</span><span class="cart-shipping__num"></span> away from a FREE GIFT!</p>
                   <p class="cart-shipping__success" style="display: none;"> 🎉 Congrats! You've unlocked a FREE GIFT!</p>
                   <div class="cart-shippingThreshold__bar bar_hide" style="display: none;">
                     <span class="cart-shippingThreshold__progress"></span>
@@ -119,7 +119,11 @@
     padding: 0px;
     line-height: 1.2;
     background: unset;
-    font-weight: bold;
+    font-weight: 600;
+    font-family: 'Poppins';
+  }
+  .announcement-slider__slide .cart-shipping__numOuter span, .announcement-slider__slide .cart-shipping__success span, .announcement-slider__slide .custom_emtpy_cart span{
+    color: red;
   }
   .announcement-bar {
       {% comment %} display: flex;
