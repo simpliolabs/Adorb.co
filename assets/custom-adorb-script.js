@@ -74,7 +74,7 @@ $(document).ready(function () {
     if ($(".rebuy-cart__checkout-button")) {
       $(".rebuy-cart__checkout-button").attr("name", "checkout");
     }
-  }, 2000);
+  }, 4000);
 });
 
 /*
