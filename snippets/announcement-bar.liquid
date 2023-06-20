@@ -43,18 +43,32 @@
               class="announcement-slider__slide"
               data-index="{{ slide_index }}"
               {{ block.shopify_attributes }}>
-              {%- if block.settings.link != blank -%}
-                <a class="announcement-link" href="{{ block.settings.link }}">
-              {%- endif -%}
-                {%- if block.settings.text != blank -%}
-                  <span class="announcement-text">{{ block.settings.text }}</span>
+              {% if forloop.index == 2 %}
+                <div class="cart-shipping__wrapper">
+                  <span class="custom_price_text" style="display:none;">5000</span>
+                  <p class="custom_emtpy_cart">Spend $<span class="cart-shipping__num">50</span> Today and Get a FREE Gift!</p>
+                  <p class="cart-shipping__numOuter cart_counter" style="display: none;">
+                  🎁 You are $<span class="cart-shipping__num"></span> away from a FREE GIFT!</p>
+                  <p class="cart-shipping__success" style="display: none;"> 🎉 Congrats! You've unlocked a FREE GIFT!</p>
+                  <div class="cart-shippingThreshold__bar bar_hide" style="display: none;">
+                    <span class="cart-shippingThreshold__progress"></span>
+                  </div>
+                </div>
+              {% else %}
+                {%- if block.settings.link != blank -%}
+                  <a class="announcement-link" href="{{ block.settings.link }}">
                 {%- endif -%}
-                {%- if block.settings.link_text != blank -%}
-                  <span class="announcement-link-text">{{ block.settings.link_text }}</span>
+                  {%- if block.settings.text != blank -%}
+                    <span class="announcement-text">{{ block.settings.text }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.link_text != blank -%}
+                    <span class="announcement-link-text">{{ block.settings.link_text }}</span>
+                  {%- endif -%}
+                {%- if block.settings.link != blank -%}
+                  </a>
                 {%- endif -%}
-              {%- if block.settings.link != blank -%}
-                </a>
-              {%- endif -%}
+              {% endif %}
+              
             </div>
             {%- assign slide_index = slide_index | plus: 1 -%}
           {%- endif -%}
@@ -66,6 +80,47 @@
 {% endif %}
 
 <style>
+  .cart_counter{
+    display: none !important;
+  }
+  .announcement-bar{
+    padding: 10px 0;
+  }
+  p.custom_emtpy_cart{
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-align: center;
+  }
+  .cart-shipping__numOuter {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-top: 7px;
+  }
+  .cart-shipping__numOuter, .cart-shipping__success {
+    text-align: center;
+    font-weight: bold;
+  }
+  .cart-shipping__success {
+    text-align: center;
+    padding: 8px 0px;
+    margin-bottom: 0;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .announcement-slider__slide .cart-shipping__numOuter, .announcement-slider__slide .cart-shipping__success, .announcement-slider__slide .custom_emtpy_cart{
+    margin: 0;
+    font-size: 20px;
+    padding: 0px;
+    line-height: 1.2;
+    background: unset;
+    font-weight: bold;
+  }
   .announcement-bar {
       {% comment %} display: flex;
       align-items: center;
@@ -94,3 +149,62 @@
     }
   }
 </style>
+
+<script>
+
+  $(document).ready(function () {
+    setInterval(function () {
+      var val = $('.custom_price_text').html();
+      function calculateProgress(currentVal, targetVal) {
+        var progressBar = document.querySelectorAll('.cart-shippingThreshold__progress');
+        var progressNum = document.querySelectorAll('.cart-shipping__num');
+        var progressOuter = document.querySelectorAll('.cart-shipping__numOuter, .bar_hide');
+        var successMsg = document.querySelectorAll('.cart-shipping__success');
+        var result = Math.round(100 * currentVal / targetVal);
+        progressBar.forEach(function (el) {
+          el.setAttribute('style', "width: ".concat(result, "%"));
+        })
+        var newProgressNum = (targetVal - currentVal) / 100;
+        if (newProgressNum <= 0) {
+          successMsg.forEach(function (el) {
+            el.style.display = 'block';
+          });
+          progressOuter.forEach(function (el) {
+            el.style.display = 'none';
+          });
+          progressNum.forEach(function (el) {
+            el.textContent = newProgressNum;
+          });
+        }
+        else {
+          successMsg.forEach(function (el) {
+            el.style.display = 'none';
+          });
+          progressOuter.forEach(function (el) {
+            el.style.display = 'block';
+          });
+          progressNum.forEach(function (el) {
+            el.textContent = newProgressNum;
+          });
+        }
+      };
+
+      fetch('/cart.js')
+        .then(response => response.json())
+        .then(data => {
+          calculateProgress(data.total_price, val);
+        });
+    $.getJSON("/cart.js", function (cart) {
+        var vl = cart.item_count;
+        if (vl == 0) {
+          $('.cart-shipping__numOuter, .bar_hide').addClass('cart_counter');
+          $('.custom_emtpy_cart').removeClass('cart_counter')
+        } else {
+          $('.cart-shipping__numOuter, .bar_hide').removeClass('cart_counter');
+          $('.custom_emtpy_cart').addClass('cart_counter')
+        }
+      });
+    }, 400)
+  })
+
+</script>
