@@ -1037,3 +1037,7 @@ strong.offer-saving {
     font-size: 14px;
   }
 }
+
+.best-fit-size-chart {
+    display: none;
+}
