@@ -1047,6 +1047,11 @@ strong.offer-saving {
       padding-left: 15px;
       min-width: 200px;
   }
+
+  .membership-detail-points,
+  .membership-footer-action-block {
+      padding-left: 14px;
+  }  
   
   .become-a-member-text, 
   div[data-v-12407f70] {
