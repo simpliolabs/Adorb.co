@@ -455,7 +455,7 @@
                   <div class="product-single__description rte">{% comment %}{% render 'product-description-slider', product: product %}{% endcomment %}
                   </div>
     
-                  {%- render 'product-additional-content-customize', product: product, section_id: section_id -%}
+                  {% comment %} {%- render 'product-additional-content-customize', product: product, section_id: section_id -%} {% endcomment %}
                 {%- endunless -%}
 
                 {%- if settings.trust_image != blank -%}
@@ -507,7 +507,7 @@
               {% render 'product-description-slider', product: product %}
             </div>
     
-            {%- render 'product-additional-content-customize', product: product, section_id: section_id -%}
+            {% comment %} {%- render 'product-additional-content-customize', product: product, section_id: section_id -%} {% endcomment %}
           {%- endif -%}
           <div class="th_pb_fbt_section" data-thpid="{{ product.id }}"></div>
           {% comment %}Start automatically added Judge.me widget{% endcomment %}

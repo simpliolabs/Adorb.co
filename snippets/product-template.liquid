@@ -517,7 +517,7 @@
             {%- unless description_style == 'full' -%}
               <div class="product-single__description rte">{% comment %}{% render 'product-description-slider', product: product %}{% endcomment %}
               </div>
-              {%- render 'product-additional-content', product: product, section_id: section_id -%}
+              {% comment %} {%- render 'product-additional-content', product: product, section_id: section_id -%} {% endcomment %}
             {%- endunless -%}
 
             {% for similar_collections in product.collections %}
@@ -587,7 +587,7 @@
           {% render 'product-description-slider', product: product %}
         </div>
 
-        {%- render 'product-additional-content', product: product, section_id: section_id -%}
+        {% comment %} {%- render 'product-additional-content', product: product, section_id: section_id -%} {% endcomment %}
       {%- endif -%}
       <div class="th_pb_fbt_section" data-thpid="{{ product.id }}"></div>
       {% comment %}Start automatically added Judge.me widget{% endcomment %}
@@ -833,9 +833,6 @@ if (document.getElementById('shipping-date')) {
   }
   .more_similar_products.mobile_only {
     margin-top: -10px;
-  }
-  #judgeme_product_reviews {
-    padding-top: 50px;
   }
 }
 </style>

@@ -139,7 +139,7 @@
 
           <div class="product-single__meta">
             {% comment %} {%- if settings.show_breadcrumbs and isModal != true -%}
-              {%- render 'breadcrumbs' -%}
+            {%- render 'breadcrumbs' -%}
             {%- endif -%} {% endcomment %}
 
             {%- if settings.vendor_enable -%}
@@ -397,7 +397,7 @@
                     margin-left: 35px;
                   }
                 }
-                
+
                 div#th_pb_qty_bundle {
                   display: none;
                 }
@@ -458,7 +458,7 @@
               <div class="product-single__description rte">{% comment %}{% render 'product-description-slider', product: product %}{% endcomment %}
               </div>
 
-              {%- render 'product-additional-content', product: product, section_id: section_id -%}
+              {% comment %} {%- render 'product-additional-content', product: product, section_id: section_id -%} {% endcomment %}
             {%- endunless -%}
 
             {%- if social -%}
@@ -489,7 +489,7 @@
           {% render 'product-description-slider', product: product %}
         </div>
 
-        {%- render 'product-additional-content', product: product, section_id: section_id -%}
+        {% comment %} {%- render 'product-additional-content', product: product, section_id: section_id -%} {% endcomment %}
       {%- endif -%}
       <div class="th_pb_fbt_section" data-thpid="{{ product.id }}"></div>
       {% comment %}Start automatically added Judge.me widget{% endcomment %}
@@ -531,7 +531,7 @@
     color: inherit;
     font-size: 1.1em;
   }
-  .product__price.on-sale{
+  .product__price.on-sale {
     color: #9b4a48;
   }
 
@@ -571,7 +571,7 @@
     .judge-me-fetch--reviews {
       padding-bottom: 8px;
     }
-    
+
 
 
   }
@@ -622,9 +622,6 @@
     }
     .more_similar_products.mobile_only {
       margin-top: -10px;
-    }
-    #judgeme_product_reviews {
-      padding-top: 50px;
     }
   }
 </style>

@@ -66,6 +66,69 @@
   max-height: unset !important;
 }
 
+.additional_info_wrapper {
+  margin: 30px 0;
+}
+
+.additional_info {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 30px;
+  background-color: #f7f1f3;
+  color: #000;
+}
+
+.additional_info_title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.additional_info_main_tab {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.additional_info_tab {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 10px 36px 10px 36px;
+  margin-bottom: 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.additional_info_tab.active {
+  border-bottom: 5px solid #000;
+}
+
+.tablinks {
+  margin: 0;
+}
+
+.additional_info_main_content {
+  padding: 6px 12px;
+  margin: 10px 0;
+}
+
+.additional_info_main_content .tabcontent {
+  padding: 25px;
+  display: none;
+  background-color: #fff;
+  margin-bottom: 12px;
+}
+
+.additional_info_main_content .tabcontent.active {
+  display: block;
+}
+
 .bc_am {
   background-image: url(https://ucarecdn.com/9da935e7-042d-4f3a-b1df-d189185a7988/-/format/auto/-/preview/3000x3000/-/quality/lighter/);
   background-size: contain;
@@ -577,7 +640,7 @@
 }
 .simliar_products_wrapper.mobile_only {
   margin-top: 10px;
-  margin-bottom: -60px;
+  /* margin-bottom: -60px; */
 }
 .simliar_products {
   margin-left: -6px;
@@ -996,7 +1059,7 @@
 }
 
 .membership-footer-action-block {
-    padding-left: 17px;
+  padding-left: 17px;
 }
 
 #PageContainer.init-pro-member .site-navigation > li > a {
@@ -1042,27 +1105,49 @@ strong.offer-saving {
     padding: 10px 5px;
     font-size: 12px;
   }
-  
+
   .membership-product-details[data-v-12407f70] {
-      padding-left: 15px;
-      min-width: 200px;
+    padding-left: 15px;
+    min-width: 200px;
   }
 
   .membership-detail-points {
-      padding-left: 14px!important;
-  }  
+    padding-left: 14px !important;
+  }
 
   .membership-footer-action-block {
-    padding-left: 6px!important;
-  }
-  
-  .become-a-member-text, 
-  div[data-v-12407f70] {
-    font-size: 14px!important;
+    padding-left: 6px !important;
   }
 
+  .become-a-member-text,
+  div[data-v-12407f70] {
+    font-size: 14px !important;
+  }
 }
 
 .best-fit-size-chart {
-    display: none;
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .additional_info_tab {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  .additional_info_tab h3 {
+    font-size: 17px;
+  }
+  .additional_info_title {
+    margin-bottom: 0px;
+    font-size: 22px;
+  }
+  .additional_info {
+    padding: 0 10px;
+  }
+  .additional_info_main_tab {
+    justify-content: space-evenly;
+  }
+  .additional_info_wrapper {
+    margin: 0;
+  }
 }

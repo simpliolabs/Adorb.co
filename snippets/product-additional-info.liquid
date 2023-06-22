@@ -1,0 +1,82 @@
+<div class="additional_info_wrapper">
+  <div class="additional_info">
+    <div class="additional_info_title">About This Item</div>
+    <ul class="additional_info_main_tab">
+      <li class="additional_info_tab additional_info_tab_1 active">
+        <h3 class="tablinks">Details</h3>
+      </li>
+      {%- if settings.product_content_1 != blank -%}
+        <li class="additional_info_tab additional_info_tab_2">
+          <h3 class="tablinks">{{ pages[settings.product_content_1].title }}</h3>
+        </li>
+      {% endif %}
+      {%- if settings.product_content_2 != blank -%}
+        <li class="additional_info_tab additional_info_tab_3">
+          <h3 class="tablinks">{{ pages[settings.product_content_2].title }}</h3>
+        </li>
+      {% endif %}
+      {%- if settings.product_content_3 != blank -%}
+        <li class="additional_info_tab additional_info_tab_4">
+          <h3 class="tablinks">{{ pages[settings.product_content_3].title }}</h3>
+        </li>
+      {% endif %}
+    </ul>
+    <div class="additional_info_main_content">
+      <div class="tabcontent tabcontent_1 active">
+        {{ product.description | replace: ' src="https://cdn.shopify.com/s/files/', ' class="lazyload" data-src="https://cdn.shopify.com/s/files/' }}
+      </div>
+      {% if settings.product_content_1 != blank %}
+        <div class="tabcontent tabcontent_2">
+          {{ pages[settings.product_content_1].content }}
+        </div>
+      {% endif %}
+      {% if settings.product_content_2 != blank %}
+        <div class="tabcontent tabcontent_3">
+          {{ pages[settings.product_content_2].content }}
+        </div>
+      {% endif %}
+      {% if settings.product_content_3 != blank %}
+        <div class="tabcontent tabcontent_4">
+          {{ pages[settings.product_content_3].content }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    if ($('.additional_info_tab_1')) {
+      $('.additional_info_tab_1').click(function() {
+        $('.tabcontent').removeClass('active');
+        $('.tabcontent_1').addClass('active');
+        $('.additional_info_tab').removeClass('active');
+        $('.additional_info_tab_1').addClass('active');
+      });
+    }
+    if ($('.additional_info_tab_2')) {
+      $('.additional_info_tab_2').click(function() {
+        $('.tabcontent').removeClass('active');
+        $('.tabcontent_2').addClass('active');
+        $('.additional_info_tab').removeClass('active');
+        $('.additional_info_tab_2').addClass('active');
+      });
+    }
+    if ($('.additional_info_tab_3')) {
+      $('.additional_info_tab_3').click(function() {
+        $('.tabcontent').removeClass('active');
+        $('.tabcontent_3').addClass('active');
+        $('.additional_info_tab').removeClass('active');
+        $('.additional_info_tab_3').addClass('active');
+      });
+    }
+    if ($('.additional_info_tab_4')) {
+      $('.additional_info_tab_4').click(function() {
+        $('.tabcontent').removeClass('active');
+        $('.tabcontent_4').addClass('active');
+        $('.additional_info_tab').removeClass('active');
+        $('.additional_info_tab_4').addClass('active');
+      });
+    }
+  });
+</script>
