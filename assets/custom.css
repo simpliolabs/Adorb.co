@@ -984,7 +984,9 @@
   list-style-type: none;
   margin-bottom: 0;
 }
-
+.membership-detail-points[data-v-12407f70] li:first-child {
+  min-width: 100%;
+}
 .membership-detail-points[data-v-12407f70] li,
 .membership-footer-action-block li {
   font-size: 12px;
