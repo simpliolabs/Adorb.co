@@ -1036,6 +1036,11 @@ strong.offer-saving {
     padding: 10px 5px;
     font-size: 14px;
   }
+
+  .become-a-member-text {
+    font-size: 12px!important;
+  }
+
 }
 
 .best-fit-size-chart {
