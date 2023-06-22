@@ -1137,7 +1137,14 @@ strong.offer-saving {
   margin: 8px auto !important;
 }
 
+.predictive-results {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
+  .boost-pfs-search-suggestion {
+    left: 0 !important;
+  }
   .additional_info_tab {
     padding: 8px 4px;
     font-size: 12px;
