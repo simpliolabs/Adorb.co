@@ -1144,6 +1144,7 @@ strong.offer-saving {
 @media only screen and (max-width: 600px) {
   .boost-pfs-search-suggestion {
     left: 0 !important;
+    max-width: 350px;
   }
   .additional_info_tab {
     padding: 8px 4px;
