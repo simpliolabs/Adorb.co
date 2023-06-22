@@ -995,6 +995,10 @@
   color: #000000;
 }
 
+.membership-footer-action-block {
+    padding-left: 17px;
+}
+
 #PageContainer.init-pro-member .site-navigation > li > a {
   padding: 7px 10px !important;
 }
