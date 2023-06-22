@@ -1037,7 +1037,8 @@ strong.offer-saving {
     font-size: 14px;
   }
 
-  .become-a-member-text {
+  .become-a-member-text, 
+  div[data-v-12407f70] {
     font-size: 12px!important;
   }
 
