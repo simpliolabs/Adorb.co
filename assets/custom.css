@@ -1129,6 +1129,10 @@ strong.offer-saving {
   display: none;
 }
 
+#HeaderSearchForm .icon__fallback-text {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .additional_info_tab {
     padding: 8px 4px;
