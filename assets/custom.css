@@ -1133,6 +1133,10 @@ strong.offer-saving {
   display: none;
 }
 
+.STP-tiers {
+  margin: 8px auto !important;
+}
+
 @media only screen and (max-width: 600px) {
   .additional_info_tab {
     padding: 8px 4px;
