@@ -13,230 +13,234 @@
 
     <p class="similar_products_modal-subheading">Popular</p>
 
-    {%- for product in similar_collection.products -%}
-      {% liquid
-            if product.metafields.Image.override_image
-              assign preview_image = product.metafields.Image.override_image
+    {%- for similar_product in similar_collection.products -%}
+      {% unless product.title == similar_product.title %}
+        {% liquid
+            if similar_product.metafields.Image.override_image
+              assign preview_image = similar_product.metafields.Image.override_image
               assign img_url = preview_image | img_url: '1x1', format:'pjpg' | replace: '_1x1.', '_64x.' 
             else
-              assign preview_image = product.featured_media.preview_image
+              assign preview_image = similar_product.featured_media.preview_image
               assign img_url = preview_image | img_url: '1x1', format:'pjpg' | replace: '_1x1.', '_64x.'
             endif
         %}
 
-      {% if forloop.index < 4 %}
-        <li>
-          <a href="{{ product.url }}">
-            <div class="similar_product_img_wrapper">
-              {% if product.metafields.Image.override_image %}
-                <img
-                  class="Image--lazyLoad lazyload"
-                  data-src="{{ product.metafields.Image.override_image }}"
-                  width="64px">
-              {% else %}
-                <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: preview_image.aspect_ratio }}%;">
+        {% if forloop.index < 4 %}
+          <li>
+            <a href="{{ similar_product.url }}">
+              <div class="similar_product_img_wrapper">
+                {% if similar_product.metafields.Image.override_image %}
                   <img
-                    class="grid-product__image lazyload Image--lazyLoad"
-                    data-src="{{ img_url }}"
-                    data-sizes="auto"
-                    alt="{{ preview_image.alt | escape }}">
-                  <noscript>
-                    <img
-                      class="grid-product__image lazyloaded Image--lazyLoad"
-                      data-src="{{ preview_image | img_url: '64x', format:'pjpg' }}"
-                      alt="{{ preview_image.alt | escape }}">
-                  </noscript>
-                </div>
-              {% endif %}
-            </div>
-            <div class="similar_product_content">
-              <div class="similar_product_title">
-                {% if product.metafields.global.product_type_for_shop_the_look %}
-                  {% assign product_type = product.metafields.global.product_type_for_shop_the_look | split: '/' %}
-                  {% for item in product_type %}
-                    <p class="{% if forloop.index == 1 %} type_title {% endif %}">{{ item }}</p>
-                  {% endfor %}
+                    class="Image--lazyLoad lazyload"
+                    data-src="{{ similar_product.metafields.Image.override_image }}"
+                    width="64px">
                 {% else %}
-                  <p class="type_title">{{ product.title }}</p>
+                  <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: preview_image.aspect_ratio }}%;">
+                    <img
+                      class="grid-product__image lazyload Image--lazyLoad"
+                      data-src="{{ img_url }}"
+                      data-sizes="auto"
+                      alt="{{ preview_image.alt | escape }}">
+                    <noscript>
+                      <img
+                        class="grid-product__image lazyloaded Image--lazyLoad"
+                        data-src="{{ preview_image | img_url: '64x', format:'pjpg' }}"
+                        alt="{{ preview_image.alt | escape }}">
+                    </noscript>
+                  </div>
                 {% endif %}
               </div>
-              <div class="similar_product_price">
-                {%- assign hide_sale_price = true -%}
-                {%- if product.compare_at_price_max > product.price -%}
-                  {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-                    {%- assign hide_sale_price = false -%}
-                  {%- endif -%}
+              <div class="similar_product_content">
+                <div class="similar_product_title">
+                  {% if similar_product.metafields.global.product_type_for_shop_the_look %}
+                    {% assign product_type = similar_product.metafields.global.product_type_for_shop_the_look | split: '/' %}
+                    {% for item in product_type %}
+                      <p class="{% if forloop.index == 1 %} type_title {% endif %}">{{ item }}</p>
+                    {% endfor %}
+                  {% else %}
+                    <p class="type_title">{{ similar_product.title }}</p>
+                  {% endif %}
+                </div>
+                <div class="similar_product_price">
+                  {%- assign hide_sale_price = true -%}
+                  {%- if similar_product.compare_at_price_max > similar_product.price -%}
+                    {%- if similar_product.selected_or_first_available_variant.compare_at_price > similar_product.selected_or_first_available_variant.price -%}
+                      {%- assign hide_sale_price = false -%}
+                    {%- endif -%}
 
-                  <span
-                    id="PriceA11y-{{ section_id }}"
-                    class="visually-hidden"
-                    aria-hidden="{{ hide_sale_price }}">
-                    {{ 'products.general.regular_price' | t }}
-                  </span>
-                  <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
-                    <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
-                      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-                        {{ product.selected_or_first_available_variant.compare_at_price | money }}
-                      {%- endif -%}
+                    <span
+                      id="PriceA11y-{{ section_id }}"
+                      class="visually-hidden"
+                      aria-hidden="{{ hide_sale_price }}">
+                      {{ 'products.general.regular_price' | t }}
                     </span>
-                  </span>
-                  <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
-                {%- else -%}
-                  <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-                {%- endif -%}
-
-                <span id="ProductPrice-{{ section_id }}"class="product__price{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %} on-sale{% endif %}">
-                  {{ product.selected_or_first_available_variant.price | money }}
-                </span>
-
-                {%- if settings.product_save_amount -%}
-                  {%- if settings.product_save_type == 'dollar' -%}
-                    {%- capture saved_amount -%}
-                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
-                  {%- else -%}
-                    {%- capture saved_amount -%}
-                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round }}%{%- endcapture -%}
-                  {%- endif -%}
-                  <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
-                    {%- unless hide_sale_price -%}
-                      {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
-                    {%- endunless -%}
-                  </span>
-                {%- endif -%}
-
-                <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless product.selected_or_first_available_variant.unit_price_measurement %} hide{% endunless %}">
-                  {%- capture unit_price_base_unit -%}
-                    <span class="product__unit-base--{{ section_id }}">
-                      {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
-                        {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
-                          {{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
+                    <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
+                      <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
+                        {%- if similar_product.selected_or_first_available_variant.compare_at_price > similar_product.selected_or_first_available_variant.price -%}
+                          {{ similar_product.selected_or_first_available_variant.compare_at_price | money }}
                         {%- endif -%}
-                        {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
-                      {%- endif -%}
+                      </span>
                     </span>
-                  {%- endcapture -%}
+                    <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                  {%- else -%}
+                    <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                  {%- endif -%}
 
-                  <span class="product__unit-price--{{ section_id }}">{{ product.selected_or_first_available_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+                  <span id="ProductPrice-{{ section_id }}"class="product__price{% if similar_product.selected_or_first_available_variant.compare_at_price > similar_product.selected_or_first_available_variant.price %} on-sale{% endif %}">
+                    {{ similar_product.selected_or_first_available_variant.price | money }}
+                  </span>
+
+                  {%- if settings.product_save_amount -%}
+                    {%- if settings.product_save_type == 'dollar' -%}
+                      {%- capture saved_amount -%}
+                        {{ similar_product.selected_or_first_available_variant.compare_at_price | minus: similar_product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
+                    {%- else -%}
+                      {%- capture saved_amount -%}
+                        {{ similar_product.selected_or_first_available_variant.compare_at_price | minus: similar_product.selected_or_first_available_variant.price | times: 100.0 | divided_by: similar_product.selected_or_first_available_variant.compare_at_price | round }}%{%- endcapture -%}
+                    {%- endif -%}
+                    <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+                      {%- unless hide_sale_price -%}
+                        {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                      {%- endunless -%}
+                    </span>
+                  {%- endif -%}
+
+                  <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless similar_product.selected_or_first_available_variant.unit_price_measurement %} hide{% endunless %}">
+                    {%- capture unit_price_base_unit -%}
+                      <span class="product__unit-base--{{ section_id }}">
+                        {%- if similar_product.selected_or_first_available_variant.unit_price_measurement -%}
+                          {%- if similar_product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                            {{ similar_product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
+                          {%- endif -%}
+                          {{ similar_product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+                        {%- endif -%}
+                      </span>
+                    {%- endcapture -%}
+
+                    <span class="product__unit-price--{{ section_id }}">{{ similar_product.selected_or_first_available_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </li>
-      {% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% endunless %}
     {%- endfor -%}
 
     <p class="similar_products_modal-subheading">More Styles</p>
 
-    {%- for product in similar_collection.products -%}
-      {% liquid
-            if product.metafields.Image.override_image
-              assign preview_image = product.metafields.Image.override_image
+    {%- for similar_product in similar_collection.products -%}
+      {% unless product.title == similar_product.title %}
+        {% liquid
+            if similar_product.metafields.Image.override_image
+              assign preview_image = similar_product.metafields.Image.override_image
               assign img_url = preview_image | img_url: '1x1', format:'pjpg' | replace: '_1x1.', '_64x.' 
             else
-              assign preview_image = product.featured_media.preview_image
+              assign preview_image = similar_product.featured_media.preview_image
               assign img_url = preview_image | img_url: '1x1', format:'pjpg' | replace: '_1x1.', '_64x.'
             endif
         %}
 
-      {% if forloop.index > 3 and forloop.index < 17 %}
-        <li {% if forloop.index > 7 %}class="more_styles"{% endif %}>
-          <a href="{{ product.url }}">
-            <div class="similar_product_img_wrapper">
-              {% if product.metafields.Image.override_image %}
-                <img
-                  class="Image--lazyLoad lazyload"
-                  data-src="{{ product.metafields.Image.override_image }}"
-                  width="64px">
-              {% else %}
-                <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: preview_image.aspect_ratio }}%;">
+        {% if forloop.index > 3 and forloop.index < 17 %}
+          <li {% if forloop.index > 7 %}class="more_styles"{% endif %}>
+            <a href="{{ similar_product.url }}">
+              <div class="similar_product_img_wrapper">
+                {% if similar_product.metafields.Image.override_image %}
                   <img
-                    class="grid-product__image lazyload Image--lazyLoad"
-                    data-src="{{ img_url }}"
-                    data-sizes="auto"
-                    alt="{{ preview_image.alt | escape }}">
-                  <noscript>
-                    <img
-                      class="grid-product__image lazyloaded Image--lazyLoad"
-                      data-src="{{ preview_image | img_url: '64x', format:'pjpg' }}"
-                      alt="{{ preview_image.alt | escape }}">
-                  </noscript>
-                </div>
-              {% endif %}
-            </div>
-            <div class="similar_product_content">
-              <div class="similar_product_title">
-                {% if product.metafields.global.product_type_for_shop_the_look %}
-                  {% assign product_type = product.metafields.global.product_type_for_shop_the_look | split: '/' %}
-                  {% for item in product_type %}
-                    <p class="{% if forloop.index == 1 %} type_title {% endif %}">{{ item }}</p>
-                  {% endfor %}
+                    class="Image--lazyLoad lazyload"
+                    data-src="{{ similar_product.metafields.Image.override_image }}"
+                    width="64px">
                 {% else %}
-                  <p class="type_title">{{ product.title }}</p>
+                  <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: preview_image.aspect_ratio }}%;">
+                    <img
+                      class="grid-product__image lazyload Image--lazyLoad"
+                      data-src="{{ img_url }}"
+                      data-sizes="auto"
+                      alt="{{ preview_image.alt | escape }}">
+                    <noscript>
+                      <img
+                        class="grid-product__image lazyloaded Image--lazyLoad"
+                        data-src="{{ preview_image | img_url: '64x', format:'pjpg' }}"
+                        alt="{{ preview_image.alt | escape }}">
+                    </noscript>
+                  </div>
                 {% endif %}
               </div>
-              <div class="similar_product_price">
-                {%- assign hide_sale_price = true -%}
-                {%- if product.compare_at_price_max > product.price -%}
-                  {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-                    {%- assign hide_sale_price = false -%}
-                  {%- endif -%}
+              <div class="similar_product_content">
+                <div class="similar_product_title">
+                  {% if similar_product.metafields.global.product_type_for_shop_the_look %}
+                    {% assign product_type = similar_product.metafields.global.product_type_for_shop_the_look | split: '/' %}
+                    {% for item in product_type %}
+                      <p class="{% if forloop.index == 1 %} type_title {% endif %}">{{ item }}</p>
+                    {% endfor %}
+                  {% else %}
+                    <p class="type_title">{{ similar_product.title }}</p>
+                  {% endif %}
+                </div>
+                <div class="similar_product_price">
+                  {%- assign hide_sale_price = true -%}
+                  {%- if similar_product.compare_at_price_max > similar_product.price -%}
+                    {%- if similar_product.selected_or_first_available_variant.compare_at_price > similar_product.selected_or_first_available_variant.price -%}
+                      {%- assign hide_sale_price = false -%}
+                    {%- endif -%}
 
-                  <span
-                    id="PriceA11y-{{ section_id }}"
-                    class="visually-hidden"
-                    aria-hidden="{{ hide_sale_price }}">
-                    {{ 'products.general.regular_price' | t }}
-                  </span>
-                  <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
-                    <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
-                      {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
-                        {{ product.selected_or_first_available_variant.compare_at_price | money }}
-                      {%- endif -%}
+                    <span
+                      id="PriceA11y-{{ section_id }}"
+                      class="visually-hidden"
+                      aria-hidden="{{ hide_sale_price }}">
+                      {{ 'products.general.regular_price' | t }}
                     </span>
-                  </span>
-                  <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
-                {%- else -%}
-                  <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-                {%- endif -%}
-
-                <span id="ProductPrice-{{ section_id }}"class="product__price{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %} on-sale{% endif %}">
-                  {{ product.selected_or_first_available_variant.price | money }}
-                </span>
-
-                {%- if settings.product_save_amount -%}
-                  {%- if settings.product_save_type == 'dollar' -%}
-                    {%- capture saved_amount -%}
-                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
-                  {%- else -%}
-                    {%- capture saved_amount -%}
-                      {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round }}%{%- endcapture -%}
-                  {%- endif -%}
-                  <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
-                    {%- unless hide_sale_price -%}
-                      {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
-                    {%- endunless -%}
-                  </span>
-                {%- endif -%}
-
-                <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless product.selected_or_first_available_variant.unit_price_measurement %} hide{% endunless %}">
-                  {%- capture unit_price_base_unit -%}
-                    <span class="product__unit-base--{{ section_id }}">
-                      {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
-                        {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
-                          {{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
+                    <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
+                      <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
+                        {%- if similar_product.selected_or_first_available_variant.compare_at_price > similar_product.selected_or_first_available_variant.price -%}
+                          {{ similar_product.selected_or_first_available_variant.compare_at_price | money }}
                         {%- endif -%}
-                        {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
-                      {%- endif -%}
+                      </span>
                     </span>
-                  {%- endcapture -%}
+                    <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                  {%- else -%}
+                    <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                  {%- endif -%}
 
-                  <span class="product__unit-price--{{ section_id }}">{{ product.selected_or_first_available_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+                  <span id="ProductPrice-{{ section_id }}"class="product__price{% if similar_product.selected_or_first_available_variant.compare_at_price > similar_product.selected_or_first_available_variant.price %} on-sale{% endif %}">
+                    {{ similar_product.selected_or_first_available_variant.price | money }}
+                  </span>
+
+                  {%- if settings.product_save_amount -%}
+                    {%- if settings.product_save_type == 'dollar' -%}
+                      {%- capture saved_amount -%}
+                        {{ similar_product.selected_or_first_available_variant.compare_at_price | minus: similar_product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
+                    {%- else -%}
+                      {%- capture saved_amount -%}
+                        {{ similar_product.selected_or_first_available_variant.compare_at_price | minus: similar_product.selected_or_first_available_variant.price | times: 100.0 | divided_by: similar_product.selected_or_first_available_variant.compare_at_price | round }}%{%- endcapture -%}
+                    {%- endif -%}
+                    <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+                      {%- unless hide_sale_price -%}
+                        {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                      {%- endunless -%}
+                    </span>
+                  {%- endif -%}
+
+                  <div class="product__unit-price product__unit-price--spacing product__unit-price-wrapper--{{ section_id }}{% unless similar_product.selected_or_first_available_variant.unit_price_measurement %} hide{% endunless %}">
+                    {%- capture unit_price_base_unit -%}
+                      <span class="product__unit-base--{{ section_id }}">
+                        {%- if similar_product.selected_or_first_available_variant.unit_price_measurement -%}
+                          {%- if similar_product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                            {{ similar_product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
+                          {%- endif -%}
+                          {{ similar_product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+                        {%- endif -%}
+                      </span>
+                    {%- endcapture -%}
+
+                    <span class="product__unit-price--{{ section_id }}">{{ similar_product.selected_or_first_available_variant.unit_price | money }}</span>/{{ unit_price_base_unit }}
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        </li>
-      {% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% endunless %}
     {%- endfor -%}
 
     <div class="simliar_load_more">
