@@ -488,7 +488,7 @@
 <script>
   $(document).ready(function(){
     setTimeout(function(){
-      if($('.STP-tiers')){
+      if($('.STP-tiers').length > 0){
         $('div#appikon-notification-bar').css('display', 'block');
         $('#appikon-close-notification').click(function(){
           $('div#appikon-notification-bar').css('display', 'none');
