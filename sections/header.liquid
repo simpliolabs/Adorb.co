@@ -244,6 +244,7 @@
         </div>
       </header>
     </div>
+    <div id="appikon-notification-bar"><div id="appikon-close-notification">X</div>Buy 2 to get 15% off</div>
   </div>
 
   {%- unless overlay_header or section.settings.announcement_above_header -%}
@@ -483,3 +484,12 @@
     }
   }
 {% endschema %}
+
+<script>
+  $(document).ready(function(){
+    $('div#appikon-notification-bar').css('display', 'block');
+    $('#appikon-close-notification').click(function(){
+      $('div#appikon-notification-bar').css('display', 'none');
+    })
+  });
+</script>
