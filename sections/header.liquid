@@ -487,9 +487,14 @@
 
 <script>
   $(document).ready(function(){
-    $('div#appikon-notification-bar').css('display', 'block');
-    $('#appikon-close-notification').click(function(){
-      $('div#appikon-notification-bar').css('display', 'none');
-    })
+    setTimeout(function(){
+      if($('.STP-tiers')){
+        $('div#appikon-notification-bar').css('display', 'block');
+        $('#appikon-close-notification').click(function(){
+          $('div#appikon-notification-bar').css('display', 'none');
+        })
+      }
+    }, 5000);
+    
   });
 </script>
