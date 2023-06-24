@@ -1,6 +1,9 @@
 {% section 'product-template' %}
 {%- render 'product-additional-info', product: product -%}
+{% if product.metafields.reviews.rating.value %}
 {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, auto_install: true, product: product %}{% include 'wiser_recent_related' %}
+{% endif %}
+
 {% section 'product-story-sections' %}
 {% section 'product-recommendations' %}
 {% section 'recently-viewed' %}

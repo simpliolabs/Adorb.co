@@ -250,6 +250,16 @@
                     </a>
                   </div>
                   <br/>
+                {% else %}
+                  <div class="jm_review_preview_wrapper">
+                    <span class="jdgm-prev-badge__stars" data-score="4.98" tabindex="0" aria-label="4.98 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span> </span>
+                    <a
+                      style="margin-left: 5px;"
+                      href="javascript:void(0);">
+                      <span class="random_no"></span>
+                    </a>
+                  </div>
+                  <br/>
                 {%- endif -%}
 
               </div>
@@ -893,3 +903,25 @@ $(document).ready(function() {
     });
 </script>
 {% endif %}
+
+<script>
+  {% assign myproducthandle = product.handle %}
+  {% assign removeall = myproducthandle | replace: "[^a-zA-Z0-9 ]", "" %}
+  {% assign removedash = removeall | remove: "-" %}
+  {% assign myapendid = removedash | append: product.id %}
+const randomNumber = Math.floor(Math.random() * 400) + 208;
+const exists = localStorage.getItem("{{ myapendid }}") !== null;
+if (exists) {
+  let getReviewCount = localStorage.getItem("{{ myapendid }}");
+  let randamnumber = document.querySelectorAll(".random_no");
+   randamnumber.forEach((element) => {
+   element.innerHTML = "(" + getReviewCount + ")";
+  });
+} else {
+  let randamnumber = document.querySelectorAll(".random_no");
+   randamnumber.forEach((element) => {
+   element.innerHTML = "(" + randomNumber + ")";
+  });
+  localStorage.setItem("{{ myapendid }}", randomNumber);
+}
+</script>
