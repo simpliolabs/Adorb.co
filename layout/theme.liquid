@@ -503,12 +503,12 @@ a.grid-product__link {
   .jdgm-rev-widg.jdgm-rev-widg{
     margin: auto;
   }
-  .jdgm-star.jdgm--on { background-image: url("{{ 'heart.png' | asset_img_url : '20x' }}"); background-size: cover; }
+  {% comment %} .jdgm-star.jdgm--on { background-image: url("{{ 'heart.png' | asset_img_url : '20x' }}"); background-size: cover; }
   .jdgm-star.jdgm--off { background-image: url("{{ 'heart-off.png' | asset_img_url : '20x' }}"); background-size: contain; }
-  .jdgm-star.jdgm--half { background-image: url("{{ 'half-heart.png' | asset_img_url : '20x' }}"); background-size: contain; }
+  .jdgm-star.jdgm--half { background-image: url("{{ 'half-heart.png' | asset_img_url : '20x' }}"); background-size: contain; } {% endcomment %}
   .jdgm-star.jdgm-star:last-of-type { padding-right: 4px !important; } 
 
-  .jdgm-star::before {opacity: 0;} 
+  {% comment %} .jdgm-star::before {opacity: 0;}  {% endcomment %}
 
   {%- comment -%}For firefox browser{%- endcomment -%}
   .review-scroller-link{

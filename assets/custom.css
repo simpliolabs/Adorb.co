@@ -1141,6 +1141,15 @@ strong.offer-saving {
   display: none;
 }
 
+div#appikon-close-notification {
+  float: right;
+  font-weight: bold;
+  height: 0;
+  overflow: visible;
+  cursor: pointer;
+  margin-right: 2em;
+}
+
 div#appikon-notification-bar {
   font-size: 110%;
   background-color: #a1c65b;
