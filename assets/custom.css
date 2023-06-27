@@ -1141,6 +1141,21 @@ strong.offer-saving {
   display: none;
 }
 
+div#appikon-notification-bar {
+  font-size: 110%;
+  background-color: #a1c65b;
+  padding: 7px;
+  color: #ffffff;
+  font-family: inherit;
+  z-index: 9999999999999;
+  display: none;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  text-transform: none;
+}
+
 @media only screen and (max-width: 600px) {
   .boost-pfs-search-suggestion {
     left: 0 !important;
