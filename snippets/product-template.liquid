@@ -409,10 +409,11 @@
               Quick view modals request these on-demand.
               {% endcomment %}
               <div class="bundle_wc"></div>
-              {{ product.id }}
-              {% if product.id == 23424232132%}
-                
+
+              {% if product.id == 7992389992676  %}
+                <button type="button" class="scr-open-size-chart ruler4 Medium">Size Guide</button>  
               {% endif %}
+              
               {% unless product.tags contains "wc_combo_bundle_cta" %}
                 {%- render 'product-form' 
                   , section_id: section_id,
