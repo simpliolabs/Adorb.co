@@ -1195,9 +1195,11 @@ div#appikon-notification-bar {
 .partial-hide {
   opactity: 0;
   visibility: hidden;
+  transform: translate(-50%, 0%) scale(0.5)!important;
 }
 
 .partial-show {
   opacity: 1!important;
   visibility: visible!important;
+  transform: translate(-50%, 0%) scale(1)!important;
 }
