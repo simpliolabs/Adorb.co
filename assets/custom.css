@@ -1198,6 +1198,6 @@ div#appikon-notification-bar {
 }
 
 .partial-show {
-  opactity: 1;
-  visibility: visible;
+  opacity: 1!important;
+  visibility: visible!important;
 }
