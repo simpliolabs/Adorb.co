@@ -1191,3 +1191,8 @@ div#appikon-notification-bar {
     margin: 0;
   }
 }
+
+.partial-hide {
+  opactity: 0;
+  visibility: hidden;
+}
