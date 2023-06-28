@@ -1196,3 +1196,8 @@ div#appikon-notification-bar {
   opactity: 0;
   visibility: hidden;
 }
+
+.partial-show {
+  opactity: 1;
+  visibility: visible;
+}
