@@ -228,24 +228,34 @@
         </div>
 
         {%- if settings.enable_product_reviews -%}
-          <div class="judge-product-list-block">
+          {%- if product.metafields.reviews.rating.value  -%}
+            <div class="judge-product-list-block">
 
-            {{ product.metafields.judgeme.widget }}
-
-            {%- if product.metafields.reviews.rating.value -%}
-              <div class="all-review-count-block">
-                <a href="{{ product.url }}">
-                  <span class="review-text">
-                    {{ product.metafields.reviews.rating_count }} Reviews</span>
+              {{ product.metafields.judgeme.widget }}
+              
+                <div class="all-review-count-block">
+                  <a href="{{ product.url }}">
+                    <span class="review-text">
+                      {{ product.metafields.reviews.rating_count }} Reviews</span>
+                  </a>
+                </div> 
+            </div>
+            {% comment %}
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            <span class=" stamped-product-reviews-badge" data-product-sku="{{ product.handle }}" data-id="{{ product.id }}" data-product-type="{{product.type}}" data-product-title="{{product.title}}"  style="display:block;">{{ product.metafields.stamped.badge }}</span>
+            {% endcomment %}
+          {% else %}
+            <div class="judge-product-list-block">
+              <div class="jm_review_preview_wrapper">
+                <span class="jdgm-prev-badge__stars" data-score="4.98" tabindex="0" aria-label="4.98 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span> </span>
+                <a
+                  style="margin-left: 5px;"
+                  href="javascript:void(0);">
+                  <span class="random_no {{ product.handle }}"></span>
                 </a>
               </div>
-            {%- endif -%}
-          </div>
-          {% comment %}
-          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-          <span class=" stamped-product-reviews-badge" data-product-sku="{{ product.handle }}" data-id="{{ product.id }}" data-product-type="{{product.type}}" data-product-title="{{product.title}}"  style="display:block;">{{ product.metafields.stamped.badge }}</span>
-          {% endcomment %}
-
+            </div>
+          {%- endif -%}
         {%- endif -%}
       </div>
     </a>
@@ -304,3 +314,29 @@
     {%- endfor -%}
   {%- endif -%}
 </div>
+
+<script>
+  $(document).ready(function(){
+    {% assign myproducthandle = product.handle %}
+    {% assign removeall = myproducthandle | replace: "[^a-zA-Z0-9 ]", "" %}
+    {% assign removedash = removeall | remove: "-" %}
+    {% assign myapendid = removedash | append: product.id %}
+  const randomNumber = Math.floor(Math.random() * 400) + 208;
+  const exists = localStorage.getItem("{{ myapendid }}") !== null;
+  if (exists) {
+    let getReviewCount = localStorage.getItem("{{ myapendid }}");
+    let randamnumber = document.querySelectorAll(".random_no.{{ product.handle }}");
+     randamnumber.forEach((element) => {
+     element.innerHTML = getReviewCount + " Reviews";
+    });
+  } else {
+    let randamnumber = document.querySelectorAll(".random_no.{{ product.handle }}");
+    
+     randamnumber.forEach((element) => {
+     element.innerHTML = randomNumber + " Reviews";
+    });
+    localStorage.setItem("{{ myapendid }}", randomNumber);
+  }
+  });
+  
+</script>
