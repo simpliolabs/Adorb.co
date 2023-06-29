@@ -70,7 +70,7 @@
               products show up
               {% endcomment %}
               <div class="grid grid--uniform visually-invisible" aria-hidden="true">
-                {% unless product.tags contains "bundle-builder-dummy" %}
+                {% unless product.tags contains "bundle-builder-dummy" or product.handle contains "free-gift" %}
                   {%- render 'product-grid-item', product: product, grid_item_width: grid_item_width -%}
                 {% endunless %}
 
@@ -90,11 +90,11 @@
                     {%- assign related_count = related_count | plus: 1 -%}
                     {%- unless related_count > number_of_products -%}
                       {%- if forloop.last and current_product_found -%}
-                        {% unless product.tags contains "bundle-builder-dummy" %}
+                        {% unless product.tags contains "bundle-builder-dummy" or product.handle contains "free-gift" %}
                           {%- render 'product-grid-item', product: product, grid_item_width: grid_item_width -%}
                         {% endunless %}
                       {%- else -%}
-                        {% unless product.tags contains "bundle-builder-dummy" %}
+                        {% unless product.tags contains "bundle-builder-dummy" or product.handle contains "free-gift" %}
                           {%- render 'product-grid-item', product: product, grid_item_width: grid_item_width -%}
                         {% endunless %}
                       {%- endif -%}

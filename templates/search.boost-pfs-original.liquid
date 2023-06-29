@@ -34,7 +34,7 @@
             {%- for item in search.results -%}
 
               {%- if item.object_type == 'product' -%}
-                {% unless item.tags contains "bundle-builder-dummy" %}
+                {% unless item.tags contains "bundle-builder-dummy" or item.handle contains "free-gift"%}
                 {%- render 'product-grid-item', product: item -%}
                 {% endunless %}
               {%- else -%}

@@ -77,7 +77,7 @@
       {% endcase %}
 
       {% for product in collection.products %}
-        {% unless product.tags contains "bundle-builder-dummy" %}
+        {% unless product.tags contains "bundle-builder-dummy" or product.handle contains "free-gift" %}
           {% include 'product-grid-item' %}
         {% endunless %}
       {% else %}
@@ -139,56 +139,45 @@
       items_with_count_other: {{ 'collections.general.items_with_count.other' | t | json }}
     },
     custom: {
-        products_per_page:{% if paginate_by %}
-        {{ paginate_by | json }}
+        products_per_page:{% if paginate_by %}{{ paginate_by | json }}
       {% else %}
         24
       {% endif %},
-        products_per_row:{% if per_row %}
-        {{ per_row }}
+        products_per_row:{% if per_row %}{{ per_row }}
       {% else %}
         4
       {% endif %},
-        grid_item_width:{% if grid_item_width != blank %}
-        {{ grid_item_width | json }}
+        grid_item_width:{% if grid_item_width != blank %}{{ grid_item_width | json }}
       {% else %}
         'small--one-half medium-up--one-third' {% endif %},
-        vendor_enable:{% if settings.vendor_enable %}
-          {{ settings.vendor_enable | json }}
+        vendor_enable:{% if settings.vendor_enable %}{{ settings.vendor_enable | json }}
         {% else %}
           false
         {% endif %},
-        quick_shop_enable:{% if settings.quick_shop_enable %}
-          {{ settings.quick_shop_enable | json }}
+        quick_shop_enable:{% if settings.quick_shop_enable %}{{ settings.quick_shop_enable | json }}
         {% else %}
           false
         {% endif %},
-        product_hover_image:{% if settings.product_hover_image %}
-          {{ settings.product_hover_image | json }}
+        product_hover_image:{% if settings.product_hover_image %}{{ settings.product_hover_image | json }}
         {% else %}
           false
         {% endif %},
-        product_grid_image_size:{% if settings.product_grid_image_size %}
-          {{ settings.product_grid_image_size | json }}
+        product_grid_image_size:{% if settings.product_grid_image_size %}{{ settings.product_grid_image_size | json }}
         {% else %}
           'natural' {% endif %},
-          enable_product_reviews:{% if settings.enable_product_reviews %}
-            {{ settings.enable_product_reviews | json }}
+          enable_product_reviews:{% if settings.enable_product_reviews %}{{ settings.enable_product_reviews | json }}
           {% else %}
             false
           {% endif %},
-          collection_color_swatches:{% if settings.collection_color_swatches %}
-            {{ settings.collection_color_swatches | json }}
+          collection_color_swatches:{% if settings.collection_color_swatches %}{{ settings.collection_color_swatches | json }}
           {% else %}
             false
           {% endif %},
-          product_save_amount:{% if settings.product_save_amount %}
-            {{ settings.product_save_amount | json }}
+          product_save_amount:{% if settings.product_save_amount %}{{ settings.product_save_amount | json }}
           {% else %}
             false
           {% endif %},
-          product_save_type:{% if settings.product_save_type %}
-            {{ settings.product_save_type | json }}
+          product_save_type:{% if settings.product_save_type %}{{ settings.product_save_type | json }}
           {% else %}
             'dollar' {% endif %}
           }

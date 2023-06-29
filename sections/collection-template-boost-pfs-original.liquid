@@ -80,7 +80,7 @@
 
     {%- for product in collection.products -%}
 
-      {% unless product.tags contains "bundle-builder-dummy" %}
+      {% unless product.tags contains "bundle-builder-dummy" or product.handle contains "free-gift" %}
         {%- render 'product-grid-item', product: product, grid_item_width: grid_item_width -%}
       {% endunless %}
       
