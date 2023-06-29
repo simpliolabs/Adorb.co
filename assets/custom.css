@@ -1091,6 +1091,10 @@ strong.offer-saving {
   border: none;
 }
 
+.rebuy-cart__progress-free-product-title {
+  font-size: 13px;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   .membership-detail-points[data-v-12407f70] li,
   .membership-footer-action-block li {
