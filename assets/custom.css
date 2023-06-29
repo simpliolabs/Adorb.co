@@ -1092,7 +1092,7 @@ strong.offer-saving {
 }
 
 .rebuy-cart__progress-free-product-title {
-  font-size: 13px;
+  font-size: 13px !important;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
