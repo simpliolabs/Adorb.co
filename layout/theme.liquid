@@ -557,18 +557,18 @@ a.grid-product__link {
 
 
 </style>
-<script>
+{% comment %} <script>
   $(".variant-input-wrap input").on("change",function(){
     setTimeout(function(){
     let selected = $(".varinat-selector option:selected").attr("data-pick-price");
      let textBtn = `Add to cart → - ${selected}`;
      $("button.add-to-cart").text(textBtn);
     },500);
- }) 
+ })  
 
  
   
-</script>
+</script>{% endcomment %}
 
 
 </html>
