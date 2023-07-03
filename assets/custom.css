@@ -1215,3 +1215,7 @@ div#appikon-notification-bar {
   visibility: visible !important;
   transform: translate(-50%, 0%) scale(1) !important;
 }
+
+.variant__label[for] {
+  margin-bottom: 5px;
+}
