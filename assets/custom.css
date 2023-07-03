@@ -1225,18 +1225,12 @@ div#appikon-notification-bar {
   border-radius: 1px;
 }
 
-.variant-input-wrap[name="Color"]
-  .variant-input-wrap
-  input[type="radio"]:focus
-  + label {
+.variant-input-wrap[name="Color"] input[type="radio"]:focus + label {
   box-shadow: 0 0 0 2px #636363;
   border: 1px solid;
 }
 
-.variant-input-wrap[name="Color"]
-  .variant-input-wrap
-  input[type="radio"]:checked
-  + label {
+.variant-input-wrap[name="Color"] input[type="radio"]:checked + label {
   box-shadow: 0 0 0 2px #636363;
   border: 1px solid;
 }
