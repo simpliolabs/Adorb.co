@@ -1220,6 +1220,11 @@ div#appikon-notification-bar {
   margin-bottom: 5px;
 }
 
+label.variant__button-label {
+  border: none;
+  border-radius: 1px;
+}
+
 .variant-input-wrap input[type="radio"]:focus + label {
   box-shadow: 0 0 0 1px #636363;
   border: 1px solid;
