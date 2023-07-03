@@ -1221,7 +1221,7 @@ div#appikon-notification-bar {
 }
 
 .variant-input-wrap input[type="radio"]:focus + label {
-  box-shadow: unset;
+  box-shadow: 0 0 0 1px #636363;
   border: 1px solid;
 }
 
