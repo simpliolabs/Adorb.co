@@ -1219,3 +1219,12 @@ div#appikon-notification-bar {
 .variant__label[for] {
   margin-bottom: 5px;
 }
+
+.variant-input-wrap input[type="radio"]:focus + label {
+  box-shadow: unset;
+  border: 1px solid;
+}
+
+.variant-input-wrap input[type="radio"]:checked + label {
+  box-shadow: unset;
+}
