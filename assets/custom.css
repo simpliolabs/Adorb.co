@@ -1220,17 +1220,23 @@ div#appikon-notification-bar {
   margin-bottom: 5px;
 }
 
-label.variant__button-label {
+.variant-input-wrap[name="Color"] label.variant__button-label {
   border: none;
   border-radius: 1px;
 }
 
-.variant-input-wrap input[type="radio"]:focus + label {
+.variant-input-wrap[name="Color"]
+  .variant-input-wrap
+  input[type="radio"]:focus
+  + label {
   box-shadow: 0 0 0 2px #636363;
   border: 1px solid;
 }
 
-.variant-input-wrap input[type="radio"]:checked + label {
+.variant-input-wrap[name="Color"]
+  .variant-input-wrap
+  input[type="radio"]:checked
+  + label {
   box-shadow: 0 0 0 2px #636363;
   border: 1px solid;
 }
