@@ -1224,7 +1224,3 @@ div#appikon-notification-bar {
   box-shadow: 0 0 0 1px #636363;
   border: 1px solid;
 }
-
-.variant-input-wrap input[type="radio"]:checked + label {
-  box-shadow: unset;
-}
