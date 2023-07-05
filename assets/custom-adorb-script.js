@@ -77,7 +77,7 @@ $(document).ready(function () {
   }, 4000);
 });
 
-/*
+
 function getCartMembershiptSection(){
    var _html = '';
   
@@ -227,4 +227,3 @@ function availabilityForMemberShipDiscount(){
 
   return is_available;
 }
-*/
