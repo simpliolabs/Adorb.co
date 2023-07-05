@@ -602,6 +602,8 @@ var boostPFSTemplate = {
     if (!data) {
       data = this.data;
     }
+    
+    console.log(data)
 
     if (
       typeof theme != "undefined" &&
