@@ -1234,3 +1234,13 @@ div#appikon-notification-bar {
   box-shadow: 0 0 0 2px #636363;
   border: 1px solid;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  strong.offer-saving {
+      font-weight: 550;
+      color: #090;
+      font-size: 13px;
+  }
+  
+}
