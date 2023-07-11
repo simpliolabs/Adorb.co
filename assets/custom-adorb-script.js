@@ -1,16 +1,16 @@
-// if ($(".pagination").length) {
-//   var fniv = $(".pagination .prev").next("span").find("a").attr("href");
-//   if (fniv.indexOf("?page=1") >= 0) {
-//     let newval = fniv.replace("?page=1", "");
-//     $(".pagination .prev").next("span").find("a").attr("href", newval);
-//   }
-//   if ($(".pagination .prev").length) {
-//     if ($(".pagination .prev a").attr("href").indexOf("?page=1") >= 0) {
-//       let newval = fniv.replace("?page=1", "");
-//       $(".pagination .prev a").attr("href", newval);
-//     }
-//   }
-// }
+if ($(".pagination").length) {
+  var fniv = $(".pagination .prev").next("span").find("a").attr("href");
+  if (fniv.indexOf("?page=1") >= 0) {
+    let newval = fniv.replace("?page=1", "");
+    $(".pagination .prev").next("span").find("a").attr("href", newval);
+  }
+  if ($(".pagination .prev").length) {
+    if ($(".pagination .prev a").attr("href").indexOf("?page=1") >= 0) {
+      let newval = fniv.replace("?page=1", "");
+      $(".pagination .prev a").attr("href", newval);
+    }
+  }
+}
 
 $(document).ready(function () {
   setTimeout(function () {
