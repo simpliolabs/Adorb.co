@@ -332,7 +332,7 @@ var boostPFSTemplate = {
         <a
         style="margin-left: 5px;"
         href="javascript:void(0);">
-        <span class="random_no" `+ data.handle +` ""></span>
+        <span class="random_no `+ data.handle +`"></span>
         </a>
         </div>
         </div>`
