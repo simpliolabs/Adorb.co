@@ -140,14 +140,6 @@
               "mobile_logo_width": 130
             }
           },
-          "1524770292306": {
-            "type": "announcement",
-            "settings": {
-              "text": "",
-              "link_text": "Spend $50 Today and Get a FREE Gift!",
-              "link": ""
-            }
-          },
           "1602094603687": {
             "type": "announcement",
             "settings": {
@@ -155,12 +147,20 @@
               "link_text": "",
               "link": ""
             }
+          },
+          "1524770292306": {
+            "type": "announcement",
+            "settings": {
+              "text": "",
+              "link_text": "Spend $50 Today and Get a FREE Gift!",
+              "link": ""
+            }
           }
         },
         "block_order": [
           "1524770014057",
-          "1524770292306",
-          "1602094603687"
+          "1602094603687",
+          "1524770292306"
         ],
         "settings": {
           "main_menu_link_list": "new-navigation",
