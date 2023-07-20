@@ -140,14 +140,6 @@
               "mobile_logo_width": 130
             }
           },
-          "1602094603687": {
-            "type": "announcement",
-            "settings": {
-              "text": "USE CODE \"SUMMER20\" To Save 20% OFF storewide",
-              "link_text": "",
-              "link": ""
-            }
-          },
           "1524770292306": {
             "type": "announcement",
             "settings": {
@@ -155,12 +147,20 @@
               "link_text": "Spend $50 Today and Get a FREE Gift!",
               "link": ""
             }
+          },
+          "1602094603687": {
+            "type": "announcement",
+            "settings": {
+              "text": "USE CODE \"SUMMER20\" To Save 20% OFF storewide",
+              "link_text": "",
+              "link": ""
+            }
           }
         },
         "block_order": [
           "1524770014057",
-          "1602094603687",
-          "1524770292306"
+          "1524770292306",
+          "1602094603687"
         ],
         "settings": {
           "main_menu_link_list": "new-navigation",
