@@ -150,10 +150,9 @@
           },
           "1602094603687": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "text": "Printed & Shipped in the usa",
-              "link_text": "To Preserve Quality & Speed",
+              "text": "USE CODE \"SUMMER20\" To Save 20% OFF storewide",
+              "link_text": "",
               "link": ""
             }
           }
