@@ -39,7 +39,7 @@ var boostPFSTemplate = {
     "{{itemVendor}}" +
     '<div class="grid-product__price">{{itemPrice}} </div>' +
     "{{itemReviews}}" +
-    "{{itemFakeReview}}"
+    "{{itemFakeReview}}" +
     "</div>" +
     "</a>" +
     "</div>" +
