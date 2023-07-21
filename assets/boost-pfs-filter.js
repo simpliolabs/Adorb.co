@@ -326,16 +326,14 @@ var boostPFSTemplate = {
       swatchHtml.itemSwatchHoverImages
     );
     
-    var fakeReview = `<div class="judge-product-list-block">
-        <div class="jm_review_preview_wrapper">
-        <span class="jdgm-prev-badge__stars" data-score="4.98" tabindex="0" aria-label="4.98 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span> </span>
-        <a
-        style="margin-left: 5px;"
-        href="javascript:void(0);">
-        <span class="random_no"></span>
-        </a>
-        </div>
-        </div>`
+    var fakeReview = '<div class="judge-product-list-block">'
+        fakeReview += '<div class="jm_review_preview_wrapper">'
+        fakeReview += '<span class="jdgm-prev-badge__stars" data-score="4.98" tabindex="0" aria-label="4.98 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span> </span>'
+      fakeReview +=  '<a style="margin-left: 5px;" href="javascript:void(0);">'
+      fakeReview += '<span class="random_no"></span>'
+      fakeReview +=  '</a>'
+      fakeReview += '</div>'
+      fakeReview += '</div>'
     
     if(data.review_count == 0 && data.review_ratings == 0) {
       itemHtml = itemHtml.replace(/{{itemFakeReview}}/g, fakeReview);
