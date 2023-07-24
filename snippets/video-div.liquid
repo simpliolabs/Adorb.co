@@ -1,7 +1,7 @@
 {%- if url contains 'youtube.com/watch' -%}
   {%- assign video_id = url | split: 'v=' -%}
   {%- assign video_id = video_id[1] | split: '&' | first -%}
-  <div
+  <div 
     id="YouTubeVideo-{{ section_id }}"
     data-video-id="{{ video_id }}"></div>
 {%- endif -%}
