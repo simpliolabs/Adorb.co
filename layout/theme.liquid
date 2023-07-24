@@ -113,10 +113,7 @@
       themeName: 'Impulse',
       themeVersion: "6.0.3"
     };
-  </script>
-{% include 'vital-loader' %}
-  {% capture cfh %}{{ content_for_header }}{% endcapture %} 
- 
+  </script>{{ content_for_header }}
    <link rel="stylesheet" type="text/css" href="{{ 'theme.css' | asset_url }}">
    <link rel="stylesheet" type="text/css" href="{{ 'mycustom.css' | asset_url }}">
 
