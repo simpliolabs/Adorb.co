@@ -2,7 +2,6 @@
 
 {% capture header_content %}{{content_for_header}}{% endcapture %}
 {% if header_content contains 'uploadkit-client' %}
-
   <script>
     window.UploadKit = window.UploadKit || {};
     window.UploadKit.config = {% if shop.metafields.uploadkit.config == blank %}{}{% else %}{{ shop.metafields.uploadkit.config }}{{ shop.metafields.uploadkit.config2 }}{{ shop.metafields.uploadkit.config3 }}{{ shop.metafields.uploadkit.config4 }}{% endif %};
