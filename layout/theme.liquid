@@ -113,7 +113,10 @@
       themeName: 'Impulse',
       themeVersion: "6.0.3"
     };
-  </script>{{ content_for_header }}
+  </script>
+{% include 'vital-loader' %}
+  {% capture cfh %}{{ content_for_header }}{% endcapture %} 
+ 
    <link rel="stylesheet" type="text/css" href="{{ 'theme.css' | asset_url }}">
    <link rel="stylesheet" type="text/css" href="{{ 'mycustom.css' | asset_url }}">
 
@@ -416,8 +419,6 @@ function makeTimer() {
 {% render 'amai_stp-theme-snippet' %}
 {% render 'amai_stp-cart-snippet' %}
 {% render 'amai_stp-product-snippet' %}
-  {{ "//cdn.shopify.com/s/files/1/0633/1672/1913/t/1/assets/splide.min.js" | script_tag}}
-
 </body>
 {%  if template == 'product.dropdown-options' %}
 <style>
