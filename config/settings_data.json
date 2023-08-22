@@ -700,6 +700,7 @@
       },
       "1603390414627": {
         "type": "text-and-image",
+        "disabled": true,
         "settings": {
           "image": "shopify:\/\/shop_images\/We_still_do_tee_combo2_1.webp",
           "image_width": 500,
@@ -715,9 +716,9 @@
       "1603570539563": {
         "type": "featured-collection",
         "settings": {
-          "title": "New Arrivals",
+          "title": "Recommended For You",
           "home_featured_products": "homepage-new-arrivals",
-          "per_row": 4,
+          "per_row": 5,
           "rows": 1,
           "mobile_scrollable": true,
           "view_all": true,
@@ -735,6 +736,7 @@
       },
       "1604690201f08e9df7": {
         "type": "featured-collection",
+        "disabled": true,
         "settings": {
           "title": "Mommy & Me Popular Tees",
           "home_featured_products": "mothers-day",
@@ -773,60 +775,53 @@
       "1621294432664ccc56": {
         "type": "featured-collections",
         "blocks": {
-          "162129443215cf8a77-0": {
+          "6e9e901f-cf2b-4b06-91a7-6e7ca54572c0": {
             "type": "collection",
-            "disabled": true,
             "settings": {
-              "collection": "anniversary-couples-tees",
-              "title": "Anniversary",
+              "collection": "bachelorette-merch",
+              "image": "shopify:\/\/shop_images\/dce037c161dfc0f2509d421dbfede76b.png",
+              "title": "",
               "focal_point": "center center"
             }
           },
-          "162129443215cf8a77-1": {
+          "c18b03d2-f7b3-4f74-9c20-42366bb5c31f": {
             "type": "collection",
             "settings": {
-              "collection": "mothers-day",
-              "title": "Mommy & Me",
+              "collection": "anniversary-merch",
+              "image": "shopify:\/\/shop_images\/f5f10616ebbba23bf3353f2f56fe4c9c.jpg",
+              "title": "",
               "focal_point": "center center"
             }
           },
-          "162129443215cf8a77-2": {
+          "4d85a707-ad91-467d-a8cb-a213657fcd7a": {
             "type": "collection",
             "settings": {
-              "collection": "fathers-day-merch",
-              "title": "Fathers Day",
+              "collection": "mommy-me-t-shirts",
+              "image": "shopify:\/\/shop_images\/5b95ef37dea6ea269875667540cffa19.jpg",
+              "title": "",
               "focal_point": "center center"
             }
           },
-          "162129443215cf8a77-3": {
+          "bb4d4e9e-804a-44e3-baf9-c0c607f2e44c": {
             "type": "collection",
             "settings": {
-              "collection": "mom-merch",
-              "title": "Mom",
-              "focal_point": "center center"
-            }
-          },
-          "aaa7bd3c-7a29-406d-a066-79277eba3464": {
-            "type": "collection",
-            "disabled": true,
-            "settings": {
-              "collection": "birthday-tees",
+              "collection": "pets",
+              "image": "shopify:\/\/shop_images\/1433e2a515b5a980e0c986815c84d82d.png",
               "title": "",
               "focal_point": "center center"
             }
           }
         },
         "block_order": [
-          "162129443215cf8a77-0",
-          "162129443215cf8a77-1",
-          "162129443215cf8a77-2",
-          "162129443215cf8a77-3",
-          "aaa7bd3c-7a29-406d-a066-79277eba3464"
+          "6e9e901f-cf2b-4b06-91a7-6e7ca54572c0",
+          "c18b03d2-f7b3-4f74-9c20-42366bb5c31f",
+          "4d85a707-ad91-467d-a8cb-a213657fcd7a",
+          "bb4d4e9e-804a-44e3-baf9-c0c607f2e44c"
         ],
         "settings": {
-          "title": "Personalized Collections",
+          "title": "",
           "divider": false,
-          "per_row": 4,
+          "per_row": 2,
           "enable_gutter": true
         }
       },
@@ -1274,21 +1269,140 @@
           "enable_video_looping": true,
           "product_video_style": "muted"
         }
+      },
+      "5b9cf39c-45ad-4b69-9ebc-9404db541a1e": {
+        "type": "featured-subcollections",
+        "settings": {
+          "main_menu_link_list": "new-navigation",
+          "banner_text": "How Do You Want To Shop"
+        }
+      },
+      "b1d81576-624f-43f3-81b5-a0c61bca0e25": {
+        "type": "text-and-image-customize",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Rectangle_116_1ad560c2-1337-4205-816c-57277eebd611.png",
+          "mobile_image": "shopify:\/\/shop_images\/Rectangle_116_1ad560c2-1337-4205-816c-57277eebd611.png",
+          "subtitle": "ADORB",
+          "title": "Why Adorb?",
+          "text": "<p>We noticed a gaping hole in the market for an outrageously fun brand that oozes authenticity & cuteness. We're not afraid to sprinkle in some snark and revel in the joy of good times. Unlike the countless vanilla brands out there who are afraid to venture outside the box, we embrace the wild side of fun. At ADORB we are absolutely head over heels in love with conjuring up wickedly entertaining designs just to share them with all of you wonderful souls out there!<\/p>",
+          "button_label": "SHOP BEST SELLERS →",
+          "button_link": "shopify:\/\/collections\/best-sellers",
+          "layout": "right",
+          "divider": false
+        }
+      },
+      "982e73e4-5aa2-4638-8646-e67b0160cdfb": {
+        "type": "manual-reviews",
+        "blocks": {
+          "0485cb10-d230-468f-9687-0922cb58f761": {
+            "type": "text",
+            "settings": {
+              "review_img": "shopify:\/\/shop_images\/review_1.png",
+              "review_content": "<p>These t-shirts are my absolute favorites. Now on my fourth purchase. I adore their durability, craftsmanship, and commitment to sustainability.<\/p>",
+              "review_author": "Merci Lyn",
+              "review_product": "Anniversary"
+            }
+          },
+          "d4fba814-f38d-4fbf-8522-d13023b7e2f8": {
+            "type": "text",
+            "settings": {
+              "review_img": "shopify:\/\/shop_images\/review_2.png",
+              "review_content": "<p>‘Absolutely love it! excellent customer support and the shirts came out wonderfully and were completed more quickly than anticipated. Well done!’<\/p>",
+              "review_author": "Ariel Ruben",
+              "review_product": "Mommy & Me"
+            }
+          },
+          "09c71ba3-f468-46ae-87fa-25249614c6d0": {
+            "type": "text",
+            "settings": {
+              "review_img": "shopify:\/\/shop_images\/review_3.png",
+              "review_content": "<p>Outstanding as usual. T-shirt print quantity and quality. Excellent value and no order minimum. Consistently quick to dispatch. Can't see anything wrong with the T-shirts.<\/p>",
+              "review_author": "Amy Mansfield",
+              "review_product": "Mrs Personalized"
+            }
+          }
+        },
+        "block_order": [
+          "0485cb10-d230-468f-9687-0922cb58f761",
+          "d4fba814-f38d-4fbf-8522-d13023b7e2f8",
+          "09c71ba3-f468-46ae-87fa-25249614c6d0"
+        ],
+        "settings": {
+          "title": "Over 2 Million Happy Customers",
+          "outline": false
+        }
+      },
+      "a474312c-9b17-4bcf-9245-a0cf9d7d6692": {
+        "type": "shop-icons",
+        "blocks": {
+          "e20eaaf2-4c70-4ce9-b91f-83d7a1990c79": {
+            "type": "text",
+            "settings": {
+              "icon_img": "shopify:\/\/shop_images\/stars_1_9ea5743e-d8ae-4553-b1bf-351a28c9dd6c.png",
+              "icon_text": "Unbeatable Selection"
+            }
+          },
+          "9b646808-d7ad-4e36-953f-2f5344a2fc3b": {
+            "type": "text",
+            "settings": {
+              "icon_img": "shopify:\/\/shop_images\/delivery_1_8602ee3d-f29c-4627-b48d-6f8bfb3a086d.png",
+              "icon_text": "Easy Returns"
+            }
+          },
+          "3cd52dfa-c25a-46a7-a87e-2f11b2dce457": {
+            "type": "text",
+            "settings": {
+              "icon_img": "shopify:\/\/shop_images\/customer-service_1_5b39985b-3631-48be-85b2-f619a84a4aef.png",
+              "icon_text": "Expert Customer Service"
+            }
+          },
+          "0c379f9d-57eb-40ab-8405-beeda3d3b4f0": {
+            "type": "text",
+            "settings": {
+              "icon_img": "shopify:\/\/shop_images\/shirt_1_da4f1440-b79d-4ff6-bcea-0fe656f3aa70.png",
+              "icon_text": "Unmatched Quality"
+            }
+          }
+        },
+        "block_order": [
+          "e20eaaf2-4c70-4ce9-b91f-83d7a1990c79",
+          "9b646808-d7ad-4e36-953f-2f5344a2fc3b",
+          "3cd52dfa-c25a-46a7-a87e-2f11b2dce457",
+          "0c379f9d-57eb-40ab-8405-beeda3d3b4f0"
+        ],
+        "settings": {
+        }
+      },
+      "about-us": {
+        "type": "about-us",
+        "settings": {
+          "banner_img": "shopify:\/\/shop_images\/Rectangle_121.png",
+          "banner_text": "<p>At Adorb, we are more than just an established company with a vast customer base across the United States. We pride ourselves on being the source of smiles and creating unforgettable memories for individuals who adore our products. However, our purpose goes beyond delivering exceptional print-on-demand items for special occasions and personalized merchandise. We are on a mission to make a difference in people's lives, particularly single moms across the nation.<\/p>",
+          "main_img": "shopify:\/\/shop_images\/Rectangle_123.png",
+          "main_img_mobile": "shopify:\/\/shop_images\/Rectangle_127.png",
+          "text_1": "<p>Our commitment to supporting single moms stems from our partnership with the National Council of Single Mothers and their Children.<\/p>",
+          "text_2": "<p>Together, we aim to provide essential support and resources to these incredible women who tirelessly juggle their responsibilities. We understand the unique challenges they face and want to be a beacon of hope in their lives.<\/p><p><\/p><p>When you choose Adorb, you are not only purchasing high-quality, custom-designed merchandise or delightful products for your special moments; you are also contributing to a greater cause. Your support allows us to continue our advocacy for single moms, enabling us to provide resources, opportunities, and encouragement to these extraordinary women.<\/p>",
+          "text_3": "<p>Join us in our mission to spread joy, celebrate life's precious moments, and uplift single moms across the United States. Together, we can make a real difference and create a brighter future for those who deserve it most. Adorb – where love, compassion, and empowerment come together.<\/p>"
+        }
       }
     },
     "content_for_index": [
       "1e095fe3-58da-4e09-bf9f-30659a8797ce",
       "1602455559135",
+      "5b9cf39c-45ad-4b69-9ebc-9404db541a1e",
+      "b1d81576-624f-43f3-81b5-a0c61bca0e25",
+      "1621294432664ccc56",
       "1603390414627",
       "1603570539563",
       "16212946693b619058",
       "1627756502c00c9a4d",
+      "982e73e4-5aa2-4638-8646-e67b0160cdfb",
+      "a474312c-9b17-4bcf-9245-a0cf9d7d6692",
       "1604690201f08e9df7",
       "1626984798b06975f4",
       "16311227888cc4d2c9",
       "1610930684154cbe38",
       "1609447992c8cca84c",
-      "1621294432664ccc56",
       "1603570780561"
     ],
     "blocks": {

@@ -20,7 +20,7 @@
   endif
 -%}
 
-<div class="grid__item {{ grid_item_width }}">
+<div class="grid__item {{ grid_item_width }} grid__item_customize">
   <a
     href="{{ collection.url }}"
     class="collection-item collection-item--{{ settings.collection_grid_style }}"
@@ -39,11 +39,13 @@
       <div class="collection-image collection-image--{{ settings.collection_grid_shape }} collection-image--placeholder">{{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}</div>
     {%- else -%}
       <div class="image-wrap">
+        <img class="image_overlay lazyload" data-src="{{ 'collectionoverlay.png' | asset_url }}">
         <div
           class="collection-image collection-image--{{ settings.collection_grid_shape }} lazyload"
           data-bgset="{% render 'bgset', image: collection_image %}"
           data-sizes="auto"
           style="background-position: {{ background_position }};"></div>
+
       </div>
       <noscript>
         <div class="collection-image collection-image--{{ settings.collection_grid_shape }}" style="background-image: url({{ collection_image | img_url: '400x', format:'pjpg' }}); background-position: {{ background_position }};"></div>
@@ -51,9 +53,10 @@
     {%- endif -%}
 
     <span class="collection-item__title collection-item__title--{{ settings.collection_grid_style }} collection-item__title--{{ settings.type_collection_font }} collection-item__title--{{ settings.collection_grid_text_align }}">
-      <span>
+      <h3>
         {{ title_output }}
-      </span>
+      </h3>
+      <button class="btn_shop_now">Shop Now</button>
     </span>
 
   </a>

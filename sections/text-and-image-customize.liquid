@@ -2,27 +2,44 @@
   <div class="section--divider">
   {%- endif -%}
 
-  <div class="page-width text_image_section">
+  <div class="customized_text_image_section">
     {%- capture image_layout -%}
       <div class="feature-row__item">
-        <div style="margin: 0 auto; max-width: {{ section.settings.image_width }}px;">
+        <div style="margin: 0 auto;">
           {%- if section.settings.image != blank -%}
-            {%- if section.settings.button_label != blank and section.settings.button_link != blank %}
-              <a href="{{ section.settings.button_link }}">
-              {% endif -%}
-              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.image.aspect_ratio }}%;">
-                {%- assign img_url = section.settings.image | img_url: '1x1', format: 'pjpg' | replace: '_1x1.', '_{width}x.' -%}
-                <img
-                  class="feature-row__image lazyload"
-                  data-src="{{ img_url }}"
-                  data-widths="[180, 360, 540, 720, 900, 1080]"
-                  data-aspectratio="{{ section.settings.image.aspect_ratio }}"
-                  data-sizes="auto"
-                  alt="{{ section.settings.image.alt }}">
-              </div>
-              {%- if section.settings.button_label != blank and section.settings.button_link != blank %}
-              </a>
-            {% endif -%}
+            <div class="image-wrap">
+              {%- assign img_url = section.settings.image | img_url: '1x1', format: 'pjpg' | replace: '_1x1.', '_700x.' -%}
+              <img
+                class="feature-row__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080]"
+                data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ section.settings.image.alt }}">
+            </div>
+          {%- else -%}
+            <div class="image-wrap">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endcapture -%}
+
+    {%- capture mobile_image_layout -%}
+      <div class="feature-row__item">
+        <div style="margin: 0 auto;">
+          {%- if section.settings.mobile_image != blank -%}
+            <div class="image-wrap">
+              {%- assign img_url = section.settings.mobile_image | img_url: '1x1', format: 'pjpg' | replace: '_1x1.', '_700x.' -%}
+              <img
+                class="feature-row__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080]"
+                data-aspectratio="{{ section.settings.mobile_image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ section.settings.mobile_image.alt }}">
+            </div>
           {%- else -%}
             <div class="image-wrap">
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -47,11 +64,7 @@
         {%- if section.settings.text != blank -%}
           <div class="rte featured-row__subtext">{{ section.settings.text }}</div>
         {%- endif -%}
-        {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link }}" class="btn">
-            {{ section.settings.button_label }}
-          </a>
-        {%- endif -%}
+
       </div>
 
       {%- if section.settings.layout == 'right' -%}
@@ -61,7 +74,7 @@
 
     <div class="feature-row mobile_only" data-aos>
       {%- if section.settings.layout == 'left' -%}
-        {{ image_layout }}
+        {{ mobile_image_layout }}
       {%- endif -%}
 
       <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
@@ -86,9 +99,16 @@
       </div>
 
       {%- if section.settings.layout == 'right' -%}
-        {{ image_layout }}
+        {{ mobile_image_layout }}
       {%- endif -%}
     </div>
+    {%- if section.settings.button_label != blank -%}
+      <div class="link_wrapper desktop_only">
+        <a href="{{ section.settings.button_link }}" class="btn">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {%- endif -%}
   </div>
 
   {%- if section.settings.divider -%}
@@ -97,7 +117,7 @@
 
 {% schema %}
   {
-    "name": "Image with text",
+    "name": "Customized Image text",
     "class": "index-section",
     "settings": [
       {
@@ -106,14 +126,9 @@
         "label": "Image"
       },
       {
-        "type": "range",
-        "id": "image_width",
-        "label": "Image width",
-        "default": 500,
-        "min": 100,
-        "max": 800,
-        "step": 10,
-        "unit": "px"
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
       },
       {
         "type": "text",
@@ -163,7 +178,7 @@
     ],
     "presets": [
       {
-        "name": "Image with text",
+        "name": "Customized Image text",
         "category": "Image"
       }
     ]

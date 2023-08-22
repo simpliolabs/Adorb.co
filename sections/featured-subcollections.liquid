@@ -1,0 +1,109 @@
+{%- liquid
+  assign main_menu = linklists[section.settings.main_menu_link_list]
+-%}
+
+<div id="featured-subcollections-section">
+  <div class="container_coll_tab">
+    <div class="banner_text">{{ section.settings.banner_text }}</div>
+    <div class="custom_tabs">
+      {%- for link in main_menu.links limit: 10 -%}
+        <button class="tablinks {% if forloop.index == 2 %}active{% endif %}" onclick="openCity(event,'{{ link.handle }}')">
+          {%- if link.url contains '/collections/' -%}
+            {%- liquid
+                      assign lang_code_string = request.locale.iso_code | prepend: '/'
+                      assign collection_handle = link.url | remove: '/collections/' | remove: lang_code_string
+                      assign collection_drop = collections[collection_handle]
+                    -%}
+            <img class="lazyload" data-src="{{ collection_drop.metafields.custom.nav_image | img_url:'100x100' }}">
+            <h3>{{ link.title }}</h3>
+          {% else %}
+            <img src="https://cdn.shopify.com/s/files/1/0267/8603/7955/files/Product_Type.png?v=1691082007">
+            <h3>{{ link.title }}</h3>
+          {% endif %}
+        </button>
+      {% endfor %}
+    </div>
+    {%- for link in main_menu.links limit: 10 -%}
+      <div
+        id="{{ link.handle }}"
+        class="tabcontent"
+        {% if forloop.index == 2 %}style="display:block"{% endif %}>
+        <div class="row_tabs">
+          {% if link.links != blank %}
+            {%- for childlink in link.links -%}
+              <div class="column_tabs">
+                <a href="{{ childlink.url }}">
+                  {%- liquid
+                      assign lang_code_string = request.locale.iso_code | prepend: '/'
+                      assign subcollection_handle = childlink.url | remove: '/collections/' | remove: lang_code_string
+                      assign subcollection_drop = collections[subcollection_handle]
+                    -%}
+                  <img class="lazyload" data-src="{{ subcollection_drop.products.last.featured_media.preview_image | img_url: '300x300' }}">
+                  <p>{{ childlink.title }}</p>
+                </a>
+              </div>
+            {%- endfor -%}
+          {% else %}
+            {%- if link.url contains '/collections/' -%}
+              {%- liquid
+                    assign lang_code_string = request.locale.iso_code | prepend: '/'
+                    assign collection_handle = link.url | remove: '/collections/' | remove: lang_code_string
+                    assign collection_drop = collections[collection_handle]
+                  -%}
+              {% for product in collection_drop.products limit: 10 %}
+                <div class="column_tabs">
+                  <a href="{{ product.url }}">
+                    <img class="lazyload" data-src="{{ product.featured_media.preview_image | img_url: '300x300' }}">
+                    <p>{{ product.title }}</p>
+                  </a>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Featured Subcollections",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_menu_link_list",
+        "label": "Navigation",
+        "default": "main-menu"
+      }, {
+        "type": "text",
+        "id": "banner_text",
+        "label": "Heading",
+        "default": "How Do You Want To Shop"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Subcollections"
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+  function openCity(evt, cityName) {
+    var i,
+      tabcontent,
+      tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>

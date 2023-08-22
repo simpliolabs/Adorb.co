@@ -1,0 +1,62 @@
+<div class="about-us-section">
+  <div class="banner_img_wrapper">
+    <img class="lazyload" data-src="{{ section.settings.banner_img | img_url: "2000x" }}">
+  </div>
+  <div class="page-width">
+    <span class="about_us_title">About Us</span>
+    <div class="top_text">{{ section.settings.banner_text }}</div>
+    <div class="content_wrapper">
+      <img class="lazyload desktop_only" data-src="{{ section.settings.main_img | img_url: '700x' }}">
+      <img class="lazyload mobile_only" data-src="{{ section.settings.main_img_mobile | img_url: '185x' }}">
+      <div class="content_text_wrapper">
+        <div class="text_1">{{ section.settings.text_1 }}</div>
+        <div class="text_2">{{ section.settings.text_2 }}</div>
+      </div>
+    </div>
+    <div class="text_3">{{ section.settings.text_3 }}</div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "About Us",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_img",
+        "label": "Banner Image"
+      },
+      {
+        "type": "richtext",
+        "id": "banner_text",
+        "label": "Top Text",
+        "default": "<p>At Adorb, we are more than just an established company with a vast customer base across the United States. We pride ourselves on being the source of smiles and creating unforgettable memories for individuals who adore our products. However, our purpose goes beyond delivering exceptional print-on-demand items for special occasions and personalized merchandise. We are on a mission to make a difference in people's lives, particularly single moms across the nation.</p>"
+      },
+      {
+        "type": "image_picker",
+        "id": "main_img",
+        "label": "Main Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "main_img_mobile",
+        "label": "Mobile Main Image"
+      }, {
+        "type": "richtext",
+        "id": "text_1",
+        "label": "Text 1",
+        "default": "<p>Our commitment to supporting single moms stems from our partnership with the National Council of Single Mothers and their Children.</p>"
+      }, {
+        "type": "richtext",
+        "id": "text_2",
+        "label": "Text 2",
+        "default": "<p>Together, we aim to provide essential support and resources to these incredible women who tirelessly juggle their responsibilities. We understand the unique challenges they face and want to be a beacon of hope in their lives.When you choose Adorb, you are not only purchasing high-quality, custom-designed merchandise or delightful products for your special moments; you are also contributing to a greater cause. Your support allows us to continue our advocacy for single moms, enabling us to provide resources, opportunities, and encouragement to these extraordinary women.</p>"
+      }, {
+        "type": "richtext",
+        "id": "text_3",
+        "label": "Text 3",
+        "default": "<p>Join us in our mission to spread joy, celebrate life's precious moments, and uplift single moms across the United States. Together, we can make a real difference and create a brighter future for those who deserve it most. Adorb – where love, compassion, and empowerment come together.</p>"
+      }
+    ]
+  }
+{% endschema %}

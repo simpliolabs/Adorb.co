@@ -1,22 +1,24 @@
-{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
-
-<div class="page-width">
-  {%- if section.settings.title != blank -%}
-    <div class="section-header">
-      <h2 class="section-header__title">{{ section.settings.title }}</h2>
-    </div>
+{%- if section.settings.divider -%}
+  <div class="section--divider">
   {%- endif -%}
 
-  <div class="grid grid--uniform{% unless section.settings.enable_gutter %} grid--no-gutters{% endunless %}">
-    {%- liquid
+  <div class="page-width featured-collections-section">
+    {%- if section.settings.title != blank -%}
+      <div class="section-header">
+        <h2 class="section-header__title">{{ section.settings.title }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="grid grid--uniform{% unless section.settings.enable_gutter %} grid--no-gutters{% endunless %}">
+      {%- liquid
       assign isEmpty = true
       if section.blocks.size > 0
         assign isEmpty = false
       endif
     -%}
 
-    {%- for block in section.blocks -%}
-      {%- liquid
+      {%- for block in section.blocks -%}
+        {%- liquid
         assign collection = collections[block.settings.collection]
         assign background_position = block.settings.focal_point
 
@@ -32,30 +34,31 @@
         endcase
       -%}
 
-      {%- render 'collection-grid-item',
-        collection: collection,
-        block: block,
-        grid_item_width: grid_item_width,
-        per_row: section.settings.per_row
-      -%}
-    {%- endfor -%}
+        {%- render 'collection-grid-item-customized' 
+          , collection: collection,
+          block: block,
+          grid_item_width: grid_item_width,
+          per_row: section.settings.per_row -%}
+      {%- endfor -%}
 
-    {%- if isEmpty -%}
-      <div class="page-width">
-        <div class="grid">
-          <div class="grid__item">
-            <div class="rte">
-              {{ 'home_page.onboarding.no_content' | t }}
+      {%- if isEmpty -%}
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              <div class="rte">
+                {{ 'home_page.onboarding.no_content' | t }}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    {%- endif -%}
+      {%- endif -%}
 
+    </div>
   </div>
-</div>
 
-{%- if section.settings.divider -%}</div>{%- endif -%}
+  {%- if section.settings.divider -%}
+  </div>
+{%- endif -%}
 
 {% schema %}
   {
@@ -68,14 +71,12 @@
         "id": "title",
         "label": "Heading",
         "default": "Collection list"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "divider",
         "label": "Show section divider",
         "default": false
-      },
-      {
+      }, {
         "type": "range",
         "id": "per_row",
         "label": "Collections per row",
@@ -83,44 +84,41 @@
         "min": 2,
         "max": 5,
         "step": 1
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "enable_gutter",
         "label": "Add spacing",
         "default": true
       }
     ],
-    "presets": [{
-      "name": "Collection list",
-      "category": "Collection",
-      "blocks": [
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        },
-        {
-          "type": "collection"
-        }
-      ]
-    }],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          }, {
+            "type": "collection"
+          }, {
+            "type": "collection"
+          }, {
+            "type": "collection"
+          }, {
+            "type": "collection"
+          }
+        ]
+      }
+    ],
     "blocks": [
       {
         "type": "collection",
@@ -130,13 +128,15 @@
             "id": "collection",
             "type": "collection",
             "label": "Collection"
-          },
-          {
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Collection Image"
+          }, {
             "type": "text",
             "id": "title",
             "label": "Title"
-          },
-          {
+          }, {
             "type": "select",
             "id": "focal_point",
             "label": "Focal point",
@@ -158,24 +158,19 @@
               {
                 "value": "20% 50%",
                 "label": "Left"
-              },
-              {
+              }, {
                 "value": "center center",
                 "label": "Center"
-              },
-              {
+              }, {
                 "value": "80% 50%",
                 "label": "Right"
-              },
-              {
+              }, {
                 "value": "20% 100%",
                 "label": "Bottom left"
-              },
-              {
+              }, {
                 "value": "bottom center",
                 "label": "Bottom center"
-              },
-              {
+              }, {
                 "value": "80% 100%",
                 "label": "Bottom right"
               }
