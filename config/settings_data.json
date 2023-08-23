@@ -103,8 +103,8 @@
     "social_youtube_link": "",
     "social_vimeo_link": "",
     "share_facebook": true,
-    "share_twitter": false,
-    "share_pinterest": false,
+    "share_twitter": true,
+    "share_pinterest": true,
     "favicon": "shopify:\/\/shop_images\/IMG_2549.png",
     "search_enable": true,
     "search_type": "product",
@@ -112,7 +112,7 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "predictive_image_size": "square",
-    "show_breadcrumbs": true,
+    "show_breadcrumbs": false,
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/IMG_2210.PNG",
     "checkout_logo_position": "left",
@@ -292,6 +292,9 @@
       },
       "article-template": {
         "type": "article-template",
+        "custom_css": [
+
+        ],
         "settings": {
           "image_hero": false,
           "blog_show_tags": true,
