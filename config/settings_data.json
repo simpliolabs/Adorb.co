@@ -150,6 +150,7 @@
           },
           "1602094603687": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "USE CODE \"SUMMER20\" To Save 20% OFF storewide",
               "link_text": "",
