@@ -380,7 +380,18 @@
   fill: #fff;
 }
 
+.customer_bar{
+  padding: 4px;
+  text-align: center;
+}
+.customer_bar span{
+  font-size: 22px;
+}
+
 @media only screen and (max-width: 768px) {
+  .customer_bar span{
+    font-size: 14px;
+  }
   .collection_title {
     margin-bottom: 20px;
   }

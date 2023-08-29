@@ -296,6 +296,10 @@ $('#tee-artwork-form .tee-product-price').after($("shopify-payment-terms"));
 
     {%- section 'header' -%}
 
+    {% if template != "product" %}
+      {% section 'review-bar' %}
+    {% endif %}
+
       <main class="main-content {% if customer.tags contains 'appstle_subscription_active_customer' %} init-pro-member{% endif %}" id="MainContent">
         {% capture ICART_FULL_PAGE_LAYOUT %}{% capture ICART_FULL_PAGE_LAYOUT %}{{ content_for_layout }}{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
 <limespot></limespot>{% endcapture %}{% include 'icart-variables', ICART_FULL_PAGE_LAYOUT: ICART_FULL_PAGE_LAYOUT %}
@@ -619,7 +623,20 @@ a.grid-product__link {
   
 </script>{% endcomment %}
 
+{% if template != "product" %}
 
+<script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+        "@type": "Pages",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+  "bestRating": "5"
+  } 
+      }</script>
+
+    {% endif %}
 </html>
 
 
