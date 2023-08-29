@@ -388,6 +388,10 @@
   font-size: 22px;
 }
 
+.variant-input-wrap .more_similar_products{
+  display: block;
+}
+
 @media only screen and (max-width: 768px) {
   .customer_bar span{
     font-size: 14px;

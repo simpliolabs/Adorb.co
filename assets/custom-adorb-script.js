@@ -67,6 +67,13 @@ $(document).ready(function () {
    }
    */
 
+   if($(".size_variant__label").length > 0){
+    $(".size_variant__label").append(
+      "&emsp;<button type='button' class='scr-open-size-chart ruler4 Medium'>Size Guide</button>"
+    );
+   }
+   
+
   setTimeout(function () {
     $(".tee-option--size .tee-option__title").append(
       "&emsp;<button type='button' class='scr-open-size-chart ruler4 Medium'>Size Guide</button>"
