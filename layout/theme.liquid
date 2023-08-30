@@ -272,9 +272,7 @@
 
 {% include "nonFlickerCode" %}
 
-
-
-{% if template != "product" %}
+  {% if template != "product" %}
 
 <script type="application/ld+json">
   {
@@ -292,32 +290,35 @@
   </script>
 
 {% endif %}
+  
 </head>
 
-{% if template != "product" %}
-
-<script type="application/ld+json">
-  {
-        "@context": "http://schema.org",
-        "@type": "Product",
-        "name": "Adorb"
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "bestRating": "5",
-            "ratingCount": "3",
-            "reviewCount": "3"
-        } 
-  }
-  </script>
-
-{% endif %}
 
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} " data-center-text="{{settings.type_body_align_text}}" data-button_style="{{settings.button_style}}" data-type_header_capitalize="{{settings.type_header_capitalize}}" data-type_headers_align_text="{{settings.type_headers_align_text}}" data-type_product_capitalize="{{settings.type_product_capitalize}}" data-swatch_style="{{settings.swatch_style}} " enable-collection-sidebar="{%- if collection.id == 414932893924 and template == 'collection' -%}1{%- endif -%}">    {% include 'theme-scripts' %}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KG3HDB7"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
+{% if template != "product" %}
+
+<script type="application/ld+json">
+  {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        "name": "Adorb"
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "ratingCount": "3",
+            "reviewCount": "3"
+        } 
+  }
+  </script>
+
+{% endif %}
+  
   {% include 'teeinblue-product-loader' %}
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
