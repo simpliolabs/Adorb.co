@@ -6,6 +6,7 @@ if (typeof boostPFSThemeConfig !== "undefined") {
       /* Optional */
       loadProductFirst: true,
       refineByStyle: "style2",
+      ...(Utils.isMobile()? {paginationType: 'infinite'}: {paginationType: 'default'})
     },
   };
 }
