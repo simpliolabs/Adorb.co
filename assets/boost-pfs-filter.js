@@ -1,12 +1,13 @@
 if (typeof boostPFSThemeConfig !== "undefined") {
   // Override Settings
+  var typePagiantion = Utils.isMobile() ? 'infinite': 'default';
   var boostPFSFilterConfig = {
     general: {
       limit: boostPFSConfig.custom.products_per_page,
       /* Optional */
       loadProductFirst: true,
       refineByStyle: "style2",
-      paginationType: Utils.isMobile() ? 'infinite': 'default'
+      paginationType: typePagiantion
     },
   };
 }
