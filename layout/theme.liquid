@@ -281,14 +281,14 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-{% if template != "product" %}
+{% if template == "collection" %}
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "url": "{{ shop.name }}",
-  "name": "Adorb",
+  "url": "{{ collection.url }}",
+  "name": "{{ collection.title }}",
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
