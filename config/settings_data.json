@@ -144,7 +144,7 @@
             "type": "announcement",
             "settings": {
               "text": "",
-              "link_text": "Spend $50 Today and Get a FREE Gift!",
+              "link_text": "Spend $75 Today and Get a FREE Gift!",
               "link": ""
             }
           },
@@ -1387,6 +1387,11 @@
           "text_1": "<p>Our commitment to supporting single moms stems from our partnership with the National Council of Single Mothers and their Children.<\/p>",
           "text_2": "<p>Together, we aim to provide essential support and resources to these incredible women who tirelessly juggle their responsibilities. We understand the unique challenges they face and want to be a beacon of hope in their lives.<\/p><p><\/p><p>When you choose Adorb, you are not only purchasing high-quality, custom-designed merchandise or delightful products for your special moments; you are also contributing to a greater cause. Your support allows us to continue our advocacy for single moms, enabling us to provide resources, opportunities, and encouragement to these extraordinary women.<\/p>",
           "text_3": "<p>Join us in our mission to spread joy, celebrate life's precious moments, and uplift single moms across the United States. Together, we can make a real difference and create a brighter future for those who deserve it most. Adorb – where love, compassion, and empowerment come together.<\/p>"
+        }
+      },
+      "review-bar": {
+        "type": "review-bar",
+        "settings": {
         }
       }
     },
