@@ -339,9 +339,9 @@
 }
 
 .btn.add-to-cart:hover {
-  background-color: #f6f5f2;
-  color: #71bf54;
-  border: 1px solid #71bf54;
+  background-color: #f6f5f2 !important;
+  color: #71bf54 !important;
+  border: 1px solid #71bf54 !important;
 }
 
 .thpb_combo_inner_start .thpb_combo_atc_cta_btn {
