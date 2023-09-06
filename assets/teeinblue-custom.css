@@ -85,7 +85,7 @@
 .teeinblue-enabled .variant-input-wrap,
 .teeinblue-enabled .variant__label,
 .teeinblue-enabled .btn.btn--full.add-to-cart {
-  display: none !important;
+  /* display: none !important; */
 }
 /* .tee-checkbox-wrapper {
   display: none !important;
