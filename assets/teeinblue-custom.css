@@ -100,9 +100,9 @@
   flex-wrap: unset !important;
 }
 
- #teeAtcButton {
+ /* #teeAtcButton {
   display: none;
-} 
+}  */
 
 @media only screen and (max-width: 768px) {
   .tee-swatch--color {
