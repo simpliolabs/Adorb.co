@@ -71,8 +71,9 @@ var boostPFSTemplate = {
   /* This is to inject boost components into this scope, so we can override component's function */
   BoostPFS.inject(this);
 
-  boostPFSFilterConfig.general.paginationType = Utils.isMobile ? 'infinite' : 'default';
-
+  // Start boost 200973
+  boostPFSFilterConfig.general.paginationType = Utils.isMobile() ? 'infinite': 'default';
+  // End boost 200973
   /************************** BUILD PRODUCT LIST **************************/
 
   // Build Product Grid Item
