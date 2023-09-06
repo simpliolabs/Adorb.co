@@ -179,7 +179,7 @@
 <div id="infiniteoptions-container"></div>
 <div class="popupcodeoutsideform"></div>
 
-{% comment %} <script>
+<script>
   $(document).ready(function() {
     setTimeout(function() {
       let isMobile = window.matchMedia("only screen and (max-width: 767px)").matches; 
@@ -189,16 +189,16 @@
       if (document.getElementById('teeFormActions')) {
         if (isMobile) {
           document.getElementById('teeFormActions').insertAdjacentHTML("beforebegin", mobile_html);
-          document.getElementById('teeAtcButton').insertAdjacentHTML("beforebegin", new_atc_btn_html);
+          {% comment %} document.getElementById('teeAtcButton').insertAdjacentHTML("beforebegin", new_atc_btn_html); {% endcomment %}
         } else {
           document.getElementById('teeFormActions').insertAdjacentHTML("beforebegin", desktop_html);
-          document.getElementById('teeAtcButton').insertAdjacentHTML("beforebegin", new_atc_btn_html);
+          {% comment %} document.getElementById('teeAtcButton').insertAdjacentHTML("beforebegin", new_atc_btn_html); {% endcomment %}
         }
 
       }
     }, 5000);
   });
-</script> {% endcomment %}
+</script>
 
 
 
