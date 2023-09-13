@@ -160,13 +160,13 @@
 <script>
 
   $(document).ready(function () {
-    console.log('Hello There niga')
+   // console.log('Hello There niga')
     setInterval(function () {
       var val = $('.custom_price_text').html();
       function calculateProgress(currentVal, targetVal) {
         var progressBar = document.querySelectorAll('.cart-shippingThreshold__progress');
         var progressNum = document.querySelectorAll('.cart-shipping__num');
-        console.log(targetVal);
+       // console.log(targetVal);
         var progressOuter = document.querySelectorAll('.cart-shipping__numOuter, .bar_hide');
         var successMsg = document.querySelectorAll('.cart-shipping__success');
         var result = Math.round(100 * currentVal / targetVal);
