@@ -1919,3 +1919,7 @@ div#appikon-notification-bar {
   }
     
 }
+
+.grid-product__meta .judge-product-list-block:nth-child(2) {
+  display: none!important;
+}
