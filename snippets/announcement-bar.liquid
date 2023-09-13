@@ -166,7 +166,7 @@
       function calculateProgress(currentVal, targetVal) {
         var progressBar = document.querySelectorAll('.cart-shippingThreshold__progress');
         var progressNum = document.querySelectorAll('.cart-shipping__num');
-        console.log('hello world');
+        console.log(targetVal);
         var progressOuter = document.querySelectorAll('.cart-shipping__numOuter, .bar_hide');
         var successMsg = document.querySelectorAll('.cart-shipping__success');
         var result = Math.round(100 * currentVal / targetVal);
