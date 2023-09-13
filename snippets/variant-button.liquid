@@ -46,6 +46,9 @@
         {%- endif -%}
       </div>
     {%- endfor -%}
+    {% if option.name == 'Available Product' %}
+      <a href="#" class="more_similar_products desktop_only">+ Explore More Styles</a>
+    {% endif %}
   </fieldset>
 
 </div>
